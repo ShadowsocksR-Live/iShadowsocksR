@@ -14,7 +14,7 @@
 	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)io.wasin.potatso</string>
+		<string>$(AppIdentifierPrefix)com.ssrlive.issr</string>
 	</array>
 </dict>
 </plist>
