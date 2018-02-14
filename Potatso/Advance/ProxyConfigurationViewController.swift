@@ -174,15 +174,15 @@ class ProxyConfigurationViewController: FormViewController {
             guard let type = values[kProxyFormType] as? ProxyType else {
                 throw "You must choose a proxy type".localized()
             }
-            guard let name = (values[kProxyFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.characters.count > 0 else {
+            guard let name = (values[kProxyFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.count > 0 else {
                 throw "Name can't be empty".localized()
             }
             if !self.isEdit {
-                if let _ = defaultRealm.objects(Proxy).filter("name = '\(name)'").first {
+                if let _ = defaultRealm.objects(Proxy.self).filter("name = '\(name)'").first {
                     throw "Name already exists".localized()
                 }
             }
-            guard let host = (values[kProxyFormHost] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), host.characters.count > 0 else {
+            guard let host = (values[kProxyFormHost] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), host.count > 0 else {
                 throw "Host can't be empty".localized()
             }
             guard let port = values[kProxyFormPort] as? Int else {
@@ -196,10 +196,10 @@ class ProxyConfigurationViewController: FormViewController {
             var password: String?
             switch type {
             case .Shadowsocks, .ShadowsocksR:
-                guard let encryption = values[kProxyFormEncryption] as? String, encryption.characters.count > 0 else {
+                guard let encryption = values[kProxyFormEncryption] as? String, encryption.count > 0 else {
                     throw "You must choose a encryption method".localized()
                 }
-                guard let pass = values[kProxyFormPassword] as? String, pass.characters.count > 0 else {
+                guard let pass = values[kProxyFormPassword] as? String, pass.count > 0 else {
                     throw "Password can't be empty".localized()
                 }
                 authscheme = encryption

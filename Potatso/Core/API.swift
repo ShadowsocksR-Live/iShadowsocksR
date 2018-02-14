@@ -280,6 +280,6 @@ extension Alamofire.DataRequest {
     }
 
     fileprivate static func logError(_ error: NSError, request: URLRequest?, response: URLResponse?) {
-        DDLogError("ObjectMapperSerializer failure: \(error), request: \(request?.debugDescription), response: \(response.debugDescription)")
+        DDLogError("ObjectMapperSerializer failure: \(error), request: \(String(describing: request?.debugDescription)), response: \(response.debugDescription)")
     }
 }
