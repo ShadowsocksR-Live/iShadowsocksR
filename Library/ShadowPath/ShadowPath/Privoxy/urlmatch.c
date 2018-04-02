@@ -623,7 +623,7 @@ jb_err parse_http_request(const char *req, struct http_request *http)
  *
  *********************************************************************/
 static jb_err compile_pattern(const char *pattern, enum regex_anchoring anchoring,
-                              struct pattern_spec *url, regex_t **regex)
+                              struct pattern_spec *url, pcre_regex_t **regex)
 {
    int errcode;
    char rebuf[BUFFER_SIZE];
