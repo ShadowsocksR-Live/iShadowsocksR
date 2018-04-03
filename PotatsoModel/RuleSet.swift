@@ -1,5 +1,5 @@
 //
-//  RuleSet.swift
+//  ProxyRuleSet.swift
 //  Potatso
 //
 //  Created by LEI on 4/6/16.
@@ -8,17 +8,17 @@
 
 import RealmSwift
 
-public enum RuleSetError: Error {
-    case invalidRuleSet
+public enum ProxyRuleSetError: Error {
+    case invalidProxyRuleSet
     case emptyName
     case nameAlreadyExists
 }
 
-extension RuleSetError: CustomStringConvertible {
+extension ProxyRuleSetError: CustomStringConvertible {
     
     public var description: String {
         switch self {
-        case .invalidRuleSet:
+        case .invalidProxyRuleSet:
             return "Invalid rule set"
         case .emptyName:
             return "Empty name"
@@ -29,7 +29,7 @@ extension RuleSetError: CustomStringConvertible {
     
 }
 
-public final class RuleSet: BaseModel {
+public final class ProxyRuleSet: BaseModel {
     public dynamic var editable = true
     public dynamic var name = ""
     public dynamic var remoteUpdatedAt: TimeInterval = Date().timeIntervalSince1970
@@ -59,7 +59,7 @@ public final class RuleSet: BaseModel {
 
     public override func validate(inRealm realm: Realm) throws {
         guard name.count > 0 else {
-            throw RuleSetError.emptyName
+            throw ProxyRuleSetError.emptyName
         }
     }
 
@@ -103,25 +103,25 @@ public final class RuleSet: BaseModel {
     
 }
 
-extension RuleSet {
+extension ProxyRuleSet {
     
     public convenience init(dictionary: [String: AnyObject], inRealm realm: Realm) throws {
         self.init()
         guard let name = dictionary["name"] as? String else {
-            throw RuleSetError.invalidRuleSet
+            throw ProxyRuleSetError.invalidProxyRuleSet
         }
         self.name = name
-        if realm.objects(RuleSet.self).filter("name = '\(name)'").first != nil {
-            self.name = "\(name) \(RuleSet.dateFormatter.string(from: Date()))"
+        if realm.objects(ProxyRuleSet.self).filter("name = '\(name)'").first != nil {
+            self.name = "\(name) \(ProxyRuleSet.dateFormatter.string(from: Date()))"
         }
         guard let rulesStr = dictionary["rules"] as? [String] else {
-            throw RuleSetError.invalidRuleSet
+            throw ProxyRuleSetError.invalidProxyRuleSet
         }
         rules = try rulesStr.map({ try Rule(str: $0) })
     }
     
 }
 
-public func ==(lhs: RuleSet, rhs: RuleSet) -> Bool {
+public func ==(lhs: ProxyRuleSet, rhs: ProxyRuleSet) -> Bool {
     return lhs.uuid == rhs.uuid
 }
