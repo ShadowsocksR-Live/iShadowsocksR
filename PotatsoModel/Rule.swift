@@ -12,7 +12,7 @@ import PotatsoBase
 private let ruleValueKey = "value";
 private let ruleActionKey = "action";
 
-public enum RuleType: String {
+public enum ProxyRuleType: String {
     case URLMatch = "URL-MATCH"
     case URL = "URL"
     case Domain = "DOMAIN"
@@ -22,9 +22,9 @@ public enum RuleType: String {
     case IPCIDR = "IP-CIDR"
 }
 
-extension RuleType {
+extension ProxyRuleType {
     
-    public static func fromInt(_ intValue: Int) -> RuleType? {
+    public static func fromInt(_ intValue: Int) -> ProxyRuleType? {
         switch intValue {
         case 1:
             return .Domain
@@ -47,7 +47,7 @@ extension RuleType {
     
 }
 
-extension RuleType: CustomStringConvertible {
+extension ProxyRuleType: CustomStringConvertible {
     
     public var description: String {
         return rawValue
@@ -106,7 +106,7 @@ public enum RuleError: Error {
 //    public dynamic var typeRaw = ""
 //    public dynamic var content = ""
 //    public dynamic var order = 0
-//    public let rulesets = LinkingObjects(fromType: RuleSet.self, property: "rules")
+//    public let rulesets = LinkingObjects(fromType: ProxyRuleSet.self, property: "rules")
 //
 //}
 //
@@ -114,7 +114,7 @@ public enum RuleError: Error {
 //    
 //    public var type : RuleType {
 //        get {
-//            return RuleType(rawValue: typeRaw) ?? .DomainSuffix
+//            return ProxyRuleType(rawValue: typeRaw) ?? .DomainSuffix
 //        }
 //        set(v) {
 //            typeRaw = v.rawValue
@@ -138,7 +138,7 @@ public enum RuleError: Error {
 //
 public final class Rule {
 
-    public var type: RuleType
+    public var type: ProxyRuleType
     public var value: String
     public var action: RuleAction
     
@@ -152,20 +152,20 @@ public final class Rule {
         let actionStr = parts[2].uppercased()
         let typeStr = parts[0].uppercased()
         let value = parts[1]
-        guard let type = RuleType(rawValue: typeStr), let action = RuleAction(rawValue: actionStr), value.count > 0 else {
+        guard let type = ProxyRuleType(rawValue: typeStr), let action = RuleAction(rawValue: actionStr), value.count > 0 else {
             throw RuleError.invalidRule(str)
         }
         self.init(type: type, action: action, value: value)
     }
     
-    public init(type: RuleType, action: RuleAction, value: String) {
+    public init(type: ProxyRuleType, action: RuleAction, value: String) {
         self.type = type
         self.value = value
         self.action = action
     }
 
     public convenience init?(json: [String: AnyObject]) {
-        guard let typeRaw = json["type"] as? String, let type = RuleType(rawValue: typeRaw) else {
+        guard let typeRaw = json["type"] as? String, let type = ProxyRuleType(rawValue: typeRaw) else {
             return nil
         }
         guard let actionRaw = json["action"] as? String, let action = RuleAction(rawValue: actionRaw) else {
