@@ -10,6 +10,8 @@
 #import <ShadowPath/ShadowPath.h>
 #import <netinet/in.h>
 #import "PotatsoBase.h"
+#import "Profile.h"
+#include <ssrNative/ssrNative.h>
 
 @interface ProxyManager ()
 @property (nonatomic) BOOL socksProxyRunning;
@@ -46,6 +48,59 @@ int sock_port (int fd) {
     }else{
         return ntohs(sin.sin_port);
     }
+}
+
+struct server_config * build_config_object(Profile *profile, unsigned short listenPort) {
+    const char *protocol = profile.protocol.UTF8String;
+    if (protocol && strcmp(protocol, "verify_sha1") == 0) {
+        // LOGI("The verify_sha1 protocol is deprecate! Fallback to origin protocol.");
+        protocol = NULL;
+    }
+    
+    struct server_config *config = config_create();
+    
+    config->udp = true;
+    config->listen_port = listenPort;
+    string_safe_assign(&config->method, profile.method.UTF8String);
+    string_safe_assign(&config->remote_host, profile.server.UTF8String);
+    config->remote_port = (unsigned short) profile.serverPort;
+    string_safe_assign(&config->password, profile.password.UTF8String);
+    string_safe_assign(&config->protocol, protocol);
+    string_safe_assign(&config->protocol_param, profile.protocolParam.UTF8String);
+    string_safe_assign(&config->obfs, profile.obfs.UTF8String);
+    string_safe_assign(&config->obfs_param, profile.obfsParam.UTF8String);
+    
+    return config;
+}
+
+struct ssr_client_state *g_state = NULL;
+
+void feedback_state(struct ssr_client_state *state, void *p) {
+    g_state = state;
+}
+
+void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath) {
+    struct server_config *config = NULL;
+    do {
+        set_app_name(appPath);
+        config = build_config_object(profile, listenPort);
+        if (config == NULL) {
+            break;
+        }
+        
+        if (config->method == NULL || config->password==NULL || config->remote_host==NULL) {
+            break;
+        }
+        
+        ssr_run_loop_begin(config, &feedback_state, NULL);
+        g_state = NULL;
+    } while(0);
+    
+    config_release(config);
+}
+
+void ssr_stop(void) {
+    ssr_run_loop_shutdown(g_state);
 }
 
 @implementation ProxyManager
@@ -95,6 +150,7 @@ int sock_port (int fd) {
 - (void)_startShadowsocks {
     NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedProxyConfUrl] encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *json = [confContent jsonDictionary];
+    /*
     NSString *host = json[@"host"];
     NSNumber *port = json[@"port"];
     NSString *password = json[@"password"];
@@ -103,6 +159,12 @@ int sock_port (int fd) {
     NSString *obfs = json[@"obfs"];
     NSString *obfs_param = json[@"obfs_param"];
     BOOL ota = [json[@"ota"] boolValue];
+     */
+    Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
+    profile.listenPort = 1080;
+    
+    if (profile.server.length && profile.serverPort && profile.password.length) {
+    /*
     if (host && port && password && authscheme) {
         profile_t profile;
         memset(&profile, 0, sizeof(profile_t));
@@ -124,6 +186,9 @@ int sock_port (int fd) {
             profile.obfs_param = strdup([obfs_param UTF8String]);
         }
         start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
+     */
+        NSString *path = [NSBundle mainBundle].executablePath;
+        ssr_main_loop(profile, 1080, path.UTF8String);
     }else {
         if (self.shadowsocksCompletion) {
             self.shadowsocksCompletion(0, nil);
@@ -133,7 +198,7 @@ int sock_port (int fd) {
 }
 
 - (void)stopShadowsocks {
-    // Do nothing
+    ssr_stop();
 }
 
 - (void)onShadowsocksCallback:(int)fd {
