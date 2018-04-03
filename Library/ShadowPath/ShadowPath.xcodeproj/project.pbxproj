@@ -876,12 +876,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/ShadowPath/Shadowsocks-libev/libcork/include",
-					"${SRCROOT}/ShadowPath/Shadowsocks-libev/libipset/include",
-					"${SRCROOT}/ShadowPath/libopenssl/include",
-					"${SRCROOT}/ShadowPath/libsodium-ios/include",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/ShadowPath/libopenssl/include";
 				INFOPLIST_FILE = ShadowPath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -889,10 +885,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShadowPath/Antinat/expat-lib/lib",
 					"$(PROJECT_DIR)/ShadowPath/libopenssl/lib",
-					"$(PROJECT_DIR)/ShadowPath/libsodium-ios/lib",
 				);
 				OTHER_CFLAGS = (
-					"-DHAVE_CONFIG_H",
 					"-DUSE_CRYPTO_OPENSSL",
 					"-DLIB_ONLY",
 					"-DUDPRELAY_LOCAL",
@@ -913,12 +907,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = (
-					"${SRCROOT}/ShadowPath/Shadowsocks-libev/libcork/include",
-					"${SRCROOT}/ShadowPath/Shadowsocks-libev/libipset/include",
-					"${SRCROOT}/ShadowPath/libopenssl/include",
-					"${SRCROOT}/ShadowPath/libsodium-ios/include",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				HEADER_SEARCH_PATHS = "${SRCROOT}/ShadowPath/libopenssl/include";
 				INFOPLIST_FILE = ShadowPath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -926,10 +916,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShadowPath/Antinat/expat-lib/lib",
 					"$(PROJECT_DIR)/ShadowPath/libopenssl/lib",
-					"$(PROJECT_DIR)/ShadowPath/libsodium-ios/lib",
 				);
 				OTHER_CFLAGS = (
-					"-DHAVE_CONFIG_H",
 					"-DUSE_CRYPTO_OPENSSL",
 					"-DLIB_ONLY",
 					"-DUDPRELAY_LOCAL",

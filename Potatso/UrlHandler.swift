@@ -66,6 +66,7 @@ enum URLAction: String {
     case SWITCH = "switch"
     case XCALLBACK = "x-callback-url"
 
+    @discardableResult
     func perform(_ url: URL?, parameters: Parameters, completion: ((Error?) -> Void)? = nil) -> Bool {
         switch self {
         case .ON:
