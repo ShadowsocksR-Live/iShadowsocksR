@@ -21,19 +21,19 @@ class CloudSetManager {
     func update() {
         Async.background(after: 1.5) {
             let realm = try! Realm()
-            let uuids = realm.objects(RuleSet.self).filter("isSubscribe = true").map({$0.uuid})
+            let uuids = realm.objects(ProxyRuleSet.self).filter("isSubscribe = true").map({$0.uuid})
             
             var uuidsArray: [String] = []
-            var iterator: LazyMapIterator<RLMIterator<RuleSet>, String>? = nil
+            var iterator: LazyMapIterator<RLMIterator<ProxyRuleSet>, String>? = nil
             iterator = uuids.makeIterator()
             iterator?.forEach({ (tObj) in
                 uuidsArray.append(tObj as String)
             })
             
-            API.updateRuleSetListDetail(uuidsArray) { (response) in
+            API.updateProxyRuleSetListDetail(uuidsArray) { (response) in
                 if let sets = response.result.value {
                     do {
-                        try RuleSet.addRemoteArray(sets)
+                        try ProxyRuleSet.addRemoteArray(sets)
                     }catch {
                         error.log("Unable to save updated rulesets")
                         return

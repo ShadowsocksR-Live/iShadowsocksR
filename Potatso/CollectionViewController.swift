@@ -14,7 +14,7 @@ private let rowHeight: CGFloat = 135
 class CollectionViewController: SegmentPageVC {
 
     let pageVCs = [
-        RuleSetListViewController(),
+        ProxyRuleSetListViewController(),
         ProxyListViewController(),
         CloudViewController(),
     ]
@@ -39,7 +39,7 @@ class CollectionViewController: SegmentPageVC {
     func add() {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            let vc = RuleSetConfigurationViewController()
+            let vc = ProxyRuleSetConfigurationViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let vc = ProxyConfigurationViewController()

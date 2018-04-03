@@ -1,5 +1,5 @@
 //
-//  RuleSetsSelectionViewController.swift
+//  ProxyRuleSetsSelectionViewController.swift
 //  Potatso
 //
 //  Created by LEI on 3/9/16.
@@ -11,14 +11,14 @@ import Eureka
 import PotatsoLibrary
 import PotatsoModel
 
-class RuleSetsSelectionViewController: FormViewController {
+class ProxyRuleSetsSelectionViewController: FormViewController {
 
-    var selectedRuleSets: [RuleSet]
-    var callback: (([RuleSet]) -> Void)?
-    var ruleSets: [RuleSet] = []
+    var selectedProxyRuleSets: [ProxyRuleSet]
+    var callback: (([ProxyRuleSet]) -> Void)?
+    var ruleSets: [ProxyRuleSet] = []
     
-    init(selectedRuleSets: [RuleSet], callback: (([RuleSet]) -> Void)?) {
-        self.selectedRuleSets = selectedRuleSets
+    init(selectedProxyRuleSets: [ProxyRuleSet], callback: (([ProxyRuleSet]) -> Void)?) {
+        self.selectedProxyRuleSets = selectedProxyRuleSets
         self.callback = callback
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,26 +39,26 @@ class RuleSetsSelectionViewController: FormViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        selectedRuleSets.removeAll()
+        selectedProxyRuleSets.removeAll()
         let values = form.values()
         for ruleSet in ruleSets {
             if let checked = values[ruleSet.name] as? Bool, checked {
-                selectedRuleSets.append(ruleSet)
+                selectedProxyRuleSets.append(ruleSet)
             }
         }
-        self.callback?(selectedRuleSets)
+        self.callback?(selectedProxyRuleSets)
     }
     
     func generateForm() {
         form.delegate = nil
         form.removeAll()
-        ruleSets = defaultRealm.objects(RuleSet.self).sorted(byKeyPath: "createAt").map({ $0 })
+        ruleSets = defaultRealm.objects(ProxyRuleSet.self).sorted(byKeyPath: "createAt").map({ $0 })
         form +++ Section("Rule Set".localized())
         for ruleSet in ruleSets {
             form[0]
                 <<< CheckRow(ruleSet.name) {
                     $0.title = ruleSet.name
-                    $0.value = selectedRuleSets.contains(ruleSet)
+                    $0.value = selectedProxyRuleSets.contains(ruleSet)
                 }
         }
         form[0] <<< BaseButtonRow () {
@@ -66,14 +66,14 @@ class RuleSetsSelectionViewController: FormViewController {
         }.cellUpdate({ (cell, row) in
             cell.textLabel?.textColor = Color.Brand
         }).onCellSelection({ [unowned self] (cell, row) -> () in
-            self.showRuleSetConfiguration(nil)
+            self.showProxyRuleSetConfiguration(nil)
         })
         form.delegate = self
         tableView?.reloadData()
     }
     
-    func showRuleSetConfiguration(_ ruleSet: RuleSet?) {
-        let vc = RuleSetConfigurationViewController(ruleSet: ruleSet)
+    func showProxyRuleSetConfiguration(_ ruleSet: ProxyRuleSet?) {
+        let vc = ProxyRuleSetConfigurationViewController(ruleSet: ruleSet)
         navigationController?.pushViewController(vc, animated: true)
     }
 

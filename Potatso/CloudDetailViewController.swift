@@ -11,14 +11,14 @@ import PotatsoModel
 import Cartography
 
 private let rowHeight: CGFloat = 54
-private let kRuleSetCellIdentifier = "ruleset"
+private let kProxyRuleSetCellIdentifier = "ruleset"
 private let kRuleCellIdentifier = "rule"
 
 class CloudDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var ruleSet: RuleSet
+    var ruleSet: ProxyRuleSet
 
-    init(ruleSet: RuleSet) {
+    init(ruleSet: ProxyRuleSet) {
         self.ruleSet = ruleSet
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,7 +44,7 @@ class CloudDetailViewController: UIViewController, UITableViewDataSource, UITabl
         activityIndicator.startAnimating()
         activityIndicator.isHidden = false
         subscribeButton.isHidden = true
-        API.getRuleSetDetail(ruleSet.uuid) { (response) in
+        API.getProxyRuleSetDetail(ruleSet.uuid) { (response) in
             defer {
                 self.activityIndicator.stopAnimating()
             }
@@ -64,21 +64,21 @@ class CloudDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func isExist(_ uuid: String) -> Bool {
-        return defaultRealm.objects(RuleSet.self).filter("uuid == '\(uuid)' && deleted == false").count > 0
+        return defaultRealm.objects(ProxyRuleSet.self).filter("uuid == '\(uuid)' && deleted == false").count > 0
     }
 
     func subscribe() {
         let uuid = ruleSet.uuid
         if isExist(uuid) {
             do {
-                try DBUtils.softDelete([uuid], type: RuleSet.self)
+                try DBUtils.softDelete([uuid], type: ProxyRuleSet.self)
             }catch {
                 self.showTextHUD("Fail to unsubscribe".localized(), dismissAfterDelay: 1.0)
                 return
             }
         }else {
             do {
-                try RuleSet.addRemoteObject(ruleSet)
+                try ProxyRuleSet.addRemoteObject(ruleSet)
             }catch {
                 self.showTextHUD("Fail to subscribe".localized(), dismissAfterDelay: 1.0)
                 return
@@ -111,8 +111,8 @@ class CloudDetailViewController: UIViewController, UITableViewDataSource, UITabl
         let cell: UITableViewCell
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: kRuleSetCellIdentifier, for: indexPath)
-            (cell as? RuleSetCell)?.setRuleSet(ruleSet, showFullDescription: true)
+            cell = tableView.dequeueReusableCell(withIdentifier: kProxyRuleSetCellIdentifier, for: indexPath)
+            (cell as? ProxyRuleSetCell)?.setProxyRuleSet(ruleSet, showFullDescription: true)
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: kRuleCellIdentifier, for: indexPath)
             (cell as? RuleCell)?.setRule(ruleSet.rules[indexPath.row])
@@ -148,7 +148,7 @@ class CloudDetailViewController: UIViewController, UITableViewDataSource, UITabl
         super.loadView()
         view.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         view.addSubview(tableView)
-        tableView.register(RuleSetCell.self, forCellReuseIdentifier: kRuleSetCellIdentifier)
+        tableView.register(ProxyRuleSetCell.self, forCellReuseIdentifier: kProxyRuleSetCellIdentifier)
         tableView.register(RuleCell.self, forCellReuseIdentifier: kRuleCellIdentifier)
         view.addSubview(activityIndicator)
         view.addSubview(subscribeButton)

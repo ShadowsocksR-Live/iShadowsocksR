@@ -59,7 +59,7 @@ open class BaseModel: Object {
 
 // MARK: - Migration
 func migrateRulesList(_ migration: Migration, oldSchemaVersion: UInt64) {
-    migration.enumerateObjects(ofType: RuleSet.className(), { (oldObject, newObject) in
+    migration.enumerateObjects(ofType: ProxyRuleSet.className(), { (oldObject, newObject) in
         if oldSchemaVersion > 11 {
             guard let deleted = oldObject!["deleted"] as? Bool, !deleted else {
                 return

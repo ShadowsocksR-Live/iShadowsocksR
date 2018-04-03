@@ -32,7 +32,7 @@ open class Config {
     
     open var groups: [ConfigurationGroup] = []
     open var proxies: [Proxy] = []
-    open var ruleSets: [RuleSet] = []
+    open var ruleSets: [ProxyRuleSet] = []
     
     let realm: Realm
     var configDict: [String: AnyObject] = [:]
@@ -68,7 +68,7 @@ open class Config {
         realm.beginWrite()
         do {
             try setupProxies()
-            try setupRuleSets()
+            try setupProxyRuleSets()
             try setupConfigGroups()
         }catch {
             realm.cancelWrite()
@@ -88,10 +88,10 @@ open class Config {
         }
     }
     
-    func setupRuleSets() throws{
+    func setupProxyRuleSets() throws{
         if let proxiesConfig = configDict["ruleSets"] as? [[String: AnyObject]] {
-            ruleSets = try proxiesConfig.map({ (config) -> RuleSet? in
-                return try RuleSet(dictionary: config, inRealm: realm)
+            ruleSets = try proxiesConfig.map({ (config) -> ProxyRuleSet? in
+                return try ProxyRuleSet(dictionary: config, inRealm: realm)
             }).filter { $0 != nil }.map { $0! }
             try ruleSets.forEach {
                 try $0.validate(inRealm: realm)

@@ -1,5 +1,5 @@
 //
-//  RuleSetListViewController.swift
+//  ProxyRuleSetListViewController.swift
 //  Potatso
 //
 //  Created by LEI on 5/31/16.
@@ -13,19 +13,19 @@ import Realm
 import RealmSwift
 
 private let rowHeight: CGFloat = 54
-private let kRuleSetCellIdentifier = "ruleset"
+private let kProxyRuleSetCellIdentifier = "ruleset"
 
-class RuleSetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProxyRuleSetListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var ruleSets: Results<RuleSet>
-    var chooseCallback: ((RuleSet?) -> Void)?
+    var ruleSets: Results<ProxyRuleSet>
+    var chooseCallback: ((ProxyRuleSet?) -> Void)?
     // Observe Realm Notifications
     var token: RLMNotificationToken?
     var heightAtIndex: [Int: CGFloat] = [:]
 
-    init(chooseCallback: ((RuleSet?) -> Void)? = nil) {
+    init(chooseCallback: ((ProxyRuleSet?) -> Void)? = nil) {
         self.chooseCallback = chooseCallback
-        self.ruleSets = DBUtils.allNotDeleted(RuleSet.self, sorted: "createAt")
+        self.ruleSets = DBUtils.allNotDeleted(ProxyRuleSet.self, sorted: "createAt")
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,7 +49,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
                 self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .none)
             case let .error(error):
-                error.log("RuleSetListVC realm token update error")
+                error.log("ProxyRuleSetListVC realm token update error")
             default:
                 break
             }
@@ -62,17 +62,17 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func reloadData() {
-        ruleSets = DBUtils.allNotDeleted(RuleSet.self, sorted: "createAt")
+        ruleSets = DBUtils.allNotDeleted(ProxyRuleSet.self, sorted: "createAt")
         tableView.reloadData()
     }
 
     func add() {
-        let vc = RuleSetConfigurationViewController()
+        let vc = ProxyRuleSetConfigurationViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 
-    func showRuleSetConfiguration(_ ruleSet: RuleSet?) {
-        let vc = RuleSetConfigurationViewController(ruleSet: ruleSet)
+    func showProxyRuleSetConfiguration(_ ruleSet: ProxyRuleSet?) {
+        let vc = ProxyRuleSetConfigurationViewController(ruleSet: ruleSet)
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -81,8 +81,8 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kRuleSetCellIdentifier, for: indexPath) as! RuleSetCell
-        cell.setRuleSet(ruleSets[indexPath.row], showSubscribe: true)
+        let cell = tableView.dequeueReusableCell(withIdentifier: kProxyRuleSetCellIdentifier, for: indexPath) as! ProxyRuleSetCell
+        cell.setProxyRuleSet(ruleSets[indexPath.row], showSubscribe: true)
         return cell
     }
 
@@ -97,7 +97,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
             cb(ruleSet)
             close()
         }else {
-            showRuleSetConfiguration(ruleSet)
+            showProxyRuleSetConfiguration(ruleSet)
         }
     }
 
@@ -119,13 +119,13 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let item: RuleSet
+            let item: ProxyRuleSet
             guard indexPath.row < ruleSets.count else {
                 return
             }
             item = ruleSets[indexPath.row]
             do {
-                try DBUtils.softDelete(item.uuid, type: RuleSet.self)
+                try DBUtils.softDelete(item.uuid, type: ProxyRuleSet.self)
             }catch {
                 self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
             }
@@ -137,7 +137,7 @@ class RuleSetListViewController: UIViewController, UITableViewDataSource, UITabl
         super.loadView()
         view.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         view.addSubview(tableView)
-        tableView.register(RuleSetCell.self, forCellReuseIdentifier: kRuleSetCellIdentifier)
+        tableView.register(ProxyRuleSetCell.self, forCellReuseIdentifier: kProxyRuleSetCellIdentifier)
 
         constrain(tableView, view) { tableView, view in
             tableView.edges == view.edges

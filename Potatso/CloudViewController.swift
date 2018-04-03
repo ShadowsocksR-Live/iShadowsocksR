@@ -1,5 +1,5 @@
 //
-//  RuleSetListViewController.swift
+//  ProxyRuleSetListViewController.swift
 //  Potatso
 //
 //  Created by LEI on 5/31/16.
@@ -13,12 +13,12 @@ import ICSPullToRefresh
 import Async
 
 private let rowHeight: CGFloat = 120
-private let kRuleSetCellIdentifier = "ruleset"
+private let kProxyRuleSetCellIdentifier = "ruleset"
 private let pageSize = 20
 
 class CloudViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var ruleSets: [RuleSet] = []
+    var ruleSets: [ProxyRuleSet] = []
     var page = 0
 
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class CloudViewController: UIViewController, UITableViewDataSource, UITableViewD
         if !loadMore {
             page = 0
         }
-        API.getRuleSets(page + 1, count: pageSize) { (response) in
+        API.getProxyRuleSets(page + 1, count: pageSize) { (response) in
             defer {
                 self.tableView.pullToRefreshView?.stopAnimating()
                 self.tableView.infiniteScrollingView?.stopAnimating()
@@ -68,8 +68,8 @@ class CloudViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
 
-    func showRuleSetConfiguration(_ ruleSet: RuleSet?) {
-        let vc = RuleSetConfigurationViewController(ruleSet: ruleSet)
+    func showProxyRuleSetConfiguration(_ ruleSet: ProxyRuleSet?) {
+        let vc = ProxyRuleSetConfigurationViewController(ruleSet: ruleSet)
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -78,8 +78,8 @@ class CloudViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: kRuleSetCellIdentifier, for: indexPath) as! RuleSetCell
-        cell.setRuleSet(ruleSets[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: kProxyRuleSetCellIdentifier, for: indexPath) as! ProxyRuleSetCell
+        cell.setProxyRuleSet(ruleSets[indexPath.row])
         return cell
     }
 
@@ -100,7 +100,7 @@ class CloudViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.loadView()
         view.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         view.addSubview(tableView)
-        tableView.register(RuleSetCell.self, forCellReuseIdentifier: kRuleSetCellIdentifier)
+        tableView.register(ProxyRuleSetCell.self, forCellReuseIdentifier: kProxyRuleSetCellIdentifier)
 
         constrain(tableView, view) { tableView, view in
             tableView.edges == view.edges

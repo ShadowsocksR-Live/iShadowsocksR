@@ -1,5 +1,5 @@
 //
-//  RuleSetCell.swift
+//  ProxyRuleSetCell.swift
 //  Potatso
 //
 //  Created by LEI on 5/31/16.
@@ -10,7 +10,7 @@ import Foundation
 import Cartography
 import PotatsoModel
 
-class RuleSetCell: UITableViewCell {
+class ProxyRuleSetCell: UITableViewCell {
 
     let group = ConstraintGroup()
 
@@ -60,7 +60,7 @@ class RuleSetCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setRuleSet(_ ruleSet: RuleSet, showFullDescription: Bool = false, showSubscribe: Bool = false) {
+    func setProxyRuleSet(_ ruleSet: ProxyRuleSet, showFullDescription: Bool = false, showSubscribe: Bool = false) {
         titleLabel.text = ruleSet.name
         var count = 0
         if ruleSet.ruleCount > 0 {
