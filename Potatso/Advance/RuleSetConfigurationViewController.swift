@@ -1,5 +1,5 @@
 //
-//  RuleSetConfigurationViewController.swift
+//  ProxyRuleSetConfigurationViewController.swift
 //  Potatso
 //
 //  Created by LEI on 3/9/16.
@@ -11,26 +11,26 @@ import Eureka
 import PotatsoLibrary
 import PotatsoModel
 
-private let kRuleSetFormName = "name"
+private let kProxyRuleSetFormName = "name"
 
-class RuleSetConfigurationViewController: FormViewController {
+class ProxyRuleSetConfigurationViewController: FormViewController {
 
-    var ruleSet: PotatsoModel.RuleSet
+    var ruleSet: PotatsoModel.ProxyRuleSet
     var rules: [Rule]
     let isEdit: Bool
     var editable: Bool {
         return ruleSet.editable && !ruleSet.isSubscribe
     }
-    var callback: ((PotatsoModel.RuleSet?) -> Void)?
+    var callback: ((PotatsoModel.ProxyRuleSet?) -> Void)?
     var editSection: Section = Section()
 
-    init(ruleSet: PotatsoModel.RuleSet? = nil, callback: ((PotatsoModel.RuleSet?) -> Void)? = nil) {
+    init(ruleSet: PotatsoModel.ProxyRuleSet? = nil, callback: ((PotatsoModel.ProxyRuleSet?) -> Void)? = nil) {
         self.callback = callback
         if let ruleSet = ruleSet {
-            self.ruleSet = RuleSet(value: ruleSet)
+            self.ruleSet = ProxyRuleSet(value: ruleSet)
             self.isEdit = true
         }else {
-            self.ruleSet = RuleSet()
+            self.ruleSet = ProxyRuleSet()
             self.isEdit = false
         }
         self.rules = self.ruleSet.rules
@@ -62,7 +62,7 @@ class RuleSetConfigurationViewController: FormViewController {
     func generateForm() {
         form.removeAll()
         form +++ Section()
-            <<< TextRow(kRuleSetFormName) {
+            <<< TextRow(kProxyRuleSetFormName) {
                 $0.title = "Name".localized()
                 $0.value = self.ruleSet.name
                 $0.disabled = Condition(booleanLiteral: !self.editable)
@@ -117,7 +117,7 @@ class RuleSetConfigurationViewController: FormViewController {
     func save() {
         do {
             let values = form.values()
-            guard let name = (values[kRuleSetFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.count > 0 else {
+            guard let name = (values[kProxyRuleSetFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.count > 0 else {
                 throw "Name can't be empty".localized()
             }
             ruleSet.name = name
@@ -129,14 +129,14 @@ class RuleSetConfigurationViewController: FormViewController {
         }
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAtIndexPath indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == 1 {
             return editable
         }
         return false
     }
     
-    func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             ruleSet.removeRule(atIndex: indexPath.row - 1)
             form[indexPath].hidden = true
@@ -144,7 +144,7 @@ class RuleSetConfigurationViewController: FormViewController {
         }
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAtIndexPath indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.delete
     }
     

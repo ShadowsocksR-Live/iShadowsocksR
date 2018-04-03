@@ -102,10 +102,10 @@ class ProxyConfigurationViewController: FormViewController {
             <<< PushRow<String>(kProxyFormEncryption) {
                 $0.title = "Encryption".localized()
                 $0.options = Proxy.ssSupportedEncryption
-                $0.value = self.upstreamProxy.authscheme ?? $0.options[2]
+                $0.value = self.upstreamProxy.authscheme ?? $0.options?[2]
                 $0.selectorTitle = "Choose encryption method".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyType> = form.rowByTag(kProxyFormType), let isSS = r1.value?.isShadowsocks {
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType), let isSS = r1.value?.isShadowsocks {
                         return !isSS
                     }
                     return false
@@ -121,7 +121,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.title = "One Time Auth".localized()
                 $0.value = self.upstreamProxy.ota
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyType> = form.rowByTag(kProxyFormType) {
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.Shadowsocks
                     }
                     return false
@@ -133,7 +133,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.options = Proxy.ssrSupportedProtocol
                 $0.selectorTitle = "Choose SSR protocol".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyType> = form.rowByTag(kProxyFormType) {
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
                     }
                     return false
@@ -145,7 +145,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.options = Proxy.ssrSupportedObfs
                 $0.selectorTitle = "Choose SSR obfs".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyType> = form.rowByTag(kProxyFormType) {
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
                     }
                     return false
@@ -155,7 +155,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.title = "Obfs Param".localized()
                 $0.value = self.upstreamProxy.ssrObfsParam
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyType> = form.rowByTag(kProxyFormType) {
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
                     }
                     return false
