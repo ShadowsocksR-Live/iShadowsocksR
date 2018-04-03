@@ -11,3 +11,7 @@
 	path = Library/Eureka
 	url = https://github.com/xmartlabs/Eureka.git
 	branch = master
+[submodule "Library/yaml"]
+	path = Library/yaml
+	url = https://github.com/ShadowsocksR-Live/yaml.git
+	branch = master
