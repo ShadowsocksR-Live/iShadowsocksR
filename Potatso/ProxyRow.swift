@@ -11,6 +11,7 @@ import PotatsoModel
 import Eureka
 import Cartography
 
+/*
 final class ProxyRow: Row<Proxy, ProxyRowCell>, RowType {
 
     required init(tag: String?) {
@@ -18,7 +19,19 @@ final class ProxyRow: Row<Proxy, ProxyRowCell>, RowType {
         displayValueFor = nil
     }
 }
+*/
 
+class _ProxyRow: Row<ProxyRowCell> {
+    public required init(tag: String?) {
+        super.init(tag: tag)
+    }
+}
+
+final class ProxyRow: _ProxyRow, RowType {
+    required public init(tag: String?) {
+        super.init(tag: tag)
+    }
+}
 
 class ProxyRowCell: Cell<Proxy>, CellType {
 
