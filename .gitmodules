@@ -20,3 +20,15 @@
 	path = Library/openssl
 	url = https://github.com/ShadowsocksR-Live/OpenSSL-for-iPhone.git
 	branch = master
+[submodule "Library/CocoaAsyncSocket"]
+	path = Library/CocoaAsyncSocket
+	url = https://github.com/robbiehanson/CocoaAsyncSocket.git
+	branch = master
+[submodule "Library/MMWormhole"]
+	path = Library/MMWormhole
+	url = https://github.com/mutualmobile/MMWormhole.git
+	branch = master
+[submodule "Library/KissXML"]
+	path = Library/KissXML
+	url = https://github.com/robbiehanson/KissXML.git
+	branch = master

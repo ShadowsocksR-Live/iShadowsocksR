@@ -17,7 +17,6 @@
 		1EEBB8781FFFD52700EB33C3 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEBB8761FFFD4B500EB33C3 /* NetworkExtension.framework */; };
 		1EEBB8791FFFD8A700EB33C3 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEBB8761FFFD4B500EB33C3 /* NetworkExtension.framework */; };
 		1EF602951F113A660005E0C7 /* GeoLite2-Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 1EF602941F113A660005E0C7 /* GeoLite2-Country.mmdb */; };
-		2BB44917A69FF1B2710678D2 /* Pods_PacketTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A478ADBAAA1661B3FB51E4D3 /* Pods_PacketTunnel.framework */; };
 		3A104BCE2073C55D00C848D5 /* libsodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BB92073C4AB00C848D5 /* libsodium.framework */; };
 		3A104BCF2073C55D00C848D5 /* libuv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BC22073C4CD00C848D5 /* libuv.framework */; };
 		3A104BD02073C55D00C848D5 /* mbedtls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BCB2073C4DF00C848D5 /* mbedtls.framework */; };
@@ -30,12 +29,19 @@
 		3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BE12073DE9900C848D5 /* libcrypto.a */; };
 		3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; };
 		3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; };
+		3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780CA20754B2000B96BF3 /* libxml2.tbd */; };
+		3A8AC8D320753B6D002843E0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC8C320753B29002843E0 /* CocoaAsyncSocket.framework */; };
+		3A8AC8D620753BAF002843E0 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC8C320753B29002843E0 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A8AC91D207543B0002843E0 /* MMWormhole.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A8AC92320754441002843E0 /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
+		3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		3ADE7CFB207372E1000F70AA /* yaml.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ADE7D002073733D000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		3ADE7D0320737366000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		479C711B68EF0702C9F65B5B /* Pods_TodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A692B80DC5DB316AA1DED8CB /* Pods_TodayWidget.framework */; };
-		8A1FADF61B82B8A8F3895B04 /* Pods_PacketProcessor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3EA9ACD870481D4DBB6FB /* Pods_PacketProcessor.framework */; };
 		939649B7FCC9A0C8AFB317B8 /* Pods_PotatsoModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2589D04E6C48F30ED63BA84F /* Pods_PotatsoModel.framework */; };
 		9B07D6B31CB7A6A900182C1B /* PotatsoLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B07D6B21CB7A6A900182C1B /* PotatsoLibraryTests.swift */; };
 		9B07D6B51CB7A6A900182C1B /* PotatsoLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9B15BD1C21595B000B6541 /* PotatsoLibrary.framework */; };
@@ -327,6 +333,104 @@
 			remoteGlobalIDString = 51729DEA1B9A4F5E004A00EB;
 			remoteInfo = Eureka;
 		};
+		3A8780B0207549F800B96BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0DCD8DCA1E54A3A3001D9832;
+			remoteInfo = "KissXML (iOS)";
+		};
+		3A8780B2207549F800B96BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D94131BA1E5CEBE700189BD5;
+			remoteInfo = "KissXML (macOS)";
+		};
+		3A8780B4207549F800B96BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D94131D31E5CEC8300189BD5;
+			remoteInfo = "KissXML (tvOS)";
+		};
+		3A8780B6207549F800B96BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D94131EC1E5CECC700189BD5;
+			remoteInfo = "KissXML (watchOS)";
+		};
+		3A8780C720754A9500B96BF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DCD8DC91E54A3A3001D9832;
+			remoteInfo = "KissXML (iOS)";
+		};
+		3A8AC8C220753B29002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6CD990101B77868C0011A685;
+			remoteInfo = "iOS CocoaAsyncSocket";
+		};
+		3A8AC8C420753B29002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9FC41F131B9D965000578BEB;
+			remoteInfo = "Mac CocoaAsyncSocket";
+		};
+		3A8AC8C620753B29002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D8B70C41BCFA15700D8E273;
+			remoteInfo = "tvOS CocoaAsyncSocket";
+		};
+		3A8AC8D420753B83002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CD9900F1B77868C0011A685;
+			remoteInfo = "iOS CocoaAsyncSocket";
+		};
+		3A8AC8D920753BCF002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CD9900F1B77868C0011A685;
+			remoteInfo = "iOS CocoaAsyncSocket";
+		};
+		3A8AC91520754396002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9B44A4C61B00570E00C9969A;
+			remoteInfo = "MMWormhole-iOS";
+		};
+		3A8AC91720754396002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9B44A5021B00571F00C9969A;
+			remoteInfo = "MMWormhole-Mac";
+		};
+		3A8AC91F207543D3002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B44A4C51B00570E00C9969A;
+			remoteInfo = "MMWormhole-iOS";
+		};
+		3A8AC9212075442A002843E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B44A4C51B00570E00C9969A;
+			remoteInfo = "MMWormhole-iOS";
+		};
 		3ADE7CF52073729B000F70AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */;
@@ -462,6 +566,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */,
+				3A8AC91D207543B0002843E0 /* MMWormhole.framework in Embed Frameworks */,
+				3A8AC8D620753BAF002843E0 /* CocoaAsyncSocket.framework in Embed Frameworks */,
 				3A104BD42073C5D900C848D5 /* mbedtls.framework in Embed Frameworks */,
 				3A104BD62073C5D900C848D5 /* libuv.framework in Embed Frameworks */,
 				3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */,
@@ -501,11 +608,13 @@
 		3A104BE12073DE9900C848D5 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Library/openssl/lib/libcrypto.a; sourceTree = SOURCE_ROOT; };
 		3A57D25920728FFE000520F8 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = Library/Eureka/Eureka.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YAML.xcodeproj; path = Library/yaml/YAML.xcodeproj; sourceTree = SOURCE_ROOT; };
-		534B69172D50947634710149 /* Pods-PacketTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnel.release.xcconfig"; path = "Pods/Target Support Files/Pods-PacketTunnel/Pods-PacketTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KissXML.xcodeproj; path = Library/KissXML/KissXML.xcodeproj; sourceTree = "<group>"; };
+		3A8780CA20754B2000B96BF3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaAsyncSocket.xcodeproj; path = Library/CocoaAsyncSocket/CocoaAsyncSocket.xcodeproj; sourceTree = "<group>"; };
+		3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMWormhole.xcodeproj; path = Library/MMWormhole/MMWormhole/MMWormhole.xcodeproj; sourceTree = "<group>"; };
 		5494FBA89E140F817CCF2ACA /* Pods_PotatsoLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotatsoLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5509E684B48A8007AADADA51 /* Pods-PotatsoModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatsoModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotatsoModel/Pods-PotatsoModel.release.xcconfig"; sourceTree = "<group>"; };
 		61F603707715DCFA28936BB5 /* Pods-PotatsoLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatsoLibrary.release.xcconfig"; path = "Pods/Target Support Files/Pods-PotatsoLibrary/Pods-PotatsoLibrary.release.xcconfig"; sourceTree = "<group>"; };
-		69CCED68685D929177A42E2A /* Pods-PacketProcessor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketProcessor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PacketProcessor/Pods-PacketProcessor.debug.xcconfig"; sourceTree = "<group>"; };
 		6C82CD7437FBA5F74EB08670 /* Pods_Potatso.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Potatso.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721750A5B5C0DCACE5C63317 /* Pods-Potatso.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Potatso.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Potatso/Pods-Potatso.debug.xcconfig"; sourceTree = "<group>"; };
 		83DE540D7DA7E719057D8E51 /* Pods-Potatso.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Potatso.release.xcconfig"; path = "Pods/Target Support Files/Pods-Potatso/Pods-Potatso.release.xcconfig"; sourceTree = "<group>"; };
@@ -560,7 +669,6 @@
 		9B9B15BD1C21595B000B6541 /* PotatsoLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PotatsoLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9B15BF1C21595B000B6541 /* PotatsoLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PotatsoLibrary.h; sourceTree = "<group>"; };
 		9B9B15C11C21595B000B6541 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BAB9F5C037C991150984F50 /* Pods-PacketTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PacketTunnel/Pods-PacketTunnel.debug.xcconfig"; sourceTree = "<group>"; };
 		9BB3F73B1CC3D3DE00C2DD05 /* RecentRequestsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentRequestsCell.swift; sourceTree = "<group>"; };
 		9BB3F73E1CC60B5300C2DD05 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		9BB3F7431CC60B6F00C2DD05 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -1076,7 +1184,6 @@
 		B8F784661D3678B400F02FF5 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		B8F7AE3D1D5F178A005CA41E /* CloudSetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSetManager.swift; sourceTree = "<group>"; };
 		C2456CC9E4E07FDB51C7E8E6 /* Pods-PotatsoLibraryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatsoLibraryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotatsoLibraryTests/Pods-PotatsoLibraryTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E78608059F51BBF6180C1843 /* Pods-PacketProcessor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketProcessor.release.xcconfig"; path = "Pods/Target Support Files/Pods-PacketProcessor/Pods-PacketProcessor.release.xcconfig"; sourceTree = "<group>"; };
 		F2765FE72409B9E2FA7F81BB /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1095,6 +1202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */,
 				B86B08ED1D17FB9B00613014 /* ShadowPath.framework in Frameworks */,
 				3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */,
 				1EEBB8771FFFD4B500EB33C3 /* NetworkExtension.framework in Frameworks */,
@@ -1135,6 +1243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8AC92320754441002843E0 /* MMWormhole.framework in Frameworks */,
 				3A104BCE2073C55D00C848D5 /* libsodium.framework in Frameworks */,
 				3A104BCF2073C55D00C848D5 /* libuv.framework in Frameworks */,
 				3A104BD02073C55D00C848D5 /* mbedtls.framework in Frameworks */,
@@ -1144,7 +1253,6 @@
 				9BC600361CB29AFF00E5EA61 /* PotatsoBase.framework in Frameworks */,
 				9BCE27AF1CAE535800B1E561 /* PacketProcessor.framework in Frameworks */,
 				9B87060D1C1DBDD400651424 /* libresolv.tbd in Frameworks */,
-				2BB44917A69FF1B2710678D2 /* Pods_PacketTunnel.framework in Frameworks */,
 				1EEBB8791FFFD8A700EB33C3 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1153,6 +1261,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */,
+				3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */,
 				3ADE7D0320737366000F70AA /* yaml.framework in Frameworks */,
 				9BC600351CB29AEE00E5EA61 /* PotatsoBase.framework in Frameworks */,
 				9BC6FFF61CB28C4500E5EA61 /* PotatsoModel.framework in Frameworks */,
@@ -1180,8 +1290,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8AC8D320753B6D002843E0 /* CocoaAsyncSocket.framework in Frameworks */,
 				9BCE27A51CAE412E00B1E561 /* libresolv.tbd in Frameworks */,
-				8A1FADF61B82B8A8F3895B04 /* Pods_PacketProcessor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1191,10 +1301,6 @@
 		360FC4CAA2A2878A46E847E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				69CCED68685D929177A42E2A /* Pods-PacketProcessor.debug.xcconfig */,
-				E78608059F51BBF6180C1843 /* Pods-PacketProcessor.release.xcconfig */,
-				9BAB9F5C037C991150984F50 /* Pods-PacketTunnel.debug.xcconfig */,
-				534B69172D50947634710149 /* Pods-PacketTunnel.release.xcconfig */,
 				721750A5B5C0DCACE5C63317 /* Pods-Potatso.debug.xcconfig */,
 				83DE540D7DA7E719057D8E51 /* Pods-Potatso.release.xcconfig */,
 				8591A0DF3C64D6376B09D429 /* Pods-PotatsoLibrary.debug.xcconfig */,
@@ -1263,6 +1369,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3A8780A7207549F800B96BF3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A8780B1207549F800B96BF3 /* KissXML.framework */,
+				3A8780B3207549F800B96BF3 /* KissXML.framework */,
+				3A8780B5207549F800B96BF3 /* KissXML.framework */,
+				3A8780B7207549F800B96BF3 /* KissXML.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A8AC8BD20753B29002843E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A8AC8C320753B29002843E0 /* CocoaAsyncSocket.framework */,
+				3A8AC8C520753B29002843E0 /* CocoaAsyncSocket.framework */,
+				3A8AC8C720753B29002843E0 /* CocoaAsyncSocket.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A8AC90820754396002843E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A8AC91620754396002843E0 /* MMWormhole.framework */,
+				3A8AC91820754396002843E0 /* MMWormhole.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9B07D6B11CB7A6A900182C1B /* PotatsoLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1275,6 +1411,9 @@
 		9B0CFA021C1C0B1A007BD7C6 = {
 			isa = PBXGroup;
 			children = (
+				3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */,
+				3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */,
+				3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */,
 				9B0CFA0D1C1C0B1B007BD7C6 /* Potatso */,
 				9B0CFA221C1C0B1B007BD7C6 /* PotatsoTests */,
 				9B8705FB1C1D788F00651424 /* PacketTunnel */,
@@ -2283,6 +2422,7 @@
 		C8B2149E8757C44C469576D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A8780CA20754B2000B96BF3 /* libxml2.tbd */,
 				1EEBB8761FFFD4B500EB33C3 /* NetworkExtension.framework */,
 				1ED659051E05E88C00D4BEE3 /* GameKit.framework */,
 				1ED659001E05C73100D4BEE3 /* CloudKit.framework */,
@@ -2386,6 +2526,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A8AC920207543D3002843E0 /* PBXTargetDependency */,
+				3A8AC8DA20753BCF002843E0 /* PBXTargetDependency */,
 				3A104BDD2073C61C00C848D5 /* PBXTargetDependency */,
 				3ADE7CFD20737312000F70AA /* PBXTargetDependency */,
 				9B8706031C1D788F00651424 /* PBXTargetDependency */,
@@ -2443,16 +2585,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B8706051C1D788F00651424 /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
 			buildPhases = (
-				65A45481A26326D12ED85DF7 /* [CP] Check Pods Manifest.lock */,
 				9B8705F61C1D788F00651424 /* Sources */,
 				9B8705F71C1D788F00651424 /* Frameworks */,
 				9B8705F81C1D788F00651424 /* Resources */,
 				9BC858AF1C34C5AA00992032 /* Framework Hack */,
-				643FBD5843DCAFAD3FAA14CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3A8AC9222075442A002843E0 /* PBXTargetDependency */,
 				3A104BD32073C57100C848D5 /* PBXTargetDependency */,
 				3ADE7CFF2073732E000F70AA /* PBXTargetDependency */,
 			);
@@ -2475,6 +2616,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A8780C820754A9500B96BF3 /* PBXTargetDependency */,
 				3ADE7D0220737353000F70AA /* PBXTargetDependency */,
 			);
 			name = PotatsoLibrary;
@@ -2525,16 +2667,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9BDA62661CAE2576007F2581 /* Build configuration list for PBXNativeTarget "PacketProcessor" */;
 			buildPhases = (
-				D9596EAADE114958AB86E57C /* [CP] Check Pods Manifest.lock */,
 				9BDA62561CAE2576007F2581 /* Sources */,
 				9BDA62571CAE2576007F2581 /* Frameworks */,
 				9BDA62581CAE2576007F2581 /* Headers */,
 				9BDA62591CAE2576007F2581 /* Resources */,
-				7C7020527AE3A7896803CE30 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3A8AC8D520753B83002843E0 /* PBXTargetDependency */,
 			);
 			name = PacketProcessor;
 			productName = PacketProcessor;
@@ -2660,8 +2801,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 3A8AC8BD20753B29002843E0 /* Products */;
+					ProjectRef = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
+				},
+				{
 					ProductGroup = 3A57D25A20728FFE000520F8 /* Products */;
 					ProjectRef = 3A57D25920728FFE000520F8 /* Eureka.xcodeproj */;
+				},
+				{
+					ProductGroup = 3A8780A7207549F800B96BF3 /* Products */;
+					ProjectRef = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
 				},
 				{
 					ProductGroup = 3A104BB42073C4AB00C848D5 /* Products */;
@@ -2674,6 +2823,10 @@
 				{
 					ProductGroup = 3A104BC62073C4DF00C848D5 /* Products */;
 					ProjectRef = 3A104BC52073C4DF00C848D5 /* mbedtls.xcodeproj */;
+				},
+				{
+					ProductGroup = 3A8AC90820754396002843E0 /* Products */;
+					ProjectRef = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
 				},
 				{
 					ProductGroup = B86B08E41D17F84900613014 /* Products */;
@@ -2772,6 +2925,69 @@
 			fileType = wrapper.cfbundle;
 			path = EurekaTests.xctest;
 			remoteRef = 3A57D26020728FFF000520F8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8780B1207549F800B96BF3 /* KissXML.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KissXML.framework;
+			remoteRef = 3A8780B0207549F800B96BF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8780B3207549F800B96BF3 /* KissXML.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KissXML.framework;
+			remoteRef = 3A8780B2207549F800B96BF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8780B5207549F800B96BF3 /* KissXML.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KissXML.framework;
+			remoteRef = 3A8780B4207549F800B96BF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8780B7207549F800B96BF3 /* KissXML.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = KissXML.framework;
+			remoteRef = 3A8780B6207549F800B96BF3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8AC8C320753B29002843E0 /* CocoaAsyncSocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaAsyncSocket.framework;
+			remoteRef = 3A8AC8C220753B29002843E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8AC8C520753B29002843E0 /* CocoaAsyncSocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaAsyncSocket.framework;
+			remoteRef = 3A8AC8C420753B29002843E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8AC8C720753B29002843E0 /* CocoaAsyncSocket.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CocoaAsyncSocket.framework;
+			remoteRef = 3A8AC8C620753B29002843E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8AC91620754396002843E0 /* MMWormhole.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMWormhole.framework;
+			remoteRef = 3A8AC91520754396002843E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A8AC91820754396002843E0 /* MMWormhole.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMWormhole.framework;
+			remoteRef = 3A8AC91720754396002843E0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3ADE7CF62073729B000F70AA /* yaml.framework */ = {
@@ -2910,21 +3126,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 92326569315d2336cbe215eae2b015aef513ed3c 9136206d79749547fb6e401c8b288bdbe04cbf586e049bf7dd50030fb461ace2";
 		};
-		643FBD5843DCAFAD3FAA14CF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PacketTunnel/Pods-PacketTunnel-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6583E694C11E23CA380EEDB7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2938,24 +3139,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotatsoModel/Pods-PotatsoModel-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		65A45481A26326D12ED85DF7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PacketTunnel-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6E4DEB81AF3E2C099E3A4375 /* [CP] Copy Pods Resources */ = {
@@ -3072,21 +3255,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Potatso/Pods-Potatso-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C7020527AE3A7896803CE30 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PacketProcessor/Pods-PacketProcessor-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		94E145530A683F9CCD533308 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3142,8 +3310,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-PotatsoLibraryTests/Pods-PotatsoLibraryTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ICSMainFramework/ICSMainFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
-				"${BUILT_PRODUCTS_DIR}/MMWormhole/MMWormhole.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -3151,8 +3317,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICSMainFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMWormhole.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -3275,24 +3439,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9596EAADE114958AB86E57C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PacketProcessor-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DD684A5F98C89E3ABC84DE74 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3306,18 +3452,14 @@
 				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
 				"${BUILT_PRODUCTS_DIR}/CallbackURLKit/CallbackURLKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/ICDMaterialActivityIndicatorView/ICDMaterialActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ICSMainFramework/ICSMainFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/ICSPullToRefresh/ICSPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
 				"${BUILT_PRODUCTS_DIR}/LogglyLogger-CocoaLumberjack/LogglyLogger_CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MMWormhole/MMWormhole.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PSOperations/PSOperations.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -3332,18 +3474,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Async.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CallbackURLKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICDMaterialActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICSMainFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICSPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LogglyLogger_CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMWormhole.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSOperations.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -3621,6 +3759,31 @@
 			isa = PBXTargetDependency;
 			name = Eureka;
 			targetProxy = 3A57D264207290AC000520F8 /* PBXContainerItemProxy */;
+		};
+		3A8780C820754A9500B96BF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "KissXML (iOS)";
+			targetProxy = 3A8780C720754A9500B96BF3 /* PBXContainerItemProxy */;
+		};
+		3A8AC8D520753B83002843E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS CocoaAsyncSocket";
+			targetProxy = 3A8AC8D420753B83002843E0 /* PBXContainerItemProxy */;
+		};
+		3A8AC8DA20753BCF002843E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iOS CocoaAsyncSocket";
+			targetProxy = 3A8AC8D920753BCF002843E0 /* PBXContainerItemProxy */;
+		};
+		3A8AC920207543D3002843E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMWormhole-iOS";
+			targetProxy = 3A8AC91F207543D3002843E0 /* PBXContainerItemProxy */;
+		};
+		3A8AC9222075442A002843E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MMWormhole-iOS";
+			targetProxy = 3A8AC9212075442A002843E0 /* PBXContainerItemProxy */;
 		};
 		3ADE7CFD20737312000F70AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -4038,7 +4201,6 @@
 		};
 		9B8706061C1D788F00651424 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BAB9F5C037C991150984F50 /* Pods-PacketTunnel.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
@@ -4083,7 +4245,6 @@
 		};
 		9B8706071C1D788F00651424 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 534B69172D50947634710149 /* Pods-PacketTunnel.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
@@ -4319,7 +4480,6 @@
 		};
 		9BDA62641CAE2576007F2581 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69CCED68685D929177A42E2A /* Pods-PacketProcessor.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -4363,7 +4523,6 @@
 		};
 		9BDA62651CAE2576007F2581 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E78608059F51BBF6180C1843 /* Pods-PacketProcessor.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
