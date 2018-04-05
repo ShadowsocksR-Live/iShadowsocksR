@@ -21,6 +21,12 @@
 
 #define REQUEST_CACHED @"requestsCached"    // Indicate that recent requests need update
 
+#if DEBUG
+#define WAIT_TIME      20000
+#else
+#define WAIT_TIME      2
+#endif
+
 @interface PacketTunnelProvider () <GCDAsyncSocketDelegate>
 @property (nonatomic) MMWormhole *wormhole;
 @property (nonatomic) GCDAsyncSocket *statusSocket;
@@ -123,7 +129,7 @@
     __block NSError *proxyError;
     dispatch_group_enter(g);
     handler(g, &proxyError);
-    long res = dispatch_group_wait(g, dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 2));
+    long res = dispatch_group_wait(g, dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * WAIT_TIME));
     if (res != 0) {
         proxyError = [TunnelError errorWithMessage:@"timeout"];
     }
