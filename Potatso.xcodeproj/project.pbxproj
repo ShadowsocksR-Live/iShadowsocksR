@@ -29,6 +29,8 @@
 		3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BE12073DE9900C848D5 /* libcrypto.a */; };
 		3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; };
 		3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; };
+		3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; };
 		3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780CA20754B2000B96BF3 /* libxml2.tbd */; };
@@ -587,6 +589,7 @@
 				3A104BD62073C5D900C848D5 /* libuv.framework in Embed Frameworks */,
 				3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */,
 				3A104BDA2073C5D900C848D5 /* ssrNative.framework in Embed Frameworks */,
+				3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */,
 				3ADE7CFB207372E1000F70AA /* yaml.framework in Embed Frameworks */,
 				B88874491D18186100AEF002 /* ShadowPath.framework in Embed Frameworks */,
 				3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */,
@@ -622,6 +625,7 @@
 		3A104BE12073DE9900C848D5 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Library/openssl/lib/libcrypto.a; sourceTree = SOURCE_ROOT; };
 		3A57D25920728FFE000520F8 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = Library/Eureka/Eureka.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YAML.xcodeproj; path = Library/yaml/YAML.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3A739BCD20763B530069F21C /* libmaxminddb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = libmaxminddb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KissXML.xcodeproj; path = Library/KissXML/KissXML.xcodeproj; sourceTree = "<group>"; };
 		3A8780CA20754B2000B96BF3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaAsyncSocket.xcodeproj; path = Library/CocoaAsyncSocket/CocoaAsyncSocket.xcodeproj; sourceTree = "<group>"; };
@@ -1223,6 +1227,7 @@
 				9BC600241CB2921C00E5EA61 /* PotatsoBase.framework in Frameworks */,
 				9BDA62621CAE2576007F2581 /* PacketProcessor.framework in Frameworks */,
 				1ED659061E05E88C00D4BEE3 /* GameKit.framework in Frameworks */,
+				3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */,
 				9B9B15C41C21595B000B6541 /* PotatsoLibrary.framework in Frameworks */,
 				9BC6FFF11CB28B4B00E5EA61 /* PotatsoModel.framework in Frameworks */,
 				1ED659011E05C73100D4BEE3 /* CloudKit.framework in Frameworks */,
@@ -1425,6 +1430,7 @@
 		9B0CFA021C1C0B1A007BD7C6 = {
 			isa = PBXGroup;
 			children = (
+				3A739BCD20763B530069F21C /* libmaxminddb.framework */,
 				3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */,
 				3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */,
 				3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */,
