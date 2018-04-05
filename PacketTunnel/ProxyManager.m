@@ -77,8 +77,7 @@ struct ssr_client_state *g_state = NULL;
 
 void feedback_state(struct ssr_client_state *state, int listen_fd, void *p) {
     g_state = state;
-    ProxyManager *provider = (__bridge ProxyManager *)p;
-    [provider onShadowsocksCallback:listen_fd];
+    shadowsocks_handler(listen_fd, p);
 }
 
 void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath, void *context) {
@@ -152,43 +151,10 @@ void ssr_stop(void) {
 - (void)_startShadowsocks {
     NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedProxyConfUrl] encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *json = [confContent jsonDictionary];
-    /*
-    NSString *host = json[@"host"];
-    NSNumber *port = json[@"port"];
-    NSString *password = json[@"password"];
-    NSString *authscheme = json[@"authscheme"];
-    NSString *protocol = json[@"protocol"];
-    NSString *obfs = json[@"obfs"];
-    NSString *obfs_param = json[@"obfs_param"];
-    BOOL ota = [json[@"ota"] boolValue];
-     */
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
     profile.listenPort = 0;
     
     if (profile.server.length && profile.serverPort && profile.password.length) {
-    /*
-    if (host && port && password && authscheme) {
-        profile_t profile;
-        memset(&profile, 0, sizeof(profile_t));
-        profile.remote_host = strdup([host UTF8String]);
-        profile.remote_port = [port intValue];
-        profile.password = strdup([password UTF8String]);
-        profile.method = strdup([authscheme UTF8String]);
-        profile.local_addr = "127.0.0.1";
-        profile.local_port = 0;
-        profile.timeout = 600;
-        profile.auth = ota;
-        if (protocol.length > 0) {
-            profile.protocol = strdup([protocol UTF8String]);
-        }
-        if (obfs.length > 0) {
-            profile.obfs = strdup([obfs UTF8String]);
-        }
-        if (obfs_param.length > 0) {
-            profile.obfs_param = strdup([obfs_param UTF8String]);
-        }
-        start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
-     */
         NSString *path = [NSBundle mainBundle].executablePath;
         ssr_main_loop(profile, profile.listenPort, path.UTF8String, (__bridge void *)(self));
     }else {
