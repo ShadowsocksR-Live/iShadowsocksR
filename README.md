@@ -31,9 +31,8 @@ Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor)
 
 Potatso has in total 33 (2 as submodules dependencies as used as local file in Cocoapod) dependencies as following
 
-* 28 Cocoapod dependencies
-* 1 Carthage dependency
-* 4 submodules dependencies
+* 24 Cocoapod dependencies
+* 9 submodules dependencies
 
 The project is tested with Xcode `9.2 (9C40B)` on iOS `11.2 (15B92)` device with cocoapod version `1.3.1`+, and carthage version `0.18.1`.  
 If you experienced an expected issue, try to use those versions, if still experience the problem please file the issue.
@@ -43,10 +42,15 @@ If you experienced an expected issue, try to use those versions, if still experi
 Perform the following steps to be able to build the project.
 Be warned that you **should not** call `pod update` as newer version of pod frameworks that Potatso depends on might break building process and there will be errors.
 
-1. `git submodule update --init` to update git submodule
-2. `pod install` to pull down dependencies into our project
-3. `carthage update` to pull down dependencies into `Carthage/Checkouts` folder and build each one
-4. Open `Potatso.xcworkspace` then Build and Run the project. Done.
+```
+git clone https://github.com/ssrlive/iShadowsocksR.git
+cd iShadowsocksR
+git submodule update --init --recursive    # update git submodule
+pod install                                # pull down dependencies into our project
+cd Library/openssl
+./build-libssl.sh                          # build OpenSSL library
+```
+Then open `Potatso.xcworkspace` to Build and Run the project. Done.
 
 ## Code Notices (outdated, will review this part again)
 
