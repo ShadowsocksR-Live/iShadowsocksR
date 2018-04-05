@@ -2,11 +2,11 @@
 
 #import <Foundation/Foundation.h>
 
-static const NSString *serverString = @"server";
-static const NSString *serverPortString = @"server_port";
+static const NSString *serverString = @"host"; //@"server";
+static const NSString *serverPortString = @"port"; //@"server_port";
 static const NSString *remarksString = @"remarks";
 static const NSString *passwordString = @"password";
-static const NSString *methodString = @"method";
+static const NSString *methodString = @"authscheme"; // @"method";
 static const NSString *protocolString = @"protocol";
 static const NSString *protocolParamString = @"protocol_param";
 static const NSString *obfsString = @"obfs";
