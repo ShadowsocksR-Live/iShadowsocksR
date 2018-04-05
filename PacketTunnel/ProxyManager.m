@@ -161,7 +161,7 @@ void ssr_stop(void) {
     BOOL ota = [json[@"ota"] boolValue];
      */
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
-    profile.listenPort = 1080;
+    profile.listenPort = 0;
     
     if (profile.server.length && profile.serverPort && profile.password.length) {
     /*
@@ -188,7 +188,7 @@ void ssr_stop(void) {
         start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
      */
         NSString *path = [NSBundle mainBundle].executablePath;
-        ssr_main_loop(profile, 1080, path.UTF8String);
+        ssr_main_loop(profile, profile.listenPort, path.UTF8String);
     }else {
         if (self.shadowsocksCompletion) {
             self.shadowsocksCompletion(0, nil);
