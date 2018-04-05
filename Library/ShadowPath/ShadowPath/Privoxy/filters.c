@@ -82,14 +82,15 @@ const char filters_rcs[] = "$Id: filters.c,v 1.199 2016/01/16 12:33:35 fabiankei
 
 const char filters_h_rcs[] = FILTERS_H_VERSION;
 
-typedef char *(*filter_function_ptr)();
+typedef char *(*filter_function_ptr)(struct client_state *csp);
 static filter_function_ptr get_filter_function(const struct client_state *csp);
 static jb_err remove_chunked_transfer_coding(char *buffer, size_t *size);
 static jb_err prepare_for_filtering(struct client_state *csp);
 
 struct forward_spec fwd_default[1];
 
-MMDB_s mmdb;
+struct MMDB_s obj_mmdb;
+struct MMDB_s *mmdb = &obj_mmdb;
 
 #ifdef FEATURE_ACL
 
@@ -2694,7 +2695,7 @@ struct url_actions *forward_ip_routing(struct sockaddr_in *addr)
             return action;
         }else if (action->geoip != NULL) {
             int mmdb_error;
-            MMDB_lookup_result_s result = MMDB_lookup_sockaddr(&mmdb, (struct sockaddr*)addr, &mmdb_error);
+            MMDB_lookup_result_s result = MMDB_lookup_sockaddr(mmdb, (struct sockaddr*)addr, &mmdb_error);
             if (MMDB_SUCCESS == mmdb_error) {
                 MMDB_entry_data_s entry_data;
                 int status = MMDB_get_value(&result.entry, &entry_data, "country", "iso_code", NULL);

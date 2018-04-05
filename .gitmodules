@@ -29,3 +29,7 @@
 	path = Library/KissXML
 	url = https://github.com/robbiehanson/KissXML.git
 	branch = master
+[submodule "Library/libmaxminddb"]
+	path = Library/libmaxminddb
+	url = https://github.com/ShadowsocksR-Live/libmaxminddb.git
+	branch = master

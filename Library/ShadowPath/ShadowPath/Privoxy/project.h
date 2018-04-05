@@ -132,9 +132,11 @@ typedef int jb_socket;
 
 
 #include "radix.h"
-#include "maxminddb.h"
+//#include "maxminddb.h"
 
-extern MMDB_s mmdb;
+struct MMDB_s;
+
+extern struct MMDB_s *mmdb;
 
 /**
  * A standard error code.  This should be JB_ERR_OK or one of the JB_ERR_xxx

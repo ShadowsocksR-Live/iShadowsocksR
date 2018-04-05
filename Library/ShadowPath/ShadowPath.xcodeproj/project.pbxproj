@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A739BC62076191D0069F21C /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BC2207618D50069F21C /* libmaxminddb.framework */; };
 		B82847481CEAE51B00820456 /* pcrs.c in Sources */ = {isa = PBXBuildFile; fileRef = B82847461CEAE51B00820456 /* pcrs.c */; };
 		B82847491CEAE51B00820456 /* pcrs.h in Headers */ = {isa = PBXBuildFile; fileRef = B82847471CEAE51B00820456 /* pcrs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B82847531CEB08CA00820456 /* miscutil.c in Sources */ = {isa = PBXBuildFile; fileRef = B82847511CEB08CA00820456 /* miscutil.c */; };
@@ -100,13 +101,30 @@
 		B8DEFEFA1CEA1D4C003FC706 /* jcc.h in Headers */ = {isa = PBXBuildFile; fileRef = B8DEFEF81CEA1D4C003FC706 /* jcc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8DEFEFC1CEA1DCE003FC706 /* sp_config.h in Headers */ = {isa = PBXBuildFile; fileRef = B8DEFEFB1CEA1DCE003FC706 /* sp_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8DEFEFE1CEA1EB7003FC706 /* project.h in Headers */ = {isa = PBXBuildFile; fileRef = B8DEFEFD1CEA1EB7003FC706 /* project.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B8EAC6501D40D01C0046963C /* maxminddb.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EAC5C61D40D01C0046963C /* maxminddb.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B8EAC6511D40D01C0046963C /* maxminddb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EAC5C71D40D01C0046963C /* maxminddb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B8EAC67F1D40D01C0046963C /* maxminddb-compat-util.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EAC5FA1D40D01C0046963C /* maxminddb-compat-util.h */; };
-		B8EAC6801D40D01C0046963C /* maxminddb.c in Sources */ = {isa = PBXBuildFile; fileRef = B8EAC5FB1D40D01C0046963C /* maxminddb.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3A739BC1207618D50069F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A739BBC207618D50069F21C /* libmaxminddb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AEE32E72075DBD000E96761;
+			remoteInfo = "libmaxminddb iOS";
+		};
+		3A739BC3207618D50069F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A739BBC207618D50069F21C /* libmaxminddb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A0939EC2075DC5200AB150D;
+			remoteInfo = "libmaxminddb macOS";
+		};
+		3A739BC7207619300069F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A739BBC207618D50069F21C /* libmaxminddb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AEE32E62075DBD000E96761;
+			remoteInfo = "libmaxminddb iOS";
+		};
 		B82847D01CEB177C00820456 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8DEFD721CE9C923003FC706 /* Project object */;
@@ -131,6 +149,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3A739BBC207618D50069F21C /* libmaxminddb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libmaxminddb.xcodeproj; path = ../libmaxminddb/xcode/libmaxminddb.xcodeproj; sourceTree = "<group>"; };
 		B82847461CEAE51B00820456 /* pcrs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pcrs.c; sourceTree = "<group>"; };
 		B82847471CEAE51B00820456 /* pcrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcrs.h; sourceTree = "<group>"; };
 		B82847511CEB08CA00820456 /* miscutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = miscutil.c; sourceTree = "<group>"; };
@@ -228,10 +247,6 @@
 		B8DEFEF81CEA1D4C003FC706 /* jcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jcc.h; sourceTree = "<group>"; };
 		B8DEFEFB1CEA1DCE003FC706 /* sp_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sp_config.h; sourceTree = "<group>"; };
 		B8DEFEFD1CEA1EB7003FC706 /* project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = project.h; sourceTree = "<group>"; };
-		B8EAC5C61D40D01C0046963C /* maxminddb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxminddb.h; sourceTree = "<group>"; };
-		B8EAC5C71D40D01C0046963C /* maxminddb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxminddb_config.h; sourceTree = "<group>"; };
-		B8EAC5FA1D40D01C0046963C /* maxminddb-compat-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "maxminddb-compat-util.h"; sourceTree = "<group>"; };
-		B8EAC5FB1D40D01C0046963C /* maxminddb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maxminddb.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +262,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A739BC62076191D0069F21C /* libmaxminddb.framework in Frameworks */,
 				B82D7D791CEC6BCE00357F5F /* libexpat.a in Frameworks */,
 				B82847AF1CEB125500820456 /* libz.tbd in Frameworks */,
 			);
@@ -255,6 +271,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A739BBD207618D50069F21C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A739BC2207618D50069F21C /* libmaxminddb.framework */,
+				3A739BC4207618D50069F21C /* libmaxminddb.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3A739BC52076191D0069F21C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B828475D1CEB0E1D00820456 /* pcre */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,10 +467,12 @@
 		B8DEFD711CE9C923003FC706 = {
 			isa = PBXGroup;
 			children = (
+				3A739BBC207618D50069F21C /* libmaxminddb.xcodeproj */,
 				B8DEFD7D1CE9C923003FC706 /* ShadowPath */,
 				B82847B51CEB14B000820456 /* ShadowPathDemo */,
 				B8DEFD7C1CE9C923003FC706 /* Products */,
 				B82847AE1CEB125500820456 /* libz.tbd */,
+				3A739BC52076191D0069F21C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -454,40 +488,12 @@
 		B8DEFD7D1CE9C923003FC706 /* ShadowPath */ = {
 			isa = PBXGroup;
 			children = (
-				B8EAC5971D40D01C0046963C /* libmaxminddb */,
 				B82D7D471CEC6BCE00357F5F /* Antinat */,
 				B82D7D461CEC6B6300357F5F /* Privoxy */,
 				B8DEFD801CE9C923003FC706 /* Info.plist */,
 				B8DEFD7E1CE9C923003FC706 /* ShadowPath.h */,
 			);
 			path = ShadowPath;
-			sourceTree = "<group>";
-		};
-		B8EAC5971D40D01C0046963C /* libmaxminddb */ = {
-			isa = PBXGroup;
-			children = (
-				B8EAC5C51D40D01C0046963C /* include */,
-				B8EAC5F21D40D01C0046963C /* src */,
-			);
-			path = libmaxminddb;
-			sourceTree = "<group>";
-		};
-		B8EAC5C51D40D01C0046963C /* include */ = {
-			isa = PBXGroup;
-			children = (
-				B8EAC5C61D40D01C0046963C /* maxminddb.h */,
-				B8EAC5C71D40D01C0046963C /* maxminddb_config.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		B8EAC5F21D40D01C0046963C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				B8EAC5FA1D40D01C0046963C /* maxminddb-compat-util.h */,
-				B8EAC5FB1D40D01C0046963C /* maxminddb.c */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,7 +509,6 @@
 				B828478F1CEB10E200820456 /* actionlist.h in Headers */,
 				B82847811CEB10B800820456 /* actions.h in Headers */,
 				B828479F1CEB111000820456 /* gateway.h in Headers */,
-				B8EAC6511D40D01C0046963C /* maxminddb_config.h in Headers */,
 				B82847711CEB105B00820456 /* parsers.h in Headers */,
 				B82847651CEB0E6400820456 /* internal.h in Headers */,
 				B82847541CEB08CA00820456 /* miscutil.h in Headers */,
@@ -527,14 +532,12 @@
 				B8DEFEFE1CEA1EB7003FC706 /* project.h in Headers */,
 				B82847791CEB109700820456 /* ssplit.h in Headers */,
 				B82D7D7B1CEC6BCE00357F5F /* an_main.h in Headers */,
-				B8EAC67F1D40D01C0046963C /* maxminddb-compat-util.h in Headers */,
 				B82847851CEB10BF00820456 /* cgi.h in Headers */,
 				B82847891CEB10C900820456 /* deanimate.h in Headers */,
 				B828475F1CEB0E3100820456 /* pcre.h in Headers */,
 				B8DEFEFC1CEA1DCE003FC706 /* sp_config.h in Headers */,
 				B82D7D761CEC6BCE00357F5F /* an_config.h in Headers */,
 				B82D7D8B1CEC6BE200357F5F /* fmemopen.h in Headers */,
-				B8EAC6501D40D01C0046963C /* maxminddb.h in Headers */,
 				B82D7D741CEC6BCE00357F5F /* iscmd5.h in Headers */,
 				B82D7D7D1CEC6BCE00357F5F /* an_serv.h in Headers */,
 				B82D7D771CEC6BCE00357F5F /* expat.h in Headers */,
@@ -575,6 +578,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A739BC8207619300069F21C /* PBXTargetDependency */,
 			);
 			name = ShadowPath;
 			productName = ShadowPath;
@@ -595,6 +599,7 @@
 					};
 					B8DEFD7A1CE9C923003FC706 = {
 						CreatedOnToolsVersion = 7.3;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -609,6 +614,12 @@
 			mainGroup = B8DEFD711CE9C923003FC706;
 			productRefGroup = B8DEFD7C1CE9C923003FC706 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3A739BBD207618D50069F21C /* Products */;
+					ProjectRef = 3A739BBC207618D50069F21C /* libmaxminddb.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B8DEFD7A1CE9C923003FC706 /* ShadowPath */,
@@ -616,6 +627,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3A739BC2207618D50069F21C /* libmaxminddb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = libmaxminddb.framework;
+			remoteRef = 3A739BC1207618D50069F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A739BC4207618D50069F21C /* libmaxminddb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = libmaxminddb.framework;
+			remoteRef = 3A739BC3207618D50069F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B82847B21CEB14B000820456 /* Resources */ = {
@@ -680,7 +708,6 @@
 				B82847AD1CEB11F600820456 /* pcre.c in Sources */,
 				B82D7D801CEC6BCE00357F5F /* auth.m in Sources */,
 				B82847741CEB106200820456 /* loaders.c in Sources */,
-				B8EAC6801D40D01C0046963C /* maxminddb.c in Sources */,
 				B82847681CEB103800820456 /* list.c in Sources */,
 				B828478C1CEB10D400820456 /* urlmatch.c in Sources */,
 				B828477C1CEB10AA00820456 /* jbsockets.c in Sources */,
@@ -704,6 +731,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3A739BC8207619300069F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libmaxminddb iOS";
+			targetProxy = 3A739BC7207619300069F21C /* PBXContainerItemProxy */;
+		};
 		B82847D11CEB177C00820456 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B8DEFD7A1CE9C923003FC706 /* ShadowPath */;
@@ -805,7 +837,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -857,7 +889,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -870,21 +902,25 @@
 		B8DEFD841CE9C923003FC706 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "${SRCROOT}/ShadowPath/libopenssl/include";
+				HEADER_SEARCH_PATHS = (
+					../libmaxminddb/include,
+					../libmaxminddb/xcode,
+				);
 				INFOPLIST_FILE = ShadowPath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShadowPath/Antinat/expat-lib/lib",
-					"$(PROJECT_DIR)/ShadowPath/libopenssl/lib",
 				);
 				OTHER_CFLAGS = (
 					"-DUSE_CRYPTO_OPENSSL",
@@ -894,6 +930,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.wasin.ShadowPath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -902,20 +939,24 @@
 		B8DEFD851CE9C923003FC706 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "${SRCROOT}/ShadowPath/libopenssl/include";
+				HEADER_SEARCH_PATHS = (
+					../libmaxminddb/include,
+					../libmaxminddb/xcode,
+				);
 				INFOPLIST_FILE = ShadowPath/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShadowPath/Antinat/expat-lib/lib",
-					"$(PROJECT_DIR)/ShadowPath/libopenssl/lib",
 				);
 				OTHER_CFLAGS = (
 					"-DUSE_CRYPTO_OPENSSL",
@@ -925,6 +966,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.wasin.ShadowPath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

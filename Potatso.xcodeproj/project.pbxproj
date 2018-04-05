@@ -333,6 +333,20 @@
 			remoteGlobalIDString = 51729DEA1B9A4F5E004A00EB;
 			remoteInfo = Eureka;
 		};
+		3A739BC920761B850069F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B86B08E31D17F84900613014 /* ShadowPath.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8DEFD7A1CE9C923003FC706;
+			remoteInfo = ShadowPath;
+		};
+		3A739BCB2076206D0069F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B0CFA031C1C0B1A007BD7C6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9BC6FFE91CB28B4B00E5EA61;
+			remoteInfo = PotatsoModel;
+		};
 		3A8780B0207549F800B96BF3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
@@ -2593,6 +2607,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A739BCA20761B850069F21C /* PBXTargetDependency */,
 				3A8AC9222075442A002843E0 /* PBXTargetDependency */,
 				3A104BD32073C57100C848D5 /* PBXTargetDependency */,
 				3ADE7CFF2073732E000F70AA /* PBXTargetDependency */,
@@ -2616,6 +2631,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A739BCC2076206D0069F21C /* PBXTargetDependency */,
 				3A8780C820754A9500B96BF3 /* PBXTargetDependency */,
 				3ADE7D0220737353000F70AA /* PBXTargetDependency */,
 			);
@@ -3759,6 +3775,16 @@
 			isa = PBXTargetDependency;
 			name = Eureka;
 			targetProxy = 3A57D264207290AC000520F8 /* PBXContainerItemProxy */;
+		};
+		3A739BCA20761B850069F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ShadowPath;
+			targetProxy = 3A739BC920761B850069F21C /* PBXContainerItemProxy */;
+		};
+		3A739BCC2076206D0069F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9BC6FFE91CB28B4B00E5EA61 /* PotatsoModel */;
+			targetProxy = 3A739BCB2076206D0069F21C /* PBXContainerItemProxy */;
 		};
 		3A8780C820754A9500B96BF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
