@@ -75,11 +75,13 @@ struct server_config * build_config_object(Profile *profile, unsigned short list
 
 struct ssr_client_state *g_state = NULL;
 
-void feedback_state(struct ssr_client_state *state, void *p) {
+void feedback_state(struct ssr_client_state *state, int listen_fd, void *p) {
     g_state = state;
+    ProxyManager *provider = (__bridge ProxyManager *)p;
+    [provider onShadowsocksCallback:listen_fd];
 }
 
-void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath) {
+void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath, void *context) {
     struct server_config *config = NULL;
     do {
         set_app_name(appPath);
@@ -92,7 +94,7 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
             break;
         }
         
-        ssr_run_loop_begin(config, &feedback_state, NULL);
+        ssr_run_loop_begin(config, &feedback_state, context);
         g_state = NULL;
     } while(0);
     
@@ -188,7 +190,7 @@ void ssr_stop(void) {
         start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
      */
         NSString *path = [NSBundle mainBundle].executablePath;
-        ssr_main_loop(profile, profile.listenPort, path.UTF8String);
+        ssr_main_loop(profile, profile.listenPort, path.UTF8String, (__bridge void *)(self));
     }else {
         if (self.shadowsocksCompletion) {
             self.shadowsocksCompletion(0, nil);
