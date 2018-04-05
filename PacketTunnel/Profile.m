@@ -150,11 +150,4 @@
     return _obfsParam;
 }
 
-- (NSInteger) listenPort {
-    if (_listenPort == 0) {
-        _listenPort = 1080;
-    }
-    return _listenPort;
-}
-
 @end
