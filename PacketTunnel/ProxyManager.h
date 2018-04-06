@@ -22,7 +22,6 @@ extern int sock_port (int fd);
 @property (nonatomic, readonly) BOOL httpProxyRunning;
 @property (nonatomic, readonly) int httpProxyPort;
 @property (nonatomic, readonly) BOOL shadowsocksProxyRunning;
-@property (nonatomic, readonly) int shadowsocksProxyPort;
 - (void)startSocksProxy: (SocksProxyCompletion)completion;
 - (void)stopSocksProxy;
 - (void)startHttpProxy: (HttpProxyCompletion)completion;

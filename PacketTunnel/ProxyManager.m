@@ -13,13 +13,14 @@
 #import "Profile.h"
 #include <ssrNative/ssrNative.h>
 
-@interface ProxyManager ()
+@interface ProxyManager () {
+    int _shadowsocksProxyPort;
+}
 @property (nonatomic) BOOL socksProxyRunning;
 @property (nonatomic) int socksProxyPort;
 @property (nonatomic) BOOL httpProxyRunning;
 @property (nonatomic) int httpProxyPort;
 @property (nonatomic) BOOL shadowsocksProxyRunning;
-@property (nonatomic) int shadowsocksProxyPort;
 @property (nonatomic, copy) SocksProxyCompletion socksCompletion;
 @property (nonatomic, copy) HttpProxyCompletion httpCompletion;
 @property (nonatomic, copy) ShadowsocksProxyCompletion shadowsocksCompletion;
@@ -118,7 +119,7 @@ void ssr_stop(void) {
 - (void)startSocksProxy:(SocksProxyCompletion)completion {
     self.socksCompletion = [completion copy];
     NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedSocksConfUrl] encoding:NSUTF8StringEncoding error:nil];
-    confContent = [confContent stringByReplacingOccurrencesOfString:@"${ssport}" withString:[NSString stringWithFormat:@"%d", [self shadowsocksProxyPort]]];
+    confContent = [confContent stringByReplacingOccurrencesOfString:@"${ssport}" withString:[NSString stringWithFormat:@"%d", _shadowsocksProxyPort]];
     int fd = [[AntinatServer sharedServer] startWithConfig:confContent];
     [self onSocksProxyCallback:fd];
 }
@@ -172,13 +173,13 @@ void ssr_stop(void) {
 - (void)onShadowsocksCallback:(int)fd {
     NSError *error;
     if (fd > 0) {
-        self.shadowsocksProxyPort = sock_port(fd);
+        _shadowsocksProxyPort = sock_port(fd);
         self.shadowsocksProxyRunning = YES;
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }
     if (self.shadowsocksCompletion) {
-        self.shadowsocksCompletion(self.shadowsocksProxyPort, error);
+        self.shadowsocksCompletion(_shadowsocksProxyPort, error);
     }
 }
 
@@ -191,12 +192,12 @@ void ssr_stop(void) {
 
 - (void)_startHttpProxy: (NSURL *)confURL {
     struct forward_spec *proxy = NULL;
-    if (self.shadowsocksProxyPort > 0) {
+    if (_shadowsocksProxyPort > 0) {
         proxy = (malloc(sizeof(struct forward_spec)));
         memset(proxy, 0, sizeof(struct forward_spec));
         proxy->type = SOCKS_5;
         proxy->gateway_host = "127.0.0.1";
-        proxy->gateway_port = self.shadowsocksProxyPort;
+        proxy->gateway_port = _shadowsocksProxyPort;
     }
     shadowpath_main(strdup([[confURL path] UTF8String]), proxy, http_proxy_handler, (__bridge void *)self);
 }
