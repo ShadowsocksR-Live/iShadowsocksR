@@ -25,7 +25,7 @@
 @property (nonatomic, copy) ShadowsocksProxyCompletion shadowsocksCompletion;
 - (void)onSocksProxyCallback: (int)fd;
 - (void)onHttpProxyCallback: (int)fd;
-- (void)onShadowsocksCallback:(uint16_t)listenPort;
+- (void)onShadowsocksCallback:(int)fd;
 @end
 
 void http_proxy_handler(int fd, void *udata) {
@@ -33,9 +33,9 @@ void http_proxy_handler(int fd, void *udata) {
     [provider onHttpProxyCallback:fd];
 }
 
-void shadowsocks_handler(uint16_t listenPort, void *udata) {
+void shadowsocks_handler(int fd, void *udata) {
     ProxyManager *provider = (__bridge ProxyManager *)udata;
-    [provider onShadowsocksCallback:listenPort];
+    [provider onShadowsocksCallback:fd];
 }
 
 int sock_port (int fd) {
@@ -77,7 +77,7 @@ struct ssr_client_state *g_state = NULL;
 
 void feedback_state(struct ssr_client_state *state, void *p) {
     g_state = state;
-    shadowsocks_handler(ssr_get_listen_port(state), p);
+    shadowsocks_handler(ssr_get_listen_socket_fd(state), p);
 }
 
 void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath, void *context) {
@@ -169,10 +169,10 @@ void ssr_stop(void) {
     ssr_stop();
 }
 
-- (void)onShadowsocksCallback:(uint16_t)listenPort {
+- (void)onShadowsocksCallback:(int)fd {
     NSError *error;
-    if (listenPort > 0) {
-        self.shadowsocksProxyPort = listenPort; // sock_port(fd);
+    if (fd > 0) {
+        self.shadowsocksProxyPort = sock_port(fd);
         self.shadowsocksProxyRunning = YES;
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
