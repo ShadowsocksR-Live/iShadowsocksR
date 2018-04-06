@@ -15,15 +15,14 @@
 
 @interface ProxyManager () {
     int _shadowsocksProxyPort;
+    ShadowsocksProxyCompletion _shadowsocksCompletion;
+    
+    SocksProxyCompletion _socksCompletion;
+    BOOL _socksProxyRunning;
+    
+    BOOL _httpProxyRunning;
+    HttpProxyCompletion _httpCompletion;
 }
-@property (nonatomic) BOOL socksProxyRunning;
-@property (nonatomic) int socksProxyPort;
-@property (nonatomic) BOOL httpProxyRunning;
-@property (nonatomic) int httpProxyPort;
-@property (nonatomic) BOOL shadowsocksProxyRunning;
-@property (nonatomic, copy) SocksProxyCompletion socksCompletion;
-@property (nonatomic, copy) HttpProxyCompletion httpCompletion;
-@property (nonatomic, copy) ShadowsocksProxyCompletion shadowsocksCompletion;
 - (void)onSocksProxyCallback: (int)fd;
 - (void)onHttpProxyCallback: (int)fd;
 - (void)onShadowsocksCallback:(int)fd;
@@ -117,7 +116,7 @@ void ssr_stop(void) {
 }
 
 - (void)startSocksProxy:(SocksProxyCompletion)completion {
-    self.socksCompletion = [completion copy];
+    _socksCompletion = [completion copy];
     NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedSocksConfUrl] encoding:NSUTF8StringEncoding error:nil];
     confContent = [confContent stringByReplacingOccurrencesOfString:@"${ssport}" withString:[NSString stringWithFormat:@"%d", _shadowsocksProxyPort]];
     int fd = [[AntinatServer sharedServer] startWithConfig:confContent];
@@ -126,26 +125,26 @@ void ssr_stop(void) {
 
 - (void)stopSocksProxy {
     [[AntinatServer sharedServer] stop];
-    self.socksProxyRunning = NO;
+    _socksProxyRunning = NO;
 }
 
 - (void)onSocksProxyCallback:(int)fd {
     NSError *error;
     if (fd > 0) {
-        self.socksProxyPort = sock_port(fd);
-        self.socksProxyRunning = YES;
+        _socksProxyPort = sock_port(fd);
+        _socksProxyRunning = YES;
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start socks proxy"}];
     }
-    if (self.socksCompletion) {
-        self.socksCompletion(self.socksProxyPort, error);
+    if (_socksCompletion) {
+        _socksCompletion(_socksProxyPort, error);
     }
 }
 
 # pragma mark - Shadowsocks 
 
 - (void)startShadowsocks: (ShadowsocksProxyCompletion)completion {
-    self.shadowsocksCompletion = [completion copy];
+    _shadowsocksCompletion = [completion copy];
     [NSThread detachNewThreadSelector:@selector(_startShadowsocks) toTarget:self withObject:nil];
 }
 
@@ -159,8 +158,8 @@ void ssr_stop(void) {
         NSString *path = [NSBundle mainBundle].executablePath;
         ssr_main_loop(profile, profile.listenPort, path.UTF8String, (__bridge void *)(self));
     }else {
-        if (self.shadowsocksCompletion) {
-            self.shadowsocksCompletion(0, nil);
+        if (_shadowsocksCompletion) {
+            _shadowsocksCompletion(0, nil);
         }
         return;
     }
@@ -174,19 +173,18 @@ void ssr_stop(void) {
     NSError *error;
     if (fd > 0) {
         _shadowsocksProxyPort = sock_port(fd);
-        self.shadowsocksProxyRunning = YES;
-    }else {
+    } else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }
-    if (self.shadowsocksCompletion) {
-        self.shadowsocksCompletion(_shadowsocksProxyPort, error);
+    if (_shadowsocksCompletion) {
+        _shadowsocksCompletion(_shadowsocksProxyPort, error);
     }
 }
 
 # pragma mark - Http Proxy
 
 - (void)startHttpProxy:(HttpProxyCompletion)completion {
-    self.httpCompletion = [completion copy];
+    _httpCompletion = [completion copy];
     [NSThread detachNewThreadSelector:@selector(_startHttpProxy:) toTarget:self withObject:[Potatso sharedHttpProxyConfUrl]];
 }
 
@@ -204,19 +202,19 @@ void ssr_stop(void) {
 
 - (void)stopHttpProxy {
 //    polipoExit();
-//    self.httpProxyRunning = NO;
+//    _httpProxyRunning = NO;
 }
 
 - (void)onHttpProxyCallback:(int)fd {
     NSError *error;
     if (fd > 0) {
-        self.httpProxyPort = sock_port(fd);
-        self.httpProxyRunning = YES;
+        _httpProxyPort = sock_port(fd);
+        _httpProxyRunning = YES;
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }
-    if (self.httpCompletion) {
-        self.httpCompletion(self.httpProxyPort, error);
+    if (_httpCompletion) {
+        _httpCompletion(_httpProxyPort, error);
     }
 }
 
