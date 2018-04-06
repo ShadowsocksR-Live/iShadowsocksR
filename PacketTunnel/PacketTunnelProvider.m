@@ -27,14 +27,15 @@
 #define WAIT_TIME      2
 #endif
 
-@interface PacketTunnelProvider () <GCDAsyncSocketDelegate>
-@property (nonatomic) MMWormhole *wormhole;
-@property (nonatomic) GCDAsyncSocket *statusSocket;
-@property (nonatomic) GCDAsyncSocket *statusClientSocket;
-@property (nonatomic) BOOL didSetupHockeyApp;
-@property (nonatomic) NWPath *lastPath;
-@property (strong) void (^pendingStartCompletion)(NSError *);
-@property (strong) void (^pendingStopCompletion)(void);
+@interface PacketTunnelProvider () <GCDAsyncSocketDelegate> {
+    MMWormhole *_wormhole;
+    GCDAsyncSocket *_statusSocket;
+    GCDAsyncSocket *_statusClientSocket;
+    BOOL _didSetupHockeyApp;
+    NWPath *_lastPath;
+    void (^_pendingStartCompletion)(NSError *);
+    void (^_pendingStopCompletion)(void);
+}
 @end
 
 
@@ -50,7 +51,7 @@
         exit(1);
         return;
     }
-    self.pendingStartCompletion = completionHandler;
+    _pendingStartCompletion = completionHandler;
     [self startProxies];
     [self startPacketForwarders];
     [self setupWormhole];
@@ -63,15 +64,16 @@
 }
 
 - (void)setupWormhole {
-    self.wormhole = [[MMWormhole alloc] initWithApplicationGroupIdentifier: [Potatso sharedGroupIdentifier] optionalDirectory:@"wormhole"];
+    _wormhole = [[MMWormhole alloc] initWithApplicationGroupIdentifier: [Potatso sharedGroupIdentifier] optionalDirectory:@"wormhole"];
     __weak typeof(self) weakSelf = self;
-    [self.wormhole listenForMessageWithIdentifier:@"getTunnelStatus" listener:^(id  _Nullable messageObject) {
-        [weakSelf.wormhole passMessageObject:@"ok" identifier:@"tunnelStatus"];
+    [_wormhole listenForMessageWithIdentifier:@"getTunnelStatus" listener:^(id  _Nullable messageObject) {
+        __strong typeof(self) strongSelf = weakSelf;
+        [strongSelf->_wormhole passMessageObject:@"ok" identifier:@"tunnelStatus"];
     }];
-    [self.wormhole listenForMessageWithIdentifier:@"stopTunnel" listener:^(id  _Nullable messageObject) {
+    [_wormhole listenForMessageWithIdentifier:@"stopTunnel" listener:^(id  _Nullable messageObject) {
         [weakSelf stop];
     }];
-    [self.wormhole listenForMessageWithIdentifier:@"getTunnelConnectionRecords" listener:^(id  _Nullable messageObject) {
+    [_wormhole listenForMessageWithIdentifier:@"getTunnelConnectionRecords" listener:^(id  _Nullable messageObject) {
         NSMutableArray *records = [NSMutableArray array];
         struct log_client_states *p = log_clients;
         while (p) {
@@ -102,17 +104,17 @@
             p = p->next;
         }
         NSString *result = [records jsonString];
-        [weakSelf.wormhole passMessageObject:result identifier:@"tunnelConnectionRecords"];
+        [self->_wormhole passMessageObject:result identifier:@"tunnelConnectionRecords"];
     }];
     [self setupStatusSocket];
 }
 
 - (void)setupStatusSocket {
     NSError *error;
-    self.statusSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
-    [self.statusSocket acceptOnInterface:@"127.0.0.1" port:0 error:&error];
-    [self.statusSocket performBlock:^{
-        int port = sock_port(self.statusSocket.socket4FD);
+    _statusSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)];
+    [_statusSocket acceptOnInterface:@"127.0.0.1" port:0 error:&error];
+    [_statusSocket performBlock:^{
+        int port = sock_port(self->_statusSocket.socket4FD);
         [[Potatso sharedUserDefaults] setObject:@(port) forKey:@"tunnelStatusPort"];
         [[Potatso sharedUserDefaults] synchronize];
     }];
@@ -171,6 +173,7 @@
     __weak typeof(self) weakSelf = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTun2SocksFinished) name:kTun2SocksStoppedNotification object:nil];
     [self startVPNWithOptions:nil completionHandler:^(NSError *error) {
+        __strong typeof(self) strongSelf = weakSelf;
         if (error == nil) {
             [weakSelf addObserver:weakSelf forKeyPath:@"defaultPath" options:NSKeyValueObservingOptionInitial context:nil];
             [TunnelInterface startTun2Socks:[ProxyManager sharedManager].socksProxyPort];
@@ -178,9 +181,9 @@
                 [TunnelInterface processPackets];
             });
         }
-        if (weakSelf.pendingStartCompletion) {
-            weakSelf.pendingStartCompletion(error);
-            weakSelf.pendingStartCompletion = nil;
+        if (strongSelf->_pendingStartCompletion) {
+            strongSelf->_pendingStartCompletion(error);
+            strongSelf->_pendingStartCompletion = nil;
         }
     }];
 }
@@ -237,9 +240,9 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"defaultPath"]) {
-        if (self.defaultPath.status == NWPathStatusSatisfied && ![self.defaultPath isEqualToPath:self.lastPath]) {
-            if (!self.lastPath) {
-                self.lastPath = self.defaultPath;
+        if (self.defaultPath.status == NWPathStatusSatisfied && ![self.defaultPath isEqualToPath:_lastPath]) {
+            if (!_lastPath) {
+                _lastPath = self.defaultPath;
             }else {
                 NSLog(@"received network change notifcation");
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -247,7 +250,7 @@
                 });
             }
         }else {
-            self.lastPath = self.defaultPath;
+            _lastPath = self.defaultPath;
         }
     }
 }
@@ -255,7 +258,7 @@
 - (void)stopTunnelWithReason:(NEProviderStopReason)reason completionHandler:(void (^)(void))completionHandler
 {
 	// Add code here to start the process of stopping the tunnel
-    self.pendingStopCompletion = completionHandler;
+    _pendingStopCompletion = completionHandler;
     [self stop];
 }
 
@@ -270,9 +273,9 @@
 
 - (void)onTun2SocksFinished {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (self.pendingStopCompletion) {
-        self.pendingStopCompletion();
-        self.pendingStopCompletion = nil;
+    if (_pendingStopCompletion) {
+        _pendingStopCompletion();
+        _pendingStopCompletion = nil;
     }
     [self cancelTunnelWithError:nil];
     exit(EXIT_SUCCESS);
@@ -296,8 +299,7 @@
 #pragma mark - GCDAsyncSocket Delegate 
 
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket {
-    self.statusClientSocket = newSocket;
+    _statusClientSocket = newSocket;
 }
-
 
 @end
