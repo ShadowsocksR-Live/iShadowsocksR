@@ -22,7 +22,7 @@ extension ProxyType: CustomStringConvertible {
     public var description: String {
         return rawValue
     }
-
+    
     public var isShadowsocks: Bool {
         return self == .Shadowsocks || self == .ShadowsocksR
     }
@@ -77,32 +77,46 @@ open class Proxy: BaseModel {
     open dynamic var ssrProtocol: String?
     open dynamic var ssrObfs: String?
     open dynamic var ssrObfsParam: String?
-
+    
     open static let ssUriPrefix = "ss://"
     open static let ssrUriPrefix = "ssr://"
-
+    
     open static let ssrSupportedProtocol = [
         "origin",
         "verify_simple",
         "auth_simple",
         "auth_sha1",
-        "auth_sha1_v2"
-    ]
-
+        "auth_sha1_v2",
+        "auth_sha1_v4",
+        "auth_aes128_md5",
+        "auth_aes128_sha1",
+        "auth_chain_a",
+        "auth_chain_b",
+        "auth_chain_c",
+        "auth_chain_d",
+        "auth_chain_e",
+        "auth_chain_f",
+        ]
     open static let ssrSupportedObfs = [
         "plain",
         "http_simple",
-        "tls1.0_session_auth",
-        "tls1.2_ticket_auth"
+        "http_post",
+        "tls1.2_ticket_auth",
+        "tls1.2_ticket_fastauth"
     ]
-
+    
     open static let ssSupportedEncryption = [
+        "none",
         "table",
         "rc4",
+        "rc4-md5-6",
         "rc4-md5",
         "aes-128-cfb",
         "aes-192-cfb",
         "aes-256-cfb",
+        "aes-128-ctr",
+        "aes-192-ctr",
+        "aes-256-ctr",
         "bf-cfb",
         "camellia-128-cfb",
         "camellia-192-cfb",
@@ -116,11 +130,10 @@ open class Proxy: BaseModel {
         "chacha20",
         "chacha20-ietf"
     ]
-
     open override static func indexedProperties() -> [String] {
         return ["name"]
     }
-
+    
     open override func validate(inRealm realm: Realm) throws {
         guard let _ = ProxyType(rawValue: typeRaw)else {
             throw ProxyError.invalidType
@@ -143,7 +156,7 @@ open class Proxy: BaseModel {
             break
         }
     }
-
+    
 }
 
 // Public Accessor
@@ -177,9 +190,9 @@ extension Proxy {
 
 // API
 extension Proxy {
-
     
-
+    
+    
 }
 
 // Import
@@ -295,7 +308,7 @@ extension Proxy {
         }
         try validate(inRealm: realm)
     }
-
+    
     fileprivate func base64DecodeIfNeeded(_ proxyString: String) -> String? {
         if let _ = proxyString.range(of: ":")?.lowerBound {
             return proxyString
@@ -307,11 +320,11 @@ extension Proxy {
         }
         return nil
     }
-
+    
     public class func uriIsShadowsocks(_ uri: String) -> Bool {
         return uri.lowercased().hasPrefix(Proxy.ssUriPrefix) || uri.lowercased().hasPrefix(Proxy.ssrUriPrefix)
     }
-
+    
 }
 
 public func ==(lhs: Proxy, rhs: Proxy) -> Bool {
