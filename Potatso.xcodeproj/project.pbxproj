@@ -27,10 +27,15 @@
 		3A104BDA2073C5D900C848D5 /* ssrNative.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BAF2073C48F00C848D5 /* ssrNative.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BE02073C6DA00C848D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A104BDF2073C6D900C848D5 /* Profile.m */; };
 		3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BE12073DE9900C848D5 /* libcrypto.a */; };
+		3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D4D207A850300073C87 /* CallbackURLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A262D54207A855800073C87 /* CallbackURLKitClients.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D51207A850300073C87 /* CallbackURLKitClients.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A262D59207A85CE00073C87 /* CallbackURLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D4D207A850300073C87 /* CallbackURLKit.framework */; };
+		3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D51207A850300073C87 /* CallbackURLKitClients.framework */; };
 		3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; };
 		3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; };
 		3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A7D2CC420775DCC00D5766F /* ssrNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BAF2073C48F00C848D5 /* ssrNative.framework */; };
 		3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; };
 		3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780CA20754B2000B96BF3 /* libxml2.tbd */; };
@@ -314,6 +319,41 @@
 			remoteGlobalIDString = 3A57A606206F9D44002F1F2D;
 			remoteInfo = "ssrNative iOS";
 		};
+		3A262D4C207A850300073C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C4A8D5101C37D84A00DB3306;
+			remoteInfo = CallbackURLKit;
+		};
+		3A262D4E207A850300073C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C418B1DA1C386C160097FDD9;
+			remoteInfo = CallbackURLKitOSX;
+		};
+		3A262D50207A850300073C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C4E32D561C398AE1005CD033;
+			remoteInfo = CallbackURLKitClients;
+		};
+		3A262D55207A859500073C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C4A8D50F1C37D84A00DB3306;
+			remoteInfo = CallbackURLKit;
+		};
+		3A262D57207A859500073C87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C4E32D551C398AE1005CD033;
+			remoteInfo = CallbackURLKitClients;
+		};
 		3A57D25E20728FFF000520F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A57D25920728FFE000520F8 /* Eureka.xcodeproj */;
@@ -582,6 +622,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */,
+				3A262D54207A855800073C87 /* CallbackURLKitClients.framework in Embed Frameworks */,
 				3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */,
 				3A8AC91D207543B0002843E0 /* MMWormhole.framework in Embed Frameworks */,
 				3A8AC8D620753BAF002843E0 /* CocoaAsyncSocket.framework in Embed Frameworks */,
@@ -623,6 +665,7 @@
 		3A104BDE2073C6D900C848D5 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		3A104BDF2073C6D900C848D5 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		3A104BE12073DE9900C848D5 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Library/openssl/lib/libcrypto.a; sourceTree = SOURCE_ROOT; };
+		3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CallbackURLKit.xcodeproj; path = Library/CallbackURLKit/CallbackURLKit.xcodeproj; sourceTree = "<group>"; };
 		3A57D25920728FFE000520F8 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = Library/Eureka/Eureka.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YAML.xcodeproj; path = Library/yaml/YAML.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A739BCD20763B530069F21C /* libmaxminddb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = libmaxminddb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1235,6 +1278,8 @@
 				3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */,
 				10305058CF9183AA66172BEC /* Pods_Potatso.framework in Frameworks */,
 				3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */,
+				3A262D59207A85CE00073C87 /* CallbackURLKit.framework in Frameworks */,
+				3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1300,6 +1345,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7D2CC420775DCC00D5766F /* ssrNative.framework in Frameworks */,
 				9B32477B1CC091CF00A3BAFF /* PotatsoBase.framework in Frameworks */,
 				939649B7FCC9A0C8AFB317B8 /* Pods_PotatsoModel.framework in Frameworks */,
 			);
@@ -1370,6 +1416,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3A262D47207A850200073C87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A262D4D207A850300073C87 /* CallbackURLKit.framework */,
+				3A262D4F207A850300073C87 /* CallbackURLKit.framework */,
+				3A262D51207A850300073C87 /* CallbackURLKitClients.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3A57D25A20728FFE000520F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1431,6 +1487,7 @@
 			isa = PBXGroup;
 			children = (
 				3A739BCD20763B530069F21C /* libmaxminddb.framework */,
+				3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */,
 				3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */,
 				3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */,
 				3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */,
@@ -2546,6 +2603,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A262D56207A859500073C87 /* PBXTargetDependency */,
+				3A262D58207A859500073C87 /* PBXTargetDependency */,
 				3A8AC920207543D3002843E0 /* PBXTargetDependency */,
 				3A8AC8DA20753BCF002843E0 /* PBXTargetDependency */,
 				3A104BDD2073C61C00C848D5 /* PBXTargetDependency */,
@@ -2823,6 +2882,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 3A262D47207A850200073C87 /* Products */;
+					ProjectRef = 3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */;
+				},
+				{
 					ProductGroup = 3A8AC8BD20753B29002843E0 /* Products */;
 					ProjectRef = 3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */;
 				},
@@ -2933,6 +2996,27 @@
 			fileType = wrapper.framework;
 			path = mbedtls.framework;
 			remoteRef = 3A104BCC2073C4DF00C848D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A262D4D207A850300073C87 /* CallbackURLKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CallbackURLKit.framework;
+			remoteRef = 3A262D4C207A850300073C87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A262D4F207A850300073C87 /* CallbackURLKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CallbackURLKit.framework;
+			remoteRef = 3A262D4E207A850300073C87 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A262D51207A850300073C87 /* CallbackURLKitClients.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CallbackURLKitClients.framework;
+			remoteRef = 3A262D50207A850300073C87 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3A57D25F20728FFF000520F8 /* Eureka.framework */ = {
@@ -3472,7 +3556,6 @@
 				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
 				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
-				"${BUILT_PRODUCTS_DIR}/CallbackURLKit/CallbackURLKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/ICDMaterialActivityIndicatorView/ICDMaterialActivityIndicatorView.framework",
@@ -3494,7 +3577,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Async.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CallbackURLKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICDMaterialActivityIndicatorView.framework",
@@ -3776,6 +3858,16 @@
 			isa = PBXTargetDependency;
 			name = "ssrNative iOS";
 			targetProxy = 3A104BDC2073C61C00C848D5 /* PBXContainerItemProxy */;
+		};
+		3A262D56207A859500073C87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CallbackURLKit;
+			targetProxy = 3A262D55207A859500073C87 /* PBXContainerItemProxy */;
+		};
+		3A262D58207A859500073C87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CallbackURLKitClients;
+			targetProxy = 3A262D57207A859500073C87 /* PBXContainerItemProxy */;
 		};
 		3A57D265207290AC000520F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
