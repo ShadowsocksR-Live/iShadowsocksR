@@ -3,9 +3,6 @@ PODS:
   - Appirater (2.0.5)
   - Aspects (0.0.1)
   - AsyncSwift (2.0.1)
-  - CallbackURLKit (1.0.0):
-    - CallbackURLKit/Core (= 1.0.0)
-  - CallbackURLKit/Core (1.0.0)
   - Cartography (1.0.1)
   - CocoaLumberjack (3.0.0):
     - CocoaLumberjack/Default (= 3.0.0)
@@ -58,7 +55,6 @@ DEPENDENCIES:
   - Appirater
   - Aspects (from `./Library/Aspects/`)
   - AsyncSwift
-  - CallbackURLKit (from `./Library/CallbackURLKit`)
   - Cartography
   - CocoaLumberjack/Swift (~> 3.0.0)
   - Crashlytics
@@ -80,8 +76,6 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Aspects:
     :path: ./Library/Aspects/
-  CallbackURLKit:
-    :path: ./Library/CallbackURLKit
   ICSMainFramework:
     :path: ./Library/ICSMainFramework/
 
@@ -90,7 +84,6 @@ SPEC CHECKSUMS:
   Appirater: e7c0a47fb67ee5041ce8479e6ba960927fb40264
   Aspects: 8ac2b7220e45929088e0c5330397540577e65e6a
   AsyncSwift: 632138e42ead868b53c745fcde9bf733ce1527ad
-  CallbackURLKit: 160c6c5eac9bee66d31eb5b3dcfe31197c073946
   Cartography: c1460e99395b824d9d75360b0382faeb0b33dcd7
   CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
   Crashlytics: 76f6beaff70acf226139582c09c78461597c2b98
@@ -110,6 +103,6 @@ SPEC CHECKSUMS:
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SwiftColor: c240d8cb2e1a29d731ae8deca8739eac6b9c56bd
 
-PODFILE CHECKSUM: fde8f1cb159c9cffc99022688471d101198b927f
+PODFILE CHECKSUM: 49ce3f8cbd32b55e272b7cfcf4a262dde99d5425
 
 COCOAPODS: 1.4.0
