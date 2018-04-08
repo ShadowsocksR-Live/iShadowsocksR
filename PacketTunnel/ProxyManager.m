@@ -191,8 +191,7 @@ void ssr_stop(void) {
 - (void)_startHttpProxy: (NSURL *)confURL {
     struct forward_spec *proxy = NULL;
     if (_shadowsocksProxyPort > 0) {
-        proxy = (malloc(sizeof(struct forward_spec)));
-        memset(proxy, 0, sizeof(struct forward_spec));
+        proxy = calloc(1, sizeof(*proxy));
         proxy->type = SOCKS_5;
         proxy->gateway_host = "127.0.0.1";
         proxy->gateway_port = _shadowsocksProxyPort;
