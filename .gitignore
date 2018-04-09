@@ -55,6 +55,7 @@ Carthage/Build
 fastlane
 
 Gemfile.lock
+Podfile.lock
 
 Confidential/
 Confidential.h
