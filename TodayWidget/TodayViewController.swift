@@ -62,7 +62,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
         stopTimer()
     }
 
-    func tryConnectStatusSocket() {
+    @objc func tryConnectStatusSocket() {
         let port = Potatso.sharedUserDefaults().integer(forKey: "tunnelStatusPort")
         guard port > 0 else {
             updateStatus(false)
@@ -89,13 +89,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
 
     // MARK: - Socket
 
-    func socket(_ sock: GCDAsyncSocket!, didConnectToHost host: String!, port: UInt16) {
+    func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         updateStatus(true)
         sock.delegate = nil
         sock.disconnect()
     }
 
-    func socketDidDisconnect(_ sock: GCDAsyncSocket!, withError err: Error!) {
+    func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         updateStatus(false)
     }
 

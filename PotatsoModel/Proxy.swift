@@ -66,17 +66,17 @@ extension ProxyError: CustomStringConvertible {
 }
 
 open class Proxy: BaseModel {
-    open dynamic var typeRaw = ProxyType.Shadowsocks.rawValue
-    open dynamic var name = ""
-    open dynamic var host = ""
-    open dynamic var port = 0
-    open dynamic var authscheme: String?  // method in SS
-    open dynamic var user: String?
-    open dynamic var password: String?
-    open dynamic var ota: Bool = false
-    open dynamic var ssrProtocol: String?
-    open dynamic var ssrObfs: String?
-    open dynamic var ssrObfsParam: String?
+    @objc open dynamic var typeRaw = ProxyType.Shadowsocks.rawValue
+    @objc open dynamic var name = ""
+    @objc open dynamic var host = ""
+    @objc open dynamic var port = 0
+    @objc open dynamic var authscheme: String?  // method in SS
+    @objc open dynamic var user: String?
+    @objc open dynamic var password: String?
+    @objc open dynamic var ota: Bool = false
+    @objc open dynamic var ssrProtocol: String?
+    @objc open dynamic var ssrObfs: String?
+    @objc open dynamic var ssrObfsParam: String?
     
     open static let ssUriPrefix = "ss://"
     open static let ssrUriPrefix = "ssr://"

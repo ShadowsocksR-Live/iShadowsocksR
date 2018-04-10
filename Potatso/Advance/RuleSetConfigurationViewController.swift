@@ -114,7 +114,7 @@ class ProxyRuleSetConfigurationViewController: FormViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func save() {
+    @objc func save() {
         do {
             let values = form.values()
             guard let name = (values[kProxyRuleSetFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.count > 0 else {

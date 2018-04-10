@@ -30,14 +30,14 @@ extension ProxyRuleSetError: CustomStringConvertible {
 }
 
 public final class ProxyRuleSet: BaseModel {
-    public dynamic var editable = true
-    public dynamic var name = ""
-    public dynamic var remoteUpdatedAt: TimeInterval = Date().timeIntervalSince1970
-    public dynamic var desc = ""
-    public dynamic var ruleCount = 0
-    public dynamic var rulesJSON = ""
-    public dynamic var isSubscribe = false
-    public dynamic var isOfficial = false
+    @objc public dynamic var editable = true
+    @objc public dynamic var name = ""
+    @objc public dynamic var remoteUpdatedAt: TimeInterval = Date().timeIntervalSince1970
+    @objc public dynamic var desc = ""
+    @objc public dynamic var ruleCount = 0
+    @objc public dynamic var rulesJSON = ""
+    @objc public dynamic var isSubscribe = false
+    @objc public dynamic var isOfficial = false
 
     fileprivate var cachedRules: [Rule]? = nil
 

@@ -32,7 +32,7 @@ extension UIViewController: UIGestureRecognizerDelegate  {
     
     // MARK: - Method Swizzling
     
-    func ics_viewWillAppear(_ animated: Bool) {
+    @objc func ics_viewWillAppear(_ animated: Bool) {
         self.ics_viewWillAppear(animated)
         if let navVC = self.navigationController {
             if !isModal() {
@@ -41,18 +41,18 @@ extension UIViewController: UIGestureRecognizerDelegate  {
         }
     }
     
-    func ics_viewDidLoad() {
+    @objc func ics_viewDidLoad() {
         self.ics_viewDidLoad()
     }
     
-    func ics_viewDidAppear(_ animated: Bool) {
+    @objc func ics_viewDidAppear(_ animated: Bool) {
         self.ics_viewDidAppear(animated)
         if let navVC = self.navigationController {
             enableSwipeGesture(navVC.viewControllers.count > 1)
         }
     }
     
-    func ics_viewWillDisappear(_ animated: Bool) {
+    @objc func ics_viewWillDisappear(_ animated: Bool) {
         self.ics_viewWillDisappear(animated)
     }
     
@@ -87,7 +87,7 @@ extension UIViewController: UIGestureRecognizerDelegate  {
         child.removeFromParentViewController()
     }
     
-    func pop() {
+    @objc func pop() {
         navigationController?.popViewController(animated: true)
     }
     

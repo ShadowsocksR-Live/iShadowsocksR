@@ -67,7 +67,7 @@ class CloudDetailViewController: UIViewController, UITableViewDataSource, UITabl
         return defaultRealm.objects(ProxyRuleSet.self).filter("uuid == '\(uuid)' && deleted == false").count > 0
     }
 
-    func subscribe() {
+    @objc func subscribe() {
         let uuid = ruleSet.uuid
         if isExist(uuid) {
             do {

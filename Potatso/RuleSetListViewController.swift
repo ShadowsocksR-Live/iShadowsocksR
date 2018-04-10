@@ -66,7 +66,7 @@ class ProxyRuleSetListViewController: UIViewController, UITableViewDataSource, U
         tableView.reloadData()
     }
 
-    func add() {
+    @objc func add() {
         let vc = ProxyRuleSetConfigurationViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

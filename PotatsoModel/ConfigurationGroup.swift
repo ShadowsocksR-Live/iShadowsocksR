@@ -31,10 +31,10 @@ extension ConfigurationGroupError: CustomStringConvertible {
 
 
 open class ConfigurationGroup: BaseModel {
-    open dynamic var editable = true
-    open dynamic var name = ""
-    open dynamic var defaultToProxy = true
-    open dynamic var dns = ""
+    @objc open dynamic var editable = true
+    @objc open dynamic var name = ""
+    @objc open dynamic var defaultToProxy = true
+    @objc open dynamic var dns = ""
     open var proxies = List<Proxy>()
     open var ruleSets = List<ProxyRuleSet>()
     

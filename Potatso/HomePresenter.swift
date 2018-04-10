@@ -150,7 +150,7 @@ class HomePresenter: NSObject {
         }
     }
 
-    func onVPNStatusChanged() {
+    @objc func onVPNStatusChanged() {
         self.delegate?.handleRefreshUI()
     }
 
