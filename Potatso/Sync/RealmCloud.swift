@@ -57,7 +57,7 @@ public func recordToLocalData(_ record: CKRecord) -> Data {
     Best practice is to perform desired changes on server record and then resend.
  */
 public func resolveConflicts(_ error: NSError,
-                             completionHandler: (NSError!) -> (),
+                             completionHandler: (NSError?) -> (),
                              resolver: (CKRecord, _ serverRecord: CKRecord) -> CKRecord) -> [CKRecord]? {
     
     var adjustedRecords = [CKRecord]()
