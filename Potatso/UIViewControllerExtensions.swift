@@ -11,12 +11,16 @@ import Aspects
 
 extension UIViewController: UIGestureRecognizerDelegate  {
     
-    open override class func initialize() {
-        
-        // make sure this isn't a subclass
-        if self !== UIViewController.self {
-            return
-        }
+    static private var hasSwizzled = false
+    
+    static let shared : UIViewController = {
+        $0.initialize()
+        return $0
+    }(UIViewController())
+    
+    func initialize() {
+        guard !UIViewController.hasSwizzled else { return }
+        UIViewController.hasSwizzled = true
         
         {
             UIViewController.aspectHook(#selector(viewDidLoad), swizzledSelector: #selector(ics_viewDidLoad))

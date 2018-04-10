@@ -17,6 +17,8 @@ let appID = "1070901416"
 class AppInitializer: NSObject, AppLifeCycleProtocol {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        _  = UIViewController.shared
+        
         configLogging()
         configAppirater()
         #if !DEBUG
