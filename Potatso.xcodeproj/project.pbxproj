@@ -2555,7 +2555,6 @@
 				9B07D6AE1CB7A6A900182C1B /* Resources */,
 				9B07D6BC1CB7AA7100182C1B /* CopyFiles */,
 				9E3CA0726A54201D3BE563DD /* [CP] Embed Pods Frameworks */,
-				DFE27DA4406124A31C225E80 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2614,7 +2613,6 @@
 				9B8193AF1CBCFEE700BE320D /* Frameworks */,
 				9B8193B01CBCFEE700BE320D /* Resources */,
 				9B8193EB1CBE37BB00BE320D /* Framework Hack */,
-				E6D432308925679EB4472079 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2656,7 +2654,6 @@
 				9B9B15B81C21595B000B6541 /* Sources */,
 				9B9B15BA1C21595B000B6541 /* Headers */,
 				9B9B15BB1C21595B000B6541 /* Resources */,
-				0526679806209AB06F424C61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2698,7 +2695,6 @@
 				9BC6FFE71CB28B4B00E5EA61 /* Headers */,
 				9BC6FFE81CB28B4B00E5EA61 /* Resources */,
 				B84B4E341D2176D6002B946A /* Framework Hack */,
-				6583E694C11E23CA380EEDB7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -3155,21 +3151,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0526679806209AB06F424C61 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotatsoLibrary/Pods-PotatsoLibrary-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1EEBB8881FFFF1F800EB33C3 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3183,21 +3164,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 92326569315d2336cbe215eae2b015aef513ed3c 9136206d79749547fb6e401c8b288bdbe04cbf586e049bf7dd50030fb461ace2";
-		};
-		6583E694C11E23CA380EEDB7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotatsoModel/Pods-PotatsoModel-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		6E4DEB81AF3E2C099E3A4375 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3547,36 +3513,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Potatso/Pods-Potatso-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFE27DA4406124A31C225E80 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PotatsoLibraryTests/Pods-PotatsoLibraryTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E6D432308925679EB4472079 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -3959,7 +3895,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -3979,7 +3915,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -4280,7 +4216,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -4322,7 +4258,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -4561,7 +4497,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/src/include\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/custom\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/src/include/ipv4\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/src/include/ipv6\"";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -4602,7 +4538,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/src/include\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/custom\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/src/include/ipv4\" \"$(SRCROOT)/$(TARGET_NAME)/tun2socks-iOS/lwip/src/include/ipv6\"";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

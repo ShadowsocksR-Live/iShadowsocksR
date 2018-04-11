@@ -10,7 +10,7 @@ end
 
 def library
     pod 'ICSMainFramework', :path => "./Library/ICSMainFramework/"
-    pod 'KeychainAccess'
+    pod 'KeychainAccess', '~> 3.1.1'
 end
 
 def model
@@ -32,7 +32,7 @@ target "Potatso" do
     pod 'ObjectMapper'
     pod 'CocoaLumberjack/Swift', '~> 3.0.0'
     pod 'Helpshift', '5.6.1'
-    pod 'PSOperations', '~> 3.0.0'
+    pod 'PSOperations', '~> 4.0.1'
     pod 'LogglyLogger-CocoaLumberjack', '~> 3.0'
     library
     fabric
