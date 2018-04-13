@@ -30,7 +30,7 @@ class FeedbackManager {
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "LogglyLoggerForceUploadNotification"), object: nil)
         HelpshiftSupport.setUserIdentifier(User.currentUser.id)
-        HelpshiftSupport.setMetadataBlock { () -> [AnyHashable: Any]! in
+        HelpshiftSupport.setMetadataBlock { () -> [AnyHashable: Any]? in
             return [
                 "Full Version": AppEnv.fullVersion,
                 "Default To Proxy": defaultToProxy ? "true": "false",
