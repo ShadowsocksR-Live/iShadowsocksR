@@ -11,7 +11,11 @@
 #import <netinet/in.h>
 #import "PotatsoBase.h"
 #import "Profile.h"
+#if USING_SSR_NATIVE
+#include <ssrNative/ssrNative.h>
+#else
 #include <ssrLocal/ssrLocal.h>
+#endif
 
 @interface ProxyManager () {
     int _shadowsocksProxyPort;
@@ -73,17 +77,23 @@ struct server_config * build_config_object(Profile *profile, unsigned short list
     return config;
 }
 
+#if USING_SSR_NATIVE
+struct ssr_client_state *g_state = NULL;
+void feedback_state(struct ssr_client_state *state, void *p) {
+    g_state = state;
+    shadowsocks_handler(ssr_get_listen_socket_fd(state), p);
+}
+#else
 struct ssr_local_state *g_state = NULL;
-
 void feedback_state(struct ssr_local_state *state, void *p) {
     g_state = state;
     shadowsocks_handler(ssr_Local_listen_socket_fd(state), p);
 }
+#endif
 
 void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath, void *context) {
     struct server_config *config = NULL;
     do {
-        //set_app_name(appPath);
         config = build_config_object(profile, listenPort);
         if (config == NULL) {
             break;
@@ -93,7 +103,12 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
             break;
         }
         
+#if USING_SSR_NATIVE
+        set_app_name(appPath);
+        ssr_run_loop_begin(config, &feedback_state, context);
+#else
         ssr_local_main_loop(config, &feedback_state, context);
+#endif
         g_state = NULL;
     } while(0);
     
@@ -101,7 +116,10 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
 }
 
 void ssr_stop(void) {
-   // ssr_run_loop_shutdown(g_state);
+#if USING_SSR_NATIVE
+    ssr_run_loop_shutdown(g_state);
+#else
+#endif
 }
 
 @implementation ProxyManager
