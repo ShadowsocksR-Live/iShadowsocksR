@@ -13,6 +13,8 @@
 #import "Profile.h"
 #if USING_SSR_NATIVE
 #include <ssrNative/ssrNative.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
+static DDLogLevel ddLogLevel = DDLogLevelWarning;
 #else
 #include <ssrLocal/ssrLocal.h>
 #endif
@@ -83,6 +85,11 @@ void feedback_state(struct ssr_client_state *state, void *p) {
     g_state = state;
     shadowsocks_handler(ssr_get_listen_socket_fd(state), p);
 }
+
+void info_callback(const char *info, void *p) {
+    DDLogWarn(@"%s", info);
+}
+
 #else
 struct ssr_local_state *g_state = NULL;
 void feedback_state(struct ssr_local_state *state, void *p) {
@@ -105,6 +112,8 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
         
 #if USING_SSR_NATIVE
         set_app_name(appPath);
+        [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
+        set_dump_info_callback(&info_callback, context);
         ssr_run_loop_begin(config, &feedback_state, context);
 #else
         ssr_local_main_loop(config, &feedback_state, context);

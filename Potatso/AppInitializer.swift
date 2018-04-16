@@ -36,7 +36,7 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
         let fileLogger = DDFileLogger() // File Logger
         fileLogger?.rollingFrequency = TimeInterval(60*60*24*3)  // 24 hours
         fileLogger?.logFileManager.maximumNumberOfLogFiles = 7
-        DDLog.add(fileLogger)
+        DDLog.add(fileLogger!)
 
         let logglyLogger = LogglyLogger() // Loggy Logger
         logglyLogger.logglyKey = InfoInternal.shared.getLogglyAPIKey()
@@ -49,8 +49,8 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
         DDLog.add(logglyLogger)
 
         #if DEBUG
-            DDLog.add(DDTTYLogger.sharedInstance()) // TTY = Xcode console
-            DDLog.add(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
+            DDLog.add(DDTTYLogger.sharedInstance) // TTY = Xcode console
+            DDLog.add(DDASLLogger.sharedInstance) // ASL = Apple System Logs
             DDLog.setLevel(DDLogLevel.all, for: DDTTYLogger.self)
             DDLog.setLevel(DDLogLevel.all, for: DDASLLogger.self)
         #else

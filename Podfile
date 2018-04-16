@@ -30,13 +30,17 @@ target "Potatso" do
     pod 'ISO8601DateFormatter', '~> 0.8'
     pod 'Alamofire'
     pod 'ObjectMapper'
-    pod 'CocoaLumberjack/Swift', '~> 3.0.0'
+    pod 'CocoaLumberjack/Swift', '~> 3.4.1'
     pod 'Helpshift', '5.6.1'
     pod 'PSOperations', '~> 4.0.1'
-    pod 'LogglyLogger-CocoaLumberjack', '~> 3.0'
+    pod 'LogglyLogger-CocoaLumberjack', '~> 3.0.0'
     library
     fabric
     model
+end
+
+target "PacketTunnel" do
+    pod 'CocoaLumberjack/Swift', '~> 3.4.1'
 end
 
 target "TodayWidget" do
