@@ -68,7 +68,7 @@ public final class ProxyRuleSet: BaseModel {
             cachedRules = []
             return
         }
-        cachedRules = jsonArray.flatMap({ Rule(json: $0) })
+        cachedRules = jsonArray.compactMap({ Rule(json: $0) })
     }
 
     public func addRule(_ rule: Rule) {
