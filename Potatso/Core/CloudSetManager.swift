@@ -30,6 +30,8 @@ class CloudSetManager {
                 uuidsArray.append(tObj as String)
             })
             
+            ///custom modify: disable cloudset update
+            /*
             API.updateProxyRuleSetListDetail(uuidsArray) { (response) in
                 if let sets = response.result.value {
                     do {
@@ -42,6 +44,7 @@ class CloudSetManager {
                     response.result.error?.log("Fail to update ruleset details")
                 }
             }
+             */
         }
     }
 }
