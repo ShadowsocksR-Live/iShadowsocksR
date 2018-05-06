@@ -64,11 +64,11 @@ class HomePresenter: NSObject {
         vc.navigationController?.pushViewController(chooseVC, animated: true)
     }
 
-    func chooseConfigGroups() {
+    @objc func chooseConfigGroups() {
         ConfigGroupChooseManager.shared.show()
     }
 
-    func showAddConfigGroup() {
+    @objc func showAddConfigGroup() {
         var urlTextField: UITextField?
         let alert = UIAlertController(title: "Add Config Group".localized(), message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in

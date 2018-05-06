@@ -51,16 +51,16 @@ class RequestOverviewVC: FormViewController {
         }
         return section
     }
-
-    func tableView(_ tableView: UITableView, shouldShowMenuForRowAtIndexPath indexPath: IndexPath) -> Bool {
+    
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
-    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAtIndexPath indexPath: IndexPath, withSender sender: AnyObject?) -> Bool {
+    
+    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         return action == #selector(copy(_:))
     }
-
-    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAtIndexPath indexPath: IndexPath, withSender sender: AnyObject?) {
+    
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         switch action {
         case #selector(copy(_:)):
             guard let cell = tableView.cellForRow(at: indexPath) as? RequestEventRowCell else {
@@ -69,7 +69,7 @@ class RequestOverviewVC: FormViewController {
             UIPasteboard.general.string = cell.copyContent
             // implement copy here
         default:
-            assertionFailure()
+            break
         }
     }
 

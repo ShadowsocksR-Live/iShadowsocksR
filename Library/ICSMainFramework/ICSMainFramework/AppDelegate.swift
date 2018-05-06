@@ -23,7 +23,7 @@ open class AppDelegate: UIResponder, UIApplicationDelegate {
         appConfig.loadConfig("config.plist")
         if let lifeCycleItems = appConfig.lifeCycleConfig[LifeCycleKey.didFinishLaunchingWithOptions] {
             for item in lifeCycleItems{
-                item.object?.application?(application, didFinishLaunchingWithOptions: launchOptions)
+                _ = item.object?.application?(application, didFinishLaunchingWithOptions: launchOptions)
             }
         }
         return true

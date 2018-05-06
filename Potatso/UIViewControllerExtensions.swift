@@ -95,7 +95,7 @@ extension UIViewController: UIGestureRecognizerDelegate  {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func close() {
+    @objc func close() {
         if let navVC = self.navigationController, navVC.viewControllers.count > 1 {
             pop()
         }else {
