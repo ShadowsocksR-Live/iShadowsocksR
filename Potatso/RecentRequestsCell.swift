@@ -77,9 +77,10 @@ class RecentRequestsCell: UITableViewCell {
     func setupLayout() {
         timeLabel.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
         timeLabel.setContentCompressionResistancePriority(UILayoutPriority.required, for: .horizontal)
-        constrain(contentView, self) { contentView, superview in
-            contentView.edges == superview.edges
-        }
+        ///custom modify: not needed
+//        constrain(contentView, self) { contentView, superview in
+//            contentView.edges == superview.edges
+//        }
         constrain(methodLabel, urlLabel, timeLabel, contentView) { methodLabel, urlLabel, timeLabel, contentView in
             methodLabel.width == 45
             methodLabel.leading == contentView.leading + 12
@@ -92,7 +93,8 @@ class RecentRequestsCell: UITableViewCell {
             urlLabel.leading == methodLabel.trailing + 10
             urlLabel.trailing == timeLabel.leading - 10
             
-            contentView.height >= 65
+            ///custom modify: cell height should specified in tableview delegate
+//            contentView.height >= 65
         }
         constrain(actionImageView, methodLabel) { actionImageView, methodLabel in
             actionImageView.centerX == methodLabel.centerX

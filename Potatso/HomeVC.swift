@@ -166,6 +166,23 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
                     }else {
                         $0.value = String(format: "%d rule".localized(), count)
                     }
+                    ///custom modify: for iOS 11
+                    let delete = SwipeAction(style: .destructive, title: "Delete".localized(), handler: { [unowned self] (action, row, success) in
+                        do {
+                            let indexPath = row.indexPath!
+                            try defaultRealm.write {
+                                self.presenter.group.ruleSets.remove(at: indexPath.row)
+                            }
+                            self.form[indexPath].hidden = true
+                            self.form[indexPath].evaluateHidden()
+                            self.tableView.reloadData()
+                            success?(true)
+                        } catch {
+                            self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
+                            success?(false)
+                        }
+                    })
+                    $0.trailingSwipe.actions = [delete]
                 }.cellSetup({ (cell, row) -> () in
                     cell.selectionStyle = .none
                 })
@@ -211,7 +228,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
                 }
                 form[indexPath].hidden = true
                 form[indexPath].evaluateHidden()
-            }catch {
+            } catch {
                 self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
             }
         }
