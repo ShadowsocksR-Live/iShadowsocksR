@@ -82,6 +82,9 @@ class RequestEventRowCell: Cell<RequestEvent>, CellType {
         titleLabel.text = event.stage.description
         timeLabel.text = RequestEventRowCell.dateformatter.string(from: Date(timeIntervalSince1970: event.timestamp))
         contentLabel.text = event.contentDescription
+        ///custom modify: fix ui bugs
+        textLabel?.text = nil
+        detailTextLabel?.text = nil
     }
 
     lazy var titleLabel: UILabel = {

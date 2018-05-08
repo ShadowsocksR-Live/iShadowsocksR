@@ -42,7 +42,7 @@ class ProxySelectionViewController: FormViewController {
         form.removeAll()
         proxies = defaultRealm.objects(Proxy.self).sorted(byKeyPath: "createAt").map{ $0 }
         form +++ Section("Proxy".localized())
-        let sets = proxies.filter { $0.name != nil }
+        let sets = proxies.filter { $0.name.count != 0 }
         for proxy in sets {
             form[0]
                 <<< CheckRow(proxy.name) {

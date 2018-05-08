@@ -27,9 +27,10 @@ class ProxyRuleSetCell: UITableViewCell {
 //        contentView.addSubview(avatarImageView)
 //        contentView.addSubview(authorNameLabel)
 //        contentView.addSubview(updateAtLabel)
-        constrain(contentView, self) { contentView, superview in
-            contentView.edges == superview.edges
-        }
+        ///custom modify: not needed
+//        constrain(contentView, self) { contentView, superview in
+//            contentView.edges == superview.edges
+//        }
         countLabel.setContentHuggingPriority(UILayoutPriority.required, for: .horizontal)
         countLabel.setContentCompressionResistancePriority(UILayoutPriority.required, for: .horizontal)
         constrain(titleLabel, countLabel, contentView) { titleLabel, countLabel, contentView in
