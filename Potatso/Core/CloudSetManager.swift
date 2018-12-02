@@ -24,12 +24,14 @@ class CloudSetManager {
             let uuids = realm.objects(ProxyRuleSet.self).filter("isSubscribe = true").map({$0.uuid})
             
             var uuidsArray: [String] = []
+            /*
+             // TODO: realm removed
             var iterator: LazyMapIterator<RLMIterator<ProxyRuleSet>, String>? = nil
             iterator = uuids.makeIterator()
             iterator?.forEach({ (tObj) in
                 uuidsArray.append(tObj as String)
             })
-            
+            */
             ///custom modify: disable cloudset update
             /*
             API.updateProxyRuleSetListDetail(uuidsArray) { (response) in
