@@ -26,6 +26,8 @@
 		3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BB92073C4AB00C848D5 /* libsodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BE02073C6DA00C848D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A104BDF2073C6D900C848D5 /* Profile.m */; };
 		3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BE12073DE9900C848D5 /* libcrypto.a */; };
+		3A14EE9521B44F55006291BC /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
+		3A14EE9621B44FC1006291BC /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D4D207A850300073C87 /* CallbackURLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A262D54207A855800073C87 /* CallbackURLKitClients.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D51207A850300073C87 /* CallbackURLKitClients.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A262D59207A85CE00073C87 /* CallbackURLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D4D207A850300073C87 /* CallbackURLKit.framework */; };
@@ -1284,6 +1286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A14EE9621B44FC1006291BC /* MMWormhole.framework in Frameworks */,
 				B88559F01D21371A00B1243E /* PotatsoModel.framework in Frameworks */,
 				1EEBB8781FFFD52700EB33C3 /* NetworkExtension.framework in Frameworks */,
 				9B8193DC1CBDE68100BE320D /* PotatsoBase.framework in Frameworks */,
@@ -1316,6 +1319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A14EE9521B44F55006291BC /* MMWormhole.framework in Frameworks */,
 				3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */,
 				3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */,
 				3ADE7D0320737366000F70AA /* yaml.framework in Frameworks */,
@@ -4316,6 +4320,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PotatsoLibrary",
+					"${BUILT_PRODUCTS_DIR}",
 				);
 				INFOPLIST_FILE = PotatsoLibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -4352,6 +4357,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PotatsoLibrary",
+					"${BUILT_PRODUCTS_DIR}",
 				);
 				INFOPLIST_FILE = PotatsoLibrary/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
