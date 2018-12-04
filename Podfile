@@ -3,11 +3,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-def fabric
-    pod 'Fabric'
-    pod 'Crashlytics'
-end
-
 def library
     pod 'ICSMainFramework', :path => "./Library/ICSMainFramework/"
     pod 'KeychainAccess', '~> 3.1.1'
@@ -35,7 +30,6 @@ target "Potatso" do
     pod 'PSOperations', '~> 4.0.1'
     pod 'LogglyLogger-CocoaLumberjack', '~> 3.0.0'
     library
-    fabric
     model
 end
 

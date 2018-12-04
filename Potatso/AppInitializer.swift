@@ -9,7 +9,6 @@
 import Foundation
 import ICSMainFramework
 import Appirater
-import Fabric
 import LogglyLogger_CocoaLumberjack
 
 let appID = "1070901416"
@@ -21,9 +20,6 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
         
         configLogging()
         configAppirater()
-        #if !DEBUG
-            Fabric.with([Answers.self, Crashlytics.self])
-        #endif
         configHelpShift()
         return true
     }
