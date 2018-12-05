@@ -37,6 +37,7 @@ DerivedData
 *.xcworkspace
 xcshareddata/**
 Potatso.xcworkspace/xcshareddata/
+Potatso.xcodeproj/xcshareddata/
 
 # CocoaPods
 #

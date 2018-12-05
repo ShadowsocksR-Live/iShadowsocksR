@@ -480,7 +480,7 @@ void BTap_Send (BTap *o, uint8_t *data, int data_len)
 #if TCP_DATA_LOG_ENABLE
     BLog(BLOG_DEBUG, "tun2socks send to tunnel data<len: %d>", data_len);
 #endif
-    [TunnelInterface writePacket:outdata];
+    [[TunnelInterface sharedInterface] writePacket:outdata];
     return;
     uint8_t msg[o->frame_mtu+2];
     msg[0] = data_len / 256;

@@ -45,7 +45,7 @@
     [self openLog];
     NSLog(@"starting potatso tunnel...");
     [self updateUserDefaults];
-    NSError *error = [TunnelInterface setupWithPacketTunnelFlow:self.packetFlow];
+    NSError *error = [[TunnelInterface sharedInterface] setupWithPacketTunnelFlow:self.packetFlow];
     if (error) {
         completionHandler(error);
         exit(1);
@@ -176,9 +176,9 @@
         __strong typeof(self) strongSelf = weakSelf;
         if (error == nil) {
             [weakSelf addObserver:weakSelf forKeyPath:@"defaultPath" options:NSKeyValueObservingOptionInitial context:nil];
-            [TunnelInterface startTun2Socks:[ProxyManager sharedManager].socksProxyPort];
+            [[TunnelInterface sharedInterface] startTun2Socks:[ProxyManager sharedManager].socksProxyPort];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [TunnelInterface processPackets];
+                [[TunnelInterface sharedInterface] processPackets];
             });
         }
         if (strongSelf->_pendingStartCompletion) {
@@ -268,7 +268,7 @@
     [[Potatso sharedUserDefaults] synchronize];
     [[ProxyManager sharedManager] stopHttpProxy];
     [[ProxyManager sharedManager] stopSocksProxy];
-    [TunnelInterface stop];
+    [[TunnelInterface sharedInterface] stop];
 }
 
 - (void)onTun2SocksFinished {
