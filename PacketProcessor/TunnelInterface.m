@@ -44,6 +44,11 @@
     if (self) {
         _udpSession = [NSMutableDictionary dictionaryWithCapacity:5];
         _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_queue_create("udp", NULL)];
+        
+        int fds[2] = { 0 };
+        pipe(fds);
+        _readFd = fds[0];
+        _writeFd = fds[1];
     }
     return self;
 }
@@ -68,18 +73,13 @@
     if (error) {
         return [NSError errorWithDomain:kTunnelInterfaceErrorDomain code:1 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"UDP bind fail(%@).", [error localizedDescription]]}];
     }
-    
-    int fds[2] = { 0 };
-    if (pipe(fds) < 0) {
-        return [NSError errorWithDomain:kTunnelInterfaceErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey: @"Unable to pipe."}];
-    }
-    _readFd = fds[0];
-    _writeFd = fds[1];
     return nil;
 }
 
 - (void) startTun2Socks:(int)socksServerPort {
-    [NSThread detachNewThreadSelector:@selector(_startTun2Socks:) toTarget:self withObject:@(socksServerPort)];
+    dispatch_async(dispatch_queue_create(NULL, DISPATCH_QUEUE_CONCURRENT), ^{
+        [self _startTun2Socks:socksServerPort];
+    });
 }
 
 - (void) stop {
@@ -110,9 +110,9 @@
     }];
 }
 
-- (void) _startTun2Socks:(NSNumber *)socksServerPort {
+- (void) _startTun2Socks:(int)socksServerPort {
     char socks_server[50];
-    sprintf(socks_server, "127.0.0.1:%d", (int)([socksServerPort integerValue]));
+    sprintf(socks_server, "127.0.0.1:%d", (int)socksServerPort);
 #if TCP_DATA_LOG_ENABLE
     char *log_lvel = "debug";
 #else

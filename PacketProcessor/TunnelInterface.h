@@ -14,7 +14,8 @@
 #define kTun2SocksStoppedNotification @"kTun2SocksStoppedNotification"
 
 @interface TunnelInterface : NSObject
-+ (TunnelInterface *)sharedInterface;
++ (TunnelInterface *) sharedInterface;
+- (instancetype) init NS_UNAVAILABLE;
 - (NSError *) setupWithPacketTunnelFlow:(NEPacketTunnelFlow *)packetFlow;
 - (void) processPackets;
 - (void) writePacket:(NSData *)packet;
