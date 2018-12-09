@@ -79,7 +79,6 @@ We use the following services or open-source libraries. So we'd like show them h
 ### Services
 
 - [realm](https://realm.io/)
-- [HelpShift](https://www.helpshift.com)
 
 ### Open-source Libraries
 

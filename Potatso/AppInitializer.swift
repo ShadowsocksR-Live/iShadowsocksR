@@ -20,7 +20,6 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
         
         configLogging()
         configAppirater()
-        configHelpShift()
         return true
     }
 
@@ -52,11 +51,6 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
         #else
 
         #endif
-    }
-
-    func configHelpShift() {
-        HelpshiftCore.initialize(with: HelpshiftAll.sharedInstance())
-        HelpshiftCore.install(forApiKey: HELPSHIFT_KEY, domainName: HELPSHIFT_DOMAIN, appID: HELPSHIFT_ID)
     }
     
 }
