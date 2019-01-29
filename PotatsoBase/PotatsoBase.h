@@ -21,3 +21,4 @@ FOUNDATION_EXPORT const unsigned char PotatsoBaseVersionString[];
 #import "NSError+Helper.h"
 #import "Settings.h"
 #import "InfoInternal.h"
+#import "NSString+Localize.h"

@@ -48,6 +48,8 @@
 		3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3AA1235521F2FB6400E5ED49 /* InfoInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA1235321F2FB6400E5ED49 /* InfoInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3AA1235621F2FB6400E5ED49 /* InfoInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1235421F2FB6400E5ED49 /* InfoInternal.m */; };
+		3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABE26712200927B006EDDBA /* NSString+Localize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE26722200927B006EDDBA /* NSString+Localize.m */; };
 		3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		3ADE7CFB207372E1000F70AA /* yaml.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ADE7D002073733D000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
@@ -240,7 +242,6 @@
 		B8CCC6E71CFDD99E000E7E2E /* ProxyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6E61CFDD99E000E7E2E /* ProxyListViewController.swift */; };
 		B8CCC6EB1CFF1501000E7E2E /* ProxyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6EA1CFF1501000E7E2E /* ProxyRow.swift */; };
 		B8D7F1841D518FF000B115F3 /* DBUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D7F1831D518FF000B115F3 /* DBUtils.swift */; };
-		B8D8CC0A1D506CB900CE6C0D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8CC091D506CB900CE6C0D /* Localized.swift */; };
 		B8D8CC111D50D5CD00CE6C0D /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8CC101D50D5CD00CE6C0D /* SyncManager.swift */; };
 		B8D8CC131D50D5DB00CE6C0D /* ICloudSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8CC121D50D5DB00CE6C0D /* ICloudSyncService.swift */; };
 		B8EAC5941D40BF310046963C /* TunnelError.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EAC5931D40BF310046963C /* TunnelError.m */; };
@@ -671,6 +672,8 @@
 		3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMWormhole.xcodeproj; path = Library/MMWormhole/MMWormhole/MMWormhole.xcodeproj; sourceTree = "<group>"; };
 		3AA1235321F2FB6400E5ED49 /* InfoInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoInternal.h; sourceTree = "<group>"; };
 		3AA1235421F2FB6400E5ED49 /* InfoInternal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoInternal.m; sourceTree = "<group>"; };
+		3ABE26712200927B006EDDBA /* NSString+Localize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localize.h"; sourceTree = "<group>"; };
+		3ABE26722200927B006EDDBA /* NSString+Localize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localize.m"; sourceTree = "<group>"; };
 		3AF6B0482084AD7C00A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF6B04A2084B04900A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494FBA89E140F817CCF2ACA /* Pods_PotatsoLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotatsoLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1235,7 +1238,6 @@
 		B8CCC6EA1CFF1501000E7E2E /* ProxyRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyRow.swift; path = ../ProxyRow.swift; sourceTree = "<group>"; };
 		B8CF2F991D3DF69E009C9FF3 /* Confidential.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Confidential.h; sourceTree = "<group>"; };
 		B8D7F1831D518FF000B115F3 /* DBUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBUtils.swift; sourceTree = "<group>"; };
-		B8D8CC091D506CB900CE6C0D /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		B8D8CC101D50D5CD00CE6C0D /* SyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		B8D8CC121D50D5DB00CE6C0D /* ICloudSyncService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudSyncService.swift; sourceTree = "<group>"; };
 		B8EAC5921D40BF310046963C /* TunnelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TunnelError.h; sourceTree = "<group>"; };
@@ -1715,7 +1717,6 @@
 			isa = PBXGroup;
 			children = (
 				9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */,
-				B8D8CC091D506CB900CE6C0D /* Localized.swift */,
 				9BC600291CB2922E00E5EA61 /* Potatso.h */,
 				9BC6002A1CB2922E00E5EA61 /* Potatso.m */,
 				B8F784651D3678B400F02FF5 /* Settings.h */,
@@ -1727,6 +1728,8 @@
 				9BC600211CB2921C00E5EA61 /* Info.plist */,
 				3AA1235321F2FB6400E5ED49 /* InfoInternal.h */,
 				3AA1235421F2FB6400E5ED49 /* InfoInternal.m */,
+				3ABE26712200927B006EDDBA /* NSString+Localize.h */,
+				3ABE26722200927B006EDDBA /* NSString+Localize.m */,
 			);
 			path = PotatsoBase;
 			sourceTree = "<group>";
@@ -2540,6 +2543,7 @@
 				3AA1235521F2FB6400E5ED49 /* InfoInternal.h in Headers */,
 				9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */,
 				9BC6002B1CB2922E00E5EA61 /* Potatso.h in Headers */,
+				3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3549,10 +3553,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8D8CC0A1D506CB900CE6C0D /* Localized.swift in Sources */,
 				9BC6002C1CB2922E00E5EA61 /* Potatso.m in Sources */,
 				9BC600341CB299DE00E5EA61 /* NSError+Helper.m in Sources */,
 				B8F784681D3678B400F02FF5 /* Settings.m in Sources */,
+				3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */,
 				3AA1235621F2FB6400E5ED49 /* InfoInternal.m in Sources */,
 				9BC600321CB299DE00E5EA61 /* JSONUtils.m in Sources */,
 			);
