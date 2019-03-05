@@ -50,7 +50,3 @@ end
 target "PotatsoModel" do
     model
 end
-
-target "PotatsoLibraryTests" do
-    library
-end
