@@ -50,11 +50,11 @@ pod install                                # pull down dependencies into our pro
 cd Library/openssl
 ./build-libssl.sh                          # build OpenSSL library
 ```
-Then open `Potatso.xcworkspace` to Build and Run the project. Done.
+Then open `Potatso.xcworkspace` with `Xcode` to Build and Run the project. Done.
 
 ## Tips
 
-- If you are a China mainland developer, you must set your git with proxy, such as SOCKS5 etc. Like this:
+- If you are a China mainland developer, you must set your git with proxy, such as SOCKS5 etc, or you can not pull some submodules because of `GFW`. Like this:
 ```
 # Enable Proxy settings
 git config --global http.proxy socks5://127.0.0.1:1080
@@ -64,7 +64,7 @@ git config --global https.proxy socks5://127.0.0.1:1080
 git config --global --unset-all
 ```
 - You must have an Apple Developer account with an annual fee of $99.
-- To compile the app running on your ios device, you must search the project for the `com.ssrlive.issr` string and replace it with your own identifier string.
+- To compile the app running on your iOS device, you must search the project for the `com.ssrlive.issr` identifier string and replace it with your own identifier string.
 
 
 ## How To Contribute
