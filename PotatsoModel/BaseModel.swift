@@ -1,6 +1,5 @@
 //
 //  BaseModel.swift
-//  Potatso
 //
 //  Created by LEI on 4/6/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

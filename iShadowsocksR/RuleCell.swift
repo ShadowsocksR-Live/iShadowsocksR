@@ -1,6 +1,5 @@
 //
 //  RuleCell.swift
-//  Potatso
 //
 //  Created by LEI on 6/7/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

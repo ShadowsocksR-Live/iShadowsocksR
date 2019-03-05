@@ -1,6 +1,5 @@
 //
 //  AntinatServer.m
-//  Potatso
 //
 //  Created by LEI on 12/25/15.
 //  Copyright © 2015 TouchingApp. All rights reserved.

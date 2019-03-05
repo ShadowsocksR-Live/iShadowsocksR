@@ -1,6 +1,5 @@
 //
 //  PotatsoManager.h
-//  Potatso
 //
 //  Created by LEI on 4/4/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

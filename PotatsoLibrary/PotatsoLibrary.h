@@ -1,6 +1,5 @@
 //
 //  PotatsoLibrary.h
-//  PotatsoLibrary
 //
 //  Created by LEI on 12/16/15.
 //  Copyright © 2015 TouchingApp. All rights reserved.

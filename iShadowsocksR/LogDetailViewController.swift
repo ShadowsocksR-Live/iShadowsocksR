@@ -1,6 +1,5 @@
 //
 //  LogDetailViewController.swift
-//  Potatso
 //
 //  Created by LEI on 4/21/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

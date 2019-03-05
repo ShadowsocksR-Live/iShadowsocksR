@@ -1,6 +1,5 @@
 //
 //  BaseSafariViewController.swift
-//  Potatso
 //
 //  Created by LEI on 12/30/15.
 //  Copyright © 2015 TouchingApp. All rights reserved.

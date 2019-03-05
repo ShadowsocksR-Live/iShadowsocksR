@@ -1,6 +1,5 @@
 //
 //  FlatButton.swift
-//  Potatso
 //
 //  Created by LEI on 6/22/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

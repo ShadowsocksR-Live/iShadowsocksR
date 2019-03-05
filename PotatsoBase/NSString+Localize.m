@@ -1,6 +1,5 @@
 //
 //  NSString+Localize.m
-//  PotatsoBase
 //
 //  Created by ssrlive on 2019/1/29.
 //  Copyright © 2019 ssrLive. All rights reserved.

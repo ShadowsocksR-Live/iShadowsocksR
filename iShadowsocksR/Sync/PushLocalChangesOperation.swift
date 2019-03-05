@@ -1,6 +1,5 @@
 //
 //  PushLocalChangesOperation.swift
-//  Potatso
 //
 //  Created by LEI on 8/12/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

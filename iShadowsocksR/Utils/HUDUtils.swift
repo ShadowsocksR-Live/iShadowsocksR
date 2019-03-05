@@ -1,6 +1,5 @@
 //
 //  HUDUtils.swift
-//  Potatso
 //
 //  Created by LEI on 3/25/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

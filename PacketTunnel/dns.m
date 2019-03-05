@@ -1,6 +1,5 @@
 //
 //  dns.c
-//  Potatso
 //
 //  Created by LEI on 11/11/15.
 //  Copyright © 2015 TouchingApp. All rights reserved.

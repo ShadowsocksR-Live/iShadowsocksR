@@ -1,6 +1,5 @@
 //
 //  ConfigGroupChooseVC.swift
-//  Potatso
 //
 //  Created by LEI on 5/27/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

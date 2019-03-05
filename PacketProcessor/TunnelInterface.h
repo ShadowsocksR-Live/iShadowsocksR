@@ -1,6 +1,5 @@
 //
 //  TunnelInterface.h
-//  Potatso
 //
 //  Created by LEI on 12/23/15.
 //  Copyright © 2015 TouchingApp. All rights reserved.

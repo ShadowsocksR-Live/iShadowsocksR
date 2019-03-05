@@ -1,6 +1,5 @@
 //
 //  RuleConfigurationViewController.swift
-//  Potatso
 //
 //  Created by LEI on 3/9/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

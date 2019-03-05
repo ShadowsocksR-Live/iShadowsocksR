@@ -1,6 +1,5 @@
 //
 //  RequestStageCell.swift
-//  Potatso
 //
 //  Created by LEI on 7/17/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

@@ -1,6 +1,5 @@
 //
 //  InfoInternal.m
-//  PotatsoBase
 //
 //  Created by ssrlive on 2019/1/19.
 //  Copyright © 2019 TouchingApp. All rights reserved.

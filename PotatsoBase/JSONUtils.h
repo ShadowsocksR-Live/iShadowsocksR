@@ -1,6 +1,5 @@
 //
 //  JSONUtils.h
-//  Potatso
 //
 //  Created by LEI on 3/15/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

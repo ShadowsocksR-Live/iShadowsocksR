@@ -1,6 +1,5 @@
 //
 //  Manager.swift
-//  Potatso
 //
 //  Created by LEI on 4/7/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

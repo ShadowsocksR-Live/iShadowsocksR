@@ -1,6 +1,5 @@
 //
 //  ProxyRow.swift
-//  Potatso
 //
 //  Created by LEI on 6/1/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

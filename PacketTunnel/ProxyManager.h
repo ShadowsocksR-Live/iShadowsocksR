@@ -1,6 +1,5 @@
 //
 //  ProxyManager.h
-//  Potatso
 //
 //  Created by LEI on 2/23/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

@@ -1,6 +1,5 @@
 //
 //  UrlHandler.swift
-//  Potatso
 //
 //  Created by LEI on 4/13/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.

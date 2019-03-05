@@ -1,6 +1,5 @@
 //
 //  API.swift
-//  Potatso
 //
 //  Created by LEI on 6/4/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.
