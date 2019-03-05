@@ -1220,7 +1220,6 @@
 		B8F784651D3678B400F02FF5 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		B8F784661D3678B400F02FF5 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		B8F7AE3D1D5F178A005CA41E /* CloudSetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudSetManager.swift; sourceTree = "<group>"; };
-		EAD29F8E3BFD4FCBFA78801E /* Pods_iShadowsocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iShadowsocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2765FE72409B9E2FA7F81BB /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2458,7 +2457,6 @@
 				5494FBA89E140F817CCF2ACA /* Pods_PotatsoLibrary.framework */,
 				2589D04E6C48F30ED63BA84F /* Pods_PotatsoModel.framework */,
 				A692B80DC5DB316AA1DED8CB /* Pods_TodayWidget.framework */,
-				EAD29F8E3BFD4FCBFA78801E /* Pods_iShadowsocks.framework */,
 				87762605D2086ABC8A92E142 /* Pods_iShadowsocksR.framework */,
 			);
 			name = Frameworks;

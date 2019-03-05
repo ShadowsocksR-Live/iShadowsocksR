@@ -50,11 +50,11 @@ pod install                                # pull down dependencies into our pro
 cd Library/openssl
 ./build-libssl.sh                          # build OpenSSL library
 ```
-Then open `Potatso.xcworkspace` with `Xcode` to Build and Run the project. Done.
+Then open `iShadowsocksR.xcworkspace` with `Xcode` to Build and Run the project. Done.
 
 ## Tips
 
-- If you are a China mainland developer, you must set your git with proxy, such as SOCKS5 etc, or you can not pull some submodules because of `GFW`. Like this:
+- If you are a China mainland developer, you must set your git with proxy, such as SOCKS5 etc., or you can not pull some submodules because of `GFW`. Like this:
 ```
 # Enable Proxy settings
 git config --global http.proxy socks5://127.0.0.1:1080
