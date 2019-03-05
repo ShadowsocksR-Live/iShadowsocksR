@@ -33,11 +33,9 @@ xcuserdata
 DerivedData
 *.hmap
 *.ipa
-*.xcuserstate
-*.xcworkspace
-xcshareddata/**
-Potatso.xcworkspace/xcshareddata/
-Potatso.xcodeproj/xcshareddata/
+*.xcuserstata
+xcshareddata/
+iShadowsocksR.xcodeproj/project.xcworkspace/
 
 # CocoaPods
 #

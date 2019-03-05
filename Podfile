@@ -12,7 +12,7 @@ def model
     pod 'RealmSwift', '~> 2.10.2'
 end
 
-target "Potatso" do
+target "iShadowsocksR" do
     pod 'Aspects', :path => "./Library/Aspects/"
     pod 'Cartography'
     pod 'AsyncSwift'
