@@ -44,30 +44,29 @@ Be warned that you **should not** call `pod update` as newer version of pod fram
 ```
 git clone https://github.com/ssrlive/iShadowsocksR.git
 cd iShadowsocksR
-git submodule update --init --recursive    # update git submodule
+git submodule update --init --recursive    # update git submodules
+sudo gem install cocoapods
 pod install                                # pull down dependencies into our project
 cd Library/openssl
 ./build-libssl.sh                          # build OpenSSL library
 ```
 Then open `Potatso.xcworkspace` to Build and Run the project. Done.
 
-## Code Notices (outdated, will review this part again)
+## Tips
 
-There're a couple of issues that needed to look at, but after testing, it does **not** affect the functionality of the app.
+- If you are a China mainland developer, you must set your git with proxy, such as SOCKS5 etc. Like this:
+```
+# Enable Proxy settings
+git config --global http.proxy socks5://127.0.0.1:1080
+git config --global https.proxy socks5://127.0.0.1:1080
 
-* In file `Potatso/Core/API.swift`, it's the following code focusing on line with comment that I can't figure it out yet how to migrate it to Swift 3 code.  
+# Disable Proxy settings
+git config --global --unset-all
+```
+- You must have an Apple Developer account with an annual fee of $99.
+- To compile the app running on your ios device, you must search the project for the `com.ssrlive.issr` string and replace it with your own identifier string.
 
-   ```swift
-   var JSONToMap: AnyObject?
-   if let keyPath = keyPath, keyPath.isEmpty == false {
-       //JSONToMap = (result.value? as AnyObject).value(forKeyPath: keyPath)
-       JSONToMap = nil
-   } else {
-       JSONToMap = result.value as AnyObject?
-   }
-   ```
-* Potatso core code depends on version `1.7.0` of Eureka with manual migration to Swift 3. It's already done and linked to project. But you will see `observeValue()` function in `Eureka/Source/Rows/PostalAddressRow.swift` that has been commented for all of its function code due to Eureka's newer version `2.0.0-beta.1` doesn't include such file in the project anymore, but it still works with no problem. This note is meant to mark that there is going to be a lot of effort if we decide to depend on Eureka version `2.0.0-beta.1` as we need to change a lot of Potatso core code.
-   
+
 ## How To Contribute
 
 Clone the project, make some changes or add a new feature, then make a pull request.
