@@ -40,7 +40,7 @@ open class BaseModel: Object {
     @objc open dynamic var deleted = false
     @objc open dynamic var synced = false
 
-    override open static func primaryKey() -> String? {
+    override open class func primaryKey() -> String? {
         return "uuid"
     }
     
