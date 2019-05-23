@@ -264,6 +264,12 @@ extension Manager {
                 chain.addChild(uri)
                 let authscheme = XMLElement.element(withName: "authscheme", children: nil, attributes: [XMLNode.attribute(withName: "value", stringValue: "anonymous") as! DDXMLNode]) as! XMLElement
                 chain.addChild(authscheme)
+            case .ShadowsocksR:
+                let uriString = "socks5://127.0.0.1:${ssport}"
+                let uri = XMLElement.element(withName: "uri", children: nil, attributes: [XMLNode.attribute(withName: "value", stringValue: uriString) as! DDXMLNode]) as! XMLElement
+                chain.addChild(uri)
+                let authscheme = XMLElement.element(withName: "authscheme", children: nil, attributes: [XMLNode.attribute(withName: "value", stringValue: "anonymous") as! DDXMLNode]) as! XMLElement
+                chain.addChild(authscheme)
             default:
                 break
             }
