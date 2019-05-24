@@ -61,7 +61,8 @@ git config --global http.proxy socks5://127.0.0.1:1080
 git config --global https.proxy socks5://127.0.0.1:1080
 
 # Disable Proxy settings
-git config --global --unset-all
+git config --global --unset-all http.proxy
+git config --global --unset-all https.proxy
 ```
 - You must have an Apple Developer account with an annual fee of $99.
 - To compile the app running on your iOS device, you must search the project for the `com.ssrlive.issr` identifier string and replace it with your own identifier string.

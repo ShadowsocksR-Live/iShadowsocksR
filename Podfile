@@ -14,7 +14,7 @@ end
 
 target "iShadowsocksR" do
     pod 'Aspects', :path => "./Library/Aspects/"
-    pod 'Cartography'
+    pod 'Cartography', '~> 3.0.4'
     pod 'AsyncSwift'
     pod 'SwiftColor'
     pod 'Appirater'
@@ -36,7 +36,7 @@ target "PacketTunnel" do
 end
 
 target "TodayWidget" do
-    pod 'Cartography'
+    pod 'Cartography', '~> 3.0.4'
     pod 'SwiftColor'
     library
     model
