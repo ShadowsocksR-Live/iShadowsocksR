@@ -7,7 +7,6 @@
 
 import Foundation
 import ICSMainFramework
-import LogglyLogger_CocoaLumberjack
 
 class FeedbackManager {
     static let shared = FeedbackManager()

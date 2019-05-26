@@ -26,7 +26,6 @@ target "iShadowsocksR" do
     pod 'ObjectMapper'
     pod 'CocoaLumberjack/Swift', '~> 3.4.1'
     pod 'PSOperations', '~> 4.0.1'
-    pod 'LogglyLogger-CocoaLumberjack', '~> 3.0.0'
     library
     model
 end

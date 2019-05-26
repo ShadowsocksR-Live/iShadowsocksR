@@ -46,8 +46,6 @@
 		3A8AC91D207543B0002843E0 /* MMWormhole.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8AC92320754441002843E0 /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
-		3AA1235521F2FB6400E5ED49 /* InfoInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AA1235321F2FB6400E5ED49 /* InfoInternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3AA1235621F2FB6400E5ED49 /* InfoInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1235421F2FB6400E5ED49 /* InfoInternal.m */; };
 		3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABE26712200927B006EDDBA /* NSString+Localize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE26722200927B006EDDBA /* NSString+Localize.m */; };
 		3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
@@ -650,8 +648,6 @@
 		3A8780CA20754B2000B96BF3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaAsyncSocket.xcodeproj; path = Library/CocoaAsyncSocket/CocoaAsyncSocket.xcodeproj; sourceTree = "<group>"; };
 		3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMWormhole.xcodeproj; path = Library/MMWormhole/MMWormhole/MMWormhole.xcodeproj; sourceTree = "<group>"; };
-		3AA1235321F2FB6400E5ED49 /* InfoInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfoInternal.h; sourceTree = "<group>"; };
-		3AA1235421F2FB6400E5ED49 /* InfoInternal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfoInternal.m; sourceTree = "<group>"; };
 		3ABE26712200927B006EDDBA /* NSString+Localize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localize.h"; sourceTree = "<group>"; };
 		3ABE26722200927B006EDDBA /* NSString+Localize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localize.m"; sourceTree = "<group>"; };
 		3AF6B0482084AD7C00A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1666,8 +1662,6 @@
 				9BC6002F1CB299DE00E5EA61 /* NSError+Helper.h */,
 				9BC600301CB299DE00E5EA61 /* NSError+Helper.m */,
 				9BC600211CB2921C00E5EA61 /* Info.plist */,
-				3AA1235321F2FB6400E5ED49 /* InfoInternal.h */,
-				3AA1235421F2FB6400E5ED49 /* InfoInternal.m */,
 				3ABE26712200927B006EDDBA /* NSString+Localize.h */,
 				3ABE26722200927B006EDDBA /* NSString+Localize.m */,
 			);
@@ -2480,7 +2474,6 @@
 				9BC600331CB299DE00E5EA61 /* NSError+Helper.h in Headers */,
 				9BC600311CB299DE00E5EA61 /* JSONUtils.h in Headers */,
 				B8F784671D3678B400F02FF5 /* Settings.h in Headers */,
-				3AA1235521F2FB6400E5ED49 /* InfoInternal.h in Headers */,
 				9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */,
 				9BC6002B1CB2922E00E5EA61 /* Potatso.h in Headers */,
 				3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */,
@@ -3252,13 +3245,12 @@
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
 				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
 				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
-				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack.default-Swift/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/ICDMaterialActivityIndicatorView/ICDMaterialActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ICSMainFramework/ICSMainFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/ICSPullToRefresh/ICSPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/LogglyLogger-CocoaLumberjack/LogglyLogger_CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PSOperations/PSOperations.framework",
@@ -3279,7 +3271,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICSPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LogglyLogger_CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSOperations.framework",
@@ -3414,7 +3405,6 @@
 				9BC600341CB299DE00E5EA61 /* NSError+Helper.m in Sources */,
 				B8F784681D3678B400F02FF5 /* Settings.m in Sources */,
 				3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */,
-				3AA1235621F2FB6400E5ED49 /* InfoInternal.m in Sources */,
 				9BC600321CB299DE00E5EA61 /* JSONUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

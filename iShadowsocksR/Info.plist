@@ -54,13 +54,6 @@
 	<string>The App want to access your Location When In Use</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>The App want to access your Photo Library</string>
-	<key>PotatsoInternal</key>
-	<dict>
-		<key>GroupIdentifier</key>
-		<string>group.com.ssrlive.issr</string>
-		<key>LogglyAPIKey</key>
-		<string>488db635-457d-48f4-8818-ffcd489f588b</string>
-	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
