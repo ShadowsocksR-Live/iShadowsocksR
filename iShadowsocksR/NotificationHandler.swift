@@ -8,6 +8,7 @@
 import Foundation
 import ICSMainFramework
 import CloudKit
+import CocoaLumberjackSwift
 
 class NotificationHandler: NSObject, AppLifeCycleProtocol {
 

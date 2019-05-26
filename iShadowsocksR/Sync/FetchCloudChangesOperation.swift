@@ -2,6 +2,7 @@ import Foundation
 import RealmSwift
 import CloudKit
 import PSOperations
+import CocoaLumberjackSwift
 
 struct FetchResults {
     var changedRecords: [CKRecord] = []

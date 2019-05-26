@@ -2,6 +2,7 @@ import Foundation
 import RealmSwift
 import CloudKit
 import PSOperations
+import CocoaLumberjackSwift
 
 class PushLocalChangesBaseOperation: PSOperations.Operation {
     

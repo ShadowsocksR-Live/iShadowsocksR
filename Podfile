@@ -24,14 +24,9 @@ target "iShadowsocksR" do
     pod 'ISO8601DateFormatter', '~> 0.8'
     pod 'Alamofire'
     pod 'ObjectMapper'
-    pod 'CocoaLumberjack/Swift', '~> 3.4.1'
     pod 'PSOperations', '~> 4.0.1'
     library
     model
-end
-
-target "PacketTunnel" do
-    pod 'CocoaLumberjack/Swift', '~> 3.4.1'
 end
 
 target "TodayWidget" do

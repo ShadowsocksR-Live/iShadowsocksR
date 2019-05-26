@@ -7,6 +7,7 @@
 
 import Foundation
 import PotatsoModel
+import CocoaLumberjackSwift
 import Alamofire
 import ObjectMapper
 import class ISO8601DateFormatter.ISO8601DateFormatter

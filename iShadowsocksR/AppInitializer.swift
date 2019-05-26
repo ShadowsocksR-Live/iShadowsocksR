@@ -8,6 +8,7 @@
 import Foundation
 import ICSMainFramework
 import Appirater
+import CocoaLumberjackSwift
 
 let appID = "1070901416"
 
@@ -27,9 +28,9 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
 
     func configLogging() {
         let fileLogger = DDFileLogger() // File Logger
-        fileLogger?.rollingFrequency = TimeInterval(60*60*24*3)  // 24 hours
-        fileLogger?.logFileManager.maximumNumberOfLogFiles = 7
-        DDLog.add(fileLogger!)
+        fileLogger.rollingFrequency = TimeInterval(60*60*24*3)  // 24 hours
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+        DDLog.add(fileLogger)
 
         #if DEBUG
             DDLog.add(DDTTYLogger.sharedInstance) // TTY = Xcode console

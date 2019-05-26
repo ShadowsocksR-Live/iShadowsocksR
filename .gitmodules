@@ -33,3 +33,7 @@
 	path = Library/libmaxminddb
 	url = https://github.com/ShadowsocksR-Live/libmaxminddb.git
 	branch = master
+[submodule "Library/CocoaLumberjack"]
+	path = Library/CocoaLumberjack
+	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
+	branch = master

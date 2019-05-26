@@ -10,6 +10,7 @@ import CloudKit
 import PSOperations
 import PotatsoModel
 import Async
+import CocoaLumberjackSwift
 
 class ICloudSyncService: SyncServiceProtocol {
 

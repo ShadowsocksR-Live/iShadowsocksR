@@ -1,6 +1,7 @@
 import Foundation
 import CloudKit
 import PSOperations
+import CocoaLumberjackSwift
 
 /**
  Ensure the record zone exists before attempting to write or fetch from it.

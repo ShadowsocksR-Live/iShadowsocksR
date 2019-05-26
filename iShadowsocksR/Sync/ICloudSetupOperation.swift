@@ -9,6 +9,7 @@ import Foundation
 import PSOperations
 import CloudKit
 import Async
+import CocoaLumberjackSwift
 
 class ICloudSetupOperation: GroupOperation {
 

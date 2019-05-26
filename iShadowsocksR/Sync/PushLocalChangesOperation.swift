@@ -8,6 +8,7 @@
 import Foundation
 import PSOperations
 import CloudKit
+import CocoaLumberjackSwift
 
 class PushLocalChangesOperation: PSOperations.Operation {
 
