@@ -2,20 +2,20 @@
 
 ![GPLv3 License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
-# Potatso 
+# iShadowsocksR 
 
 ## Important
 
-Please read [this](https://github.com/haxpor/Potatso/blob/master/ADHERE_LICENSE.md) first before you do anything with this project.  
+Please read [this](https://github.com/ShadowsocksR-Live/iShadowsocksR/blob/master/ADHERE_LICENSE.md) first before you do anything with this project.  
 In short, you need to respect to license of the project. You cannot copy the source code and publish to App Store.
 
 ---
 
 ## What is it?
 
-Potatso is an iOS client that implements custom proxies with the leverage of Network Extension framework introduced by Apple since iOS 9.
+iShadowsocksR is an iOS client that implements custom proxies with the leverage of Network Extension framework introduced by Apple since iOS 9.
 
-Currently, Potatso is compatible with following proxies:
+Currently, iShadowsocksR is compatible with following proxies:
 
 - [Shadowsocks](https://shadowsocks.org)
 - [ShadowsocksR](https://github.com/breakwa11/shadowsocks-rss)
@@ -28,7 +28,7 @@ Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor)
 
 ## Project Info
 
-Potatso has in total 25 (2 as submodules dependencies as used as local file in Cocoapod) dependencies as following
+iShadowsocksR has in total 25 (2 as submodules dependencies as used as local file in Cocoapod) dependencies as following
 
 * 15 Cocoapod dependencies
 * 10 submodules dependencies
@@ -39,7 +39,7 @@ If you experienced an expected issue, try to use those versions, if still experi
 ## How to Build Project
 
 Perform the following steps to be able to build the project.
-Be warned that you **should not** call `pod update` as newer version of pod frameworks that Potatso depends on might break building process and there will be errors.
+Be warned that you **should not** call `pod update` as newer version of pod frameworks that iShadowsocksR depends on might break building process and there will be errors.
 
 ```
 git clone https://github.com/ShadowsocksR-Live/iShadowsocksR.git
@@ -115,10 +115,7 @@ We use the following services or open-source libraries. So we'd like show them h
 
 ## Notice
 
-Potatso 2 was released on [App Store](https://itunes.apple.com/us/app/id1162704202?mt=8)  
-You can purchase it from App Store, or still use Potatso by building it manually and installing to your device from this project.
-
-Please note that Potatso 2 will be closed-source as stated from original author's reason. Read more from [here](https://github.com/haxpor/Potatso/blob/master/ADHERE_LICENSE.md).
+Read more from [here](https://github.com/ShadowsocksR-Live/iShadowsocksR/blob/master/ADHERE_LICENSE.md).
 
 ## Support Us
 
@@ -131,7 +128,7 @@ These are the way to support
 
 ## License
 
-**You cannot just copy the project, and publish to App Store.**  Please read [this](https://github.com/haxpor/Potatso/blob/master/ADHERE_LICENSE.md) first.
+**You cannot just copy the project, and publish to App Store.**  Please read [this](https://github.com/ShadowsocksR-Live/iShadowsocksR/blob/master/ADHERE_LICENSE.md) first.
 
 --
 
