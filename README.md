@@ -28,12 +28,12 @@ Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor)
 
 ## Project Info
 
-Potatso has in total 33 (2 as submodules dependencies as used as local file in Cocoapod) dependencies as following
+Potatso has in total 25 (2 as submodules dependencies as used as local file in Cocoapod) dependencies as following
 
-* 20 Cocoapod dependencies
-* 9 submodules dependencies
+* 15 Cocoapod dependencies
+* 10 submodules dependencies
 
-The project is tested with Xcode `9.2 (9C40B)` on iOS `11.2 (15B92)` device with cocoapod version `1.3.1`+, and carthage version `0.18.1`.  
+The project is tested with Xcode `10.1 (10B61)` on iOS `12.1.4 (16D57)` device with cocoapod version `1.7.0`+.
 If you experienced an expected issue, try to use those versions, if still experience the problem please file the issue.
 
 ## How to Build Project
@@ -54,7 +54,7 @@ Then open `iShadowsocksR.xcworkspace` with `Xcode` to Build and Run the project.
 
 ## Tips
 
-- If you are a China mainland developer, you must set your git with proxy, such as SOCKS5 etc., or you can not pull some submodules because of `GFW`. Like this:
+- If you are a China mainland developer, maybe you should set your git with proxy, such as SOCKS5 etc., or you can not pull some submodules because of `GFW`. Like this:
 ```
 # Enable Proxy settings
 git config --global http.proxy socks5://127.0.0.1:1080
@@ -65,7 +65,7 @@ git config --global --unset-all http.proxy
 git config --global --unset-all https.proxy
 ```
 - You must have an Apple Developer account with an annual fee of $99.
-- To compile the app running on your iOS device, you must search the project for the `com.ssrlive.issr` identifier string and replace it with your own identifier string.
+- To compile the app running on your iOS device smoothly, you must search the project for the `com.ssrlive.issr` identifier string and replace it with your own identifier string.
 
 
 ## How To Contribute
