@@ -42,7 +42,7 @@ Perform the following steps to be able to build the project.
 Be warned that you **should not** call `pod update` as newer version of pod frameworks that Potatso depends on might break building process and there will be errors.
 
 ```
-git clone https://github.com/ssrlive/iShadowsocksR.git
+git clone https://github.com/ShadowsocksR-Live/iShadowsocksR.git
 cd iShadowsocksR
 git submodule update --init --recursive    # update git submodules
 sudo gem install cocoapods
