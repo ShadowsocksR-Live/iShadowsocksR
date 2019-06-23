@@ -363,6 +363,8 @@ extension Manager {
             actionContent.append(contentsOf: forwardGEOIPRules)
         }
 
+        actionContent.append("{+forward-rule}")
+        actionContent.append(contentsOf: Pollution.domainList.map({ "DOMAIN-SUFFIX \($0), PROXY" }))
         // DNS pollution
         actionContent.append("{+forward-rule}")
         actionContent.append(contentsOf: Pollution.dnsList.map({ "DNS-IP-CIDR, \($0)/32, PROXY" }))
