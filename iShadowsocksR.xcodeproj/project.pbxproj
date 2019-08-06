@@ -32,7 +32,6 @@
 		3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D51207A850300073C87 /* CallbackURLKitClients.framework */; };
 		3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; };
 		3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A657506207C4D790030BDE0 /* ssrLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A657503207C4CAF0030BDE0 /* ssrLocal.framework */; };
 		3A657507207C4D790030BDE0 /* ssrLocal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A657503207C4CAF0030BDE0 /* ssrLocal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A65750C207C4DD30030BDE0 /* ssrLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A657503207C4CAF0030BDE0 /* ssrLocal.framework */; };
 		3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; };
@@ -1264,7 +1263,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */,
-				3A657506207C4D790030BDE0 /* ssrLocal.framework in Frameworks */,
 				3A9502D9229AFC4000A6EAD7 /* CocoaLumberjack.framework in Frameworks */,
 				B86B08ED1D17FB9B00613014 /* ShadowPath.framework in Frameworks */,
 				3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */,
