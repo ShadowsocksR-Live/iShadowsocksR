@@ -33,3 +33,7 @@
 	path = Library/CocoaLumberjack
 	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
 	branch = master
+[submodule "Library/ssrNative"]
+	path = Library/ssrNative
+	url = https://github.com/ShadowsocksR-Live/shadowsocksr-native.git
+	branch = master
