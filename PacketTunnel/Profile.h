@@ -12,6 +12,9 @@ static const NSString *protocolParamString = @"protocol_param";
 static const NSString *obfsString = @"obfs";
 static const NSString *obfsParamString = @"obfs_param";
 static const NSString *listenPortString = @"listen_port";
+static const NSString *ot_enableString = @"ot_enable";
+static const NSString *ot_domainString = @"ot_domain";
+static const NSString *ot_pathString = @"ot_path";
 
 @interface Profile : NSObject
 
@@ -32,5 +35,9 @@ static const NSString *listenPortString = @"listen_port";
 @property(nonatomic, copy) NSString *obfsParam;
 
 @property (nonatomic, assign) NSInteger listenPort;
+
+@property (nonatomic, assign) BOOL ot_enable;
+@property(nonatomic, copy) NSString *ot_domain;
+@property(nonatomic, copy) NSString *ot_path;
 
 @end

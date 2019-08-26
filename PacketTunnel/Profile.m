@@ -47,6 +47,15 @@
 
         NSNumber *listenPort = dictionary[listenPortString];
         _listenPort = [listenPort isKindOfClass:[NSNumber class]] ? [listenPort integerValue] : 0;
+        
+        NSNumber *ot_enable = dictionary[ot_enableString];
+        _ot_enable = [ot_enable isKindOfClass:[NSNumber class]] ? [ot_enable boolValue] : NO;
+        
+        NSString *ot_domain = dictionary[ot_domainString];
+        _ot_domain = [ot_domain isKindOfClass:[NSString class]] ? ot_domain : @"";
+        
+        NSString *ot_path = dictionary[ot_pathString];
+        _ot_path = [ot_path isKindOfClass:[NSString class]] ? ot_path : @"";
     }
     return self;
 }
@@ -78,6 +87,9 @@
     dictionary[obfsString] = self.obfs;
     dictionary[obfsParamString] = self.obfsParam;
     dictionary[listenPortString] = @(self.listenPort);
+    dictionary[ot_enableString] = @(self.ot_enable);
+    dictionary[ot_domainString] = self.ot_domain;
+    dictionary[ot_pathString] = self.ot_path;
 
     return dictionary;
 }
@@ -152,6 +164,22 @@
         _obfsParam = @"";
     }
     return _obfsParam;
+}
+
+// ot_enable
+
+- (NSString *) ot_domain {
+    if (_ot_domain == nil) {
+        _ot_domain = @"";
+    }
+    return _ot_domain;
+}
+
+- (NSString *) ot_path {
+    if (_ot_path == nil) {
+        _ot_path = @"";
+    }
+    return _ot_path;
 }
 
 @end

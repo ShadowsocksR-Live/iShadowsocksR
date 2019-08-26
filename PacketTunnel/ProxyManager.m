@@ -74,6 +74,9 @@ struct server_config * build_config_object(Profile *profile, unsigned short list
     string_safe_assign(&config->protocol_param, profile.protocolParam.UTF8String);
     string_safe_assign(&config->obfs, profile.obfs.UTF8String);
     string_safe_assign(&config->obfs_param, profile.obfsParam.UTF8String);
+    config->over_tls_enable = (profile.ot_enable != NO);
+    string_safe_assign(&config->over_tls_server_domain, profile.ot_domain.UTF8String);
+    string_safe_assign(&config->over_tls_path, profile.ot_path.UTF8String);
     
     return config;
 }
