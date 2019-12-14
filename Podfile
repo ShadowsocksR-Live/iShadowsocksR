@@ -1,7 +1,9 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '9.0'
+#plugin 'cocoapods-binary'
 use_frameworks!
+#all_binary!
 
 def library
     pod 'ICSMainFramework', :path => "./Library/ICSMainFramework/"
@@ -24,7 +26,8 @@ target "iShadowsocksR" do
     pod 'ISO8601DateFormatter', '~> 0.8'
     pod 'Alamofire'
     pod 'ObjectMapper'
-    pod 'PSOperations', '~> 4.0.1'
+#    pod 'PSOperations', '~> 4.0.1'
+    pod 'PSOperations/Core', '~> 4.0.1'
     library
     model
 end

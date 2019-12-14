@@ -218,6 +218,7 @@
     NEDNSSettings *dnsSettings = [[NEDNSSettings alloc] initWithServers:dnsServers];
     dnsSettings.matchDomains = @[@""];
     settings.DNSSettings = dnsSettings;
+    //TODO: config tunnel
     [self setTunnelNetworkSettings:settings completionHandler:^(NSError * _Nullable error) {
         if (error) {
             if (completionHandler) {

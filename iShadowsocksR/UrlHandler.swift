@@ -69,6 +69,7 @@ enum URLAction: String {
     func perform(_ url: URL?, parameters: Parameters, completion: ((Error?) -> Void)? = nil) -> Bool {
         switch self {
         case .ON:
+            //TODO: start vpn
             Manager.sharedManager.startVPN({ (manager, error) in
                 if error == nil {
                     self.autoClose(parameters)

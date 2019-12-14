@@ -23,7 +23,6 @@
 		3A104BD62073C5D900C848D5 /* libuv.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BC22073C4CD00C848D5 /* libuv.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BB92073C4AB00C848D5 /* libsodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BE02073C6DA00C848D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A104BDF2073C6D900C848D5 /* Profile.m */; };
-		3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BE12073DE9900C848D5 /* libcrypto.a */; };
 		3A14EE9521B44F55006291BC /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3A14EE9621B44FC1006291BC /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D4D207A850300073C87 /* CallbackURLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -58,6 +57,8 @@
 		3ADE7D0320737366000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		479C711B68EF0702C9F65B5B /* Pods_TodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A692B80DC5DB316AA1DED8CB /* Pods_TodayWidget.framework */; };
 		939649B7FCC9A0C8AFB317B8 /* Pods_PotatsoModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2589D04E6C48F30ED63BA84F /* Pods_PotatsoModel.framework */; };
+		99571B5C22AA164800EBDED1 /* libcrypto-iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99571B4922AA164700EBDED1 /* libcrypto-iPhone.a */; };
+		99E5C909231993D700D7921D /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC8C320753B29002843E0 /* CocoaAsyncSocket.framework */; };
 		9B0CFA0F1C1C0B1B007BD7C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0CFA0E1C1C0B1B007BD7C6 /* AppDelegate.swift */; };
 		9B0CFA161C1C0B1B007BD7C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0CFA151C1C0B1B007BD7C6 /* Assets.xcassets */; };
 		9B0CFA191C1C0B1B007BD7C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0CFA171C1C0B1B007BD7C6 /* LaunchScreen.storyboard */; };
@@ -700,6 +701,7 @@
 		8591A0DF3C64D6376B09D429 /* Pods-PotatsoLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PotatsoLibrary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PotatsoLibrary/Pods-PotatsoLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 		87762605D2086ABC8A92E142 /* Pods_iShadowsocksR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iShadowsocksR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD3EA9ACD870481D4DBB6FB /* Pods_PacketProcessor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PacketProcessor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99571B4922AA164700EBDED1 /* libcrypto-iPhone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcrypto-iPhone.a"; path = "Library/openssl/lib/libcrypto-iPhone.a"; sourceTree = "<group>"; };
 		9B0CFA0B1C1C0B1B007BD7C6 /* iShadowsocksR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iShadowsocksR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0CFA0E1C1C0B1B007BD7C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B0CFA151C1C0B1B007BD7C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1263,6 +1265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99571B5C22AA164800EBDED1 /* libcrypto-iPhone.a in Frameworks */,
 				3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */,
 				3A657506207C4D790030BDE0 /* ssrLocal.framework in Frameworks */,
 				3A9502D9229AFC4000A6EAD7 /* CocoaLumberjack.framework in Frameworks */,
@@ -1278,7 +1281,6 @@
 				9BC6FFF11CB28B4B00E5EA61 /* PotatsoModel.framework in Frameworks */,
 				1ED659011E05C73100D4BEE3 /* CloudKit.framework in Frameworks */,
 				1ED66DEE1E05A72300638808 /* StoreKit.framework in Frameworks */,
-				3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */,
 				3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */,
 				3A262D59207A85CE00073C87 /* CallbackURLKit.framework in Frameworks */,
 				3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */,
@@ -1290,6 +1292,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E5C909231993D700D7921D /* CocoaAsyncSocket.framework in Frameworks */,
 				3A14EE9621B44FC1006291BC /* MMWormhole.framework in Frameworks */,
 				B88559F01D21371A00B1243E /* PotatsoModel.framework in Frameworks */,
 				1EEBB8781FFFD52700EB33C3 /* NetworkExtension.framework in Frameworks */,
@@ -2484,6 +2487,7 @@
 		C8B2149E8757C44C469576D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99571B4922AA164700EBDED1 /* libcrypto-iPhone.a */,
 				3AF6B04A2084B04900A4AA06 /* CocoaLumberjack.framework */,
 				3AF6B0482084AD7C00A4AA06 /* CocoaLumberjack.framework */,
 				3A8780CA20754B2000B96BF3 /* libxml2.tbd */,
@@ -2562,6 +2566,7 @@
 				9B8706081C1D788F00651424 /* Embed App Extensions */,
 				9B9B15821C1ECADF000B6541 /* Embed Frameworks */,
 				DD684A5F98C89E3ABC84DE74 /* [CP] Embed Pods Frameworks */,
+				9945A3D222C2F81800BB102E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2719,6 +2724,7 @@
 				TargetAttributes = {
 					9B0CFA0A1C1C0B1A007BD7C6 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 568GXQR5A2;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2750,6 +2756,7 @@
 					};
 					9B8193B11CBCFEE700BE320D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 568GXQR5A2;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2769,6 +2776,7 @@
 					};
 					9B8705F91C1D788F00651424 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 568GXQR5A2;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2810,6 +2818,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				"zh-Hans",
 			);
@@ -3166,6 +3175,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9945A3D222C2F81800BB102E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" $(PROJECT_DIR)/${INFOPLIST_FILE})\n# buildNumber=$(($buildNumber + 1))  \n# /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" $(PROJECT_DIR)/${INFOPLIST_FILE}\n";
+		};
 		9B8193EB1CBE37BB00BE320D /* Framework Hack */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3297,41 +3323,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iShadowsocksR/Pods-iShadowsocksR-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
-				"${BUILT_PRODUCTS_DIR}/AsyncSwift/Async.framework",
-				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
-				"${BUILT_PRODUCTS_DIR}/ICDMaterialActivityIndicatorView/ICDMaterialActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ICSMainFramework/ICSMainFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/ICSPullToRefresh/ICSPullToRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatter/ISO8601DateFormatter.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/PSOperations/PSOperations.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftColor/SwiftColor.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Appirater.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Async.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICDMaterialActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICSMainFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ICSPullToRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatter.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PSOperations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftColor.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3727,7 +3727,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -3783,7 +3783,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3814,8 +3814,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 568GXQR5A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3837,9 +3838,13 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iShadowsocksR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @rpath/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Library/openssl/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Library/openssl/lib",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)/openssl/lib",
+					"$(PROJECT_DIR)/Pods/Realm/core",
+				);
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shbluehour.ssrlive.issr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3861,7 +3866,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 568GXQR5A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3879,8 +3886,12 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iShadowsocksR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @rpath/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Library/openssl/lib";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr;
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Library/openssl/lib",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)/openssl/lib",
+					"$(PROJECT_DIR)/Pods/Realm/core",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shbluehour.ssrlive.issr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3903,11 +3914,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 568GXQR5A2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr.todaywidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shbluehour.ssrlive.issr.todaywidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3927,11 +3938,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 568GXQR5A2;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr.todaywidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shbluehour.ssrlive.issr.todaywidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3950,7 +3961,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 568GXQR5A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3977,7 +3988,7 @@
 					"$(PROJECT_DIR)/PacketTunnel/Shadowsocks/libsodium-ios/lib",
 					"$(PROJECT_DIR)/PacketTunnel",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr.tunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shbluehour.ssrlive.issr.tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3994,7 +4005,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 568GXQR5A2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4021,7 +4032,7 @@
 					"$(PROJECT_DIR)/PacketTunnel/Shadowsocks/libsodium-ios/lib",
 					"$(PROJECT_DIR)/PacketTunnel",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr.tunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shbluehour.ssrlive.issr.tunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
