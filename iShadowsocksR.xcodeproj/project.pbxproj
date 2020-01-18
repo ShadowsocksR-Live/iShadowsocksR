@@ -16,8 +16,10 @@
 		1EEBB8791FFFD8A700EB33C3 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EEBB8761FFFD4B500EB33C3 /* NetworkExtension.framework */; };
 		1EF602951F113A660005E0C7 /* GeoLite2-Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = 1EF602941F113A660005E0C7 /* GeoLite2-Country.mmdb */; };
 		2F5EE57E0687D8533454D2DF /* Pods_iShadowsocksR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87762605D2086ABC8A92E142 /* Pods_iShadowsocksR.framework */; };
+		3A09F9022310280E0073E0EE /* ssrNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A432BEE230F7CEC008E4D12 /* ssrNative.framework */; };
+		3A09F9032310280E0073E0EE /* ssrNative.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A432BEE230F7CEC008E4D12 /* ssrNative.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A09F917231049AF0073E0EE /* ssrNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A432BEE230F7CEC008E4D12 /* ssrNative.framework */; };
 		3A104BCE2073C55D00C848D5 /* libsodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BB92073C4AB00C848D5 /* libsodium.framework */; };
-		3A104BCF2073C55D00C848D5 /* libuv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BC22073C4CD00C848D5 /* libuv.framework */; };
 		3A104BD02073C55D00C848D5 /* mbedtls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BCB2073C4DF00C848D5 /* mbedtls.framework */; };
 		3A104BD42073C5D900C848D5 /* mbedtls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BCB2073C4DF00C848D5 /* mbedtls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BD62073C5D900C848D5 /* libuv.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BC22073C4CD00C848D5 /* libuv.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -32,8 +34,6 @@
 		3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D51207A850300073C87 /* CallbackURLKitClients.framework */; };
 		3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; };
 		3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A657507207C4D790030BDE0 /* ssrLocal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A657503207C4CAF0030BDE0 /* ssrLocal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A65750C207C4DD30030BDE0 /* ssrLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A657503207C4CAF0030BDE0 /* ssrLocal.framework */; };
 		3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; };
 		3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -250,6 +250,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3A09F9042310280E0073E0EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A57A606206F9D44002F1F2D;
+			remoteInfo = "ssrNative iOS";
+		};
 		3A104BB82073C4AB00C848D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A104BB32073C4AB00C848D5 /* libsodium.xcodeproj */;
@@ -327,6 +334,20 @@
 			remoteGlobalIDString = C4E32D551C398AE1005CD033;
 			remoteInfo = CallbackURLKitClients;
 		};
+		3A432BED230F7CEC008E4D12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A57A607206F9D44002F1F2D;
+			remoteInfo = "ssrNative iOS";
+		};
+		3A432BEF230F7CEC008E4D12 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A95CBA42070C7DA00E507E3;
+			remoteInfo = "ssrNative macOS";
+		};
 		3A57D25E20728FFF000520F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A57D25920728FFE000520F8 /* Eureka.xcodeproj */;
@@ -347,34 +368,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 51729DEA1B9A4F5E004A00EB;
 			remoteInfo = Eureka;
-		};
-		3A657502207C4CAF0030BDE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3A6EB14A20784E3300763A08;
-			remoteInfo = "ssrLocal iOS";
-		};
-		3A657504207C4CAF0030BDE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3A6EB15A20784F9100763A08;
-			remoteInfo = "ssrLocal macOS";
-		};
-		3A657508207C4D790030BDE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 3A6EB14920784E3300763A08;
-			remoteInfo = "ssrLocal iOS";
-		};
-		3A65750A207C4DC00030BDE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 3A6EB14920784E3300763A08;
-			remoteInfo = "ssrLocal iOS";
 		};
 		3A739BC920761B850069F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -638,11 +631,11 @@
 				3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */,
 				3A262D54207A855800073C87 /* CallbackURLKitClients.framework in Embed Frameworks */,
 				3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */,
-				3A657507207C4D790030BDE0 /* ssrLocal.framework in Embed Frameworks */,
 				3A8AC91D207543B0002843E0 /* MMWormhole.framework in Embed Frameworks */,
 				3A8AC8D620753BAF002843E0 /* CocoaAsyncSocket.framework in Embed Frameworks */,
 				3A104BD42073C5D900C848D5 /* mbedtls.framework in Embed Frameworks */,
 				3A104BD62073C5D900C848D5 /* libuv.framework in Embed Frameworks */,
+				3A09F9032310280E0073E0EE /* ssrNative.framework in Embed Frameworks */,
 				3A9502D5229AF87900A6EAD7 /* CocoaLumberjackSwift.framework in Embed Frameworks */,
 				3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */,
 				3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */,
@@ -679,8 +672,8 @@
 		3A104BDF2073C6D900C848D5 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		3A104BE12073DE9900C848D5 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Library/openssl/lib/libcrypto.a; sourceTree = SOURCE_ROOT; };
 		3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CallbackURLKit.xcodeproj; path = Library/CallbackURLKit/CallbackURLKit.xcodeproj; sourceTree = "<group>"; };
+		3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ssrNative.xcodeproj; path = Library/ssrNative/ios/ssrNative.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A57D25920728FFE000520F8 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = Library/Eureka/Eureka.xcodeproj; sourceTree = SOURCE_ROOT; };
-		3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ssrLocal.xcodeproj; path = Library/ssrNative/ios/ssrLocal.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YAML.xcodeproj; path = Library/yaml/YAML.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A739BCD20763B530069F21C /* libmaxminddb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = libmaxminddb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KissXML.xcodeproj; path = Library/KissXML/KissXML.xcodeproj; sourceTree = "<group>"; };
@@ -1280,6 +1273,7 @@
 				3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */,
 				3A262D59207A85CE00073C87 /* CallbackURLKit.framework in Frameworks */,
 				3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */,
+				3A09F9022310280E0073E0EE /* ssrNative.framework in Frameworks */,
 				2F5EE57E0687D8533454D2DF /* Pods_iShadowsocksR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1302,11 +1296,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A09F917231049AF0073E0EE /* ssrNative.framework in Frameworks */,
 				3A9502D8229AF8D100A6EAD7 /* CocoaLumberjackSwift.framework in Frameworks */,
-				3A65750C207C4DD30030BDE0 /* ssrLocal.framework in Frameworks */,
 				3A8AC92320754441002843E0 /* MMWormhole.framework in Frameworks */,
 				3A104BCE2073C55D00C848D5 /* libsodium.framework in Frameworks */,
-				3A104BCF2073C55D00C848D5 /* libuv.framework in Frameworks */,
 				3A104BD02073C55D00C848D5 /* mbedtls.framework in Frameworks */,
 				3ADE7D002073733D000F70AA /* yaml.framework in Frameworks */,
 				B86B08EC1D17F85800613014 /* ShadowPath.framework in Frameworks */,
@@ -1411,20 +1404,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3A432BE6230F7CEC008E4D12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A432BEE230F7CEC008E4D12 /* ssrNative.framework */,
+				3A432BF0230F7CEC008E4D12 /* ssrNative.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3A57D25A20728FFE000520F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				3A57D25F20728FFF000520F8 /* Eureka.framework */,
 				3A57D26120728FFF000520F8 /* EurekaTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		3A6574FE207C4CAF0030BDE0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3A657503207C4CAF0030BDE0 /* ssrLocal.framework */,
-				3A657505207C4CAF0030BDE0 /* ssrLocal.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1629,7 +1622,7 @@
 				3A104BC52073C4DF00C848D5 /* mbedtls.xcodeproj */,
 				3A104BBC2073C4CD00C848D5 /* libuv.xcodeproj */,
 				3A104BB32073C4AB00C848D5 /* libsodium.xcodeproj */,
-				3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */,
+				3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */,
 				1ECA21631E05EA6D00B32187 /* PacketTunnel.entitlements */,
 				9B8705FE1C1D788F00651424 /* PacketTunnelProvider.h */,
 				9B8705FF1C1D788F00651424 /* PacketTunnelProvider.m */,
@@ -2576,9 +2569,9 @@
 				9BC600231CB2921C00E5EA61 /* PBXTargetDependency */,
 				9B8193BD1CBCFEE700BE320D /* PBXTargetDependency */,
 				3A57D265207290AC000520F8 /* PBXTargetDependency */,
-				3A657509207C4D790030BDE0 /* PBXTargetDependency */,
 				3A9502D7229AF87900A6EAD7 /* PBXTargetDependency */,
 				3A9502DC229AFC4000A6EAD7 /* PBXTargetDependency */,
+				3A09F9052310280E0073E0EE /* PBXTargetDependency */,
 			);
 			name = iShadowsocksR;
 			productName = Potatso;
@@ -2616,7 +2609,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3A65750B207C4DC00030BDE0 /* PBXTargetDependency */,
 				3A739BCA20761B850069F21C /* PBXTargetDependency */,
 				3A8AC9222075442A002843E0 /* PBXTargetDependency */,
 				3ADE7CFF2073732E000F70AA /* PBXTargetDependency */,
@@ -2808,6 +2800,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				"zh-Hans",
 			);
@@ -2856,8 +2849,8 @@
 					ProjectRef = B86B08E31D17F84900613014 /* ShadowPath.xcodeproj */;
 				},
 				{
-					ProductGroup = 3A6574FE207C4CAF0030BDE0 /* Products */;
-					ProjectRef = 3A6574FD207C4CAF0030BDE0 /* ssrLocal.xcodeproj */;
+					ProductGroup = 3A432BE6230F7CEC008E4D12 /* Products */;
+					ProjectRef = 3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */;
 				},
 				{
 					ProductGroup = 3A6DD4F3207366BF00BDF530 /* Products */;
@@ -2941,6 +2934,20 @@
 			remoteRef = 3A262D50207A850300073C87 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		3A432BEE230F7CEC008E4D12 /* ssrNative.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ssrNative.framework;
+			remoteRef = 3A432BED230F7CEC008E4D12 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A432BF0230F7CEC008E4D12 /* ssrNative.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ssrNative.framework;
+			remoteRef = 3A432BEF230F7CEC008E4D12 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		3A57D25F20728FFF000520F8 /* Eureka.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -2953,20 +2960,6 @@
 			fileType = wrapper.cfbundle;
 			path = EurekaTests.xctest;
 			remoteRef = 3A57D26020728FFF000520F8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3A657503207C4CAF0030BDE0 /* ssrLocal.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ssrLocal.framework;
-			remoteRef = 3A657502207C4CAF0030BDE0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3A657505207C4CAF0030BDE0 /* ssrLocal.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ssrLocal.framework;
-			remoteRef = 3A657504207C4CAF0030BDE0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		3A8780B1207549F800B96BF3 /* KissXML.framework */ = {
@@ -3541,6 +3534,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3A09F9052310280E0073E0EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ssrNative iOS";
+			targetProxy = 3A09F9042310280E0073E0EE /* PBXContainerItemProxy */;
+		};
 		3A262D56207A859500073C87 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CallbackURLKit;
@@ -3555,16 +3553,6 @@
 			isa = PBXTargetDependency;
 			name = Eureka;
 			targetProxy = 3A57D264207290AC000520F8 /* PBXContainerItemProxy */;
-		};
-		3A657509207C4D790030BDE0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ssrLocal iOS";
-			targetProxy = 3A657508207C4D790030BDE0 /* PBXContainerItemProxy */;
-		};
-		3A65750B207C4DC00030BDE0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ssrLocal iOS";
-			targetProxy = 3A65750A207C4DC00030BDE0 /* PBXContainerItemProxy */;
 		};
 		3A739BCA20761B850069F21C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3865,6 +3853,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/PotatsoLibrary",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Library/ShadowPath/ShadowPath/libopenssl/include/\"",
 					"$(SRCROOT)/Library/openssl/include",
@@ -3895,6 +3887,7 @@
 			baseConfigurationReference = F2765FE72409B9E2FA7F81BB /* Pods-TodayWidget.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3903,6 +3896,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr.todaywidget;
@@ -3920,6 +3917,7 @@
 			baseConfigurationReference = A6C3522CED51B0487ECEE41F /* Pods-TodayWidget.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3927,6 +3925,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+				);
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr.todaywidget;
@@ -3943,6 +3945,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -3956,7 +3959,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCAL_CONF=1",
-					USING_SSR_LOCAL,
+					USING_SSR_NATIVE,
 					"COCOAPODS=1",
 					"$(inherited)",
 				);
@@ -3988,6 +3991,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -4000,7 +4004,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCAL_CONF=1",
-					USING_SSR_LOCAL,
+					USING_SSR_NATIVE,
 					"COCOAPODS=1",
 					"$(inherited)",
 				);
