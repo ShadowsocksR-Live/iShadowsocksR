@@ -20,6 +20,7 @@ private let kProxyFormOta = "ota"
 private let kProxyFormObfs = "obfs"
 private let kProxyFormObfsParam = "obfsParam"
 private let kProxyFormProtocol = "protocol"
+private let kProxyFormProtocolParam = "protocolParam"
 
 
 class ProxyConfigurationViewController: FormViewController {
@@ -138,6 +139,16 @@ class ProxyConfigurationViewController: FormViewController {
                     return false
                 }
             }
+            <<< TextRow(kProxyFormProtocolParam) {
+                $0.title = "Protocol Param".localized()
+                $0.value = self.upstreamProxy.ssrProtocolParam
+                $0.hidden = Condition.function([kProxyFormType]) { form in
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
+                        return r1.value != ProxyType.ShadowsocksR
+                    }
+                    return false
+                }
+            }
             <<< PushRow<String>(kProxyFormObfs) {
                 $0.title = "Obfs".localized()
                 $0.value = self.upstreamProxy.ssrObfs
@@ -216,6 +227,7 @@ class ProxyConfigurationViewController: FormViewController {
             upstreamProxy.password = password
             upstreamProxy.ota = ota
             upstreamProxy.ssrProtocol = values[kProxyFormProtocol] as? String
+            upstreamProxy.ssrProtocolParam = values[kProxyFormProtocolParam] as? String
             upstreamProxy.ssrObfs = values[kProxyFormObfs] as? String
             upstreamProxy.ssrObfsParam = values[kProxyFormObfsParam] as? String
             try DBUtils.add(upstreamProxy)

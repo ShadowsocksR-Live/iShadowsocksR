@@ -38,7 +38,7 @@ extension Proxy: CloudKitRecord {
     }
 
     public static var keys: [String] {
-        return basekeys + ["typeRaw", "name", "host", "port", "authscheme", "user", "password", "ota", "ssrProtocol", "ssrObfs", "ssrObfsParam"]
+        return basekeys + ["typeRaw", "name", "host", "port", "authscheme", "user", "password", "ota", "ssrProtocol", "ssrProtocolParam", "ssrObfs", "ssrObfsParam"]
     }
 
     public var recordId: CKRecordID {
