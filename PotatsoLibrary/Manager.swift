@@ -294,6 +294,7 @@ extension Manager {
                        "authscheme": upstreamProxy.authscheme ?? "",
                        "ota": upstreamProxy.ota,
                        "protocol": upstreamProxy.ssrProtocol ?? "",
+                       "protocol_param": upstreamProxy.ssrProtocolParam ?? "",
                        "obfs": upstreamProxy.ssrObfs ?? "",
                        "obfs_param": upstreamProxy.ssrObfsParam ?? ""] as [String : Any]
             

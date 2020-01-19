@@ -74,6 +74,7 @@ open class Proxy: BaseModel {
     @objc open dynamic var password: String?
     @objc open dynamic var ota: Bool = false
     @objc open dynamic var ssrProtocol: String?
+    @objc open dynamic var ssrProtocolParam: String?
     @objc open dynamic var ssrObfs: String?
     @objc open dynamic var ssrObfsParam: String?
     
@@ -263,10 +264,12 @@ extension Proxy {
                         continue
                     }
                     switch comps[0] {
+                    case "protoparam":
+                        self.ssrProtocolParam = base64DecodeIfNeeded(comps[1])
                     case "obfsparam":
-                        self.ssrObfsParam = comps[1]
+                        self.ssrObfsParam = base64DecodeIfNeeded(comps[1])
                     case "remarks":
-                        self.name = comps[1]
+                        self.name = base64DecodeIfNeeded(comps[1]) ?? ""
                     default:
                         continue
                     }

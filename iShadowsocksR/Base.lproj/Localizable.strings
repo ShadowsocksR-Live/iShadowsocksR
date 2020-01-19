@@ -95,6 +95,7 @@
 "Port can't be empty" = "Port can't be empty";
 "Potatso is not connected" = "Potatso is not connected";
 "Protocol" = "Protocol";
+"Protocol Param" = "Protocol Param";
 "Proxy" = "Proxy";
 "Proxy Connection" = "Proxy Connection";
 "Proxy Connection Established" = "Proxy Connection Established";
@@ -116,6 +117,7 @@
 "Rule Set Name" = "Rule Set Name";
 "Rules" = "Rules";
 "SSR Obfs Param" = "SSR Obfs Param";
+"SSR Protocol Param" = "SSR Protocol Param";
 "Share with friends" = "Share with friends";
 "Start" = "Start";
 "Start DNS Query" = "Start DNS Query";

@@ -7,11 +7,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Receipt.h"
+#if 0
 #import <openssl/pkcs7.h>
 #import <openssl/objects.h>
 #import <openssl/sha.h>
 #import <openssl/x509.h>
 #import <openssl/err.h>
+#endif
 #import <StoreKit/StoreKit.h>
 #import "Appirater.h"
 #import "iShadowsocksR-Swift.h"
@@ -60,6 +62,13 @@ NSString *kReceiptExpirationDate                = @"ExpDate";
 
     NSLog(@"dictionaryWithAppStoreReceipt rootCertData len: %lu", (unsigned long)rootCertData.length);
 
+#if 1
+    // Since we are not interested in this topic, we simply blocked it.
+    //
+    // https://www.raywenderlich.com/9257-in-app-purchases-receipt-validation-tutorial
+    //
+    return nil;
+#else
     ERR_load_PKCS7_strings();
     ERR_load_X509_strings();
     OpenSSL_add_all_digests();
@@ -249,6 +258,7 @@ NSString *kReceiptExpirationDate                = @"ExpDate";
     PKCS7_free(p7);
     
     return info;
+#endif
 }
 
 + (NSData *)appleRootCert {
