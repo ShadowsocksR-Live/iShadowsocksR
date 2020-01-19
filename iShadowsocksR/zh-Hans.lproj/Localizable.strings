@@ -96,6 +96,7 @@
 "Port can't be empty" = "端口不能为空";
 "Potatso is not connected" = "Potatso 已断开";
 "Protocol" = "协议插件(protocol)";
+"Protocol Param" = "协议插件参数";
 "Proxy" = "代理";
 "Proxy Connection" = "代理连接";
 "Proxy Connection Established" = "代理连接建立成功";
@@ -117,6 +118,7 @@
 "Rule Set Name" = "规则组名称";
 "Rules" = "规则";
 "SSR Obfs Param" = "SSR 混淆插件参数";
+"SSR Protocol Param" = "SSR 协议插件参数";
 "Share with friends" = "分享给朋友";
 "Start" = "开始";
 "Start DNS Query" = "开始 DNS 查询";

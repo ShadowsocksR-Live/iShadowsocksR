@@ -148,6 +148,10 @@ class ProxyConfigurationViewController: FormViewController {
                     }
                     return false
                 }
+            }.cellSetup { cell, row in
+                cell.textField.placeholder = "SSR Protocol Param".localized()
+                cell.textField.autocorrectionType = .no
+                cell.textField.autocapitalizationType = .none
             }
             <<< PushRow<String>(kProxyFormObfs) {
                 $0.title = "Obfs".localized()
