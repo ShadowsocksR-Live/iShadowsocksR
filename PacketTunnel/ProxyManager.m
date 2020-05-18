@@ -113,12 +113,7 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
         }
         
 #if USING_SSR_NATIVE
-#if !defined(NDEBUG)
-        // FIXME: just for debug prepuse, must remove it.
-        config->over_tls_enable = YES;
-        string_safe_assign(&config->over_tls_server_domain, "fake_site.host");
-        string_safe_assign(&config->over_tls_path, "/entry-uuid/");
-#endif
+        config_ssrot_revision(config);
         
         set_app_name(appPath);
         [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
