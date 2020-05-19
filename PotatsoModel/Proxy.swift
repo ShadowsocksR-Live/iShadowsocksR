@@ -65,7 +65,7 @@ extension ProxyError: CustomStringConvertible {
 }
 
 open class Proxy: BaseModel {
-    @objc open dynamic var typeRaw = ProxyType.Shadowsocks.rawValue
+    @objc open dynamic var typeRaw = ProxyType.ShadowsocksR.rawValue
     @objc open dynamic var name = ""
     @objc open dynamic var host = ""
     @objc open dynamic var port = 0
@@ -77,6 +77,9 @@ open class Proxy: BaseModel {
     @objc open dynamic var ssrProtocolParam: String?
     @objc open dynamic var ssrObfs: String?
     @objc open dynamic var ssrObfsParam: String?
+    @objc open dynamic var ssrotEnable: Bool = false
+    @objc open dynamic var ssrotDomain: String?
+    @objc open dynamic var ssrotPath: String?
     
     open static let ssUriPrefix = "ss://"
     open static let ssrUriPrefix = "ssr://"
@@ -270,6 +273,12 @@ extension Proxy {
                         self.ssrObfsParam = base64DecodeIfNeeded(comps[1])
                     case "remarks":
                         self.name = base64DecodeIfNeeded(comps[1]) ?? ""
+                    case "ot_enable":
+                        self.ssrotEnable = (Int(comps[1]) != 0)
+                    case "ot_domain":
+                        self.ssrotDomain = base64DecodeIfNeeded(comps[1]) ?? ""
+                    case "ot_path":
+                        self.ssrotPath = base64DecodeIfNeeded(comps[1]) ?? ""
                     default:
                         continue
                     }

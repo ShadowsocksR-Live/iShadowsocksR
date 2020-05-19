@@ -22,6 +22,9 @@ private let kProxyFormObfsParam = "obfsParam"
 private let kProxyFormProtocol = "protocol"
 private let kProxyFormProtocolParam = "protocolParam"
 
+public let kSsrotEnable = "ot_enable"
+public let kSsrotDomain = "ot_domain"
+public let kSsrotPath = "ot_path"
 
 class ProxyConfigurationViewController: FormViewController {
     
@@ -102,7 +105,7 @@ class ProxyConfigurationViewController: FormViewController {
             <<< PushRow<String>(kProxyFormEncryption) {
                 $0.title = "Encryption".localized()
                 $0.options = Proxy.ssSupportedEncryption
-                $0.value = self.upstreamProxy.authscheme ?? $0.options?[2]
+                $0.value = self.upstreamProxy.authscheme ?? $0.options?[8]
                 $0.selectorTitle = "Choose encryption method".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType), let isSS = r1.value?.isShadowsocks {
@@ -129,8 +132,8 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< PushRow<String>(kProxyFormProtocol) {
                 $0.title = "Protocol".localized()
-                $0.value = self.upstreamProxy.ssrProtocol
                 $0.options = Proxy.ssrSupportedProtocol
+                $0.value = self.upstreamProxy.ssrProtocol ?? $0.options?[6]
                 $0.selectorTitle = "Choose SSR protocol".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
@@ -155,8 +158,8 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< PushRow<String>(kProxyFormObfs) {
                 $0.title = "Obfs".localized()
-                $0.value = self.upstreamProxy.ssrObfs
                 $0.options = Proxy.ssrSupportedObfs
+                $0.value = self.upstreamProxy.ssrObfs ?? $0.options?[3]
                 $0.selectorTitle = "Choose SSR obfs".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
@@ -179,7 +182,68 @@ class ProxyConfigurationViewController: FormViewController {
                 cell.textField.autocorrectionType = .no
                 cell.textField.autocapitalizationType = .none
             }
-
+            <<< SwitchRow(kSsrotEnable) { row in
+                row.title = "SSRoT Enable".localized()
+                row.value = self.upstreamProxy.ssrotEnable
+                row.hidden = Condition.function([kProxyFormType]) { form in
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
+                        return r1.value != ProxyType.ShadowsocksR
+                    }
+                    return false
+                }
+                row.onChange { row in
+                    if let ssrotDomain : TextRow = self.form.rowBy(tag: kSsrotDomain) {
+                        ssrotDomain.disabled = Condition.function([kSsrotEnable]) { form in
+                            return row.value != true
+                        }
+                    }
+                    if let ssrotPath : TextRow = self.form.rowBy(tag: kSsrotPath) {
+                        ssrotPath.disabled = Condition.function([kSsrotEnable]) { form in
+                            return row.value != true
+                        }
+                    }
+                }
+            }
+            <<< TextRow(kSsrotDomain) {
+                $0.title = "SSRoT Domain".localized()
+                $0.value = self.upstreamProxy.ssrotDomain
+                $0.hidden = Condition.function([kProxyFormType]) { form in
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
+                        return r1.value != ProxyType.ShadowsocksR
+                    }
+                    return false
+                }
+                $0.disabled = Condition.function([kSsrotEnable]) { form in
+                    if let r1 : SwitchRow = form.rowBy(tag:kSsrotEnable) {
+                        return r1.value != true
+                    }
+                    return false
+                }
+            }.cellSetup { cell, row in
+                cell.textField.placeholder = "mygooodsite.com".localized()
+                cell.textField.autocorrectionType = .no
+                cell.textField.autocapitalizationType = .none
+            }
+            <<< TextRow(kSsrotPath) {
+                $0.title = "SSRoT Path".localized()
+                $0.value = self.upstreamProxy.ssrotPath
+                $0.hidden = Condition.function([kProxyFormType]) { form in
+                    if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
+                        return r1.value != ProxyType.ShadowsocksR
+                    }
+                    return false
+                }
+                $0.disabled = Condition.function([kSsrotEnable]) { form in
+                    if let r1 : SwitchRow = form.rowBy(tag:kSsrotEnable) {
+                        return r1.value != true
+                    }
+                    return false
+                }
+            }.cellSetup { cell, row in
+                cell.textField.placeholder = "/5mhk8LPOzXvjlAut/".localized()
+                cell.textField.autocorrectionType = .no
+                cell.textField.autocapitalizationType = .none
+            }
     }
     
     @objc func save() {
@@ -234,6 +298,11 @@ class ProxyConfigurationViewController: FormViewController {
             upstreamProxy.ssrProtocolParam = values[kProxyFormProtocolParam] as? String
             upstreamProxy.ssrObfs = values[kProxyFormObfs] as? String
             upstreamProxy.ssrObfsParam = values[kProxyFormObfsParam] as? String
+            
+            upstreamProxy.ssrotEnable = values[kSsrotEnable] as? Bool ?? false
+            upstreamProxy.ssrotDomain = values[kSsrotDomain] as? String ?? ""
+            upstreamProxy.ssrotPath = values[kSsrotPath] as? String ?? ""
+            
             try DBUtils.add(upstreamProxy)
             close()
         }catch {

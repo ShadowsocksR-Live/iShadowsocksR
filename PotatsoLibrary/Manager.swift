@@ -296,7 +296,11 @@ extension Manager {
                        "protocol": upstreamProxy.ssrProtocol ?? "",
                        "protocol_param": upstreamProxy.ssrProtocolParam ?? "",
                        "obfs": upstreamProxy.ssrObfs ?? "",
-                       "obfs_param": upstreamProxy.ssrObfsParam ?? ""] as [String : Any]
+                       "obfs_param": upstreamProxy.ssrObfsParam ?? "",
+                       "ot_enable": upstreamProxy.ssrotEnable,
+                       "ot_domain": upstreamProxy.ssrotDomain ?? "",
+                       "ot_path": upstreamProxy.ssrotPath ?? "",
+                ] as [String : Any]
             
             do {
                 //let data = try JSONSerialization.data(withJSONObject: arr, options: .prettyPrinted)
