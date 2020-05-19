@@ -1796,10 +1796,6 @@ static void chat(struct client_state *csp)
 
     /* decide how to route the HTTP request */
     fwd = forward_url(csp, http);
-#if !defined(NDEBUG)
-    // FIXME: just for debug prepuse, must remove it.
-    int b = strcmp(http->host, "www.bad_ccp_site.com");
-#endif
     if (NULL == fwd)
     {
         log_error(LOG_LEVEL_FATAL, "gateway spec is NULL!?!?  This can't happen!");
