@@ -114,7 +114,7 @@ class ProxyConfigurationViewController: FormViewController {
                     return false
                 }
             }
-            <<< PasswordRow(kProxyFormPassword) {
+            <<< TextRow(kProxyFormPassword) {
                 $0.title = "Password".localized()
                 $0.value = self.upstreamProxy.password ?? nil
             }.cellSetup { cell, row in
@@ -285,7 +285,6 @@ class ProxyConfigurationViewController: FormViewController {
             default:
                 break
             }
-            let ota = values[kProxyFormOta] as? Bool ?? false
             upstreamProxy.type = type
             upstreamProxy.name = name
             upstreamProxy.host = host
@@ -293,7 +292,7 @@ class ProxyConfigurationViewController: FormViewController {
             upstreamProxy.authscheme = authscheme
             upstreamProxy.user = user
             upstreamProxy.password = password
-            upstreamProxy.ota = ota
+            upstreamProxy.ota = values[kProxyFormOta] as? Bool ?? false
             upstreamProxy.ssrProtocol = values[kProxyFormProtocol] as? String
             upstreamProxy.ssrProtocolParam = values[kProxyFormProtocolParam] as? String
             upstreamProxy.ssrObfs = values[kProxyFormObfs] as? String
