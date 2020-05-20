@@ -51,6 +51,7 @@
 		3A9502DA229AFC4000A6EAD7 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9502CB229AF75F00A6EAD7 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABE26712200927B006EDDBA /* NSString+Localize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE26722200927B006EDDBA /* NSString+Localize.m */; };
+		3ACA441824753804005FADD5 /* QrCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA441724753804005FADD5 /* QrCodeController.swift */; };
 		3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		3ADE7CFB207372E1000F70AA /* yaml.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ADE7D002073733D000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
@@ -683,6 +684,7 @@
 		3A9502B7229AF75F00A6EAD7 /* Lumberjack.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Lumberjack.xcodeproj; path = Library/CocoaLumberjack/Lumberjack.xcodeproj; sourceTree = "<group>"; };
 		3ABE26712200927B006EDDBA /* NSString+Localize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localize.h"; sourceTree = "<group>"; };
 		3ABE26722200927B006EDDBA /* NSString+Localize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localize.m"; sourceTree = "<group>"; };
+		3ACA441724753804005FADD5 /* QrCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeController.swift; sourceTree = "<group>"; };
 		3AF6B0482084AD7C00A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF6B04A2084B04900A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494FBA89E140F817CCF2ACA /* Pods_PotatsoLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotatsoLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1658,6 +1660,7 @@
 				B803A6951D0165EA003EA9AA /* CloudViewController.swift */,
 				B88096AF1D0579F5008BEB87 /* CloudDetailViewController.swift */,
 				B88096B11D0652F0008BEB87 /* RuleCell.swift */,
+				3ACA441724753804005FADD5 /* QrCodeController.swift */,
 			);
 			name = Manage;
 			sourceTree = "<group>";
@@ -3379,6 +3382,7 @@
 				B8D8CC131D50D5DB00CE6C0D /* ICloudSyncService.swift in Sources */,
 				B8CCC6E71CFDD99E000E7E2E /* ProxyListViewController.swift in Sources */,
 				9B76EEB91C911CBF002BF5D1 /* ProxySelectionViewController.swift in Sources */,
+				3ACA441824753804005FADD5 /* QrCodeController.swift in Sources */,
 				B8C0FE0F1D5DF96500737454 /* PushLocalModifiedChangesOperation.swift in Sources */,
 				9BF303461CC8A1F60096588E /* LogDetailViewController.swift in Sources */,
 				9B1D9B7B1CA4C45F0078D814 /* HUDUtils.swift in Sources */,

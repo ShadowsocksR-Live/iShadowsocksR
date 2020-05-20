@@ -22,6 +22,11 @@ class CollectionViewController: SegmentPageVC {
     override func pageViewControllersForSegmentPageVC() -> [UIViewController] {
         return pageVCs
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showPage(1)
+    }
 
     override func segmentsForSegmentPageVC() -> [String] {
         ///custom modify: no cloud now

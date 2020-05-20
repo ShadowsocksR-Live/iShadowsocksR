@@ -52,6 +52,8 @@
 	<string>The App want to access your Location Always</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The App want to access your Location When In Use</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>The App want to access your Photo Library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>The App want to access your Photo Library</string>
 	<key>UIBackgroundModes</key>

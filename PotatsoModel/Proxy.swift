@@ -180,6 +180,8 @@ extension Proxy {
             if let authscheme = authscheme, let password = password {
                 return "ss://\(authscheme):\(password)@\(host):\(port)"
             }
+        case .ShadowsocksR:
+            return buildSsrUri()
         default:
             break
         }
@@ -187,6 +189,40 @@ extension Proxy {
     }
     open override var description: String {
         return name
+    }
+    
+    public func buildSsrUri() -> String {
+        var base = "\(host):\(port):\(ssrProtocol ?? Proxy.ssrSupportedProtocol[0]):\(authscheme ?? Proxy.ssSupportedEncryption[0]):\(ssrObfs ?? Proxy.ssrSupportedObfs[0]):\(Proxy.base64EncodeUrlSafe(password))"
+        var param:String?
+        var tmp:[String] = []
+
+        param = (ssrObfsParam?.count ?? 0)>0 ? "obfsparam=\(Proxy.base64EncodeUrlSafe(ssrObfsParam))" : nil
+        if (param != nil) { tmp.append(param!) }
+        
+        param = (ssrProtocolParam?.count ?? 0)>0 ? "protoparam=\(Proxy.base64EncodeUrlSafe(ssrProtocolParam))" : nil
+        if (param != nil) { tmp.append(param!) }
+
+        param = (name.count > 0) ? "remarks=\(Proxy.base64EncodeUrlSafe(name))" : nil
+        if (param != nil) { tmp.append(param!) }
+        
+        param = (ssrotEnable) ? "ot_enable=1" : nil
+        if (param != nil) { tmp.append(param!) }
+        
+        param = ((ssrotDomain?.count ?? 0) > 0) ? "ot_domain=\(Proxy.base64EncodeUrlSafe(ssrotDomain))" : nil
+        if (param != nil) { tmp.append(param!) }
+        
+        param = ((ssrotPath?.count ?? 0) > 0) ? "ot_path=\(Proxy.base64EncodeUrlSafe(ssrotPath))" : nil
+        if (param != nil) { tmp.append(param!) }
+        
+        param = tmp.joined(separator: "&")
+
+        if (param?.count ?? 0) > 0 {
+            base = base + "/?" + param!
+        }
+        
+        base = Proxy.ssrUriPrefix + Proxy.base64EncodeUrlSafe(base)
+
+        return base
     }
     
 }
@@ -211,7 +247,7 @@ extension Proxy {
             if uriString.lowercased().hasPrefix(Proxy.ssUriPrefix) {
                 // Shadowsocks
                 let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: Proxy.ssUriPrefix.count))
-                guard let proxyString = base64DecodeIfNeeded(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
+                guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyError.invalidUri
                 }
                 guard let pc1 = proxyString.range(of: ":")?.lowerBound, let pc2 = proxyString.range(of: ":", options: .backwards)?.lowerBound, let pcm = proxyString.range(of: "@", options: .backwards)?.lowerBound else {
@@ -236,7 +272,7 @@ extension Proxy {
                 self.type = .Shadowsocks
             }else if uriString.lowercased().hasPrefix(Proxy.ssrUriPrefix) {
                 let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: Proxy.ssrUriPrefix.count))
-                guard let proxyString = base64DecodeIfNeeded(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
+                guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyError.invalidUri
                 }
                 var hostString: String = proxyString
@@ -260,7 +296,7 @@ extension Proxy {
                 self.ssrProtocol = hostComps[2]
                 self.authscheme = hostComps[3]
                 self.ssrObfs = hostComps[4]
-                self.password = base64DecodeIfNeeded(hostComps[5])
+                self.password = base64DecodeUrlSafe(hostComps[5])
                 for queryComp in queryString.components(separatedBy: "&") {
                     let comps = queryComp.components(separatedBy: "=")
                     guard comps.count == 2 else {
@@ -268,17 +304,17 @@ extension Proxy {
                     }
                     switch comps[0] {
                     case "protoparam":
-                        self.ssrProtocolParam = base64DecodeIfNeeded(comps[1])
+                        self.ssrProtocolParam = base64DecodeUrlSafe(comps[1])
                     case "obfsparam":
-                        self.ssrObfsParam = base64DecodeIfNeeded(comps[1])
+                        self.ssrObfsParam = base64DecodeUrlSafe(comps[1])
                     case "remarks":
-                        self.name = base64DecodeIfNeeded(comps[1]) ?? ""
+                        self.name = base64DecodeUrlSafe(comps[1]) ?? ""
                     case "ot_enable":
                         self.ssrotEnable = (Int(comps[1]) != 0)
                     case "ot_domain":
-                        self.ssrotDomain = base64DecodeIfNeeded(comps[1]) ?? ""
+                        self.ssrotDomain = base64DecodeUrlSafe(comps[1]) ?? ""
                     case "ot_path":
-                        self.ssrotPath = base64DecodeIfNeeded(comps[1]) ?? ""
+                        self.ssrotPath = base64DecodeUrlSafe(comps[1]) ?? ""
                     default:
                         continue
                     }
@@ -320,7 +356,7 @@ extension Proxy {
         try validate(inRealm: realm)
     }
     
-    fileprivate func base64DecodeIfNeeded(_ proxyString: String) -> String? {
+    fileprivate func base64DecodeUrlSafe(_ proxyString: String) -> String? {
         if let _ = proxyString.range(of: ":")?.lowerBound {
             return proxyString
         }
@@ -330,6 +366,14 @@ extension Proxy {
             return decodedString as String
         }
         return nil
+    }
+    
+    public class func base64EncodeUrlSafe(_ orig: String?) -> String {
+        let d = orig?.data(using: .utf8)
+        guard let d2 = d?.base64EncodedData() else { return "" }
+        let d3 = String(data: d2, encoding: .utf8)
+        let base64String = d3?.replacingOccurrences(of: "+", with: "-").replacingOccurrences(of: "/", with: "_")
+        return base64String?.replacingOccurrences(of: "=", with: "") ?? ""
     }
     
     public class func uriIsShadowsocks(_ uri: String) -> Bool {

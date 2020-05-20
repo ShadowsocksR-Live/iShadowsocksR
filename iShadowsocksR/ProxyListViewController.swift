@@ -91,6 +91,11 @@ class ProxyListViewController: FormViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            doDeleteAction(indexPath)
+        }
+    }
+    
+    func doDeleteAction(_ indexPath: IndexPath) {
             guard indexPath.row < proxies.count, let item = (form[indexPath] as? ProxyRow)?.value else {
                 return
             }
@@ -102,7 +107,46 @@ class ProxyListViewController: FormViewController {
             }catch {
                 self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
             }
+    }
+    
+    func doShareAction(_ indexPath:IndexPath) {
+        guard indexPath.row < proxies.count, let _ = (form[indexPath] as? ProxyRow)?.value else {
+            return
         }
+        let proxy = proxies[indexPath.row]
+        
+        let qrcode = QrCodeController()
+        qrcode.qrCodeInfo = proxy?.uri
+        
+        self.navigationController?.pushViewController(qrcode, animated: true)
+    }
+
+    @available(iOS 11.0, *)
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete =  UIContextualAction(style: .destructive, title: "Delete".localized(), handler: { (action, view, completionHandler) in
+            self.doDeleteAction(indexPath)
+            completionHandler(true)
+        })
+        let share =  UIContextualAction(style: .normal, title: "Share".localized(), handler: { (action, view, completionHandler) in
+            self.doShareAction(indexPath)
+            completionHandler(true)
+        })
+        share.backgroundColor = UIColor.blue
+
+        return UISwipeActionsConfiguration(actions:[delete, share])
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete".localized()) { (action, indexPath) in
+            self.doDeleteAction(indexPath)
+        }
+
+        let share = UITableViewRowAction(style: .normal, title: "Share".localized()) { (action, indexPath) in
+            self.doShareAction(indexPath)
+        }
+        share.backgroundColor = UIColor.blue
+
+        return [delete, share]
     }
 
     override func viewDidLayoutSubviews() {
