@@ -52,6 +52,7 @@
 		3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABE26712200927B006EDDBA /* NSString+Localize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE26722200927B006EDDBA /* NSString+Localize.m */; };
 		3ACA441824753804005FADD5 /* QrCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA441724753804005FADD5 /* QrCodeController.swift */; };
+		3ACA448924761A76005FADD5 /* serverConnectivity.c in Sources */ = {isa = PBXBuildFile; fileRef = 3ACA447524761A76005FADD5 /* serverConnectivity.c */; };
 		3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
 		3ADE7CFB207372E1000F70AA /* yaml.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ADE7D002073733D000F70AA /* yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ADE7CF82073729B000F70AA /* yaml.framework */; };
@@ -685,6 +686,8 @@
 		3ABE26712200927B006EDDBA /* NSString+Localize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Localize.h"; sourceTree = "<group>"; };
 		3ABE26722200927B006EDDBA /* NSString+Localize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Localize.m"; sourceTree = "<group>"; };
 		3ACA441724753804005FADD5 /* QrCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeController.swift; sourceTree = "<group>"; };
+		3ACA447524761A76005FADD5 /* serverConnectivity.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = serverConnectivity.c; sourceTree = "<group>"; };
+		3ACA448824761A76005FADD5 /* serverConnectivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serverConnectivity.h; sourceTree = "<group>"; };
 		3AF6B0482084AD7C00A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF6B04A2084B04900A4AA06 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5494FBA89E140F817CCF2ACA /* Pods_PotatsoLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PotatsoLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1634,6 +1637,8 @@
 				9B2D8C8A1C7C3F5B00CC65B3 /* ProxyManager.m */,
 				9B8706091C1DBCCD00651424 /* dns.h */,
 				9B87060A1C1DBCCD00651424 /* dns.m */,
+				3ACA447524761A76005FADD5 /* serverConnectivity.c */,
+				3ACA448824761A76005FADD5 /* serverConnectivity.h */,
 				B8EAC5921D40BF310046963C /* TunnelError.h */,
 				B8EAC5931D40BF310046963C /* TunnelError.m */,
 				B86B08E31D17F84900613014 /* ShadowPath.xcodeproj */,
@@ -3432,6 +3437,7 @@
 				9B2D8C8B1C7C3F5B00CC65B3 /* ProxyManager.m in Sources */,
 				9B8706001C1D788F00651424 /* PacketTunnelProvider.m in Sources */,
 				9B87060B1C1DBCCD00651424 /* dns.m in Sources */,
+				3ACA448924761A76005FADD5 /* serverConnectivity.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

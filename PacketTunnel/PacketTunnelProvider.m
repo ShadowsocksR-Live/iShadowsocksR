@@ -18,6 +18,8 @@
 #import <arpa/inet.h>
 @import MMWormhole;
 @import CocoaAsyncSocket;
+#import "Profile.h"
+#import "serverConnectivity.h"
 
 #define REQUEST_CACHED @"requestsCached"    // Indicate that recent requests need update
 
@@ -51,6 +53,21 @@
         exit(1);
         return;
     }
+    
+    NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedProxyConfUrl] encoding:NSUTF8StringEncoding error:nil];
+    NSDictionary *json = [confContent jsonDictionary];
+    Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
+    
+    if (profile.server.length==0 || profile.serverPort==0) {
+        completionHandler([NSError errorWithDomain:@"iShadowsocksR" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"serverConnectivity"}]);
+        return;
+    }
+    
+    if (serverConnectivity(profile.server.UTF8String, (int)profile.serverPort) != 0){
+        completionHandler([NSError errorWithDomain:@"iShadowsocksR" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"serverConnectivity"}]);
+        return;
+    }
+
     _pendingStartCompletion = completionHandler;
     [self startProxies];
     [self startPacketForwarders];
