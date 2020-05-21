@@ -43,6 +43,8 @@ class QrCodeController: UIViewController {
         qrText?.frame = CGRect(x: 10, y: 10, width: width, height: 200)
         
         width = (size.width-40*2)
+        let width2 = size.height - (10 + 200)
+        width = min(width, width2)
         qrImage?.frame = CGRect(x: 40, y: 10 + 200, width: width, height: width)
     }
     
@@ -78,7 +80,7 @@ class QrCodeController: UIViewController {
         
         let avc = UIActivityViewController(activityItems: [selectedImage, txt, ], applicationActivities: nil)
         if UIDevice.current.model == "iPad" {
-            avc.popoverPresentationController?.sourceView = self.view
+            avc.popoverPresentationController?.sourceView = qrImage
         }
         self.navigationController?.present(avc, animated: true, completion: nil)
     }

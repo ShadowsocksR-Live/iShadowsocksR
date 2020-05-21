@@ -96,17 +96,23 @@ class ProxyListViewController: FormViewController {
     }
     
     func doDeleteAction(_ indexPath: IndexPath) {
-            guard indexPath.row < proxies.count, let item = (form[indexPath] as? ProxyRow)?.value else {
+        let ac = UIAlertController(title: "Delete item".localized(), message: "Do you really want to delete the item?".localized(), preferredStyle: .alert)
+        ac.addAction( UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil) )
+        let aaOK = UIAlertAction(title: "OK".localized(), style: .default) { (action) in
+            guard indexPath.row < self.proxies.count, let item = (self.form[indexPath] as? ProxyRow)?.value else {
                 return
             }
             do {
                 try DBUtils.softDelete(item.uuid, type: Proxy.self)
-                proxies.remove(at: indexPath.row)
-                form[indexPath].hidden = true
-                form[indexPath].evaluateHidden()
+                self.proxies.remove(at: indexPath.row)
+                self.form[indexPath].hidden = true
+                self.form[indexPath].evaluateHidden()
             }catch {
                 self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
             }
+        }
+        ac.addAction(aaOK)
+        self.navigationController?.present(ac, animated: true, completion: nil)
     }
     
     func doShareAction(_ indexPath:IndexPath) {
@@ -125,7 +131,7 @@ class ProxyListViewController: FormViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete =  UIContextualAction(style: .destructive, title: "Delete".localized(), handler: { (action, view, completionHandler) in
             self.doDeleteAction(indexPath)
-            completionHandler(true)
+            completionHandler(false)
         })
         let share =  UIContextualAction(style: .normal, title: "Share".localized(), handler: { (action, view, completionHandler) in
             self.doShareAction(indexPath)
