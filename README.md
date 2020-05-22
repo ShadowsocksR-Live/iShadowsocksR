@@ -47,8 +47,6 @@ cd iShadowsocksR
 git submodule update --init --recursive    # update git submodules
 sudo gem install cocoapods
 pod install                                # pull down dependencies into our project
-cd Library/openssl
-./build-libssl.sh --version=1.1.0f         # build OpenSSL library
 ```
 Then open `iShadowsocksR.xcworkspace` with `Xcode` to Build and Run the project. Done.
 

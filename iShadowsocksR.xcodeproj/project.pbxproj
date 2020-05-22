@@ -25,7 +25,6 @@
 		3A104BD62073C5D900C848D5 /* libuv.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BC22073C4CD00C848D5 /* libuv.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BB92073C4AB00C848D5 /* libsodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A104BE02073C6DA00C848D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A104BDF2073C6D900C848D5 /* Profile.m */; };
-		3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A104BE12073DE9900C848D5 /* libcrypto.a */; };
 		3A14EE9521B44F55006291BC /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3A14EE9621B44FC1006291BC /* MMWormhole.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8AC91620754396002843E0 /* MMWormhole.framework */; };
 		3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D4D207A850300073C87 /* CallbackURLKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -672,7 +671,6 @@
 		3A104BC52073C4DF00C848D5 /* mbedtls.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mbedtls.xcodeproj; path = Library/ssrNative/depends/mbedtls/ios/mbedtls.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A104BDE2073C6D900C848D5 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		3A104BDF2073C6D900C848D5 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
-		3A104BE12073DE9900C848D5 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = Library/openssl/lib/libcrypto.a; sourceTree = SOURCE_ROOT; };
 		3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CallbackURLKit.xcodeproj; path = Library/CallbackURLKit/CallbackURLKit.xcodeproj; sourceTree = "<group>"; };
 		3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ssrNative.xcodeproj; path = Library/ssrNative/ios/ssrNative.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A57D25920728FFE000520F8 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = Library/Eureka/Eureka.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -1222,8 +1220,6 @@
 		B88096B11D0652F0008BEB87 /* RuleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCell.swift; sourceTree = "<group>"; };
 		B8822CCB1D2AA70A00AD252C /* Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Receipt.h; sourceTree = "<group>"; };
 		B8822CCC1D2AA70A00AD252C /* Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Receipt.m; sourceTree = "<group>"; };
-		B8822CD11D2B81C400AD252C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "Library/ShadowPath/ShadowPath/shadowsocks-libev/libopenssl/lib/libcrypto.a"; sourceTree = "<group>"; };
-		B8822CD21D2B81C400AD252C /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "Library/ShadowPath/ShadowPath/shadowsocks-libev/libopenssl/lib/libssl.a"; sourceTree = "<group>"; };
 		B896A83F1D548AAC009E4BF5 /* ICloudSetupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudSetupOperation.swift; sourceTree = "<group>"; };
 		B8A09D681D51B42B00A9A989 /* CloudKitRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitRecord.swift; sourceTree = "<group>"; };
 		B8A09D741D51B9A900A9A989 /* AlertOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertOperation.swift; sourceTree = "<group>"; };
@@ -1274,7 +1270,6 @@
 				9BC6FFF11CB28B4B00E5EA61 /* PotatsoModel.framework in Frameworks */,
 				1ED659011E05C73100D4BEE3 /* CloudKit.framework in Frameworks */,
 				1ED66DEE1E05A72300638808 /* StoreKit.framework in Frameworks */,
-				3A104BE22073DE9A00C848D5 /* libcrypto.a in Frameworks */,
 				3ADE7CF9207372B3000F70AA /* yaml.framework in Frameworks */,
 				3A262D59207A85CE00073C87 /* CallbackURLKit.framework in Frameworks */,
 				3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */,
@@ -1515,7 +1510,6 @@
 		9B0CFA0D1C1C0B1B007BD7C6 /* iShadowsocksR */ = {
 			isa = PBXGroup;
 			children = (
-				3A104BE12073DE9900C848D5 /* libcrypto.a */,
 				3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */,
 				3A57D25920728FFE000520F8 /* Eureka.xcodeproj */,
 				1EF602941F113A660005E0C7 /* GeoLite2-Country.mmdb */,
@@ -2490,8 +2484,6 @@
 				1ED659051E05E88C00D4BEE3 /* GameKit.framework */,
 				1ED659001E05C73100D4BEE3 /* CloudKit.framework */,
 				1ED66DED1E05A72300638808 /* StoreKit.framework */,
-				B8822CD11D2B81C400AD252C /* libcrypto.a */,
-				B8822CD21D2B81C400AD252C /* libssl.a */,
 				9B87060C1C1DBDD400651424 /* libresolv.tbd */,
 				9B8193B31CBCFEE700BE320D /* NotificationCenter.framework */,
 				8AD3EA9ACD870481D4DBB6FB /* Pods_PacketProcessor.framework */,
@@ -3822,8 +3814,6 @@
 					"COCOAPODS=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Library/ShadowPath/ShadowPath/libopenssl/include/\"",
-					"$(SRCROOT)/Library/openssl/include",
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(PODS_ROOT)/KissXML/libxml",
@@ -3833,7 +3823,6 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iShadowsocksR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @rpath/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Library/openssl/lib";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3868,8 +3857,6 @@
 					"COCOAPODS=1",
 				);
 				HEADER_SEARCH_PATHS = (
-					"\"$(SRCROOT)/Library/ShadowPath/ShadowPath/libopenssl/include/\"",
-					"$(SRCROOT)/Library/openssl/include",
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(SDKROOT)/usr/include/libxml2",
 					"$(PODS_ROOT)/KissXML/libxml",
@@ -3879,7 +3866,6 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iShadowsocksR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @rpath/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Library/openssl/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssrlive.issr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
