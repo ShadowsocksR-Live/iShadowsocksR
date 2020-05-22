@@ -138,8 +138,16 @@ class ProxyListViewController: FormViewController {
             completionHandler(true)
         })
         share.backgroundColor = UIColor.blue
+        let show =  UIContextualAction(style: .normal, title: "Show".localized(), handler: { (action, view, completionHandler) in
+            let proxy = self.proxies[indexPath.row]
+            if proxy?.type != .none {
+                self.showProxyConfiguration(proxy)
+            }
+            completionHandler(true)
+        })
+        show.backgroundColor = UIColor(byteRed: 100, green: 100, blue: 255)
 
-        return UISwipeActionsConfiguration(actions:[delete, share])
+        return UISwipeActionsConfiguration(actions:[delete, share, show, ])
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -152,7 +160,15 @@ class ProxyListViewController: FormViewController {
         }
         share.backgroundColor = UIColor.blue
 
-        return [delete, share]
+        let show = UITableViewRowAction(style: .normal, title: "Show".localized()) { (action, indexPath) in
+            let proxy = self.proxies[indexPath.row]
+            if proxy?.type != .none {
+                self.showProxyConfiguration(proxy)
+            }
+        }
+        show.backgroundColor = UIColor(byteRed: 100, green: 100, blue: 255)
+
+        return [delete, share, show, ]
     }
 
     override func viewDidLayoutSubviews() {
