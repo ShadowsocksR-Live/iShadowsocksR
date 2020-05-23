@@ -132,7 +132,7 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
         ConfigGroupChooseManager.shared.hide()
     }
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+    @objc func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         if let view = touch.view, view.isDescendant(of: tableView){
             return false
         }
