@@ -4,6 +4,18 @@
 
 # iShadowsocksR 
 
+## 公告
+
+目前支持 SSRoT 特性的 iOS 客户端 已经开发完毕, 出于安全(警察上门抓人坐牢5年以上很吓人的)及财务原因(VPN类软件上架苹果 App Store 必须有公司或社团组织), 不能释出。
+
+![Screen Shot 2020-05-22 at 18 14 21](https://user-images.githubusercontent.com/30760636/82657737-70b22680-9c58-11ea-804b-65bff0a60ff5.png)
+
+身在大陆以外的苹果软件开发者, 可以 将此 App 编译成 ipa 文件后电邮发送至 `ssrlivebox@gmail.com` ——虽然机率极小,被国内 宵小 盗取代码编译后自己发布可能性更大,也不能放弃希望不是? ——作者会将该文件放在这里供用户下载. 然后通过 [AltStore](https://altstore.io/) 安装到用户的(非越狱)手机里, 就可以使用了.
+
+如果你不是开发者, 就一普通苹果用户,你为了下载苹果应用商店的软件有一苹果账号,你也可以自己编译,让 SSRoT 运行在你自己的手机上. 看看 [这个教程](https://blog.csdn.net/foreverling_ling/article/details/56671458) 和 [SSRoT iOS 编译指南](#how-to-build-project) 就可以了, 据说可以使用7天, 过期后再编译一次覆盖原文件就好了.——估计我党警察会因为这一点恨死苹果,就差下最后通牒让苹果自己堵死这漏洞了.
+
+> 貌似普通非开发者的苹果账号也可以打包 ipa 分发包了, 见[这个教程(教你如何不用开发者账号申请ios证书真机调试)](https://zhuanlan.zhihu.com/p/44203227), 不知真假. 国内不怕喝茶的朋友(警察的茶越来越难喝)可以编译后联系 `作者 ssrlivebox@gmail.com`.
+
 ## Important
 
 Please read [this](https://github.com/ShadowsocksR-Live/iShadowsocksR/blob/master/ADHERE_LICENSE.md) first before you do anything with this project.  
@@ -24,7 +36,7 @@ Currently, iShadowsocksR is compatible with following proxies:
 [Join Telegram Group](https://telegram.me/joinchat/BT0c4z49OGNZXwl9VsO0uQ) to chat with users.
 
 Original Author: [@icodesign](https://twitter.com/icodesign_me)  
-Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor)
+Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor) with [this site](https://github.com/haxpor/Potatso)
 
 ## Project Info
 
