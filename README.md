@@ -6,7 +6,7 @@
 
 ## 公告
 
-目前支持 SSRoT 特性的 iOS 客户端 已经开发完毕, 出于安全(警察上门抓人坐牢5年以上很吓人的)及财务原因(VPN类软件上架苹果 App Store 必须有公司或社团组织), 不能释出。
+目前支持 [SSRoT 特性](https://github.com/ShadowsocksR-Live/shadowsocksr-native/wiki) 的 iOS 客户端 已经开发完毕, 出于安全(警察上门抓人坐牢5年以上很吓人的)及财务原因(VPN类软件上架苹果 App Store 必须有公司或社团组织), 不能释出。
 
 ![Screen Shot 2020-05-22 at 18 14 21](https://user-images.githubusercontent.com/30760636/82657737-70b22680-9c58-11ea-804b-65bff0a60ff5.png)
 
