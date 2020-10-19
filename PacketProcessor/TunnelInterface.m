@@ -24,6 +24,7 @@
 @implementation TunnelInterface {
     NEPacketTunnelFlow *_tunnelPacketFlow;
     NSMutableDictionary<NSString*, NSString*> *_udpSession;
+    dispatch_queue_t _readWriteQuene;
     GCDAsyncUdpSocket *_udpSocket;
     int _readFd;
     int _writeFd;
@@ -42,6 +43,8 @@
     self = [super init];
     if (self) {
         _udpSession = [NSMutableDictionary dictionaryWithCapacity:5];
+        _readWriteQuene = dispatch_queue_create("session.rw.quene", DISPATCH_QUEUE_CONCURRENT);
+        
         _udpSocket = [[GCDAsyncUdpSocket alloc] initWithDelegate:self delegateQueue:dispatch_queue_create("udp", NULL)];
         
         int fds[2] = { 0 };
@@ -161,7 +164,9 @@
             NSString *destHost = [NSString stringWithUTF8String:inet_ntoa(dest)];
             NSString *key = [self strForHost:iphdr->dest.addr port:udphdr->dest];
             NSString *value = [self strForHost:iphdr->src.addr port:udphdr->src];;
-            _udpSession[key] = value;
+            dispatch_barrier_async(_readWriteQuene, ^{
+                self->_udpSession[key] = value;
+            });
             [_udpSocket sendData:outData toHost:destHost port:ntohs(udphdr->dest) withTimeout:30 tag:0];
         } break;
         case 6: {
@@ -174,7 +179,12 @@
     const struct sockaddr_in *addr = (const struct sockaddr_in *)[address bytes];
     ip_addr_p_t dest ={ addr->sin_addr.s_addr };
     in_port_t dest_port = addr->sin_port;
-    NSString *strHostPort = _udpSession[[self strForHost:dest.addr port:dest_port]];
+    __block NSString *strHostPort;
+    
+    dispatch_sync(_readWriteQuene, ^{
+        strHostPort = self->_udpSession[[self strForHost:dest.addr port:dest_port]];
+    });
+    
     NSArray *hostPortArray = [strHostPort componentsSeparatedByString:@":"];
     int src_ip = [hostPortArray[0] intValue];
     int src_port = [hostPortArray[1] intValue];
