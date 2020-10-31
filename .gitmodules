@@ -9,10 +9,6 @@
 	path = Library/yaml
 	url = https://github.com/ShadowsocksR-Live/yaml.git
 	branch = master
-[submodule "Library/openssl"]
-	path = Library/openssl
-	url = https://github.com/ShadowsocksR-Live/OpenSSL-for-iPhone.git
-	branch = master
 [submodule "Library/CocoaAsyncSocket"]
 	path = Library/CocoaAsyncSocket
 	url = https://github.com/robbiehanson/CocoaAsyncSocket.git
