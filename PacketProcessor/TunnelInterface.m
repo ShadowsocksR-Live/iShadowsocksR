@@ -12,7 +12,7 @@
 #import "lwip/udp.h"
 #import "lwip/ip.h"
 #import <arpa/inet.h>
-#import "inet_chksum.h"
+#import "lwip/inet_chksum.h"
 #import "tun2socks/tun2socks.h"
 @import CocoaAsyncSocket;
 

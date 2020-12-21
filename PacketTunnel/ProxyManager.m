@@ -86,10 +86,10 @@ struct ssr_client_state *g_state = NULL;
 void feedback_state(struct ssr_client_state *state, void *p) {
     g_state = state;
     shadowsocks_handler(ssr_get_listen_socket_fd(state), p);
-    state_set_force_quit(state, true);
+    state_set_force_quit(state, true, 1000);
 }
 
-void info_callback(const char *info, void *p) {
+void info_callback(int dump_level, const char *info, void *p) {
     DDLogWarn(@"%s", info);
 }
 
