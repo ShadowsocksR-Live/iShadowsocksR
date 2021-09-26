@@ -47,15 +47,14 @@ iShadowsocksR has in total 25 (2 as submodules dependencies as used as local fil
 The project is tested with Xcode `10.1 (10B61)` on iOS `12.1.4 (16D57)` device with cocoapod version `1.7.0`+.
 If you experienced an expected issue, try to use those versions, if still experience the problem please file the issue.
 
-## How to Build Project
+## How to Build
 
 Perform the following steps to be able to build the project.
 Be warned that you **should not** call `pod update` as newer version of pod frameworks that iShadowsocksR depends on might break building process and there will be errors.
 
 ```
-git clone https://github.com/ShadowsocksR-Live/iShadowsocksR.git
+git clone --recurse-submodules https://github.com/ShadowsocksR-Live/iShadowsocksR.git
 cd iShadowsocksR
-git submodule update --init --recursive    # update git submodules
 sudo gem install cocoapods
 pod install                                # pull down dependencies into our project
 ```
