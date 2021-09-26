@@ -89,7 +89,12 @@ class ICloudSyncService: SyncServiceProtocol {
 
     func subscribeNotification() {
         DDLogInfo("subscribing cloudkit database changes...")
-        let subscription = CKSubscription(zoneID: potatsoZoneId, subscriptionID: potatsoSubscriptionId, options: CKSubscriptionOptions(rawValue: 0))
+        let subscription: CKSubscription
+        if #available(iOS 10, *) {
+            subscription = CKSubscription(zoneID: potatsoZoneId, subscriptionID: potatsoSubscriptionId, options: CKSubscriptionOptions(rawValue: 0))
+        } else {
+            subscription = CKRecordZoneSubscription(zoneID: potatsoZoneId, subscriptionID: potatsoSubscriptionId)
+        }
         let info = CKNotificationInfo()
         info.shouldSendContentAvailable = true
         subscription.notificationInfo = info
