@@ -123,6 +123,7 @@ class ProxyConfigurationViewController: FormViewController {
             <<< SwitchRow(kProxyFormOta) {
                 $0.title = "One Time Auth".localized()
                 $0.value = self.upstreamProxy.ota
+                $0.disabled = true
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.Shadowsocks
