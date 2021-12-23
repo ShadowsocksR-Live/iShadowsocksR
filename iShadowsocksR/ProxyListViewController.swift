@@ -138,7 +138,7 @@ class ProxyListViewController: FormViewController {
             completionHandler(true)
         })
         share.backgroundColor = UIColor.blue
-        let show =  UIContextualAction(style: .normal, title: "Show".localized(), handler: { (action, view, completionHandler) in
+        let show =  UIContextualAction(style: .normal, title: "Details".localized(), handler: { (action, view, completionHandler) in
             let proxy = self.proxies[indexPath.row]
             if proxy?.type != .none {
                 self.showProxyConfiguration(proxy)
@@ -160,7 +160,7 @@ class ProxyListViewController: FormViewController {
         }
         share.backgroundColor = UIColor.blue
 
-        let show = UITableViewRowAction(style: .normal, title: "Show".localized()) { (action, indexPath) in
+        let show = UITableViewRowAction(style: .normal, title: "Details".localized()) { (action, indexPath) in
             let proxy = self.proxies[indexPath.row]
             if proxy?.type != .none {
                 self.showProxyConfiguration(proxy)
