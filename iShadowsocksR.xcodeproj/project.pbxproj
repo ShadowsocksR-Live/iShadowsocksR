@@ -1191,7 +1191,6 @@
 		A692B80DC5DB316AA1DED8CB /* Pods_TodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C3522CED51B0487ECEE41F /* Pods-TodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.release.xcconfig"; sourceTree = "<group>"; };
 		B3AEA49B98CE7A4AD5F03EE1 /* Pods-iShadowsocksR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iShadowsocksR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iShadowsocksR/Pods-iShadowsocksR.debug.xcconfig"; sourceTree = "<group>"; };
-		B69D2A2927748BDC0016B09B /* ClockKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClockKit.framework; path = System/Library/Frameworks/ClockKit.framework; sourceTree = SDKROOT; };
 		B803A6951D0165EA003EA9AA /* CloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudViewController.swift; sourceTree = "<group>"; };
 		B803A6971D02B768003EA9AA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = API.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KeychainUtils.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -2478,7 +2477,6 @@
 		C8B2149E8757C44C469576D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B69D2A2927748BDC0016B09B /* ClockKit.framework */,
 				3AF6B04A2084B04900A4AA06 /* CocoaLumberjack.framework */,
 				3AF6B0482084AD7C00A4AA06 /* CocoaLumberjack.framework */,
 				3A8780CA20754B2000B96BF3 /* libxml2.tbd */,
