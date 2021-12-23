@@ -567,11 +567,11 @@ nd6_input(struct pbuf *p, struct netif *inp)
   }
   case ICMP6_TYPE_PTB: /* Packet too big */
   {
-    struct icmp6_hdr *icmp6hdr; /* Packet too big message */
+    struct lwip_icmp6_hdr *icmp6hdr; /* Packet too big message */
     struct ip6_hdr * ip6hdr; /* IPv6 header of the packet which caused the error */
 
     /* Check that ICMPv6 header + IPv6 header fit in payload */
-    if (p->len < (sizeof(struct icmp6_hdr) + IP6_HLEN)) {
+    if (p->len < (sizeof(struct lwip_icmp6_hdr) + IP6_HLEN)) {
       /* drop short packets */
       pbuf_free(p);
       ND6_STATS_INC(nd6.lenerr);
@@ -579,8 +579,8 @@ nd6_input(struct pbuf *p, struct netif *inp)
       return;
     }
 
-    icmp6hdr = (struct icmp6_hdr *)p->payload;
-    ip6hdr = (struct ip6_hdr *)((u8_t*)p->payload + sizeof(struct icmp6_hdr));
+    icmp6hdr = (struct lwip_icmp6_hdr *)p->payload;
+    ip6hdr = (struct ip6_hdr *)((u8_t*)p->payload + sizeof(struct lwip_icmp6_hdr));
 
     /* Copy original destination address to current source address, to have an aligned copy. */
     ip6_addr_set(ip6_current_src_addr(), &(ip6hdr->dest));

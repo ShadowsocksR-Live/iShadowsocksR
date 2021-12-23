@@ -78,14 +78,14 @@ static void icmp6_send_response(struct pbuf *p, u8_t code, u32_t data, u8_t type
 void
 icmp6_input(struct pbuf *p, struct netif *inp)
 {
-  struct icmp6_hdr *icmp6hdr;
+  struct lwip_icmp6_hdr *icmp6hdr;
   struct pbuf * r;
   ip6_addr_t * reply_src;
 
   ICMP6_STATS_INC(icmp6.recv);
 
   /* Check that ICMPv6 header fits in payload */
-  if (p->len < sizeof(struct icmp6_hdr)) {
+  if (p->len < sizeof(struct lwip_icmp6_hdr)) {
     /* drop short packets */
     pbuf_free(p);
     ICMP6_STATS_INC(icmp6.lenerr);
@@ -93,7 +93,7 @@ icmp6_input(struct pbuf *p, struct netif *inp)
     return;
   }
 
-  icmp6hdr = (struct icmp6_hdr *)p->payload;
+  icmp6hdr = (struct lwip_icmp6_hdr *)p->payload;
 
 #if LWIP_ICMP6_CHECKSUM_CHECK
   if (ip6_chksum_pseudo(p, IP6_NEXTH_ICMP6, p->tot_len, ip6_current_src_addr(),
@@ -264,14 +264,14 @@ static void
 icmp6_send_response(struct pbuf *p, u8_t code, u32_t data, u8_t type)
 {
   struct pbuf *q;
-  struct icmp6_hdr *icmp6hdr;
+  struct lwip_icmp6_hdr *icmp6hdr;
   ip6_addr_t *reply_src, *reply_dest;
   ip6_addr_t reply_src_local, reply_dest_local;
   struct ip6_hdr *ip6hdr;
   struct netif *netif;
 
   /* ICMPv6 header + IPv6 header + data */
-  q = pbuf_alloc(PBUF_IP, sizeof(struct icmp6_hdr) + IP6_HLEN + LWIP_ICMP6_DATASIZE,
+  q = pbuf_alloc(PBUF_IP, sizeof(struct lwip_icmp6_hdr) + IP6_HLEN + LWIP_ICMP6_DATASIZE,
                  PBUF_RAM);
   if (q == NULL) {
     LWIP_DEBUGF(ICMP_DEBUG, ("icmp_time_exceeded: failed to allocate pbuf for ICMPv6 packet.\n"));
@@ -279,15 +279,15 @@ icmp6_send_response(struct pbuf *p, u8_t code, u32_t data, u8_t type)
     return;
   }
   LWIP_ASSERT("check that first pbuf can hold icmp 6message",
-             (q->len >= (sizeof(struct icmp6_hdr) + IP6_HLEN + LWIP_ICMP6_DATASIZE)));
+             (q->len >= (sizeof(struct lwip_icmp6_hdr) + IP6_HLEN + LWIP_ICMP6_DATASIZE)));
 
-  icmp6hdr = (struct icmp6_hdr *)q->payload;
+  icmp6hdr = (struct lwip_icmp6_hdr *)q->payload;
   icmp6hdr->type = type;
   icmp6hdr->code = code;
   icmp6hdr->data = data;
 
   /* copy fields from original packet */
-  SMEMCPY((u8_t *)q->payload + sizeof(struct icmp6_hdr), (u8_t *)p->payload,
+  SMEMCPY((u8_t *)q->payload + sizeof(struct lwip_icmp6_hdr), (u8_t *)p->payload,
           IP6_HLEN + LWIP_ICMP6_DATASIZE);
 
   /* Get the destination address and netif for this ICMP message. */
