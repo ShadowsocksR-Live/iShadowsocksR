@@ -93,7 +93,8 @@ class ICloudSyncService: SyncServiceProtocol {
         if #available(iOS 10, *) {
             subscription = CKRecordZoneSubscription(zoneID: potatsoZoneId, subscriptionID: potatsoSubscriptionId)
         } else {
-            subscription = CKSubscription(zoneID: potatsoZoneId, subscriptionID: potatsoSubscriptionId, options: CKSubscriptionOptions(rawValue: 0))
+            DDLogError("<<<<<<<<<< Not supported")
+            return
         }
         let info = CKNotificationInfo()
         info.shouldSendContentAvailable = true
