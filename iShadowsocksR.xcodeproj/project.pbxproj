@@ -193,7 +193,6 @@
 		9BF303461CC8A1F60096588E /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF303451CC8A1F60096588E /* LogDetailViewController.swift */; };
 		9BF3034B1CCA1B060096588E /* BaseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3034A1CCA1B060096588E /* BaseEmptyView.swift */; };
 		9BF3034D1CCA20D80096588E /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3034C1CCA20D80096588E /* Logging.swift */; };
-		B69D2A2A27748BDC0016B09B /* ClockKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69D2A2927748BDC0016B09B /* ClockKit.framework */; };
 		B803A6961D0165EA003EA9AA /* CloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803A6951D0165EA003EA9AA /* CloudViewController.swift */; };
 		B803A6981D02B768003EA9AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803A6971D02B768003EA9AA /* API.swift */; };
 		B821B0F01D51DD8F0061E7B9 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */; };
@@ -1258,7 +1257,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B69D2A2A27748BDC0016B09B /* ClockKit.framework in Frameworks */,
 				3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */,
 				3A9502D9229AFC4000A6EAD7 /* CocoaLumberjack.framework in Frameworks */,
 				B86B08ED1D17FB9B00613014 /* ShadowPath.framework in Frameworks */,
