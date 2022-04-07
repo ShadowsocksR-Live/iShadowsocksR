@@ -15,7 +15,7 @@
 	branch = master
 [submodule "Library/MMWormhole"]
 	path = Library/MMWormhole
-	url = https://github.com/mutualmobile/MMWormhole.git
+	url = https://github.com/ShadowsocksR-Live/MMWormhole.git
 	branch = master
 [submodule "Library/KissXML"]
 	path = Library/KissXML
