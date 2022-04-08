@@ -4142,7 +4142,7 @@
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4183,7 +4183,7 @@
 					"@loader_path/Frameworks",
 				);
 				MODULEMAP_FILE = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4219,7 +4219,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4255,7 +4255,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4292,7 +4292,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4329,7 +4329,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4382,7 +4382,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -4434,7 +4434,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ssrlive.issr.$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.commnekit.suit.$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
