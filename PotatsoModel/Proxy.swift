@@ -244,14 +244,53 @@ extension Proxy {
     
     public convenience init(dictionary: [String: AnyObject], inRealm realm: Realm) throws {
         self.init()
-        if let uriString = dictionary["uri"] as? String {
+        if var uriString = dictionary["uri"] as? String {
             guard let name = dictionary["name"] as? String else{
                 throw ProxyError.invalidName
             }
             self.name = name
             if uriString.lowercased().hasPrefix(Proxy.ssUriPrefix) {
                 // Shadowsocks
+                let array = uriString.components(separatedBy: "#")
+                if array.count > 1 {
+                    uriString = array[0]
+                    self.name = array[1].removingPercentEncoding!
+                }
                 let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: Proxy.ssUriPrefix.count))
+                let tmp = undecodedString.components(separatedBy: "@")
+                if tmp.count > 1 {
+                    //
+                    // ss://YmYtY2ZiOnRlc3Q@192.168.100.1:8888/?plugin=value1&arguments=value2#Dummy+profile+name.
+                    //
+                    let tmp2 = undecodedString.components(separatedBy: "/?")
+                    if tmp2.count > 1 {
+                        // FIXME: do not suppprt plugin parameters.
+                        throw ProxyError.invalidUri
+                    }
+                    let array2 = tmp2[0].components(separatedBy: "@")
+                    
+                    let userinfo = base64DecodeUrlSafe(array2[0])
+                    let m_p = userinfo?.components(separatedBy: ":")
+                    if m_p?.count != 2 {
+                        throw ProxyError.invalidUri
+                    }
+                    self.authscheme = m_p?[0]
+                    self.password = m_p?[1]
+                    
+                    let h_p = array2[1].components(separatedBy: ":")
+                    if h_p.count != 2 {
+                        throw ProxyError.invalidUri
+                    }
+                    self.host = h_p[0]
+                    self.port = Int(h_p[1]) ?? 0
+                    if self.port == 0 {
+                        throw ProxyError.invalidUri
+                    }
+                    
+                    self.type = .Shadowsocks
+                    return
+                }
+
                 guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyError.invalidUri
                 }
