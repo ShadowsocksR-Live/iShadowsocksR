@@ -33,8 +33,6 @@
 		3A262D5A207A85CE00073C87 /* CallbackURLKitClients.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A262D51207A850300073C87 /* CallbackURLKitClients.framework */; };
 		3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; };
 		3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A57D25F20728FFF000520F8 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; };
-		3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A739BCD20763B530069F21C /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780B1207549F800B96BF3 /* KissXML.framework */; };
 		3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8780CA20754B2000B96BF3 /* libxml2.tbd */; };
@@ -193,6 +191,8 @@
 		9BF303461CC8A1F60096588E /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF303451CC8A1F60096588E /* LogDetailViewController.swift */; };
 		9BF3034B1CCA1B060096588E /* BaseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3034A1CCA1B060096588E /* BaseEmptyView.swift */; };
 		9BF3034D1CCA20D80096588E /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3034C1CCA20D80096588E /* Logging.swift */; };
+		B670FD5E2800240C00054553 /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; };
+		B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B803A6961D0165EA003EA9AA /* CloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803A6951D0165EA003EA9AA /* CloudViewController.swift */; };
 		B803A6981D02B768003EA9AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803A6971D02B768003EA9AA /* API.swift */; };
 		B821B0F01D51DD8F0061E7B9 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */; };
@@ -594,6 +594,27 @@
 			remoteGlobalIDString = 9BDA625A1CAE2576007F2581;
 			remoteInfo = PacketProcessor;
 		};
+		B670FD48280022A200054553 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AEE32E62075DBD000E96761;
+			remoteInfo = "libmaxminddb iOS";
+		};
+		B6D3436128001EBD00527D6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AEE32E72075DBD000E96761;
+			remoteInfo = "libmaxminddb iOS";
+		};
+		B6D3436328001EBD00527D6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A0939EC2075DC5200AB150D;
+			remoteInfo = "libmaxminddb macOS";
+		};
 		B86B08E81D17F84900613014 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B86B08E31D17F84900613014 /* ShadowPath.xcodeproj */;
@@ -629,6 +650,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */,
 				3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */,
 				3A262D54207A855800073C87 /* CallbackURLKitClients.framework in Embed Frameworks */,
 				3A8780C320754A2900B96BF3 /* KissXML.framework in Embed Frameworks */,
@@ -639,7 +661,6 @@
 				3A09F9032310280E0073E0EE /* ssrNative.framework in Embed Frameworks */,
 				3A9502D5229AF87900A6EAD7 /* CocoaLumberjackSwift.framework in Embed Frameworks */,
 				3A104BD82073C5D900C848D5 /* libsodium.framework in Embed Frameworks */,
-				3A739BCF20763B530069F21C /* libmaxminddb.framework in Embed Frameworks */,
 				3ADE7CFB207372E1000F70AA /* yaml.framework in Embed Frameworks */,
 				B88874491D18186100AEF002 /* ShadowPath.framework in Embed Frameworks */,
 				3A57D263207290AC000520F8 /* Eureka.framework in Embed Frameworks */,
@@ -675,7 +696,6 @@
 		3A432BE5230F7CEC008E4D12 /* ssrNative.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ssrNative.xcodeproj; path = Library/ssrNative/ios/ssrNative.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A57D25920728FFE000520F8 /* Eureka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Eureka.xcodeproj; path = Library/Eureka/Eureka.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = YAML.xcodeproj; path = Library/yaml/YAML.xcodeproj; sourceTree = SOURCE_ROOT; };
-		3A739BCD20763B530069F21C /* libmaxminddb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = libmaxminddb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KissXML.xcodeproj; path = Library/KissXML/KissXML.xcodeproj; sourceTree = "<group>"; };
 		3A8780CA20754B2000B96BF3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		3A8AC8BC20753B29002843E0 /* CocoaAsyncSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaAsyncSocket.xcodeproj; path = Library/CocoaAsyncSocket/CocoaAsyncSocket.xcodeproj; sourceTree = "<group>"; };
@@ -1191,6 +1211,7 @@
 		A692B80DC5DB316AA1DED8CB /* Pods_TodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C3522CED51B0487ECEE41F /* Pods-TodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.release.xcconfig"; sourceTree = "<group>"; };
 		B3AEA49B98CE7A4AD5F03EE1 /* Pods-iShadowsocksR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iShadowsocksR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iShadowsocksR/Pods-iShadowsocksR.debug.xcconfig"; sourceTree = "<group>"; };
+		B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libmaxminddb.xcodeproj; path = Library/libmaxminddb/xcode/libmaxminddb.xcodeproj; sourceTree = "<group>"; };
 		B803A6951D0165EA003EA9AA /* CloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudViewController.swift; sourceTree = "<group>"; };
 		B803A6971D02B768003EA9AA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = API.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KeychainUtils.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -1265,7 +1286,6 @@
 				9BDA62621CAE2576007F2581 /* PacketProcessor.framework in Frameworks */,
 				3A9502D4229AF87900A6EAD7 /* CocoaLumberjackSwift.framework in Frameworks */,
 				1ED659061E05E88C00D4BEE3 /* GameKit.framework in Frameworks */,
-				3A739BCE20763B530069F21C /* libmaxminddb.framework in Frameworks */,
 				9B9B15C41C21595B000B6541 /* PotatsoLibrary.framework in Frameworks */,
 				9BC6FFF11CB28B4B00E5EA61 /* PotatsoModel.framework in Frameworks */,
 				1ED659011E05C73100D4BEE3 /* CloudKit.framework in Frameworks */,
@@ -1296,6 +1316,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B670FD5E2800240C00054553 /* libmaxminddb.framework in Frameworks */,
 				3A09F917231049AF0073E0EE /* ssrNative.framework in Frameworks */,
 				3A9502D8229AF8D100A6EAD7 /* CocoaLumberjackSwift.framework in Frameworks */,
 				3A8AC92320754441002843E0 /* MMWormhole.framework in Frameworks */,
@@ -1474,7 +1495,7 @@
 		9B0CFA021C1C0B1A007BD7C6 = {
 			isa = PBXGroup;
 			children = (
-				3A739BCD20763B530069F21C /* libmaxminddb.framework */,
+				B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */,
 				3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */,
 				3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */,
 				3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */,
@@ -2416,6 +2437,15 @@
 			path = udpgw_client;
 			sourceTree = "<group>";
 		};
+		B6D3435D28001EBD00527D6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6D3436228001EBD00527D6D /* libmaxminddb.framework */,
+				B6D3436428001EBD00527D6D /* libmaxminddb.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B821B0F11D5318F80061E7B9 /* iCloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -2557,6 +2587,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B670FD49280022A200054553 /* PBXTargetDependency */,
 				3A262D56207A859500073C87 /* PBXTargetDependency */,
 				3A262D58207A859500073C87 /* PBXTargetDependency */,
 				3A8AC920207543D3002843E0 /* PBXTargetDependency */,
@@ -2825,6 +2856,10 @@
 					ProjectRef = 3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */;
 				},
 				{
+					ProductGroup = B6D3435D28001EBD00527D6D /* Products */;
+					ProjectRef = B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */;
+				},
+				{
 					ProductGroup = 3A104BB42073C4AB00C848D5 /* Products */;
 					ProjectRef = 3A104BB32073C4AB00C848D5 /* libsodium.xcodeproj */;
 				},
@@ -3058,6 +3093,20 @@
 			fileType = wrapper.framework;
 			path = yaml.framework;
 			remoteRef = 3ADE7CF72073729B000F70AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6D3436228001EBD00527D6D /* libmaxminddb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = libmaxminddb.framework;
+			remoteRef = B6D3436128001EBD00527D6D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6D3436428001EBD00527D6D /* libmaxminddb.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = libmaxminddb.framework;
+			remoteRef = B6D3436328001EBD00527D6D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		B86B08E91D17F84900613014 /* ShadowPath.framework */ = {
@@ -3646,6 +3695,11 @@
 			target = 9BDA625A1CAE2576007F2581 /* PacketProcessor */;
 			targetProxy = 9BDA62601CAE2576007F2581 /* PBXContainerItemProxy */;
 		};
+		B670FD49280022A200054553 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libmaxminddb iOS";
+			targetProxy = B670FD48280022A200054553 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -3735,7 +3789,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3787,7 +3841,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

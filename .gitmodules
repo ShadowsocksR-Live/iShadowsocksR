@@ -27,7 +27,7 @@
 	branch = master
 [submodule "Library/CocoaLumberjack"]
 	path = Library/CocoaLumberjack
-	url = https://github.com/CocoaLumberjack/CocoaLumberjack.git
+	url = https://github.com/ShadowsocksR-Live/CocoaLumberjack.git
 	branch = master
 [submodule "Library/ssrNative"]
 	path = Library/ssrNative
