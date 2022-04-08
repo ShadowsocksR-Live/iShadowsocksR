@@ -10,23 +10,21 @@
 @implementation Potatso
 
 + (NSString *) sharedGroupIdentifier {
-#if 1
-    // reverted back
-    // very curious why grabbing value from Info.plist will result in cannot connect to VPN all the time
-    // it needs to be fixed like this as always
-    return @"group.com.ssrlive.issr";
-#else
-    // FIXME: following code NOT working.
     // Try to avoid hardcoding Group IDs into the source code.
     // This is a fragile implementation that can be easily broken.
-    NSString *appID = [[NSBundle mainBundle] bundleIdentifier];
-    NSString *groupID = [@"group." stringByAppendingString:appID];
-    return groupID;
-#endif
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSURL *url = bundle.bundleURL;
+    if ([url.pathExtension isEqualToString:@"appex"]) {
+        // Peel off two directory levels - MY_APP.app/PlugIns/MY_APP_EXTENSION.appex
+        url = [[url URLByDeletingLastPathComponent] URLByDeletingLastPathComponent];
+        bundle = [NSBundle bundleWithURL:url];
+    }
+    return [@"group." stringByAppendingString:[bundle bundleIdentifier]];
 }
 
 + (NSURL *)sharedUrl {
-    return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:[self sharedGroupIdentifier]];
+    NSString *groupID = [self sharedGroupIdentifier];
+    return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:groupID];
 }
 
 + (NSURL *)sharedDatabaseUrl {
@@ -34,7 +32,8 @@
 }
 
 + (NSUserDefaults *)sharedUserDefaults {
-    return [[NSUserDefaults alloc] initWithSuiteName:[self sharedGroupIdentifier]];
+    NSString *groupID = [self sharedGroupIdentifier];
+    return [[NSUserDefaults alloc] initWithSuiteName:groupID];
 }
 
 + (NSURL * _Nonnull)sharedGeneralConfUrl {
