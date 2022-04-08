@@ -32,7 +32,7 @@
  */
 
 /**
- * @def DEBUG
+ * @def DEBUG_OUTPUT
  * 
  * Macro for printing debugging text. Use the same way as printf,
  * but without a newline.
@@ -95,7 +95,7 @@
 #include <stdint.h>
 #include <assert.h>
 
-#define DEBUG(...) \
+#define DEBUG_OUTPUT(...) \
     { \
         fprintf(stderr, "%s: ", __FUNCTION__); \
         fprintf(stderr, __VA_ARGS__); \

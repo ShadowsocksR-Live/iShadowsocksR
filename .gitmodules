@@ -1,6 +1,6 @@
 [submodule "Library/CallbackURLKit"]
 	path = Library/CallbackURLKit
-	url = https://github.com/phimage/CallbackURLKit.git
+	url = https://github.com/ShadowsocksR-Live/CallbackURLKit.git
 [submodule "Library/Eureka"]
 	path = Library/Eureka
 	url = https://github.com/xmartlabs/Eureka.git
