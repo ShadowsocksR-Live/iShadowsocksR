@@ -183,7 +183,14 @@ extension Proxy {
         switch type {
         case .Shadowsocks:
             if let authscheme = authscheme, let password = password {
-                return "ss://\(authscheme):\(password)@\(host):\(port)"
+                let mainInfo = "\(authscheme):\(password)@\(host):\(port)"
+                let b64 = Proxy.base64EncodeUrlSafe(mainInfo)
+                if name.count > 0 {
+                    let remarks = name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                    return "ss://\(b64)#\(remarks)"
+                } else {
+                    return "ss://\(b64)"
+                }
             }
         case .ShadowsocksR:
             return buildSsrUri()
