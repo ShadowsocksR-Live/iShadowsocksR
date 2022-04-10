@@ -7,10 +7,7 @@
 
 import Foundation
 import ICSMainFramework
-import Appirater
 import CocoaLumberjackSwift
-
-let appID = "1070901416"
 
 class AppInitializer: NSObject, AppLifeCycleProtocol {
     
@@ -18,12 +15,7 @@ class AppInitializer: NSObject, AppLifeCycleProtocol {
         _  = UIViewController.shared
         
         configLogging()
-        configAppirater()
         return true
-    }
-
-    func configAppirater() {
-        Appirater.setAppId(appID)
     }
 
     func configLogging() {

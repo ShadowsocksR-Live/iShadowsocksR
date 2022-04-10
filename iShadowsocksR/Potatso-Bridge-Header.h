@@ -16,6 +16,5 @@
 @import PotatsoLibrary;
 @import PotatsoModel;
 @import PotatsoBase;
-@import Appirater;
 
 #endif /* Potatso_Bridge_Header_h */

@@ -7,6 +7,7 @@
 
 import Foundation
 import ICSMainFramework
+import StoreKit
 
 class Receipt: NSObject, SKRequestDelegate {
 
@@ -84,7 +85,6 @@ class Receipt: NSObject, SKRequestDelegate {
 //                self.terminate()
 //            }, cancelMessage: "BUY".localized()) {
 //                logEvent(.ReceiptValidationBuy, attributes: nil)
-//                Appirater.rateApp()
 //                self.terminate()
 //            }
 //

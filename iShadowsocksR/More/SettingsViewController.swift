@@ -7,7 +7,6 @@
 
 import UIKit
 import Eureka
-import Appirater
 import ICSMainFramework
 import MessageUI
 import SafariServices
@@ -86,11 +85,6 @@ class SettingsViewController: FormViewController, MFMailComposeViewControllerDel
     func generateRateSection() -> Section {
         let section = Section()
         section
-            <<< ActionRow() {
-                $0.title = "Rate on App Store".localized()
-            }.onCellSelection({ (cell, row) -> () in
-                Appirater.rateApp()
-            })
             <<< ActionRow() {
                 $0.title = "Share with friends".localized()
             }.onCellSelection({ [unowned self] (cell, row) -> () in
