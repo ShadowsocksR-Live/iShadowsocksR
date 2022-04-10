@@ -94,7 +94,7 @@
 "Please set name for the new proxy" = "请设置代理名称";
 "Port" = "端口";
 "Port can't be empty" = "端口不能为空";
-"Potatso is not connected" = "Potatso 已断开";
+"VPN is not connected" = "VPN 已断开";
 "Protocol" = "协议插件(protocol)";
 "Protocol Param" = "协议插件参数";
 "Proxy" = "代理";

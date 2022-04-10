@@ -138,7 +138,7 @@ class RecentRequestsVC: UIViewController, UITableViewDataSource, UITableViewDele
     
     lazy var hintLabel: UILabel = {
         let v = UILabel()
-        v.text = "Potatso is not connected".localized()
+        v.text = "VPN is not connected".localized()
         v.textColor = UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         v.backgroundColor = "E74C3C".color
         v.textAlignment = .center

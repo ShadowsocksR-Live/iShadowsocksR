@@ -93,7 +93,7 @@
 "Please set name for the new proxy" = "Please set name for the new proxy";
 "Port" = "Port";
 "Port can't be empty" = "Port can't be empty";
-"Potatso is not connected" = "Potatso is not connected";
+"VPN is not connected" = "VPN is not connected";
 "Protocol" = "Protocol";
 "Protocol Param" = "Protocol Param";
 "Proxy" = "Proxy";
