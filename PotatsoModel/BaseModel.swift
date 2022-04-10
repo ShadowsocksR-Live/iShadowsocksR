@@ -7,7 +7,6 @@
 
 import RealmSwift
 import PotatsoBase
-import CloudKit
 
 private let version: UInt64 = 18
 public var defaultRealm: Realm!

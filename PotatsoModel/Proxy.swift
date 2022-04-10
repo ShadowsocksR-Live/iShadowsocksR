@@ -6,7 +6,6 @@
 //
 
 import RealmSwift
-import CloudKit
 
 public enum ProxyType: String {
     case Shadowsocks = "SS"

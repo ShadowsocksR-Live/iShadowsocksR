@@ -8,7 +8,6 @@
 import UIKit
 import ICSMainFramework
 import NetworkExtension
-import CloudKit
 import Async
 import RealmSwift
 import Realm
@@ -36,7 +35,6 @@ class DataInitializer: NSObject, AppLifeCycleProtocol {
     }
 
     func sync() {
-        SyncManager.shared.sync()
     }
 
 }
