@@ -34,8 +34,8 @@ class ProxyListViewController: FormViewController {
     }
 
     @objc func add() {
-        let vc = ProxyConfigurationViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = imprortProxyNodeController()
+        navigationController?.present(vc, animated: true, completion: nil)
     }
 
     func reloadData() {
@@ -173,5 +173,41 @@ class ProxyListViewController: FormViewController {
         tableView?.tableFooterView = UIView()
         tableView?.tableHeaderView = UIView()
     }
+    
+    func imprortProxyNodeController() -> UIAlertController {
+        let ac = UIAlertController(title: "New node".localized(), message: "Create new node from...".localized(), preferredStyle: .actionSheet)
+        
+        let action1 = UIAlertAction(title: "Create manually".localized(), style: .default) { action in
+            let vc = ProxyConfigurationViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        ac.addAction(action1)
 
+        let action2 = UIAlertAction(title: "Import From URL".localized(), style: .default) { action in
+            let importer = Importer(vc: self) { success in
+                if success {
+                    self.reloadData()
+                }
+            }
+            importer.importConfigFromUrl()
+        }
+        ac.addAction(action2)
+
+        let action3 = UIAlertAction(title: "Import From QRCode".localized(), style: .default) { action in
+            let importer = Importer(vc: self) { success in
+                if success {
+                    self.reloadData()
+                }
+            }
+            importer.importConfigFromQRCode()
+        }
+        ac.addAction(action3)
+
+        let action99 = UIAlertAction(title: "Cancel".localized(), style: .cancel) { action in
+            NSLog("canceled")
+        }
+        ac.addAction(action99)
+
+        return ac
+    }
 }

@@ -45,8 +45,8 @@ class CollectionViewController: SegmentPageVC {
             let vc = ProxyRuleSetConfigurationViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-            let vc = ProxyConfigurationViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            let ac = (self.pageVCs[1] as! ProxyListViewController).imprortProxyNodeController()
+            self.present(ac, animated: true)
         default:
             break
         }

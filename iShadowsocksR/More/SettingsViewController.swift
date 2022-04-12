@@ -41,7 +41,6 @@ class SettingsViewController: FormViewController, MFMailComposeViewControllerDel
         form.delegate = nil
         form.removeAll()
         form +++ generateManualSection()
-        form +++ generateSyncSection()
         form +++ generateRateSection()
         form +++ generateAboutSection()
         form.delegate = self
@@ -60,24 +59,6 @@ class SettingsViewController: FormViewController, MFMailComposeViewControllerDel
                 $0.title = "Feedback".localized()
             }.onCellSelection({ (cell, row) in
                 FeedbackManager.shared.showFeedback()
-            })
-        return section
-    }
-
-    func generateSyncSection() -> Section {
-        let section = Section()
-        section
-            <<< ActionRow() {
-                $0.title = "Import From URL".localized()
-            }.onCellSelection({ [unowned self] (cell, row) -> () in
-                let importer = Importer(vc: self)
-                importer.importConfigFromUrl()
-            })
-            <<< ActionRow() {
-                $0.title = "Import From QRCode".localized()
-            }.onCellSelection({ [unowned self] (cell, row) -> () in
-                let importer = Importer(vc: self)
-                importer.importConfigFromQRCode()
             })
         return section
     }

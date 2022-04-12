@@ -13,9 +13,11 @@ import PotatsoLibrary
 struct Importer {
     
     weak var viewController: UIViewController?
+    var completion: ((Bool) -> Void)?
     
-    init(vc: UIViewController) {
+    init(vc: UIViewController, completion: ((Bool) -> Void)? = nil) {
         self.viewController = vc
+        self.completion = completion
     }
     
     func importConfigFromUrl() {
@@ -127,6 +129,7 @@ struct Importer {
             }else {
                 self.viewController?.showTextHUD("Import Success".localized(), dismissAfterDelay: 1.5)
             }
+            self.completion?(success)
         }
     }
 
