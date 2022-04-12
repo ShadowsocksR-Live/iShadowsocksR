@@ -75,7 +75,6 @@
 		9B5E13BA1C897870007DFE0A /* ProxyConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E13B91C897870007DFE0A /* ProxyConfigurationViewController.swift */; };
 		9B76EEAD1C9005D2002BF5D1 /* RuleConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */; };
 		9B76EEB71C90740C002BF5D1 /* RuleSetsSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76EEB61C90740C002BF5D1 /* RuleSetsSelectionViewController.swift */; };
-		9B76EEB91C911CBF002BF5D1 /* ProxySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76EEB81C911CBF002BF5D1 /* ProxySelectionViewController.swift */; };
 		9B8193B41CBCFEE700BE320D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8193B31CBCFEE700BE320D /* NotificationCenter.framework */; };
 		9B8193B71CBCFEE700BE320D /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193B61CBCFEE700BE320D /* TodayViewController.swift */; };
 		9B8193BA1CBCFEE700BE320D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B8193B81CBCFEE700BE320D /* MainInterface.storyboard */; };
@@ -193,7 +192,6 @@
 		9BF3034D1CCA20D80096588E /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3034C1CCA20D80096588E /* Logging.swift */; };
 		B670FD5E2800240C00054553 /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; };
 		B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B803A6961D0165EA003EA9AA /* CloudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803A6951D0165EA003EA9AA /* CloudViewController.swift */; };
 		B803A6981D02B768003EA9AA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803A6971D02B768003EA9AA /* API.swift */; };
 		B821B0F01D51DD8F0061E7B9 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */; };
 		B821B0F31D5334D50061E7B9 /* ActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0F21D5334D50061E7B9 /* ActionRow.swift */; };
@@ -723,7 +721,6 @@
 		9B5E13B91C897870007DFE0A /* ProxyConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyConfigurationViewController.swift; path = Advance/ProxyConfigurationViewController.swift; sourceTree = "<group>"; };
 		9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleConfigurationViewController.swift; path = Advance/RuleConfigurationViewController.swift; sourceTree = "<group>"; };
 		9B76EEB61C90740C002BF5D1 /* RuleSetsSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleSetsSelectionViewController.swift; path = Advance/RuleSetsSelectionViewController.swift; sourceTree = "<group>"; };
-		9B76EEB81C911CBF002BF5D1 /* ProxySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxySelectionViewController.swift; path = Advance/ProxySelectionViewController.swift; sourceTree = "<group>"; };
 		9B8193B21CBCFEE700BE320D /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8193B31CBCFEE700BE320D /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		9B8193B61CBCFEE700BE320D /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -1199,7 +1196,6 @@
 		A6C3522CED51B0487ECEE41F /* Pods-TodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.release.xcconfig"; sourceTree = "<group>"; };
 		B3AEA49B98CE7A4AD5F03EE1 /* Pods-iShadowsocksR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iShadowsocksR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iShadowsocksR/Pods-iShadowsocksR.debug.xcconfig"; sourceTree = "<group>"; };
 		B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libmaxminddb.xcodeproj; path = Library/libmaxminddb/xcode/libmaxminddb.xcodeproj; sourceTree = "<group>"; };
-		B803A6951D0165EA003EA9AA /* CloudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudViewController.swift; sourceTree = "<group>"; };
 		B803A6971D02B768003EA9AA /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = API.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KeychainUtils.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B821B0F21D5334D50061E7B9 /* ActionRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionRow.swift; sourceTree = "<group>"; };
@@ -1568,7 +1564,6 @@
 				9BB62FA21C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift */,
 				9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */,
 				9B76EEB61C90740C002BF5D1 /* RuleSetsSelectionViewController.swift */,
-				9B76EEB81C911CBF002BF5D1 /* ProxySelectionViewController.swift */,
 			);
 			name = Edit;
 			sourceTree = "<group>";
@@ -1650,7 +1645,6 @@
 				B8CCC6E01CFDCADC000E7E2E /* RuleSetListViewController.swift */,
 				B8CCC6E41CFDCFD8000E7E2E /* RuleSetCell.swift */,
 				B8CCC6E61CFDD99E000E7E2E /* ProxyListViewController.swift */,
-				B803A6951D0165EA003EA9AA /* CloudViewController.swift */,
 				B88096AF1D0579F5008BEB87 /* CloudDetailViewController.swift */,
 				B88096B11D0652F0008BEB87 /* RuleCell.swift */,
 				3ACA441724753804005FADD5 /* QrCodeController.swift */,
@@ -3327,14 +3321,12 @@
 				B829C1721D4395BC00C17B82 /* QRCodeScannerVC.m in Sources */,
 				B87B98041D3B423B00FA66BF /* PaddingLabel.swift in Sources */,
 				B8CCC6E51CFDCFD8000E7E2E /* RuleSetCell.swift in Sources */,
-				B803A6961D0165EA003EA9AA /* CloudViewController.swift in Sources */,
 				9BC858A51C33D30100992032 /* BaseSafariViewController.swift in Sources */,
 				B84551421CF878BD005779CD /* ConfigGroupChooseVC.swift in Sources */,
 				B88096B01D0579F5008BEB87 /* CloudDetailViewController.swift in Sources */,
 				B8319A0A1D1B975C001E50C2 /* RegexUtils.swift in Sources */,
 				B84551401CF83D07005779CD /* HomeVC.swift in Sources */,
 				B8CCC6E71CFDD99E000E7E2E /* ProxyListViewController.swift in Sources */,
-				9B76EEB91C911CBF002BF5D1 /* ProxySelectionViewController.swift in Sources */,
 				3ACA441824753804005FADD5 /* QrCodeController.swift in Sources */,
 				9BF303461CC8A1F60096588E /* LogDetailViewController.swift in Sources */,
 				9B1D9B7B1CA4C45F0078D814 /* HUDUtils.swift in Sources */,

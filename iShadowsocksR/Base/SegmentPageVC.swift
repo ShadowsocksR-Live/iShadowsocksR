@@ -56,7 +56,7 @@ class SegmentPageVC: UIViewController {
 
     lazy var segmentedControl: UISegmentedControl = {
         let v = UISegmentedControl(items: self.segmentsForSegmentPageVC())
-        v.addTarget(self, action: #selector(CollectionViewController.onSegmentedChanged(_:)), for: .valueChanged)
+        v.addTarget(self, action: #selector(SegmentPageVC.onSegmentedChanged(_:)), for: .valueChanged)
         return v
     }()
     

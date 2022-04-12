@@ -10,9 +10,6 @@ import PotatsoModel
 import Cartography
 import Eureka
 
-private let rowHeight: CGFloat = 107
-private let kProxyCellIdentifier = "proxy"
-
 class ProxyListViewController: FormViewController {
 
     var proxies: [Proxy?] = []
