@@ -30,6 +30,8 @@
 "Connect" = "Connect";
 "Connected" = "Connected";
 "Connection" = "Connection";
+"Create manually" = "Create manually";
+"Create new node from..." = "Create new node from...";
 "DNS" = "DNS";
 "DNS Pollution" = "DNS Pollution";
 "DNS Query" = "DNS Query";
@@ -37,6 +39,7 @@
 "Default" = "Default";
 "Default Route Match" = "Default Route Match";
 "Default To Proxy" = "Default To Proxy";
+"Delete item" = "Delete item";
 "Detail" = "Detail";
 "Disconnect" = "Disconnect";
 "Edit Proxy" = "Edit Proxy";
@@ -81,6 +84,7 @@
 "Name" = "Name";
 "Name already exists" = "Name already exists";
 "Name can't be empty" = "Name can't be empty";
+"New node" = "New node";
 "No Match" = "No Match";
 "No more data" = "No more data";
 "None" = "None";

@@ -31,6 +31,8 @@
 "Connect" = "连接";
 "Connected" = "已连接";
 "Connection" = "连接";
+"Create manually" = "手工创建";
+"Create new node from..." = "创建新节点 从这些途径...";
 "DNS Pollution" = "DNS 污染";
 "DNS Query" = "DNS 查询";
 "DNS" = "DNS";
@@ -38,6 +40,7 @@
 "Default" = "默认";
 "Default Route Match" = "默认路由匹配";
 "Default To Proxy" = "默认走代理";
+"Delete item" = "删除条目";
 "Detail" = "详情";
 "Disconnect" = "断开";
 "Edit Proxy" = "编辑代理";
@@ -82,6 +85,7 @@
 "Name" = "名称";
 "Name already exists" = "名称已存在";
 "Name can't be empty" = "名称不能为空";
+"New node" = "新节点";
 "No Match" = "无匹配";
 "No more data" = "没有更多数据了";
 "None" = "无";
