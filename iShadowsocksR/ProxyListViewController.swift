@@ -29,12 +29,12 @@ class ProxyListViewController: FormViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "Proxy".localized()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(sender:)))
         reloadData()
     }
 
-    @objc func add() {
-        let vc = imprortProxyNodeController()
+    @objc func add(sender: UIBarButtonItem) {
+        let vc = imprortProxyNodeController(sender: sender)
         navigationController?.present(vc, animated: true, completion: nil)
     }
 
@@ -174,7 +174,7 @@ class ProxyListViewController: FormViewController {
         tableView?.tableHeaderView = UIView()
     }
     
-    func imprortProxyNodeController() -> UIAlertController {
+    func imprortProxyNodeController(sender:NSObject) -> UIAlertController {
         let ac = UIAlertController(title: "New node".localized(), message: "Create new node from...".localized(), preferredStyle: .actionSheet)
         
         let action1 = UIAlertAction(title: "Create manually".localized(), style: .default) { action in
@@ -207,6 +207,17 @@ class ProxyListViewController: FormViewController {
             NSLog("canceled")
         }
         ac.addAction(action99)
+
+        if let popoverPresentationController = ac.popoverPresentationController {
+            if let obj = sender as? UIBarButtonItem {
+                popoverPresentationController.barButtonItem = obj
+            } else if let obj = sender as? UIView {
+                popoverPresentationController.sourceView = obj
+                popoverPresentationController.sourceRect = obj.bounds
+            } else {
+                assert(false)
+            }
+        }
 
         return ac
     }

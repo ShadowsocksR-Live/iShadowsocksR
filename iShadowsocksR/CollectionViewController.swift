@@ -32,20 +32,20 @@ class CollectionViewController: SegmentPageVC {
 
     override func showPage(_ index: Int) {
         if index < 2 {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(sender:)))
         }else {
             navigationItem.rightBarButtonItem = nil
         }
         super.showPage(index)
     }
 
-    @objc func add() {
+    @objc func add(sender: UIBarButtonItem) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             let vc = ProxyRuleSetConfigurationViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
-            let ac = (self.pageVCs[1] as! ProxyListViewController).imprortProxyNodeController()
+            let ac = (self.pageVCs[1] as! ProxyListViewController).imprortProxyNodeController(sender: sender)
             self.present(ac, animated: true)
         default:
             break
