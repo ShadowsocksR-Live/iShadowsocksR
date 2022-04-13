@@ -21,17 +21,33 @@ class DataInitializer: NSObject, AppLifeCycleProtocol {
         return true
     }
     
+    var taskID: UIBackgroundTaskIdentifier? = nil
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
-        _ = try? Manager.sharedManager.regenerateConfigFiles()
+        if #available(iOS 12, *) {
+            if (taskID != nil) {
+                return
+            }
+            taskID = application.beginBackgroundTask(withName: "application_did_enter_background") {
+                NSLog("running regenerateConfigFiles")
+                _ = try? Manager.sharedManager.regenerateConfigFiles()
+                application.endBackgroundTask(self.taskID!)
+                self.taskID = nil
+            }
+        } else {
+            _ = try? Manager.sharedManager.regenerateConfigFiles()
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        _ = try? Manager.sharedManager.regenerateConfigFiles()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        Receipt.shared.validate()
-        sync()
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async(execute: {
+            NSLog("running applicationWillEnterForeground task")
+            Receipt.shared.validate()
+            self.sync()
+        })
     }
 
     func sync() {
