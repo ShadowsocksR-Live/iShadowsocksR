@@ -93,9 +93,10 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-        token = groups.addNotificationBlock { [unowned self] (changed) in
+        token = groups.observe(on: DispatchQueue.global()) { [unowned self] changed in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
+                DispatchQueue.main.async {
                 self.tableView.beginUpdates()
                 defer {
                     self.tableView.endUpdates()
@@ -104,6 +105,7 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
                 self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                }
             default:
                 break
             }
@@ -112,7 +114,7 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        token?.stop()
+        token?.invalidate()
     }
 
     @objc func onVPNStatusChanged() {

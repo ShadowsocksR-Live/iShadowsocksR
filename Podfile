@@ -9,7 +9,7 @@ def library
 end
 
 def model
-    pod 'RealmSwift', '~> 2.10.2'
+    pod 'RealmSwift', '~> 10'
 end
 
 target "iShadowsocksR" do
