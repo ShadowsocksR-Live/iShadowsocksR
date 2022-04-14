@@ -80,10 +80,10 @@ open class Proxy: BaseModel {
     @objc open dynamic var ssrotDomain: String?
     @objc open dynamic var ssrotPath: String?
     
-    open static let ssUriPrefix = "ss://"
-    open static let ssrUriPrefix = "ssr://"
+    public static let ssUriPrefix = "ss://"
+    public static let ssrUriPrefix = "ssr://"
     
-    open static let ssrSupportedProtocol = [
+    public static let ssrSupportedProtocol = [
         "origin",
         "verify_simple",
         "auth_simple",
@@ -99,7 +99,7 @@ open class Proxy: BaseModel {
         "auth_chain_e",
         "auth_chain_f",
         ]
-    open static let ssrSupportedObfs = [
+    public static let ssrSupportedObfs = [
         "plain",
         "http_simple",
         "http_post",
@@ -107,7 +107,7 @@ open class Proxy: BaseModel {
         "tls1.2_ticket_fastauth"
     ]
     
-    open static let ssSupportedEncryption = [
+    public static let ssSupportedEncryption = [
         "none",
         "table",
         "rc4",
@@ -137,7 +137,7 @@ open class Proxy: BaseModel {
         "chacha20-ietf-poly1305",
         "xchacha20-ietf-poly1305",
     ]
-    open override static func indexedProperties() -> [String] {
+    public override static func indexedProperties() -> [String] {
         return ["name"]
     }
     

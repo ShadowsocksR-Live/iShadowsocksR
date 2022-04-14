@@ -20,10 +20,10 @@ class ProxyRuleSetConfigurationViewController: FormViewController {
     var editable: Bool {
         return ruleSet.editable && !ruleSet.isSubscribe
     }
-    var callback: ((PotatsoModel.ProxyRuleSet?) -> Void)?
+    var callback: ((ProxyRuleSet?) -> Void)?
     var editSection: Section = Section()
 
-    init(ruleSet: PotatsoModel.ProxyRuleSet? = nil, callback: ((PotatsoModel.ProxyRuleSet?) -> Void)? = nil) {
+    init(ruleSet: ProxyRuleSet? = nil, callback: ((ProxyRuleSet?) -> Void)? = nil) {
         self.callback = callback
         if let ruleSet = ruleSet {
             self.ruleSet = ProxyRuleSet(value: ruleSet)
