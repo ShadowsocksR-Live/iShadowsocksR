@@ -87,8 +87,8 @@ open class DBUtils {
     public static func markAll(syncd: Bool) throws {
         let mRealm = try! Realm()
         mRealm.beginWrite()
-        for proxy in mRealm.objects(ProxyNode.self) {
-            proxy.synced = false
+        for proxyNode in mRealm.objects(ProxyNode.self) {
+            proxyNode.synced = false
         }
         for ruleset in mRealm.objects(ProxyRuleSet.self) {
             ruleset.synced = false
@@ -165,7 +165,7 @@ extension DBUtils {
     public static func allObjectsToSyncModified() -> [BaseModel] {
         let mRealm = currentRealm(nil)
         let filter = "synced == false && deleted == false"
-        let proxies = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
+        let proxyNodes = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
         let rulesets = mRealm.objects(ProxyRuleSet.self).filter(filter).map({ $0 })
         let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
         var objects: [BaseModel] = []
@@ -195,7 +195,7 @@ extension DBUtils {
     public static func allObjectsToSyncDeleted() -> [BaseModel] {
         let mRealm = currentRealm(nil)
         let filter = "synced == false && deleted == true"
-        let proxies = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
+        let proxyNodes = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
         let rulesets = mRealm.objects(ProxyRuleSet.self).filter(filter).map({ $0 })
         let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
         var objects: [BaseModel] = []
@@ -237,11 +237,11 @@ extension BaseModel {
 // Config Group API
 extension ConfigurationGroup {
 
-    public static func changeProxy(forGroupId groupId: String, proxyId: String?) throws {
+    public static func changeProxyNode(forGroupId groupId: String, nodeId: String?) throws {
         try DBUtils.modify(ConfigurationGroup.self, id: groupId) { (realm, group) -> Error? in
-            group.proxies.removeAll()
-            if let proxyId = proxyId, let proxy = DBUtils.get(proxyId, type: ProxyNode.self, inRealm: realm){
-                group.proxies.append(proxy)
+            group.proxyNodes.removeAll()
+            if let nodeId = nodeId, let proxyNode = DBUtils.get(nodeId, type: ProxyNode.self, inRealm: realm){
+                group.proxyNodes.append(proxyNode)
             }
             return nil
         }

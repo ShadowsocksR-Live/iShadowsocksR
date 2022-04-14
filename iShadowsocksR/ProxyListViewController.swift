@@ -12,7 +12,7 @@ import Eureka
 
 class ProxyListViewController: FormViewController {
 
-    var proxies: [ProxyNode?] = []
+    var proxyNodes: [ProxyNode?] = []
     let allowNone: Bool
     let chooseCallback: ((ProxyNode?) -> Void)?
 
@@ -39,16 +39,16 @@ class ProxyListViewController: FormViewController {
     }
 
     func reloadData() {
-        proxies = DBUtils.allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
+        proxyNodes = DBUtils.allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
         if allowNone {
-            proxies.insert(nil, at: 0)
+            proxyNodes.insert(nil, at: 0)
         }
         form.delegate = nil
         form.removeAll()
         let section = Section()
-        for proxy in proxies {
+        for proxy in proxyNodes {
             section
-                <<< ProxyRow () {
+                <<< ProxyNodeRow () {
                     $0.value = proxy
                 }.cellSetup({ (cell, row) -> () in
                     cell.selectionStyle = .none
@@ -70,8 +70,8 @@ class ProxyListViewController: FormViewController {
         tableView?.reloadData()
     }
 
-    func showProxyConfiguration(_ proxy: ProxyNode?) {
-        let vc = ProxyConfigurationViewController(upstreamProxy: proxy)
+    func showProxyConfiguration(_ proxyNode: ProxyNode?) {
+        let vc = ProxyConfigurationViewController(upstreamProxyNode: proxyNode)
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -96,12 +96,12 @@ class ProxyListViewController: FormViewController {
         let ac = UIAlertController(title: "Delete item".localized(), message: "Do you really want to delete the item?".localized(), preferredStyle: .alert)
         ac.addAction( UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil) )
         let aaOK = UIAlertAction(title: "OK".localized(), style: .default) { (action) in
-            guard indexPath.row < self.proxies.count, let item = (self.form[indexPath] as? ProxyRow)?.value else {
+            guard indexPath.row < self.proxyNodes.count, let item = (self.form[indexPath] as? ProxyNodeRow)?.value else {
                 return
             }
             do {
                 try DBUtils.softDelete(item.uuid, type: ProxyNode.self)
-                self.proxies.remove(at: indexPath.row)
+                self.proxyNodes.remove(at: indexPath.row)
                 self.form[indexPath].hidden = true
                 self.form[indexPath].evaluateHidden()
             }catch {
@@ -113,13 +113,13 @@ class ProxyListViewController: FormViewController {
     }
     
     func doShareAction(_ indexPath:IndexPath) {
-        guard indexPath.row < proxies.count, let _ = (form[indexPath] as? ProxyRow)?.value else {
+        guard indexPath.row < proxyNodes.count, let _ = (form[indexPath] as? ProxyNodeRow)?.value else {
             return
         }
-        let proxy = proxies[indexPath.row]
+        let proxyNode = proxyNodes[indexPath.row]
         
         let qrcode = QrCodeController()
-        qrcode.qrCodeInfo = proxy?.uri
+        qrcode.qrCodeInfo = proxyNode?.uri
         
         self.navigationController?.pushViewController(qrcode, animated: true)
     }
@@ -136,7 +136,7 @@ class ProxyListViewController: FormViewController {
         })
         share.backgroundColor = UIColor.blue
         let show =  UIContextualAction(style: .normal, title: "Details".localized(), handler: { (action, view, completionHandler) in
-            let proxy = self.proxies[indexPath.row]
+            let proxy = self.proxyNodes[indexPath.row]
             if proxy?.type != .none {
                 self.showProxyConfiguration(proxy)
             }
@@ -158,7 +158,7 @@ class ProxyListViewController: FormViewController {
         share.backgroundColor = UIColor.blue
 
         let show = UITableViewRowAction(style: .normal, title: "Details".localized()) { (action, indexPath) in
-            let proxy = self.proxies[indexPath.row]
+            let proxy = self.proxyNodes[indexPath.row]
             if proxy?.type != .none {
                 self.showProxyConfiguration(proxy)
             }

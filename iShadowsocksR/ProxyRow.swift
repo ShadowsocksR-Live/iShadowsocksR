@@ -20,19 +20,19 @@ final class ProxyRow: Row<Proxy, ProxyRowCell>, RowType {
 }
 */
 
-class _ProxyRow: Row<ProxyRowCell> {
+class _ProxyNodeRow: Row<ProxyNodeRowCell> {
     public required init(tag: String?) {
         super.init(tag: tag)
     }
 }
 
-final class ProxyRow: _ProxyRow, RowType {
+final class ProxyNodeRow: _ProxyNodeRow, RowType {
     required public init(tag: String?) {
         super.init(tag: tag)
     }
 }
 
-class ProxyRowCell: Cell<ProxyNode>, CellType {
+class ProxyNodeRowCell: Cell<ProxyNode>, CellType {
 
     let group = ConstraintGroup()
 

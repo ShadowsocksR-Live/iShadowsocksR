@@ -19,8 +19,8 @@ class HomePresenter: NSObject {
         return CurrentGroupManager.shared.group
     }
 
-    var proxy: ProxyNode? {
-        return group.proxies.first
+    var proxyNode: ProxyNode? {
+        return group.proxyNodes.first
     }
 
     weak var delegate: HomePresenterProtocol?
@@ -52,9 +52,9 @@ class HomePresenter: NSObject {
     }
 
     func chooseProxy() {
-        let chooseVC = ProxyListViewController(allowNone: true) { [unowned self] proxy in
+        let chooseVC = ProxyListViewController(allowNone: true) { [unowned self] proxyNode in
             do {
-                try ConfigurationGroup.changeProxy(forGroupId: self.group.uuid, proxyId: proxy?.uuid)
+                try ConfigurationGroup.changeProxyNode(forGroupId: self.group.uuid, nodeId: proxyNode?.uuid)
                 self.delegate?.handleRefreshUI()
             }catch {
                 self.vc.showTextHUD("\("Fail to change proxy".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)

@@ -28,19 +28,19 @@ public let kSsrotPath = "ot_path"
 
 class ProxyConfigurationViewController: FormViewController {
     
-    var upstreamProxy: ProxyNode
+    var upstreamProxyNode: ProxyNode
     let isEdit: Bool
     
     override convenience init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.init()
     }
     
-    init(upstreamProxy: ProxyNode? = nil) {
-        if let proxy = upstreamProxy {
-            self.upstreamProxy = ProxyNode(value: proxy)
+    init(upstreamProxyNode: ProxyNode? = nil) {
+        if let proxyNode = upstreamProxyNode {
+            self.upstreamProxyNode = ProxyNode(value: proxyNode)
             self.isEdit = true
         }else {
-            self.upstreamProxy = ProxyNode()
+            self.upstreamProxyNode = ProxyNode()
             self.isEdit = false
         }
         super.init(nibName: nil, bundle: nil)
@@ -71,18 +71,18 @@ class ProxyConfigurationViewController: FormViewController {
             <<< PushRow<ProxyType>(kProxyFormType) {
                 $0.title = "Proxy Type".localized()
                 $0.options = [ProxyType.Shadowsocks, ProxyType.ShadowsocksR]
-                $0.value = self.upstreamProxy.type
+                $0.value = self.upstreamProxyNode.type
                 $0.selectorTitle = "Choose Proxy Type".localized()
             }
             <<< TextRow(kProxyFormName) {
                 $0.title = "Name".localized()
-                $0.value = self.upstreamProxy.name
+                $0.value = self.upstreamProxyNode.name
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "Proxy Name".localized()
             }
             <<< TextRow(kProxyFormHost) {
                 $0.title = "Host".localized()
-                $0.value = self.upstreamProxy.host
+                $0.value = self.upstreamProxyNode.host
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "Proxy Server Host".localized()
                 cell.textField.keyboardType = .URL
@@ -91,8 +91,8 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< IntRow(kProxyFormPort) {
                 $0.title = "Port".localized()
-                if self.upstreamProxy.port > 0 {
-                    $0.value = self.upstreamProxy.port
+                if self.upstreamProxyNode.port > 0 {
+                    $0.value = self.upstreamProxyNode.port
                 }
                 let numberFormatter = NumberFormatter()
                 numberFormatter.locale = .current
@@ -105,7 +105,7 @@ class ProxyConfigurationViewController: FormViewController {
             <<< PushRow<String>(kProxyFormEncryption) {
                 $0.title = "Encryption".localized()
                 $0.options = ProxyNode.ssSupportedEncryption
-                $0.value = self.upstreamProxy.authscheme ?? $0.options?[8]
+                $0.value = self.upstreamProxyNode.authscheme ?? $0.options?[8]
                 $0.selectorTitle = "Choose encryption method".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType), let isSS = r1.value?.isShadowsocks {
@@ -116,13 +116,13 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< TextRow(kProxyFormPassword) {
                 $0.title = "Password".localized()
-                $0.value = self.upstreamProxy.password ?? nil
+                $0.value = self.upstreamProxyNode.password ?? nil
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "Proxy Password".localized()
             }
             <<< SwitchRow(kProxyFormOta) {
                 $0.title = "One Time Auth".localized()
-                $0.value = self.upstreamProxy.ota
+                $0.value = self.upstreamProxyNode.ota
                 $0.disabled = true
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
@@ -134,7 +134,7 @@ class ProxyConfigurationViewController: FormViewController {
             <<< PushRow<String>(kProxyFormProtocol) {
                 $0.title = "Protocol".localized()
                 $0.options = ProxyNode.ssrSupportedProtocol
-                $0.value = self.upstreamProxy.ssrProtocol ?? $0.options?[6]
+                $0.value = self.upstreamProxyNode.ssrProtocol ?? $0.options?[6]
                 $0.selectorTitle = "Choose SSR protocol".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
@@ -145,7 +145,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< TextRow(kProxyFormProtocolParam) {
                 $0.title = "Protocol Param".localized()
-                $0.value = self.upstreamProxy.ssrProtocolParam
+                $0.value = self.upstreamProxyNode.ssrProtocolParam
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
@@ -160,7 +160,7 @@ class ProxyConfigurationViewController: FormViewController {
             <<< PushRow<String>(kProxyFormObfs) {
                 $0.title = "Obfs".localized()
                 $0.options = ProxyNode.ssrSupportedObfs
-                $0.value = self.upstreamProxy.ssrObfs ?? $0.options?[3]
+                $0.value = self.upstreamProxyNode.ssrObfs ?? $0.options?[3]
                 $0.selectorTitle = "Choose SSR obfs".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
@@ -171,7 +171,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< TextRow(kProxyFormObfsParam) {
                 $0.title = "Obfs Param".localized()
-                $0.value = self.upstreamProxy.ssrObfsParam
+                $0.value = self.upstreamProxyNode.ssrObfsParam
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
@@ -185,7 +185,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< SwitchRow(kSsrotEnable) { row in
                 row.title = "SSRoT Enable".localized()
-                row.value = self.upstreamProxy.ssrotEnable
+                row.value = self.upstreamProxyNode.ssrotEnable
                 row.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
@@ -207,7 +207,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< TextRow(kSsrotDomain) {
                 $0.title = "SSRoT Domain".localized()
-                $0.value = self.upstreamProxy.ssrotDomain
+                $0.value = self.upstreamProxyNode.ssrotDomain
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
@@ -227,7 +227,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< TextRow(kSsrotPath) {
                 $0.title = "SSRoT Path".localized()
-                $0.value = self.upstreamProxy.ssrotPath
+                $0.value = self.upstreamProxyNode.ssrotPath
                 $0.hidden = Condition.function([kProxyFormType]) { form in
                     if let r1 : PushRow<ProxyType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyType.ShadowsocksR
@@ -286,24 +286,24 @@ class ProxyConfigurationViewController: FormViewController {
             default:
                 break
             }
-            upstreamProxy.type = type
-            upstreamProxy.name = name
-            upstreamProxy.host = host
-            upstreamProxy.port = port
-            upstreamProxy.authscheme = authscheme
-            upstreamProxy.user = user
-            upstreamProxy.password = password
-            upstreamProxy.ota = values[kProxyFormOta] as? Bool ?? false
-            upstreamProxy.ssrProtocol = values[kProxyFormProtocol] as? String
-            upstreamProxy.ssrProtocolParam = values[kProxyFormProtocolParam] as? String
-            upstreamProxy.ssrObfs = values[kProxyFormObfs] as? String
-            upstreamProxy.ssrObfsParam = values[kProxyFormObfsParam] as? String
+            upstreamProxyNode.type = type
+            upstreamProxyNode.name = name
+            upstreamProxyNode.host = host
+            upstreamProxyNode.port = port
+            upstreamProxyNode.authscheme = authscheme
+            upstreamProxyNode.user = user
+            upstreamProxyNode.password = password
+            upstreamProxyNode.ota = values[kProxyFormOta] as? Bool ?? false
+            upstreamProxyNode.ssrProtocol = values[kProxyFormProtocol] as? String
+            upstreamProxyNode.ssrProtocolParam = values[kProxyFormProtocolParam] as? String
+            upstreamProxyNode.ssrObfs = values[kProxyFormObfs] as? String
+            upstreamProxyNode.ssrObfsParam = values[kProxyFormObfsParam] as? String
             
-            upstreamProxy.ssrotEnable = values[kSsrotEnable] as? Bool ?? false
-            upstreamProxy.ssrotDomain = values[kSsrotDomain] as? String ?? ""
-            upstreamProxy.ssrotPath = values[kSsrotPath] as? String ?? ""
+            upstreamProxyNode.ssrotEnable = values[kSsrotEnable] as? Bool ?? false
+            upstreamProxyNode.ssrotDomain = values[kSsrotDomain] as? String ?? ""
+            upstreamProxyNode.ssrotPath = values[kSsrotPath] as? String ?? ""
             
-            try DBUtils.add(upstreamProxy)
+            try DBUtils.add(upstreamProxyNode)
             close()
         }catch {
             showTextHUD("\(error)", dismissAfterDelay: 1.0)

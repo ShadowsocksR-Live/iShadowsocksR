@@ -222,12 +222,12 @@ extension ConfigurationGroup {
 
 extension Manager {
     
-    var upstreamProxy: ProxyNode? {
-        return defaultConfigGroup.proxies.first
+    var upstreamProxyNode: ProxyNode? {
+        return defaultConfigGroup.proxyNodes.first
     }
     
     var defaultToProxy: Bool {
-        return upstreamProxy != nil && defaultConfigGroup.defaultToProxy
+        return upstreamProxyNode != nil && defaultConfigGroup.defaultToProxy
     }
     
     func generateGeneralConfig() throws {
@@ -255,9 +255,9 @@ extension Manager {
         root.addChild(authchoice)
         
         let filter = XMLElement.element(withName: "filter") as! XMLElement
-        if let upstreamProxy = upstreamProxy {
-            let chain = XMLElement.element(withName: "chain", children: nil, attributes: [XMLNode.attribute(withName: "name", stringValue: upstreamProxy.name) as! DDXMLNode]) as! XMLElement
-            switch upstreamProxy.type {
+        if let upstreamProxyNode = upstreamProxyNode {
+            let chain = XMLElement.element(withName: "chain", children: nil, attributes: [XMLNode.attribute(withName: "name", stringValue: upstreamProxyNode.name) as! DDXMLNode]) as! XMLElement
+            switch upstreamProxyNode.type {
             case .Shadowsocks:
                 let uriString = "socks5://127.0.0.1:${ssport}"
                 let uri = XMLElement.element(withName: "uri", children: nil, attributes: [XMLNode.attribute(withName: "value", stringValue: uriString) as! DDXMLNode]) as! XMLElement
@@ -287,19 +287,19 @@ extension Manager {
     func generateShadowsocksConfig() throws {
         let confURL = Potatso.sharedProxyConfUrl()
         var content = ""
-        if let upstreamProxy = upstreamProxy, upstreamProxy.type == .Shadowsocks || upstreamProxy.type == .ShadowsocksR {
-            let arr = ["host": upstreamProxy.host,
-                       "port": upstreamProxy.port,
-                       "password": upstreamProxy.password ?? "",
-                       "authscheme": upstreamProxy.authscheme ?? "",
-                       "ota": upstreamProxy.ota,
-                       "protocol": upstreamProxy.ssrProtocol ?? "",
-                       "protocol_param": upstreamProxy.ssrProtocolParam ?? "",
-                       "obfs": upstreamProxy.ssrObfs ?? "",
-                       "obfs_param": upstreamProxy.ssrObfsParam ?? "",
-                       "ot_enable": upstreamProxy.ssrotEnable,
-                       "ot_domain": upstreamProxy.ssrotDomain ?? "",
-                       "ot_path": upstreamProxy.ssrotPath ?? "",
+        if let upstreamProxyNode = upstreamProxyNode, upstreamProxyNode.type == .Shadowsocks || upstreamProxyNode.type == .ShadowsocksR {
+            let arr = ["host": upstreamProxyNode.host,
+                       "port": upstreamProxyNode.port,
+                       "password": upstreamProxyNode.password ?? "",
+                       "authscheme": upstreamProxyNode.authscheme ?? "",
+                       "ota": upstreamProxyNode.ota,
+                       "protocol": upstreamProxyNode.ssrProtocol ?? "",
+                       "protocol_param": upstreamProxyNode.ssrProtocolParam ?? "",
+                       "obfs": upstreamProxyNode.ssrObfs ?? "",
+                       "obfs_param": upstreamProxyNode.ssrObfsParam ?? "",
+                       "ot_enable": upstreamProxyNode.ssrotEnable,
+                       "ot_domain": upstreamProxyNode.ssrotDomain ?? "",
+                       "ot_path": upstreamProxyNode.ssrotPath ?? "",
                 ] as [String : Any]
             
             do {

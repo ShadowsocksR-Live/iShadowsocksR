@@ -99,9 +99,9 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
 
     func generateProxySection() -> Section {
         let proxySection = Section()
-        if let proxy = presenter.proxy {
-            proxySection <<< ProxyRow(kFormProxies) {
-                $0.value = proxy
+        if let proxyNode = presenter.proxyNode {
+            proxySection <<< ProxyNodeRow(kFormProxies) {
+                $0.value = proxyNode
             }.cellSetup({ (cell, row) -> () in
                 cell.accessoryType = .disclosureIndicator
                 cell.selectionStyle = .default
@@ -126,7 +126,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
             $0.title = "Default To Proxy".localized()
             $0.value = presenter.group.defaultToProxy
             $0.hidden = Condition.function([kFormProxies]) { [unowned self] form in
-                return self.presenter.proxy == nil
+                return self.presenter.proxyNode == nil
             }
         }.onChange({ [unowned self] (row) in
             do {

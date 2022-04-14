@@ -60,13 +60,13 @@ struct Importer {
     func importSS(_ source: String) {
         do {
             let defaultName = "___scanresult"
-            let proxy = try ProxyNode(dictionary: ["name": defaultName as AnyObject, "uri": source as AnyObject], inRealm: defaultRealm)
+            let proxyNode = try ProxyNode(dictionary: ["name": defaultName as AnyObject, "uri": source as AnyObject], inRealm: defaultRealm)
             var urlTextField: UITextField?
             let alert = UIAlertController(title: "Add a new proxy".localized(), message: "Please set name for the new proxy".localized(), preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.placeholder = "Input name".localized()
-                if proxy.name != defaultName {
-                    textField.text = proxy.name
+                if proxyNode.name != defaultName {
+                    textField.text = proxyNode.name
                 }
                 urlTextField = textField
             }
@@ -75,10 +75,10 @@ struct Importer {
                     self.onConfigSaveCallback(false, error: "Name can't be empty".localized())
                     return
                 }
-                proxy.name = text
+                proxyNode.name = text
                 do {
-                    try proxy.validate(inRealm: defaultRealm)
-                    try DBUtils.add(proxy)
+                    try proxyNode.validate(inRealm: defaultRealm)
+                    try DBUtils.add(proxyNode)
                     self.onConfigSaveCallback(true, error: nil)
                 }catch {
                     self.onConfigSaveCallback(false, error: error)
