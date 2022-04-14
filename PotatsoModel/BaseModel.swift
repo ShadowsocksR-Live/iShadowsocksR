@@ -9,9 +9,8 @@ import RealmSwift
 import PotatsoBase
 
 private let version: UInt64 = 18
-public var defaultRealm: Realm!
 
-public func setupDefaultReaml() {
+public var defaultRealm: Realm! = {
     var config = Realm.Configuration()
     let sharedURL = Potatso.sharedDatabaseUrl()
     if let originPath = config.fileURL?.path {
@@ -28,8 +27,8 @@ public func setupDefaultReaml() {
         }
     }
     Realm.Configuration.defaultConfiguration = config
-    defaultRealm = try! Realm()
-}
+    return try! Realm()
+} ()
 
 
 open class BaseModel: Object {

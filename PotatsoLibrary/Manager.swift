@@ -45,9 +45,9 @@ open class Manager {
 
     var observerAdded: Bool = false
     
-    open var defaultConfigGroup: ConfigurationGroup {
+    lazy open var defaultConfigGroup: ConfigurationGroup = {
         return getDefaultConfigGroup()
-    }
+    }()
 
     fileprivate init() {
         loadProviderManager { (manager) -> Void in
@@ -117,7 +117,7 @@ open class Manager {
     }
     
     open func setup() {
-        setupDefaultReaml()
+        let _ = defaultRealm
         do {
             try copyGEOIPData()
         }catch{

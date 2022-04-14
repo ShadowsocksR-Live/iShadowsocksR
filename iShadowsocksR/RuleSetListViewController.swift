@@ -37,10 +37,9 @@ class ProxyRuleSetListViewController: UIViewController, UITableViewDataSource, U
         navigationItem.title = "Rule Set".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
         reloadData()
-        token = ruleSets.observe(on: DispatchQueue.global()) { [unowned self] changed in
+        token = ruleSets.observe(on: DispatchQueue.main) { [unowned self] changed in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
-                DispatchQueue.main.async {
                 self.tableView.beginUpdates()
                 defer {
                     self.tableView.endUpdates()
@@ -48,9 +47,9 @@ class ProxyRuleSetListViewController: UIViewController, UITableViewDataSource, U
                 self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .none)
-                }
             case let .error(error):
-                error.log("ProxyRuleSetListVC realm token update error")
+                let name = String(describing: type(of: self))
+                error.log("\(name) realm token update error")
             default:
                 break
             }

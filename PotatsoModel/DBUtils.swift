@@ -12,10 +12,6 @@ import RealmSwift
 open class DBUtils {
 
     fileprivate static func currentRealm() -> Realm {
-        if defaultRealm == nil {
-            setupDefaultReaml()
-        }
-        assert(defaultRealm != nil)
         return defaultRealm
     }
 
@@ -85,7 +81,7 @@ open class DBUtils {
     }
 
     public static func markAll(syncd: Bool) throws {
-        let mRealm = try! Realm()
+        let mRealm = currentRealm()
         mRealm.beginWrite()
         for proxyNode in mRealm.objects(ProxyNode.self) {
             proxyNode.synced = false

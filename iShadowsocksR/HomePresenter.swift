@@ -193,7 +193,7 @@ class CurrentGroupManager {
         }
     }
 
-    var group: ConfigurationGroup {
+    lazy var group: ConfigurationGroup = {
         if let group = DBUtils.get(_groupUUID, type: ConfigurationGroup.self, filter: "deleted = false") {
             return group
         } else {
@@ -201,7 +201,7 @@ class CurrentGroupManager {
             setConfigGroupId(defaultGroup.uuid)
             return defaultGroup
         }
-    }
+    }()
 
     func setConfigGroupId(_ id: String) {
         if let _ = DBUtils.get(id, type: ConfigurationGroup.self, filter: "deleted = false") {

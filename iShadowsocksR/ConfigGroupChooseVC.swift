@@ -93,10 +93,9 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-        token = groups.observe(on: DispatchQueue.global()) { [unowned self] changed in
+        token = groups.observe(on: DispatchQueue.main) { [unowned self] changed in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
-                DispatchQueue.main.async {
                 self.tableView.beginUpdates()
                 defer {
                     self.tableView.endUpdates()
@@ -105,7 +104,9 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
                 self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                }
+            case let .error(error):
+                let name = String(describing: type(of: self))
+                error.log("\(name) realm token update error")
             default:
                 break
             }
