@@ -54,22 +54,22 @@ open class ConfigurationGroup: BaseModel {
 
 extension ConfigurationGroup {
     
-    public convenience init(dictionary: [String: AnyObject], inRealm realm: Realm) throws {
+    public convenience init(dictionary: [String: AnyObject]) throws {
         self.init()
         guard let name = dictionary["name"] as? String else {
             throw ConfigurationGroupError.invalidConfigurationGroup
         }
         self.name = name
-        if realm.objects(ProxyRuleSet.self).filter("name = '\(name)'").first != nil {
+        if BaseModel.objectExistOf(type: ProxyRuleSet.self, by: name) {
             self.name = "\(name) \(ConfigurationGroup.dateFormatter.string(from: Date()))"
         }
-        if let proxyNodeName = dictionary["proxy"] as? String, let proxyNode = realm.objects(ProxyNode.self).filter("name = '\(proxyNodeName)'").first {
+        if let proxyNodeName = dictionary["proxy"] as? String, let proxyNode = BaseModel.objectOf(type: ProxyNode.self, by: proxyNodeName) {
             self.proxyNodes.removeAll()
             self.proxyNodes.append(proxyNode)
         }
         if let ruleSetsName = dictionary["ruleSets"] as? [String] {
             for ruleSetName in ruleSetsName {
-                if let ruleSet = realm.objects(ProxyRuleSet.self).filter("name = '\(ruleSetName)'").first {
+                if let ruleSet = BaseModel.objectOf(type: ProxyRuleSet.self, by: ruleSetName) {
                     self.ruleSets.append(ruleSet)
                 }
             }

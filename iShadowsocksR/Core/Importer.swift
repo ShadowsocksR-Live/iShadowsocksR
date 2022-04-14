@@ -60,7 +60,7 @@ struct Importer {
     func importSS(_ source: String) {
         do {
             let defaultName = "___scanresult"
-            let proxyNode = try ProxyNode(dictionary: ["name": defaultName as AnyObject, "uri": source as AnyObject], inRealm: defaultRealm)
+            let proxyNode = try ProxyNode(dictionary: ["name": defaultName as AnyObject, "uri": source as AnyObject])
             var urlTextField: UITextField?
             let alert = UIAlertController(title: "Add a new proxy".localized(), message: "Please set name for the new proxy".localized(), preferredStyle: .alert)
             alert.addTextField { (textField) in

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PotatsoModel
 
 protocol HomePresenterProtocol: class {
     func handleRefreshUI()
@@ -100,7 +101,7 @@ class HomePresenter: NSObject {
 
     func addProxyRuleSet() {
         let destVC: UIViewController
-        if defaultRealm.objects(ProxyRuleSet.self).count == 0 {
+        if BaseModel.countOf(type: ProxyRuleSet.self) == 0 {
             destVC = ProxyRuleSetConfigurationViewController() { [unowned self] ruleSet in
                 self.appendProxyRuleSet(ruleSet)
             }

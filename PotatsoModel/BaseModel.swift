@@ -53,6 +53,23 @@ open class BaseModel: Object {
         //
     }
 
+    public static func objectExistOf<T: BaseModel>(type: T.Type, by name: String) -> Bool {
+        assert(defaultRealm != nil)
+        if let _ = objectOf(type: type, by: name) {
+            return true
+        }
+        return false
+    }
+    
+    public static func objectOf<T: BaseModel>(type: T.Type, by name: String) -> T? {
+        assert(defaultRealm != nil)
+        return defaultRealm.objects(type.self).filter("name = '\(name)'").first
+    }
+    
+    public static func countOf<T: BaseModel>(type: T.Type) -> Int {
+        assert(defaultRealm != nil)
+        return defaultRealm.objects(type.self).count
+    }
 }
 
 // MARK: - Migration

@@ -78,7 +78,7 @@ open class Config {
     func setupProxies() throws {
         if let proxiesConfig = configDict["proxies"] as? [[String: AnyObject]] {
             proxyNodes = try proxiesConfig.map({ (config) -> ProxyNode? in
-                return try ProxyNode(dictionary: config, inRealm: realm)
+                return try ProxyNode(dictionary: config)
             }).filter { $0 != nil }.map { $0! }
             try proxyNodes.forEach {
                 try $0.validate()
@@ -90,7 +90,7 @@ open class Config {
     func setupProxyRuleSets() throws{
         if let proxiesConfig = configDict["ruleSets"] as? [[String: AnyObject]] {
             ruleSets = try proxiesConfig.map({ (config) -> ProxyRuleSet? in
-                return try ProxyRuleSet(dictionary: config, inRealm: realm)
+                return try ProxyRuleSet(dictionary: config)
             }).filter { $0 != nil }.map { $0! }
             try ruleSets.forEach {
                 try $0.validate()
@@ -102,7 +102,7 @@ open class Config {
     func setupConfigGroups() throws{
         if let proxiesConfig = configDict["configGroups"] as? [[String: AnyObject]] {
             groups = try proxiesConfig.map({ (config) -> ConfigurationGroup? in
-                return try ConfigurationGroup(dictionary: config, inRealm: realm)
+                return try ConfigurationGroup(dictionary: config)
             }).filter { $0 != nil }.map { $0! }
             try groups.forEach {
                 try $0.validate()

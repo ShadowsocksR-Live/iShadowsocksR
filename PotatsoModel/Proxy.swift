@@ -5,8 +5,6 @@
 //  Copyright © 2016 TouchingApp. All rights reserved.
 //
 
-import RealmSwift
-
 public enum ProxyType: String {
     case Shadowsocks = "SS"
     case ShadowsocksR = "SSR"
@@ -248,7 +246,7 @@ extension ProxyNode {
 // Import
 extension ProxyNode {
     
-    public convenience init(dictionary: [String: AnyObject], inRealm realm: Realm) throws {
+    public convenience init(dictionary: [String: AnyObject]) throws {
         self.init()
         if var uriString = dictionary["uri"] as? String {
             guard let name = dictionary["name"] as? String else{
@@ -400,7 +398,7 @@ extension ProxyNode {
             self.name = name
             self.type = type
         }
-        if realm.objects(ProxyNode.self).filter("name = '\(name)'").first != nil {
+        if BaseModel.objectExistOf(type: ProxyNode.self, by: name) {
             self.name = "\(name) \(ProxyNode.dateFormatter.string(from: Date()))"
         }
         try validate()

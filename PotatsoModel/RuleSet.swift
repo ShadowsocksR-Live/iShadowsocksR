@@ -5,8 +5,6 @@
 //  Copyright © 2016 TouchingApp. All rights reserved.
 //
 
-import RealmSwift
-
 public enum ProxyRuleSetError: Error {
     case invalidProxyRuleSet
     case emptyName
@@ -104,13 +102,13 @@ public final class ProxyRuleSet: BaseModel {
 
 extension ProxyRuleSet {
     
-    public convenience init(dictionary: [String: AnyObject], inRealm realm: Realm) throws {
+    public convenience init(dictionary: [String: AnyObject]) throws {
         self.init()
         guard let name = dictionary["name"] as? String else {
             throw ProxyRuleSetError.invalidProxyRuleSet
         }
         self.name = name
-        if realm.objects(ProxyRuleSet.self).filter("name = '\(name)'").first != nil {
+        if BaseModel.objectExistOf(type: ProxyRuleSet.self, by: name) {
             self.name = "\(name) \(ProxyRuleSet.dateFormatter.string(from: Date()))"
         }
         guard let rulesStr = dictionary["rules"] as? [String] else {

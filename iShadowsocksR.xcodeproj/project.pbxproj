@@ -214,7 +214,6 @@
 		B87A72B41D433ACA006C2A1B /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A72B31D433ACA006C2A1B /* NotificationHandler.swift */; };
 		B87B98041D3B423B00FA66BF /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B98031D3B423B00FA66BF /* PaddingLabel.swift */; };
 		B87B980A1D3B64BE00FA66BF /* RequestEventRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B98091D3B64BE00FA66BF /* RequestEventRow.swift */; };
-		B88096B01D0579F5008BEB87 /* CloudDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88096AF1D0579F5008BEB87 /* CloudDetailViewController.swift */; };
 		B88096B21D0652F0008BEB87 /* RuleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88096B11D0652F0008BEB87 /* RuleCell.swift */; };
 		B8822CCD1D2AA70A00AD252C /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = B8822CCC1D2AA70A00AD252C /* Receipt.m */; };
 		B88559F01D21371A00B1243E /* PotatsoModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6FFEA1CB28B4B00E5EA61 /* PotatsoModel.framework */; };
@@ -1218,7 +1217,6 @@
 		B87A72B31D433ACA006C2A1B /* NotificationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		B87B98031D3B423B00FA66BF /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B87B98091D3B64BE00FA66BF /* RequestEventRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEventRow.swift; sourceTree = "<group>"; };
-		B88096AF1D0579F5008BEB87 /* CloudDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDetailViewController.swift; sourceTree = "<group>"; };
 		B88096B11D0652F0008BEB87 /* RuleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleCell.swift; sourceTree = "<group>"; };
 		B8822CCB1D2AA70A00AD252C /* Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Receipt.h; sourceTree = "<group>"; };
 		B8822CCC1D2AA70A00AD252C /* Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Receipt.m; sourceTree = "<group>"; };
@@ -1643,7 +1641,6 @@
 				B8CCC6E01CFDCADC000E7E2E /* RuleSetListViewController.swift */,
 				B8CCC6E41CFDCFD8000E7E2E /* RuleSetCell.swift */,
 				B8CCC6E61CFDD99E000E7E2E /* ProxyListViewController.swift */,
-				B88096AF1D0579F5008BEB87 /* CloudDetailViewController.swift */,
 				B88096B11D0652F0008BEB87 /* RuleCell.swift */,
 				3ACA441724753804005FADD5 /* QrCodeController.swift */,
 			);
@@ -2672,7 +2669,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 1320;
-				ORGANIZATIONNAME = ssrLive;
+				ORGANIZATIONNAME = myGreateOrg;
 				TargetAttributes = {
 					9B0CFA0A1C1C0B1A007BD7C6 = {
 						CreatedOnToolsVersion = 7.2;
@@ -3319,7 +3316,6 @@
 				B8CCC6E51CFDCFD8000E7E2E /* RuleSetCell.swift in Sources */,
 				9BC858A51C33D30100992032 /* BaseSafariViewController.swift in Sources */,
 				B84551421CF878BD005779CD /* ConfigGroupChooseVC.swift in Sources */,
-				B88096B01D0579F5008BEB87 /* CloudDetailViewController.swift in Sources */,
 				B8319A0A1D1B975C001E50C2 /* RegexUtils.swift in Sources */,
 				B84551401CF83D07005779CD /* HomeVC.swift in Sources */,
 				B8CCC6E71CFDD99E000E7E2E /* ProxyListViewController.swift in Sources */,
