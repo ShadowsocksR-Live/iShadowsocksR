@@ -28,19 +28,19 @@ public let kSsrotPath = "ot_path"
 
 class ProxyConfigurationViewController: FormViewController {
     
-    var upstreamProxy: Proxy
+    var upstreamProxy: ProxyNode
     let isEdit: Bool
     
     override convenience init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.init()
     }
     
-    init(upstreamProxy: Proxy? = nil) {
+    init(upstreamProxy: ProxyNode? = nil) {
         if let proxy = upstreamProxy {
-            self.upstreamProxy = Proxy(value: proxy)
+            self.upstreamProxy = ProxyNode(value: proxy)
             self.isEdit = true
         }else {
-            self.upstreamProxy = Proxy()
+            self.upstreamProxy = ProxyNode()
             self.isEdit = false
         }
         super.init(nibName: nil, bundle: nil)
@@ -104,7 +104,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< PushRow<String>(kProxyFormEncryption) {
                 $0.title = "Encryption".localized()
-                $0.options = Proxy.ssSupportedEncryption
+                $0.options = ProxyNode.ssSupportedEncryption
                 $0.value = self.upstreamProxy.authscheme ?? $0.options?[8]
                 $0.selectorTitle = "Choose encryption method".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
@@ -133,7 +133,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< PushRow<String>(kProxyFormProtocol) {
                 $0.title = "Protocol".localized()
-                $0.options = Proxy.ssrSupportedProtocol
+                $0.options = ProxyNode.ssrSupportedProtocol
                 $0.value = self.upstreamProxy.ssrProtocol ?? $0.options?[6]
                 $0.selectorTitle = "Choose SSR protocol".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
@@ -159,7 +159,7 @@ class ProxyConfigurationViewController: FormViewController {
             }
             <<< PushRow<String>(kProxyFormObfs) {
                 $0.title = "Obfs".localized()
-                $0.options = Proxy.ssrSupportedObfs
+                $0.options = ProxyNode.ssrSupportedObfs
                 $0.value = self.upstreamProxy.ssrObfs ?? $0.options?[3]
                 $0.selectorTitle = "Choose SSR obfs".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
@@ -257,7 +257,7 @@ class ProxyConfigurationViewController: FormViewController {
                 throw "Name can't be empty".localized()
             }
             if !self.isEdit {
-                if let _ = defaultRealm.objects(Proxy.self).filter("name = '\(name)'").first {
+                if let _ = defaultRealm.objects(ProxyNode.self).filter("name = '\(name)'").first {
                     throw "Name already exists".localized()
                 }
             }

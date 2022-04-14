@@ -19,7 +19,7 @@ class HomePresenter: NSObject {
         return CurrentGroupManager.shared.group
     }
 
-    var proxy: Proxy? {
+    var proxy: ProxyNode? {
         return group.proxies.first
     }
 

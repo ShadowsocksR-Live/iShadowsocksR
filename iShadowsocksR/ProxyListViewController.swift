@@ -12,11 +12,11 @@ import Eureka
 
 class ProxyListViewController: FormViewController {
 
-    var proxies: [Proxy?] = []
+    var proxies: [ProxyNode?] = []
     let allowNone: Bool
-    let chooseCallback: ((Proxy?) -> Void)?
+    let chooseCallback: ((ProxyNode?) -> Void)?
 
-    init(allowNone: Bool = false, chooseCallback: ((Proxy?) -> Void)? = nil) {
+    init(allowNone: Bool = false, chooseCallback: ((ProxyNode?) -> Void)? = nil) {
         self.chooseCallback = chooseCallback
         self.allowNone = allowNone
         super.init(style: .plain)
@@ -39,7 +39,7 @@ class ProxyListViewController: FormViewController {
     }
 
     func reloadData() {
-        proxies = DBUtils.allNotDeleted(Proxy.self, sorted: "createAt").map({ $0 })
+        proxies = DBUtils.allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
         if allowNone {
             proxies.insert(nil, at: 0)
         }
@@ -70,7 +70,7 @@ class ProxyListViewController: FormViewController {
         tableView?.reloadData()
     }
 
-    func showProxyConfiguration(_ proxy: Proxy?) {
+    func showProxyConfiguration(_ proxy: ProxyNode?) {
         let vc = ProxyConfigurationViewController(upstreamProxy: proxy)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -100,7 +100,7 @@ class ProxyListViewController: FormViewController {
                 return
             }
             do {
-                try DBUtils.softDelete(item.uuid, type: Proxy.self)
+                try DBUtils.softDelete(item.uuid, type: ProxyNode.self)
                 self.proxies.remove(at: indexPath.row)
                 self.form[indexPath].hidden = true
                 self.form[indexPath].evaluateHidden()

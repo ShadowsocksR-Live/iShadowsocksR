@@ -222,7 +222,7 @@ extension ConfigurationGroup {
 
 extension Manager {
     
-    var upstreamProxy: Proxy? {
+    var upstreamProxy: ProxyNode? {
         return defaultConfigGroup.proxies.first
     }
     

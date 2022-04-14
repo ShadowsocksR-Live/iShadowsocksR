@@ -27,7 +27,7 @@ extension ProxyType: CustomStringConvertible {
     
 }
 
-public enum ProxyError: Error {
+public enum ProxyNodeError: Error {
     case invalidType
     case invalidName
     case invalidHost
@@ -38,7 +38,7 @@ public enum ProxyError: Error {
     case invalidPassword
 }
 
-extension ProxyError: CustomStringConvertible {
+extension ProxyNodeError: CustomStringConvertible {
     
     public var description: String {
         switch self {
@@ -63,7 +63,7 @@ extension ProxyError: CustomStringConvertible {
     
 }
 
-open class Proxy: BaseModel {
+open class ProxyNode: BaseModel {
     @objc open dynamic var typeRaw = ProxyType.ShadowsocksR.rawValue
     @objc open dynamic var name = ""
     @objc open dynamic var host = ""
@@ -143,21 +143,21 @@ open class Proxy: BaseModel {
     
     open override func validate(inRealm realm: Realm) throws {
         guard let _ = ProxyType(rawValue: typeRaw)else {
-            throw ProxyError.invalidType
+            throw ProxyNodeError.invalidType
         }
         guard name.count > 0 else{
-            throw ProxyError.invalidName
+            throw ProxyNodeError.invalidName
         }
         guard host.count > 0 else {
-            throw ProxyError.invalidHost
+            throw ProxyNodeError.invalidHost
         }
         guard port > 0 && port <= Int(UINT16_MAX) else {
-            throw ProxyError.invalidPort
+            throw ProxyNodeError.invalidPort
         }
         switch type {
         case .Shadowsocks, .ShadowsocksR:
             guard let _ = authscheme else {
-                throw ProxyError.invalidAuthScheme
+                throw ProxyNodeError.invalidAuthScheme
             }
         default:
             break
@@ -167,7 +167,7 @@ open class Proxy: BaseModel {
 }
 
 // Public Accessor
-extension Proxy {
+extension ProxyNode {
     
     public var type: ProxyType {
         get {
@@ -183,7 +183,7 @@ extension Proxy {
         case .Shadowsocks:
             if let authscheme = authscheme, let password = password {
                 let mainInfo = "\(authscheme):\(password)@\(host):\(port)"
-                let b64 = Proxy.base64EncodeUrlSafe(mainInfo)
+                let b64 = ProxyNode.base64EncodeUrlSafe(mainInfo)
                 if name.count > 0 {
                     let remarks = name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
                     return "ss://\(b64)#\(remarks)"
@@ -203,26 +203,26 @@ extension Proxy {
     }
     
     public func buildSsrUri() -> String {
-        var base = "\(host):\(port):\(ssrProtocol ?? Proxy.ssrSupportedProtocol[0]):\(authscheme ?? Proxy.ssSupportedEncryption[0]):\(ssrObfs ?? Proxy.ssrSupportedObfs[0]):\(Proxy.base64EncodeUrlSafe(password))"
+        var base = "\(host):\(port):\(ssrProtocol ?? ProxyNode.ssrSupportedProtocol[0]):\(authscheme ?? ProxyNode.ssSupportedEncryption[0]):\(ssrObfs ?? ProxyNode.ssrSupportedObfs[0]):\(ProxyNode.base64EncodeUrlSafe(password))"
         var param:String?
         var tmp:[String] = []
 
-        param = (ssrObfsParam?.count ?? 0)>0 ? "obfsparam=\(Proxy.base64EncodeUrlSafe(ssrObfsParam))" : nil
+        param = (ssrObfsParam?.count ?? 0)>0 ? "obfsparam=\(ProxyNode.base64EncodeUrlSafe(ssrObfsParam))" : nil
         if (param != nil) { tmp.append(param!) }
         
-        param = (ssrProtocolParam?.count ?? 0)>0 ? "protoparam=\(Proxy.base64EncodeUrlSafe(ssrProtocolParam))" : nil
+        param = (ssrProtocolParam?.count ?? 0)>0 ? "protoparam=\(ProxyNode.base64EncodeUrlSafe(ssrProtocolParam))" : nil
         if (param != nil) { tmp.append(param!) }
 
-        param = (name.count > 0) ? "remarks=\(Proxy.base64EncodeUrlSafe(name))" : nil
+        param = (name.count > 0) ? "remarks=\(ProxyNode.base64EncodeUrlSafe(name))" : nil
         if (param != nil) { tmp.append(param!) }
         
         param = (ssrotEnable) ? "ot_enable=1" : nil
         if (param != nil) { tmp.append(param!) }
         
-        param = ((ssrotDomain?.count ?? 0) > 0) ? "ot_domain=\(Proxy.base64EncodeUrlSafe(ssrotDomain))" : nil
+        param = ((ssrotDomain?.count ?? 0) > 0) ? "ot_domain=\(ProxyNode.base64EncodeUrlSafe(ssrotDomain))" : nil
         if (param != nil) { tmp.append(param!) }
         
-        param = ((ssrotPath?.count ?? 0) > 0) ? "ot_path=\(Proxy.base64EncodeUrlSafe(ssrotPath))" : nil
+        param = ((ssrotPath?.count ?? 0) > 0) ? "ot_path=\(ProxyNode.base64EncodeUrlSafe(ssrotPath))" : nil
         if (param != nil) { tmp.append(param!) }
         
         param = tmp.joined(separator: "&")
@@ -231,7 +231,7 @@ extension Proxy {
             base = base + "/?" + param!
         }
         
-        base = Proxy.ssrUriPrefix + Proxy.base64EncodeUrlSafe(base)
+        base = ProxyNode.ssrUriPrefix + ProxyNode.base64EncodeUrlSafe(base)
 
         return base
     }
@@ -239,30 +239,30 @@ extension Proxy {
 }
 
 // API
-extension Proxy {
+extension ProxyNode {
     
     
     
 }
 
 // Import
-extension Proxy {
+extension ProxyNode {
     
     public convenience init(dictionary: [String: AnyObject], inRealm realm: Realm) throws {
         self.init()
         if var uriString = dictionary["uri"] as? String {
             guard let name = dictionary["name"] as? String else{
-                throw ProxyError.invalidName
+                throw ProxyNodeError.invalidName
             }
             self.name = name
-            if uriString.lowercased().hasPrefix(Proxy.ssUriPrefix) {
+            if uriString.lowercased().hasPrefix(ProxyNode.ssUriPrefix) {
                 // Shadowsocks
                 let array = uriString.components(separatedBy: "#")
                 if array.count > 1 {
                     uriString = array[0]
                     self.name = array[1].removingPercentEncoding!
                 }
-                let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: Proxy.ssUriPrefix.count))
+                let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssUriPrefix.count))
                 let tmp = undecodedString.components(separatedBy: "@")
                 if tmp.count > 1 {
                     //
@@ -271,26 +271,26 @@ extension Proxy {
                     let tmp2 = undecodedString.components(separatedBy: "/?")
                     if tmp2.count > 1 {
                         // FIXME: do not suppprt plugin parameters.
-                        throw ProxyError.invalidUri
+                        throw ProxyNodeError.invalidUri
                     }
                     let array2 = tmp2[0].components(separatedBy: "@")
                     
                     let userinfo = base64DecodeUrlSafe(array2[0])
                     let m_p = userinfo?.components(separatedBy: ":")
                     if m_p?.count != 2 {
-                        throw ProxyError.invalidUri
+                        throw ProxyNodeError.invalidUri
                     }
                     self.authscheme = m_p?[0]
                     self.password = m_p?[1]
                     
                     let h_p = array2[1].components(separatedBy: ":")
                     if h_p.count != 2 {
-                        throw ProxyError.invalidUri
+                        throw ProxyNodeError.invalidUri
                     }
                     self.host = h_p[0]
                     self.port = Int(h_p[1]) ?? 0
                     if self.port == 0 {
-                        throw ProxyError.invalidUri
+                        throw ProxyNodeError.invalidUri
                     }
                     
                     self.type = .Shadowsocks
@@ -298,13 +298,13 @@ extension Proxy {
                 }
 
                 guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
-                    throw ProxyError.invalidUri
+                    throw ProxyNodeError.invalidUri
                 }
                 guard let pc1 = proxyString.range(of: ":")?.lowerBound, let pc2 = proxyString.range(of: ":", options: .backwards)?.lowerBound, let pcm = proxyString.range(of: "@", options: .backwards)?.lowerBound else {
-                    throw ProxyError.invalidUri
+                    throw ProxyNodeError.invalidUri
                 }
                 if !(pc1 < pcm && pcm < pc2) {
-                    throw ProxyError.invalidUri
+                    throw ProxyNodeError.invalidUri
                 }
                 let fullAuthscheme = proxyString.lowercased().substring(with: proxyString.startIndex..<pc1)
                 if let pOTA = fullAuthscheme.range(of: "-auth", options: .backwards)?.lowerBound {
@@ -316,14 +316,14 @@ extension Proxy {
                 self.password = proxyString.substring(with: proxyString.index(after: pc1)..<pcm)
                 self.host = proxyString.substring(with: proxyString.index(after: pcm)..<pc2)
                 guard let p = Int(proxyString.substring(with: proxyString.index(after: pc2)..<proxyString.endIndex)) else {
-                    throw ProxyError.invalidPort
+                    throw ProxyNodeError.invalidPort
                 }
                 self.port = p
                 self.type = .Shadowsocks
-            }else if uriString.lowercased().hasPrefix(Proxy.ssrUriPrefix) {
-                let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: Proxy.ssrUriPrefix.count))
+            }else if uriString.lowercased().hasPrefix(ProxyNode.ssrUriPrefix) {
+                let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssrUriPrefix.count))
                 guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
-                    throw ProxyError.invalidUri
+                    throw ProxyNodeError.invalidUri
                 }
                 var hostString: String = proxyString
                 var queryString: String = ""
@@ -336,11 +336,11 @@ extension Proxy {
                 }
                 let hostComps = hostString.components(separatedBy: ":")
                 guard hostComps.count == 6 else {
-                    throw ProxyError.invalidUri
+                    throw ProxyNodeError.invalidUri
                 }
                 self.host = hostComps[0]
                 guard let p = Int(hostComps[1]) else {
-                    throw ProxyError.invalidPort
+                    throw ProxyNodeError.invalidPort
                 }
                 self.port = p
                 self.ssrProtocol = hostComps[2]
@@ -372,26 +372,26 @@ extension Proxy {
                 self.type = .ShadowsocksR
             }else {
                 // Not supported yet
-                throw ProxyError.invalidUri
+                throw ProxyNodeError.invalidUri
             }
         }else {
             guard let name = dictionary["name"] as? String else{
-                throw ProxyError.invalidName
+                throw ProxyNodeError.invalidName
             }
             guard let host = dictionary["host"] as? String else{
-                throw ProxyError.invalidHost
+                throw ProxyNodeError.invalidHost
             }
             guard let typeRaw = (dictionary["type"] as? String)?.uppercased(), let type = ProxyType(rawValue: typeRaw) else{
-                throw ProxyError.invalidType
+                throw ProxyNodeError.invalidType
             }
             guard let portStr = (dictionary["port"] as? String), let port = Int(portStr) else{
-                throw ProxyError.invalidPort
+                throw ProxyNodeError.invalidPort
             }
             guard let encryption = dictionary["encryption"] as? String else{
-                throw ProxyError.invalidAuthScheme
+                throw ProxyNodeError.invalidAuthScheme
             }
             guard let password = dictionary["password"] as? String else{
-                throw ProxyError.invalidPassword
+                throw ProxyNodeError.invalidPassword
             }
             self.host = host
             self.port = port
@@ -400,8 +400,8 @@ extension Proxy {
             self.name = name
             self.type = type
         }
-        if realm.objects(Proxy.self).filter("name = '\(name)'").first != nil {
-            self.name = "\(name) \(Proxy.dateFormatter.string(from: Date()))"
+        if realm.objects(ProxyNode.self).filter("name = '\(name)'").first != nil {
+            self.name = "\(name) \(ProxyNode.dateFormatter.string(from: Date()))"
         }
         try validate(inRealm: realm)
     }
@@ -427,11 +427,11 @@ extension Proxy {
     }
     
     public class func uriIsShadowsocks(_ uri: String) -> Bool {
-        return uri.lowercased().hasPrefix(Proxy.ssUriPrefix) || uri.lowercased().hasPrefix(Proxy.ssrUriPrefix)
+        return uri.lowercased().hasPrefix(ProxyNode.ssUriPrefix) || uri.lowercased().hasPrefix(ProxyNode.ssrUriPrefix)
     }
     
 }
 
-public func ==(lhs: Proxy, rhs: Proxy) -> Bool {
+public func ==(lhs: ProxyNode, rhs: ProxyNode) -> Bool {
     return lhs.uuid == rhs.uuid
 }

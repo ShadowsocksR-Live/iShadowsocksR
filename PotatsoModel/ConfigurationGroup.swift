@@ -34,7 +34,7 @@ open class ConfigurationGroup: BaseModel {
     @objc open dynamic var name = ""
     @objc open dynamic var defaultToProxy = true
     @objc open dynamic var dns = ""
-    open var proxies = List<Proxy>()
+    open var proxies = List<ProxyNode>()
     open var ruleSets = List<ProxyRuleSet>()
     
     open override static func indexedProperties() -> [String] {
@@ -63,7 +63,7 @@ extension ConfigurationGroup {
         if realm.objects(ProxyRuleSet.self).filter("name = '\(name)'").first != nil {
             self.name = "\(name) \(ConfigurationGroup.dateFormatter.string(from: Date()))"
         }
-        if let proxyName = dictionary["proxy"] as? String, let proxy = realm.objects(Proxy.self).filter("name = '\(proxyName)'").first {
+        if let proxyName = dictionary["proxy"] as? String, let proxy = realm.objects(ProxyNode.self).filter("name = '\(proxyName)'").first {
             self.proxies.removeAll()
             self.proxies.append(proxy)
         }

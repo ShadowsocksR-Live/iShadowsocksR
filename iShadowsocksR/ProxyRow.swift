@@ -32,7 +32,7 @@ final class ProxyRow: _ProxyRow, RowType {
     }
 }
 
-class ProxyRowCell: Cell<Proxy>, CellType {
+class ProxyRowCell: Cell<ProxyNode>, CellType {
 
     let group = ConstraintGroup()
 

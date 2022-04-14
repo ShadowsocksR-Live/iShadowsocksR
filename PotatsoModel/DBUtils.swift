@@ -87,7 +87,7 @@ open class DBUtils {
     public static func markAll(syncd: Bool) throws {
         let mRealm = try! Realm()
         mRealm.beginWrite()
-        for proxy in mRealm.objects(Proxy.self) {
+        for proxy in mRealm.objects(ProxyNode.self) {
             proxy.synced = false
         }
         for ruleset in mRealm.objects(ProxyRuleSet.self) {
@@ -165,7 +165,7 @@ extension DBUtils {
     public static func allObjectsToSyncModified() -> [BaseModel] {
         let mRealm = currentRealm(nil)
         let filter = "synced == false && deleted == false"
-        let proxies = mRealm.objects(Proxy.self).filter(filter).map({ $0 })
+        let proxies = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
         let rulesets = mRealm.objects(ProxyRuleSet.self).filter(filter).map({ $0 })
         let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
         var objects: [BaseModel] = []
@@ -195,7 +195,7 @@ extension DBUtils {
     public static func allObjectsToSyncDeleted() -> [BaseModel] {
         let mRealm = currentRealm(nil)
         let filter = "synced == false && deleted == true"
-        let proxies = mRealm.objects(Proxy.self).filter(filter).map({ $0 })
+        let proxies = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
         let rulesets = mRealm.objects(ProxyRuleSet.self).filter(filter).map({ $0 })
         let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
         var objects: [BaseModel] = []
@@ -240,7 +240,7 @@ extension ConfigurationGroup {
     public static func changeProxy(forGroupId groupId: String, proxyId: String?) throws {
         try DBUtils.modify(ConfigurationGroup.self, id: groupId) { (realm, group) -> Error? in
             group.proxies.removeAll()
-            if let proxyId = proxyId, let proxy = DBUtils.get(proxyId, type: Proxy.self, inRealm: realm){
+            if let proxyId = proxyId, let proxy = DBUtils.get(proxyId, type: ProxyNode.self, inRealm: realm){
                 group.proxies.append(proxy)
             }
             return nil
