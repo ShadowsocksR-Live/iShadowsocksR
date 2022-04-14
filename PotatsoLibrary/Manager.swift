@@ -182,7 +182,7 @@ open class Manager {
             }
             let uuid = group.uuid
             let name = group.name
-            DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: {
+            DispatchQueue.main.async(execute: {
                 self.setDefaultConfigGroup(uuid, name: name)
             })
             return group
