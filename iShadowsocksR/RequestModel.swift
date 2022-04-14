@@ -7,7 +7,6 @@
 
 import Foundation
 import PotatsoModel
-import RealmSwift
 import PotatsoLibrary
 import PotatsoBase
 

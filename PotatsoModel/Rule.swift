@@ -5,7 +5,6 @@
 //  Copyright © 2016 TouchingApp. All rights reserved.
 //
 
-import RealmSwift
 import PotatsoBase
 
 private let ruleValueKey = "value";

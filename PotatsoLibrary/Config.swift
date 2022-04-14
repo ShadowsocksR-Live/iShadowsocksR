@@ -81,7 +81,7 @@ open class Config {
                 return try ProxyNode(dictionary: config, inRealm: realm)
             }).filter { $0 != nil }.map { $0! }
             try proxyNodes.forEach {
-                try $0.validate(inRealm: realm)
+                try $0.validate()
                 realm.add($0)
             }
         }
@@ -93,7 +93,7 @@ open class Config {
                 return try ProxyRuleSet(dictionary: config, inRealm: realm)
             }).filter { $0 != nil }.map { $0! }
             try ruleSets.forEach {
-                try $0.validate(inRealm: realm)
+                try $0.validate()
                 realm.add($0)
             }
         }
@@ -105,7 +105,7 @@ open class Config {
                 return try ConfigurationGroup(dictionary: config, inRealm: realm)
             }).filter { $0 != nil }.map { $0! }
             try groups.forEach {
-                try $0.validate(inRealm: realm)
+                try $0.validate()
                 realm.add($0)
             }
         }

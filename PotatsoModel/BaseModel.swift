@@ -49,7 +49,7 @@ open class BaseModel: Object {
         return f
     }
 
-    open func validate(inRealm realm: Realm) throws {
+    open func validate() throws {
         //
     }
 

@@ -9,14 +9,11 @@ import UIKit
 import ICSMainFramework
 import NetworkExtension
 import Async
-import RealmSwift
-import Realm
 
 class DataInitializer: NSObject, AppLifeCycleProtocol {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Manager.sharedManager.setup()
-        CloudSetManager.shared.update()
         sync()
         return true
     }

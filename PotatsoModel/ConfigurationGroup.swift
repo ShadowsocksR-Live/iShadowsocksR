@@ -41,7 +41,7 @@ open class ConfigurationGroup: BaseModel {
         return ["name"]
     }
     
-    open override func validate(inRealm realm: Realm) throws {
+    open override func validate() throws {
         guard name.count > 0 else {
             throw ConfigurationGroupError.emptyName
         }

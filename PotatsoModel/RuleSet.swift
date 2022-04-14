@@ -56,7 +56,7 @@ public final class ProxyRuleSet: BaseModel {
         }
     }
 
-    public override func validate(inRealm realm: Realm) throws {
+    public override func validate() throws {
         guard name.count > 0 else {
             throw ProxyRuleSetError.emptyName
         }

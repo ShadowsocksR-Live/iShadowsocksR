@@ -8,7 +8,6 @@
 import Foundation
 import Cartography
 import PotatsoModel
-import RealmSwift
 import PotatsoLibrary
 import PotatsoBase
 

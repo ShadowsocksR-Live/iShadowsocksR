@@ -141,7 +141,7 @@ open class ProxyNode: BaseModel {
         return ["name"]
     }
     
-    open override func validate(inRealm realm: Realm) throws {
+    open override func validate() throws {
         guard let _ = ProxyType(rawValue: typeRaw)else {
             throw ProxyNodeError.invalidType
         }
@@ -403,7 +403,7 @@ extension ProxyNode {
         if realm.objects(ProxyNode.self).filter("name = '\(name)'").first != nil {
             self.name = "\(name) \(ProxyNode.dateFormatter.string(from: Date()))"
         }
-        try validate(inRealm: realm)
+        try validate()
     }
     
     fileprivate func base64DecodeUrlSafe(_ proxyString: String) -> String? {

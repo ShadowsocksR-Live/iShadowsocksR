@@ -148,7 +148,7 @@ extension DBUtils {
             throw error
         }
         do {
-            try object.validate(inRealm: mRealm)
+            try object.validate()
         }catch {
             mRealm.cancelWrite()
             throw error
@@ -157,70 +157,6 @@ extension DBUtils {
         try mRealm.commitWrite()
     }
 
-}
-
-// Sync
-extension DBUtils {
-
-    public static func allObjectsToSyncModified() -> [BaseModel] {
-        let mRealm = currentRealm(nil)
-        let filter = "synced == false && deleted == false"
-        let proxyNodes = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
-        let rulesets = mRealm.objects(ProxyRuleSet.self).filter(filter).map({ $0 })
-        let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
-        var objects: [BaseModel] = []
-        /*
-         // TODO: realm removed
-        var iterator1: LazyMapIterator<RLMIterator<Proxy>, Proxy>? = nil
-        iterator1 = proxies.makeIterator()
-        iterator1?.forEach({ (tObj) in
-            objects.append(tObj as BaseModel)
-        })
-        
-        var iterator2: LazyMapIterator<RLMIterator<ProxyRuleSet>, ProxyRuleSet>? = nil
-        iterator2 = rulesets.makeIterator()
-        iterator2?.forEach({ (tObj) in
-            objects.append(tObj as BaseModel)
-        })
-        
-        var iterator3: LazyMapIterator<RLMIterator<ConfigurationGroup>, ConfigurationGroup>? = nil
-        iterator3 = groups.makeIterator()
-        iterator3?.forEach({ (tObj) in
-            objects.append(tObj as BaseModel)
-        })
- */
-        return objects
-    }
-
-    public static func allObjectsToSyncDeleted() -> [BaseModel] {
-        let mRealm = currentRealm(nil)
-        let filter = "synced == false && deleted == true"
-        let proxyNodes = mRealm.objects(ProxyNode.self).filter(filter).map({ $0 })
-        let rulesets = mRealm.objects(ProxyRuleSet.self).filter(filter).map({ $0 })
-        let groups = mRealm.objects(ConfigurationGroup.self).filter(filter).map({ $0 })
-        var objects: [BaseModel] = []
-        /*
-         // TODO: realm removed
-        var iterator1: LazyMapIterator<RLMIterator<Proxy>, Proxy>? = nil
-        iterator1 = proxies.makeIterator()
-        iterator1?.forEach({ (tObj) in
-            objects.append(tObj as BaseModel)
-        })
-    
-        var iterator2: LazyMapIterator<RLMIterator<ProxyRuleSet>, ProxyRuleSet>? = nil
-        iterator2 = rulesets.makeIterator()
-        iterator2?.forEach({ (tObj) in
-            objects.append(tObj as BaseModel)
-        })
-        
-        var iterator3: LazyMapIterator<RLMIterator<ConfigurationGroup>, ConfigurationGroup>? = nil
-        iterator3 = groups.makeIterator()
-        iterator3?.forEach({ (tObj) in
-            objects.append(tObj as BaseModel)
-        })
- */
-        return objects
-    }
 }
 
 // BaseModel API

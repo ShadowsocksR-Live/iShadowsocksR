@@ -9,7 +9,6 @@ import UIKit
 import Eureka
 import PotatsoLibrary
 import PotatsoModel
-import RealmSwift
 
 private let kRuleFormType = "type"
 private let kRuleFormValue = "value"

@@ -77,7 +77,7 @@ struct Importer {
                 }
                 proxyNode.name = text
                 do {
-                    try proxyNode.validate(inRealm: defaultRealm)
+                    try proxyNode.validate()
                     try DBUtils.add(proxyNode)
                     self.onConfigSaveCallback(true, error: nil)
                 }catch {
