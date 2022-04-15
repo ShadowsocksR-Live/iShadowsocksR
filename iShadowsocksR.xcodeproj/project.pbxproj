@@ -74,7 +74,6 @@
 		9B5C00261CBFB35C008DDE7A /* ConfigGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5C00251CBFB35C008DDE7A /* ConfigGroupCell.swift */; };
 		9B5E13BA1C897870007DFE0A /* ProxyConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E13B91C897870007DFE0A /* ProxyConfigurationViewController.swift */; };
 		9B76EEAD1C9005D2002BF5D1 /* RuleConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */; };
-		9B76EEB71C90740C002BF5D1 /* RuleSetsSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B76EEB61C90740C002BF5D1 /* RuleSetsSelectionViewController.swift */; };
 		9B8193B41CBCFEE700BE320D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8193B31CBCFEE700BE320D /* NotificationCenter.framework */; };
 		9B8193B71CBCFEE700BE320D /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193B61CBCFEE700BE320D /* TodayViewController.swift */; };
 		9B8193BA1CBCFEE700BE320D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B8193B81CBCFEE700BE320D /* MainInterface.storyboard */; };
@@ -718,7 +717,6 @@
 		9B5C00251CBFB35C008DDE7A /* ConfigGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigGroupCell.swift; sourceTree = "<group>"; };
 		9B5E13B91C897870007DFE0A /* ProxyConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyConfigurationViewController.swift; path = Advance/ProxyConfigurationViewController.swift; sourceTree = "<group>"; };
 		9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleConfigurationViewController.swift; path = Advance/RuleConfigurationViewController.swift; sourceTree = "<group>"; };
-		9B76EEB61C90740C002BF5D1 /* RuleSetsSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleSetsSelectionViewController.swift; path = Advance/RuleSetsSelectionViewController.swift; sourceTree = "<group>"; };
 		9B8193B21CBCFEE700BE320D /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8193B31CBCFEE700BE320D /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		9B8193B61CBCFEE700BE320D /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -1559,7 +1557,6 @@
 				9B5E13B91C897870007DFE0A /* ProxyConfigurationViewController.swift */,
 				9BB62FA21C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift */,
 				9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */,
-				9B76EEB61C90740C002BF5D1 /* RuleSetsSelectionViewController.swift */,
 			);
 			name = Edit;
 			sourceTree = "<group>";
@@ -3336,7 +3333,6 @@
 				B8F7845C1D36760D00F02FF5 /* DashboardVC.swift in Sources */,
 				B803A6981D02B768003EA9AA /* API.swift in Sources */,
 				B87A72B41D433ACA006C2A1B /* NotificationHandler.swift in Sources */,
-				9B76EEB71C90740C002BF5D1 /* RuleSetsSelectionViewController.swift in Sources */,
 				B83AA5741D38E728007905B4 /* SegmentPageVC.swift in Sources */,
 				9BB3F74F1CC6308000C2DD05 /* RecentRequestsVC.swift in Sources */,
 				9B8285481CE20DE40027D15C /* HMScanner.m in Sources */,
