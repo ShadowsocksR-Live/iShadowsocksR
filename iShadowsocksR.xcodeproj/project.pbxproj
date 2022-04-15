@@ -103,7 +103,6 @@
 		9BC215BD1CB4DE6B002AADD1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215BC1CB4DE6B002AADD1 /* Rule.swift */; };
 		9BC215BF1CB4E06C002AADD1 /* RuleSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215BE1CB4E06C002AADD1 /* RuleSet.swift */; };
 		9BC215C11CB5083B002AADD1 /* ConfigurationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215C01CB5083B002AADD1 /* ConfigurationGroup.swift */; };
-		9BC215C71CB51148002AADD1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215C61CB51148002AADD1 /* Config.swift */; };
 		9BC215CC1CB5E584002AADD1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215CB1CB5E584002AADD1 /* Manager.swift */; };
 		9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC600241CB2921C00E5EA61 /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
@@ -750,7 +749,6 @@
 		9BC215BC1CB4DE6B002AADD1 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		9BC215BE1CB4E06C002AADD1 /* RuleSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleSet.swift; sourceTree = "<group>"; };
 		9BC215C01CB5083B002AADD1 /* ConfigurationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationGroup.swift; sourceTree = "<group>"; };
-		9BC215C61CB51148002AADD1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		9BC215CB1CB5E584002AADD1 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PotatsoBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PotatsoBase.h; sourceTree = "<group>"; };
@@ -1650,7 +1648,6 @@
 				9B9B15BF1C21595B000B6541 /* PotatsoLibrary.h */,
 				9BC215CB1CB5E584002AADD1 /* Manager.swift */,
 				9BF3034C1CCA20D80096588E /* Logging.swift */,
-				9BC215C61CB51148002AADD1 /* Config.swift */,
 				9BB3F73E1CC60B5300C2DD05 /* Image.swift */,
 				9B9B15C11C21595B000B6541 /* Info.plist */,
 				B82574A81D1D98CF007BAF40 /* Pollution.swift */,
@@ -3371,7 +3368,6 @@
 				9BC215CC1CB5E584002AADD1 /* Manager.swift in Sources */,
 				9BB3F7411CC60B5300C2DD05 /* Image.swift in Sources */,
 				B82574A91D1D98CF007BAF40 /* Pollution.swift in Sources */,
-				9BC215C71CB51148002AADD1 /* Config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

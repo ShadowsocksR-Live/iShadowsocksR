@@ -53,7 +53,7 @@ struct Importer {
         if ProxyNode.uriIsShadowsocks(result) {
             importSS(result)
         }else {
-            importConfig(result, isURL: true)
+            NSLog("Not support anymore")
         }
     }
     
@@ -92,26 +92,6 @@ struct Importer {
         }
         if let vc = viewController {
             Alert.show(vc, message: "Fail to parse proxy config".localized())
-        }
-    }
-    
-    func importConfig(_ source: String, isURL: Bool) {
-        viewController?.showProgreeHUD("Importing Config...".localized())
-        Async.background(after: 1) {
-            let config = Config()
-            do {
-                if isURL {
-                    if let url = URL(string: source) {
-                        try config.setup(url: url)
-                    }
-                }else {
-                    try config.setup(string: source)
-                }
-                try config.save()
-                self.onConfigSaveCallback(true, error: nil)
-            }catch {
-                self.onConfigSaveCallback(false, error: error)
-            }
         }
     }
     
