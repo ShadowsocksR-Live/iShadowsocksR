@@ -21,9 +21,8 @@ target "iShadowsocksR" do
     pod 'ICDMaterialActivityIndicatorView', '~> 0.1.0'
     pod 'ICSPullToRefresh', '~> 0.6'
     pod 'ISO8601DateFormatter', '~> 0.8'
-    pod 'Alamofire'
     pod 'ObjectMapper'
-    pod 'PSOperations', '~> 4.0.1'
+    pod 'PSOperations', '~> 5.0'
     library
     model
 end
