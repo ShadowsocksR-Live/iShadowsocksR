@@ -12,7 +12,7 @@ import RealmSwift
 open class DBUtils {
 
     fileprivate static func currentRealm() -> Realm {
-        return defaultRealm
+        return sharedRealm
     }
 
     public static func add(_ object: BaseModel, update: Bool = true, setModified: Bool = true) throws {

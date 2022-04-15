@@ -117,7 +117,7 @@ open class Manager {
     }
     
     open func setup() {
-        let _ = defaultRealm
+        let _ = sharedRealm
         do {
             try copyGEOIPData()
         }catch{

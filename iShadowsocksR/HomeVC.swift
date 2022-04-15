@@ -130,7 +130,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
             }
         }.onChange({ [unowned self] (row) in
             do {
-                try defaultRealm.write {
+                try sharedRealm.write {
                     self.presenter.group.defaultToProxy = row.value ?? true
                 }
             }catch {
@@ -169,7 +169,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
                     let delete = SwipeAction(style: .destructive, title: "Delete".localized(), handler: { [unowned self] (action, row, success) in
                         do {
                             let indexPath = row.indexPath!
-                            try defaultRealm.write {
+                            try sharedRealm.write {
                                 self.presenter.group.ruleSets.remove(at: indexPath.row)
                             }
                             self.form[indexPath].hidden = true
@@ -222,7 +222,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             do {
-                try defaultRealm.write {
+                try sharedRealm.write {
                     presenter.group.ruleSets.remove(at: indexPath.row)
                 }
                 form[indexPath].hidden = true

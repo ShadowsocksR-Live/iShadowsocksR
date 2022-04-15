@@ -10,7 +10,7 @@ import PotatsoBase
 
 private let version: UInt64 = 18
 
-public var defaultRealm: Realm! = {
+public var sharedRealm: Realm! = {
     var config = Realm.Configuration()
     let sharedURL = Potatso.sharedDatabaseUrl()
     if let originPath = config.fileURL?.path {
@@ -53,7 +53,6 @@ open class BaseModel: Object {
     }
 
     public static func objectExistOf<T: BaseModel>(type: T.Type, by name: String) -> Bool {
-        assert(defaultRealm != nil)
         if let _ = objectOf(type: type, by: name) {
             return true
         }
@@ -61,13 +60,13 @@ open class BaseModel: Object {
     }
     
     public static func objectOf<T: BaseModel>(type: T.Type, by name: String) -> T? {
-        assert(defaultRealm != nil)
-        return defaultRealm.objects(type.self).filter("name = '\(name)'").first
+        assert(sharedRealm != nil)
+        return sharedRealm.objects(type.self).filter("name = '\(name)'").first
     }
     
     public static func countOf<T: BaseModel>(type: T.Type) -> Int {
-        assert(defaultRealm != nil)
-        return defaultRealm.objects(type.self).count
+        assert(sharedRealm != nil)
+        return sharedRealm.objects(type.self).count
     }
 }
 
