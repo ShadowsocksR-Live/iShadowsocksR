@@ -14,7 +14,9 @@ class DataInitializer: NSObject, AppLifeCycleProtocol {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Manager.sharedManager.setup()
-        sync()
+        DispatchQueue.global(qos: .background).async(execute: {
+            self.sync()
+        })
         return true
     }
     
@@ -40,14 +42,13 @@ class DataInitializer: NSObject, AppLifeCycleProtocol {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async(execute: {
-            NSLog("running applicationWillEnterForeground task")
-            Receipt.shared.validate()
+        DispatchQueue.global(qos: .background).async(execute: {
             self.sync()
         })
     }
 
     func sync() {
+        Receipt.shared.validate()
     }
 
 }

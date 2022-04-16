@@ -35,7 +35,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.global(qos: DispatchQoS.QoSClass.background))
+        socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.global(qos: .background))
     }
 
     required init?(coder aDecoder: NSCoder) {
