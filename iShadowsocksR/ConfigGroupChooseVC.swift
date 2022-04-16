@@ -93,7 +93,7 @@ class ConfigGroupChooseVC: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-        token = groups.observe(on: sharedQueueForRealm) { [unowned self] changed in
+        token = groups.observe(on: DBUtils.sharedQueueForRealm) { [unowned self] changed in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
                 self.tableView.beginUpdates()

@@ -8,15 +8,130 @@
 import Foundation
 import Realm
 import RealmSwift
+import PotatsoBase
+
+private let version: UInt64 = 18
 
 open class DBUtils {
+    
+    public static var sharedQueueForRealm = {
+        return DispatchQueue.main
+    } ()
 
-    fileprivate static func currentRealm() -> Realm {
-        return sharedRealm
+    public static var sharedRealm: Realm! = {
+        var config = Realm.Configuration()
+        let sharedURL = Potatso.sharedDatabaseUrl()
+        if let originPath = config.fileURL?.path {
+            if FileManager.default.fileExists(atPath: originPath) {
+                _ = try? FileManager.default.moveItem(atPath: originPath, toPath: sharedURL.path)
+            }
+        }
+        config.fileURL = sharedURL
+        config.schemaVersion = version
+        config.migrationBlock = { migration, oldSchemaVersion in
+            if oldSchemaVersion < 18 {
+                // Migrating old rules list to json
+                migrateRulesList(migration, oldSchemaVersion: oldSchemaVersion)
+            }
+        }
+        Realm.Configuration.defaultConfiguration = config
+
+        var realm: Realm? = nil
+        let block = {
+            do {
+                realm = try Realm(configuration: config, queue: sharedQueueForRealm)
+                print(realm!)
+            } catch {
+                print(error)
+                assert(false)
+            }
+        }
+        if sharedQueueForRealm != DispatchQueue.main {
+            sharedQueueForRealm.sync {
+                block()
+            }
+        } else {
+            block()
+        }
+        return realm
+    } ()
+    
+    // MARK: - Migration
+    private static func migrateRulesList(_ migration: Migration, oldSchemaVersion: UInt64) {
+        migration.enumerateObjects(ofType: ProxyRuleSet.className(), { (oldObject, newObject) in
+            if oldSchemaVersion > 11 {
+                guard let deleted = oldObject!["deleted"] as? Bool, !deleted else {
+                    return
+                }
+            }
+            guard let rules = oldObject!["rules"] as? List<DynamicObject> else {
+                return
+            }
+            var rulesJSONArray: [[AnyHashable: Any]] = []
+            for rule in rules {
+                if oldSchemaVersion > 11 {
+                    guard let deleted = rule["deleted"] as? Bool, !deleted else {
+                        return
+                    }
+                }
+                guard let typeRaw = rule["typeRaw"]as? String, let contentJSONString = rule["content"] as? String, let contentJSON = contentJSONString.jsonDictionary() else {
+                    return
+                }
+                var ruleJSON = contentJSON
+                ruleJSON["type"] = typeRaw
+                rulesJSONArray.append(ruleJSON)
+            }
+            if let newJSON = (rulesJSONArray as NSArray).jsonString() {
+                newObject!["rulesJSON"] = newJSON
+                newObject!["ruleCount"] = rulesJSONArray.count
+            }
+            newObject!["synced"] = false
+        })
+    }
+
+    public static func writeSharedRealm(completionQueue: DispatchQueue, completion: @escaping ((Error?) -> Void)) {
+        if completionQueue == sharedQueueForRealm {
+            do {
+                try sharedRealm.write {
+                    completion(nil)
+                }
+            } catch {
+                completion(error)
+            }
+        } else {
+            sharedQueueForRealm.async {
+                do {
+                    try sharedRealm.write {
+                        completionQueue.async {
+                            completion(nil)
+                        }
+                    }
+                } catch {
+                    completionQueue.async {
+                        completion(error)
+                    }
+                }
+            }
+        }
+    }
+
+    public static func objectExistOf<T: BaseModel>(type: T.Type, by name: String) -> Bool {
+        if let _ = objectOf(type: type, by: name) {
+            return true
+        }
+        return false
+    }
+    
+    public static func objectOf<T: BaseModel>(type: T.Type, by name: String) -> T? {
+        return sharedRealm.objects(type.self).filter("name = '\(name)'").first
+    }
+    
+    public static func countOf<T: BaseModel>(type: T.Type) -> Int {
+        return sharedRealm.objects(type.self).count
     }
 
     public static func add(_ object: BaseModel, update: Bool = true, setModified: Bool = true) throws {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         mRealm.beginWrite()
         if setModified {
             object.setModified()
@@ -26,7 +141,7 @@ open class DBUtils {
     }
 
     public static func add<S: Sequence>(_ objects: S, update: Bool = true, setModified: Bool = true) throws where S.Iterator.Element: BaseModel {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         mRealm.beginWrite()
         objects.forEach({
             if setModified {
@@ -38,7 +153,7 @@ open class DBUtils {
     }
 
     public static func softDelete<T: BaseModel>(_ id: String, type: T.Type) throws {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         guard let object: T = DBUtils.get(id, type: type) else {
             return
         }
@@ -55,7 +170,7 @@ open class DBUtils {
     }
 
     public static func hardDelete<T: BaseModel>(_ id: String, type: T.Type) throws {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         guard let object: T = DBUtils.get(id, type: type) else {
             return
         }
@@ -71,7 +186,7 @@ open class DBUtils {
     }
 
     public static func mark<T: BaseModel>(_ id: String, type: T.Type, synced: Bool) throws {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         guard let object: T = DBUtils.get(id, type: type) else {
             return
         }
@@ -81,7 +196,7 @@ open class DBUtils {
     }
 
     public static func markAll(syncd: Bool) throws {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         mRealm.beginWrite()
         for proxyNode in mRealm.objects(ProxyNode.self) {
             proxyNode.synced = false
@@ -110,7 +225,7 @@ extension DBUtils {
     }
 
     public static func all<T: BaseModel>(_ type: T.Type, filter: String? = nil, sorted: String? = nil) -> Results<T> {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         var res = mRealm.objects(type)
         if let filter = filter {
             res = res.filter(filter)
@@ -122,7 +237,7 @@ extension DBUtils {
     }
 
     public static func get<T: BaseModel>(_ uuid: String, type: T.Type, filter: String? = nil, sorted: String? = nil) -> T? {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         var mFilter = "uuid = '\(uuid)'"
         if let filter = filter {
             mFilter += " && " + filter
@@ -135,7 +250,7 @@ extension DBUtils {
     }
 
     public static func modify<T: BaseModel>(_ type: T.Type, id: String, modifyBlock: ((Realm, T) -> Error?)) throws {
-        let mRealm = currentRealm()
+        let mRealm = sharedRealm!
         guard let object: T = DBUtils.get(id, type: type) else {
             return
         }

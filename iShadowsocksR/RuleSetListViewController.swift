@@ -37,7 +37,7 @@ class ProxyRuleSetListViewController: UIViewController, UITableViewDataSource, U
         navigationItem.title = "Rule Set".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
         reloadData()
-        token = ruleSets.observe(on: sharedQueueForRealm) { [unowned self] changed in
+        token = ruleSets.observe(on: DBUtils.sharedQueueForRealm) { [unowned self] changed in
             switch changed {
             case let .update(_, deletions: deletions, insertions: insertions, modifications: modifications):
                 self.tableView.beginUpdates()

@@ -257,7 +257,7 @@ class ProxyConfigurationViewController: FormViewController {
                 throw "Name can't be empty".localized()
             }
             if !self.isEdit {
-                if BaseModel.objectExistOf(type: ProxyNode.self, by: name) {
+                if DBUtils.objectExistOf(type: ProxyNode.self, by: name) {
                     throw "Name already exists".localized()
                 }
             }

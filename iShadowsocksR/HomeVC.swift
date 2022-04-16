@@ -129,12 +129,12 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
                 return self.presenter.proxyNode == nil
             }
         }.onChange({ [unowned self] (row) in
-            do {
-                try sharedRealm.write {
+            DBUtils.writeSharedRealm(completionQueue: .main) { error in
+                if error == nil {
                     self.presenter.group.defaultToProxy = row.value ?? true
+                } else {
+                    self.showTextHUD("\("Fail to modify default to proxy".localized()): \((error! as NSError).localizedDescription)", dismissAfterDelay: 1.5)
                 }
-            }catch {
-                self.showTextHUD("\("Fail to modify default to proxy".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
             }
         })
         <<< TextRow(kFormDNS) {
@@ -167,18 +167,18 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
                     }
                     ///custom modify: for iOS 11
                     let delete = SwipeAction(style: .destructive, title: "Delete".localized(), handler: { [unowned self] (action, row, success) in
-                        do {
-                            let indexPath = row.indexPath!
-                            try sharedRealm.write {
+                        DBUtils.writeSharedRealm(completionQueue: .main) { error in
+                            if error == nil {
+                                let indexPath = row.indexPath!
                                 self.presenter.group.ruleSets.remove(at: indexPath.row)
+                                self.form[indexPath].hidden = true
+                                self.form[indexPath].evaluateHidden()
+                                self.tableView.reloadData()
+                                success?(true)
+                            } else {
+                                self.showTextHUD("\("Fail to delete item".localized()): \((error! as NSError).localizedDescription)", dismissAfterDelay: 1.5)
+                                success?(false)
                             }
-                            self.form[indexPath].hidden = true
-                            self.form[indexPath].evaluateHidden()
-                            self.tableView.reloadData()
-                            success?(true)
-                        } catch {
-                            self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
-                            success?(false)
                         }
                     })
                     $0.trailingSwipe.actions = [delete]
@@ -221,14 +221,14 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            do {
-                try sharedRealm.write {
-                    presenter.group.ruleSets.remove(at: indexPath.row)
+            DBUtils.writeSharedRealm(completionQueue: .main) { error in
+                if error == nil {
+                    self.presenter.group.ruleSets.remove(at: indexPath.row)
+                    self.form[indexPath].hidden = true
+                    self.form[indexPath].evaluateHidden()
+                } else {
+                    self.showTextHUD("\("Fail to delete item".localized()): \((error! as NSError).localizedDescription)", dismissAfterDelay: 1.5)
                 }
-                form[indexPath].hidden = true
-                form[indexPath].evaluateHidden()
-            } catch {
-                self.showTextHUD("\("Fail to delete item".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)
             }
         }
     }

@@ -101,7 +101,7 @@ class HomePresenter: NSObject {
 
     func addProxyRuleSet() {
         let destVC: UIViewController
-        if BaseModel.countOf(type: ProxyRuleSet.self) == 0 {
+        if DBUtils.countOf(type: ProxyRuleSet.self) == 0 {
             destVC = ProxyRuleSetConfigurationViewController() { [unowned self] ruleSet in
                 self.appendProxyRuleSet(ruleSet)
             }

@@ -117,7 +117,7 @@ open class Manager {
     }
     
     open func setup() {
-        let _ = sharedRealm
+        let _ = DBUtils.sharedRealm
         do {
             try copyGEOIPData()
         }catch{

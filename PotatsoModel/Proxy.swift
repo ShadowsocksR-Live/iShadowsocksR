@@ -398,7 +398,7 @@ extension ProxyNode {
             self.name = name
             self.type = type
         }
-        if BaseModel.objectExistOf(type: ProxyNode.self, by: name) {
+        if DBUtils.objectExistOf(type: ProxyNode.self, by: name) {
             self.name = "\(name) \(ProxyNode.dateFormatter.string(from: Date()))"
         }
         try validate()

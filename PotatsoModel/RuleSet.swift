@@ -108,7 +108,7 @@ extension ProxyRuleSet {
             throw ProxyRuleSetError.invalidProxyRuleSet
         }
         self.name = name
-        if BaseModel.objectExistOf(type: ProxyRuleSet.self, by: name) {
+        if DBUtils.objectExistOf(type: ProxyRuleSet.self, by: name) {
             self.name = "\(name) \(ProxyRuleSet.dateFormatter.string(from: Date()))"
         }
         guard let rulesStr = dictionary["rules"] as? [String] else {

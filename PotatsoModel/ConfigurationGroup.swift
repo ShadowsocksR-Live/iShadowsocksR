@@ -60,16 +60,16 @@ extension ConfigurationGroup {
             throw ConfigurationGroupError.invalidConfigurationGroup
         }
         self.name = name
-        if BaseModel.objectExistOf(type: ProxyRuleSet.self, by: name) {
+        if DBUtils.objectExistOf(type: ProxyRuleSet.self, by: name) {
             self.name = "\(name) \(ConfigurationGroup.dateFormatter.string(from: Date()))"
         }
-        if let proxyNodeName = dictionary["proxy"] as? String, let proxyNode = BaseModel.objectOf(type: ProxyNode.self, by: proxyNodeName) {
+        if let proxyNodeName = dictionary["proxy"] as? String, let proxyNode = DBUtils.objectOf(type: ProxyNode.self, by: proxyNodeName) {
             self.proxyNodes.removeAll()
             self.proxyNodes.append(proxyNode)
         }
         if let ruleSetsName = dictionary["ruleSets"] as? [String] {
             for ruleSetName in ruleSetsName {
-                if let ruleSet = BaseModel.objectOf(type: ProxyRuleSet.self, by: ruleSetName) {
+                if let ruleSet = DBUtils.objectOf(type: ProxyRuleSet.self, by: ruleSetName) {
                     self.ruleSets.append(ruleSet)
                 }
             }
