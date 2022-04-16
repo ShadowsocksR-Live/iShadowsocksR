@@ -10,6 +10,10 @@ import PotatsoBase
 
 private let version: UInt64 = 18
 
+public var sharedQueueForRealm = {
+    return DispatchQueue.main
+} ()
+
 public var sharedRealm: Realm! = {
     var config = Realm.Configuration()
     let sharedURL = Potatso.sharedDatabaseUrl()
@@ -27,7 +31,25 @@ public var sharedRealm: Realm! = {
         }
     }
     Realm.Configuration.defaultConfiguration = config
-    return try! Realm()
+
+    var realm: Realm? = nil
+    let block = {
+        do {
+            realm = try Realm(configuration: config, queue: sharedQueueForRealm)
+            print(realm!)
+        } catch {
+            print(error)
+            assert(false)
+        }
+    }
+    if sharedQueueForRealm != DispatchQueue.main {
+        sharedQueueForRealm.sync {
+            block()
+        }
+    } else {
+        block()
+    }
+    return realm
 } ()
 
 
@@ -60,12 +82,10 @@ open class BaseModel: Object {
     }
     
     public static func objectOf<T: BaseModel>(type: T.Type, by name: String) -> T? {
-        assert(sharedRealm != nil)
         return sharedRealm.objects(type.self).filter("name = '\(name)'").first
     }
     
     public static func countOf<T: BaseModel>(type: T.Type) -> Int {
-        assert(sharedRealm != nil)
         return sharedRealm.objects(type.self).count
     }
 }
