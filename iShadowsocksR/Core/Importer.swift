@@ -9,6 +9,7 @@ import Foundation
 import Async
 import PotatsoModel
 import PotatsoLibrary
+import QRScanner
 
 struct Importer {
     
@@ -37,16 +38,15 @@ struct Importer {
     }
     
     func importConfigFromQRCode() {
-        let vc = QRCodeScannerVC()
-        vc?.resultBlock = { [weak vc] result in
-            vc?.navigationController?.popViewController(animated: true)
-            self.onImportInput(result!)
+        let parent = self.viewController?.navigationController
+        let scanner = QRScannerController()
+        scanner.success = { code in
+            parent?.dismiss(animated: true, completion: nil)
+            if code != nil {
+                self.onImportInput(code!)
+            }
         }
-        vc?.errorBlock = { [weak vc] error in
-            vc?.navigationController?.popViewController(animated: true)
-            self.viewController?.showTextHUD("\(String(describing: error))", dismissAfterDelay: 1.5)
-        }
-        viewController?.navigationController?.pushViewController(vc!, animated: true)
+        parent?.present(scanner, animated: true, completion: nil)
     }
     
     func onImportInput(_ result: String) {

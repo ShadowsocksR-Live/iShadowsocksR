@@ -82,8 +82,6 @@
 		9B8193DD1CBDE68100BE320D /* PotatsoLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9B15BD1C21595B000B6541 /* PotatsoLibrary.framework */; };
 		9B8193E21CBDF27000BE320D /* CurrentGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193E11CBDF27000BE320D /* CurrentGroupCell.swift */; };
 		9B8193ED1CBE4DCA00BE320D /* UrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193EC1CBE4DCA00BE320D /* UrlHandler.swift */; };
-		9B8285471CE20DE40027D15C /* HMScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B82853B1CE20DE40027D15C /* HMScanner.bundle */; };
-		9B8285481CE20DE40027D15C /* HMScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B82853D1CE20DE40027D15C /* HMScanner.m */; };
 		9B8706001C1D788F00651424 /* PacketTunnelProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8705FF1C1D788F00651424 /* PacketTunnelProvider.m */; };
 		9B8706041C1D788F00651424 /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B8705FA1C1D788F00651424 /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9B87060B1C1DBCCD00651424 /* dns.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B87060A1C1DBCCD00651424 /* dns.m */; };
@@ -190,11 +188,12 @@
 		9BF3034D1CCA20D80096588E /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3034C1CCA20D80096588E /* Logging.swift */; };
 		B670FD5E2800240C00054553 /* libmaxminddb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; };
 		B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B68182E6280DA0A000A119BD /* QRScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68182DE280DA02500A119BD /* QRScanner.framework */; };
+		B68182E7280DA0B900A119BD /* QRScanner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B68182DE280DA02500A119BD /* QRScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B821B0F01D51DD8F0061E7B9 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */; };
 		B821B0F31D5334D50061E7B9 /* ActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0F21D5334D50061E7B9 /* ActionRow.swift */; };
 		B821B0F51D5335DA0061E7B9 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0F41D5335DA0061E7B9 /* FeedbackManager.swift */; };
 		B82574A91D1D98CF007BAF40 /* Pollution.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82574A81D1D98CF007BAF40 /* Pollution.swift */; };
-		B829C1721D4395BC00C17B82 /* QRCodeScannerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B829C1711D4395BC00C17B82 /* QRCodeScannerVC.m */; };
 		B8319A0A1D1B975C001E50C2 /* RegexUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8319A091D1B975C001E50C2 /* RegexUtils.swift */; };
 		B8319A0D1D1BD696001E50C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8319A0F1D1BD696001E50C2 /* Localizable.strings */; };
 		B8367A811D1B6D5400D50C25 /* BaseButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8367A801D1B6D5400D50C25 /* BaseButtonRow.swift */; };
@@ -581,6 +580,27 @@
 			remoteGlobalIDString = 3AEE32E62075DBD000E96761;
 			remoteInfo = "libmaxminddb iOS";
 		};
+		B68182DD280DA02500A119BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68182C8280DA02500A119BD /* QRScanner.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16D0D5E423570BC800A2EC78;
+			remoteInfo = QRScanner;
+		};
+		B68182DF280DA02500A119BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68182C8280DA02500A119BD /* QRScanner.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 16D0D5ED23570BC800A2EC78;
+			remoteInfo = QRScannerTests;
+		};
+		B68182E4280DA06800A119BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68182C8280DA02500A119BD /* QRScanner.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 16D0D5E323570BC800A2EC78;
+			remoteInfo = QRScanner;
+		};
 		B6D3436128001EBD00527D6D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */;
@@ -630,6 +650,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B68182E7280DA0B900A119BD /* QRScanner.framework in Embed Frameworks */,
 				B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */,
 				3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */,
 				3A262D54207A855800073C87 /* CallbackURLKitClients.framework in Embed Frameworks */,
@@ -722,9 +743,6 @@
 		9B8193BB1CBCFEE700BE320D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B8193E11CBDF27000BE320D /* CurrentGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentGroupCell.swift; sourceTree = "<group>"; };
 		9B8193EC1CBE4DCA00BE320D /* UrlHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlHandler.swift; sourceTree = "<group>"; };
-		9B82853B1CE20DE40027D15C /* HMScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HMScanner.bundle; sourceTree = "<group>"; };
-		9B82853C1CE20DE40027D15C /* HMScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMScanner.h; sourceTree = "<group>"; };
-		9B82853D1CE20DE40027D15C /* HMScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMScanner.m; sourceTree = "<group>"; };
 		9B8705FA1C1D788F00651424 /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8705FE1C1D788F00651424 /* PacketTunnelProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PacketTunnelProvider.h; sourceTree = "<group>"; };
 		9B8705FF1C1D788F00651424 /* PacketTunnelProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PacketTunnelProvider.m; sourceTree = "<group>"; };
@@ -1188,13 +1206,12 @@
 		A692B80DC5DB316AA1DED8CB /* Pods_TodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C3522CED51B0487ECEE41F /* Pods-TodayWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.release.xcconfig"; sourceTree = "<group>"; };
 		B3AEA49B98CE7A4AD5F03EE1 /* Pods-iShadowsocksR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iShadowsocksR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iShadowsocksR/Pods-iShadowsocksR.debug.xcconfig"; sourceTree = "<group>"; };
+		B68182C8280DA02500A119BD /* QRScanner.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRScanner.xcodeproj; path = Library/QRScanner/QRScanner.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libmaxminddb.xcodeproj; path = Library/libmaxminddb/xcode/libmaxminddb.xcodeproj; sourceTree = "<group>"; };
 		B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KeychainUtils.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B821B0F21D5334D50061E7B9 /* ActionRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionRow.swift; sourceTree = "<group>"; };
 		B821B0F41D5335DA0061E7B9 /* FeedbackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		B82574A81D1D98CF007BAF40 /* Pollution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pollution.swift; sourceTree = "<group>"; };
-		B829C1701D4395BC00C17B82 /* QRCodeScannerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScannerVC.h; sourceTree = "<group>"; };
-		B829C1711D4395BC00C17B82 /* QRCodeScannerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScannerVC.m; sourceTree = "<group>"; };
 		B8319A091D1B975C001E50C2 /* RegexUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexUtils.swift; sourceTree = "<group>"; };
 		B8319A0E1D1BD696001E50C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B8319A101D1BD699001E50C2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -1237,6 +1254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B68182E6280DA0A000A119BD /* QRScanner.framework in Frameworks */,
 				3A8AC926207544C8002843E0 /* MMWormhole.framework in Frameworks */,
 				3A9502D9229AFC4000A6EAD7 /* CocoaLumberjack.framework in Frameworks */,
 				B86B08ED1D17FB9B00613014 /* ShadowPath.framework in Frameworks */,
@@ -1493,6 +1511,7 @@
 			children = (
 				3A6DD4F2207366BF00BDF530 /* YAML.xcodeproj */,
 				3A57D25920728FFE000520F8 /* Eureka.xcodeproj */,
+				B68182C8280DA02500A119BD /* QRScanner.xcodeproj */,
 				1EF602941F113A660005E0C7 /* GeoLite2-Country.mmdb */,
 				1ECA215E1E05E8C700B32187 /* Potatso.entitlements */,
 				9BC8589F1C33B00200992032 /* Potatso-Bridge-Header.h */,
@@ -1579,18 +1598,6 @@
 				9B8193BB1CBCFEE700BE320D /* Info.plist */,
 			);
 			path = TodayWidget;
-			sourceTree = "<group>";
-		};
-		9B8285381CE20DE40027D15C /* QRCode */ = {
-			isa = PBXGroup;
-			children = (
-				9B82853B1CE20DE40027D15C /* HMScanner.bundle */,
-				9B82853C1CE20DE40027D15C /* HMScanner.h */,
-				9B82853D1CE20DE40027D15C /* HMScanner.m */,
-				B829C1701D4395BC00C17B82 /* QRCodeScannerVC.h */,
-				B829C1711D4395BC00C17B82 /* QRCodeScannerVC.m */,
-			);
-			path = QRCode;
 			sourceTree = "<group>";
 		};
 		9B8705FB1C1D788F00651424 /* PacketTunnel */ = {
@@ -1705,7 +1712,6 @@
 			isa = PBXGroup;
 			children = (
 				B8C256AC1D1A93CC0074D3B1 /* View */,
-				9B8285381CE20DE40027D15C /* QRCode */,
 				9BC858A41C33D30100992032 /* BaseSafariViewController.swift */,
 				9BF3034A1CCA1B060096588E /* BaseEmptyView.swift */,
 				B8367A841D1B6D6800D50C25 /* Row */,
@@ -2389,6 +2395,15 @@
 			path = udpgw_client;
 			sourceTree = "<group>";
 		};
+		B68182C9280DA02500A119BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B68182DE280DA02500A119BD /* QRScanner.framework */,
+				B68182E0280DA02500A119BD /* QRScannerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B6D3435D28001EBD00527D6D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -2511,6 +2526,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B68182E5280DA06800A119BD /* PBXTargetDependency */,
 				B670FD49280022A200054553 /* PBXTargetDependency */,
 				3A262D56207A859500073C87 /* PBXTargetDependency */,
 				3A262D58207A859500073C87 /* PBXTargetDependency */,
@@ -2804,6 +2820,10 @@
 					ProjectRef = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
 				},
 				{
+					ProductGroup = B68182C9280DA02500A119BD /* Products */;
+					ProjectRef = B68182C8280DA02500A119BD /* QRScanner.xcodeproj */;
+				},
+				{
 					ProductGroup = B86B08E41D17F84900613014 /* Products */;
 					ProjectRef = B86B08E31D17F84900613014 /* ShadowPath.xcodeproj */;
 				},
@@ -3019,6 +3039,20 @@
 			remoteRef = 3ADE7CF72073729B000F70AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B68182DE280DA02500A119BD /* QRScanner.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = QRScanner.framework;
+			remoteRef = B68182DD280DA02500A119BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B68182E0280DA02500A119BD /* QRScannerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = QRScannerTests.xctest;
+			remoteRef = B68182DF280DA02500A119BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B6D3436228001EBD00527D6D /* libmaxminddb.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -3058,7 +3092,6 @@
 				9B0CFA191C1C0B1B007BD7C6 /* LaunchScreen.storyboard in Resources */,
 				B8319A0D1D1BD696001E50C2 /* Localizable.strings in Resources */,
 				1EF602951F113A660005E0C7 /* GeoLite2-Country.mmdb in Resources */,
-				9B8285471CE20DE40027D15C /* HMScanner.bundle in Resources */,
 				9B0CFA161C1C0B1B007BD7C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3302,7 +3335,6 @@
 				9B0CFA0F1C1C0B1B007BD7C6 /* AppDelegate.swift in Sources */,
 				9BB3F73C1CC3D3DE00C2DD05 /* RecentRequestsCell.swift in Sources */,
 				9BD4CACA1CB9600D00F99BF9 /* AlertUtils.swift in Sources */,
-				B829C1721D4395BC00C17B82 /* QRCodeScannerVC.m in Sources */,
 				B87B98041D3B423B00FA66BF /* PaddingLabel.swift in Sources */,
 				B8CCC6E51CFDCFD8000E7E2E /* RuleSetCell.swift in Sources */,
 				9BC858A51C33D30100992032 /* BaseSafariViewController.swift in Sources */,
@@ -3328,7 +3360,6 @@
 				B87A72B41D433ACA006C2A1B /* NotificationHandler.swift in Sources */,
 				B83AA5741D38E728007905B4 /* SegmentPageVC.swift in Sources */,
 				9BB3F74F1CC6308000C2DD05 /* RecentRequestsVC.swift in Sources */,
-				9B8285481CE20DE40027D15C /* HMScanner.m in Sources */,
 				9BB3F7441CC60B6F00C2DD05 /* Error.swift in Sources */,
 				9B76EEAD1C9005D2002BF5D1 /* RuleConfigurationViewController.swift in Sources */,
 			);
@@ -3572,6 +3603,11 @@
 			isa = PBXTargetDependency;
 			name = "libmaxminddb iOS";
 			targetProxy = B670FD48280022A200054553 /* PBXContainerItemProxy */;
+		};
+		B68182E5280DA06800A119BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QRScanner;
+			targetProxy = B68182E4280DA06800A119BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
