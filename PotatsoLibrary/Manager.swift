@@ -41,7 +41,7 @@ open class Manager {
         }
     }
     
-    public let wormhole = MMWormhole(applicationGroupIdentifier: Potatso.sharedGroupIdentifier(), optionalDirectory: "wormhole")
+    public let wormhole = MMWormhole(applicationGroupIdentifier: AppProfile.sharedGroupIdentifier(), optionalDirectory: "wormhole")
 
     var observerAdded: Bool = false
     
@@ -134,7 +134,7 @@ open class Manager {
         guard let fromURL = Bundle.main.url(forResource: "GeoLite2-Country", withExtension: "mmdb") else {
             return
         }
-        let toURL = Potatso.sharedUrl().appendingPathComponent("GeoLite2-Country.mmdb")
+        let toURL = AppProfile.sharedUrl().appendingPathComponent("GeoLite2-Country.mmdb")
         if FileManager.default.fileExists(atPath: fromURL.path) {
             if FileManager.default.fileExists(atPath: toURL.path) {
                 try FileManager.default.removeItem(at: toURL)
@@ -148,7 +148,7 @@ open class Manager {
             return
         }
         let fm = FileManager.default
-        let toDirectoryURL = Potatso.sharedUrl().appendingPathComponent("httptemplate")
+        let toDirectoryURL = AppProfile.sharedUrl().appendingPathComponent("httptemplate")
         if !fm.fileExists(atPath: toDirectoryURL.path) {
             try fm.createDirectory(at: toDirectoryURL, withIntermediateDirectories: true, attributes: nil)
         }
@@ -165,7 +165,7 @@ open class Manager {
     }
 
     fileprivate func getDefaultConfigGroup() -> ConfigurationGroup {
-        if let groupUUID = Potatso.sharedUserDefaults().string(forKey: kDefaultGroupIdentifier), let group = DBUtils.get(groupUUID, type: ConfigurationGroup.self), !group.deleted {
+        if let groupUUID = AppProfile.sharedUserDefaults().string(forKey: kDefaultGroupIdentifier), let group = DBUtils.get(groupUUID, type: ConfigurationGroup.self), !group.deleted {
             return group
         }else {
             var group: ConfigurationGroup
@@ -195,9 +195,9 @@ open class Manager {
         } catch {
 
         }
-        Potatso.sharedUserDefaults().set(id, forKey: kDefaultGroupIdentifier)
-        Potatso.sharedUserDefaults().set(name, forKey: kDefaultGroupName)
-        Potatso.sharedUserDefaults().synchronize()
+        AppProfile.sharedUserDefaults().set(id, forKey: kDefaultGroupIdentifier)
+        AppProfile.sharedUserDefaults().set(name, forKey: kDefaultGroupName)
+        AppProfile.sharedUserDefaults().synchronize()
     }
     
     open func regenerateConfigFiles() throws {
@@ -230,7 +230,7 @@ extension Manager {
     }
     
     func generateGeneralConfig() throws {
-        let confURL = Potatso.sharedGeneralConfUrl()
+        let confURL = AppProfile.sharedGeneralConfUrl()
         let json: NSDictionary = ["dns": defaultConfigGroup.dns ]
         try json.jsonString()?.write(to: confURL, atomically: true, encoding: String.Encoding.utf8)
     }
@@ -280,11 +280,11 @@ extension Manager {
         root.addChild(filter)
         
         let socksConf = root.xmlString
-        try socksConf.write(to: Potatso.sharedSocksConfUrl(), atomically: true, encoding: String.Encoding.utf8)
+        try socksConf.write(to: AppProfile.sharedSocksConfUrl(), atomically: true, encoding: String.Encoding.utf8)
     }
     
     func generateShadowsocksConfig() throws {
-        let confURL = Potatso.sharedProxyConfUrl()
+        let confURL = AppProfile.sharedProxyConfUrl()
         var content = ""
         if let upstreamProxyNode = upstreamProxyNode, upstreamProxyNode.type == .Shadowsocks || upstreamProxyNode.type == .ShadowsocksR {
             let arr = ["host": upstreamProxyNode.host,
@@ -313,12 +313,12 @@ extension Manager {
     }
     
     func generateHttpProxyConfig() throws {
-        let rootUrl = Potatso.sharedUrl()
+        let rootUrl = AppProfile.sharedUrl()
         let confDirUrl = rootUrl.appendingPathComponent("httpconf")
         let templateDirPath = rootUrl.appendingPathComponent("httptemplate").path
         let temporaryDirPath = rootUrl.appendingPathComponent("httptemporary").path
         let logDir = rootUrl.appendingPathComponent("log").path
-        let maxminddbPath = Potatso.sharedUrl().appendingPathComponent("GeoLite2-Country.mmdb").path
+        let maxminddbPath = AppProfile.sharedUrl().appendingPathComponent("GeoLite2-Country.mmdb").path
         let userActionUrl = confDirUrl.appendingPathComponent("potatso.action")
         for p in [confDirUrl.path, templateDirPath, temporaryDirPath, logDir] {
             if !FileManager.default.fileExists(atPath: p) {
@@ -340,7 +340,7 @@ extension Manager {
         mainConf["actionsfile"] = userActionUrl.path as AnyObject?
 
         let mainContent = mainConf.map { "\($0) \($1)"}.joined(separator: "\n")
-        try mainContent.write(to: Potatso.sharedHttpProxyConfUrl(), atomically: true, encoding: String.Encoding.utf8)
+        try mainContent.write(to: AppProfile.sharedHttpProxyConfUrl(), atomically: true, encoding: String.Encoding.utf8)
 
         var actionContent: [String] = []
         var forwardURLRules: [String] = []

@@ -6,7 +6,7 @@
 //
 
 #import "Settings.h"
-#import "Potatso.h"
+#import "AppProfile.h"
 
 #define kSettingsKeyStartTime @"startTime"
 
@@ -28,7 +28,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _userDefaults = [[NSUserDefaults alloc] initWithSuiteName: [Potatso sharedGroupIdentifier]];
+        _userDefaults = [[NSUserDefaults alloc] initWithSuiteName: [AppProfile sharedGroupIdentifier]];
     }
     return self;
 }

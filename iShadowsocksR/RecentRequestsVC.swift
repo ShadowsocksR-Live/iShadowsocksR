@@ -29,11 +29,11 @@ class RecentRequestsVC: UIViewController, UITableViewDataSource, UITableViewDele
         NotificationCenter.default.addObserver(self, selector: #selector(onVPNStatusChanged), name: NSNotification.Name(rawValue: kProxyServiceVPNStatusNotification), object: nil)
         wormhole.listenForMessage(withIdentifier: "tunnelConnectionRecords") { [unowned self](response) in
             self.updateUI(response as? String)
-            Potatso.sharedUserDefaults().set(response as? String, forKey: kRecentRequestCachedIdentifier)
-            Potatso.sharedUserDefaults().synchronize()
+            AppProfile.sharedUserDefaults().set(response as? String, forKey: kRecentRequestCachedIdentifier)
+            AppProfile.sharedUserDefaults().synchronize()
             return
         }
-        self.updateUI(Potatso.sharedUserDefaults().string(forKey: kRecentRequestCachedIdentifier))
+        self.updateUI(AppProfile.sharedUserDefaults().string(forKey: kRecentRequestCachedIdentifier))
         if Manager.sharedManager.vpnStatus == .off {
             showingCache = true
         }

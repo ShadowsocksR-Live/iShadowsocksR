@@ -5,9 +5,9 @@
 //  Copyright © 2016 TouchingApp. All rights reserved.
 //
 
-#import "Potatso.h"
+#import "AppProfile.h"
 
-@implementation Potatso
+@implementation AppProfile
 
 + (NSString *) sharedGroupIdentifier {
     // Try to avoid hardcoding Group IDs into the source code.
@@ -37,23 +37,23 @@
 }
 
 + (NSURL * _Nonnull)sharedGeneralConfUrl {
-    return [[Potatso sharedUrl] URLByAppendingPathComponent:@"general.xxx"];
+    return [[self sharedUrl] URLByAppendingPathComponent:@"general.xxx"];
 }
 
 + (NSURL *)sharedSocksConfUrl {
-    return [[Potatso sharedUrl] URLByAppendingPathComponent:@"socks.xxx"];
+    return [[self sharedUrl] URLByAppendingPathComponent:@"socks.xxx"];
 }
 
 + (NSURL *)sharedProxyConfUrl {
-    return [[Potatso sharedUrl] URLByAppendingPathComponent:@"proxy.xxx"];
+    return [[self sharedUrl] URLByAppendingPathComponent:@"proxy.xxx"];
 }
 
 + (NSURL *)sharedHttpProxyConfUrl {
-    return [[Potatso sharedUrl] URLByAppendingPathComponent:@"http.xxx"];
+    return [[self sharedUrl] URLByAppendingPathComponent:@"http.xxx"];
 }
 
 + (NSURL * _Nonnull)sharedLogUrl {
-    return [[Potatso sharedUrl] URLByAppendingPathComponent:@"tunnel.log"];
+    return [[self sharedUrl] URLByAppendingPathComponent:@"tunnel.log"];
 }
 
 @end

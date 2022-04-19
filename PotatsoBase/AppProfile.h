@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Potatso : NSObject
+@interface AppProfile : NSObject
 + (NSString * _Nonnull)sharedGroupIdentifier;
 + (NSURL * _Nonnull)sharedUrl;
 + (NSURL * _Nonnull)sharedDatabaseUrl;

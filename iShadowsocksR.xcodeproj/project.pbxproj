@@ -105,8 +105,8 @@
 		9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC600241CB2921C00E5EA61 /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
 		9BC600251CB2921C00E5EA61 /* PotatsoBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9BC6002B1CB2922E00E5EA61 /* Potatso.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC600291CB2922E00E5EA61 /* Potatso.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9BC6002C1CB2922E00E5EA61 /* Potatso.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6002A1CB2922E00E5EA61 /* Potatso.m */; };
+		9BC6002B1CB2922E00E5EA61 /* AppProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC600291CB2922E00E5EA61 /* AppProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BC6002C1CB2922E00E5EA61 /* AppProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6002A1CB2922E00E5EA61 /* AppProfile.m */; };
 		9BC600311CB299DE00E5EA61 /* JSONUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6002D1CB299DE00E5EA61 /* JSONUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC600321CB299DE00E5EA61 /* JSONUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6002E1CB299DE00E5EA61 /* JSONUtils.m */; };
 		9BC600331CB299DE00E5EA61 /* NSError+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6002F1CB299DE00E5EA61 /* NSError+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -770,8 +770,8 @@
 		9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PotatsoBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PotatsoBase.h; sourceTree = "<group>"; };
 		9BC600211CB2921C00E5EA61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9BC600291CB2922E00E5EA61 /* Potatso.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Potatso.h; sourceTree = "<group>"; };
-		9BC6002A1CB2922E00E5EA61 /* Potatso.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Potatso.m; sourceTree = "<group>"; };
+		9BC600291CB2922E00E5EA61 /* AppProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppProfile.h; sourceTree = "<group>"; };
+		9BC6002A1CB2922E00E5EA61 /* AppProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppProfile.m; sourceTree = "<group>"; };
 		9BC6002D1CB299DE00E5EA61 /* JSONUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONUtils.h; sourceTree = "<group>"; };
 		9BC6002E1CB299DE00E5EA61 /* JSONUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONUtils.m; sourceTree = "<group>"; };
 		9BC6002F1CB299DE00E5EA61 /* NSError+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Helper.h"; sourceTree = "<group>"; };
@@ -1678,8 +1678,8 @@
 			isa = PBXGroup;
 			children = (
 				9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */,
-				9BC600291CB2922E00E5EA61 /* Potatso.h */,
-				9BC6002A1CB2922E00E5EA61 /* Potatso.m */,
+				9BC600291CB2922E00E5EA61 /* AppProfile.h */,
+				9BC6002A1CB2922E00E5EA61 /* AppProfile.m */,
 				B8F784651D3678B400F02FF5 /* Settings.h */,
 				B8F784661D3678B400F02FF5 /* Settings.m */,
 				9BC6002D1CB299DE00E5EA61 /* JSONUtils.h */,
@@ -2484,7 +2484,7 @@
 				9BC600311CB299DE00E5EA61 /* JSONUtils.h in Headers */,
 				B8F784671D3678B400F02FF5 /* Settings.h in Headers */,
 				9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */,
-				9BC6002B1CB2922E00E5EA61 /* Potatso.h in Headers */,
+				9BC6002B1CB2922E00E5EA61 /* AppProfile.h in Headers */,
 				3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3402,7 +3402,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BC6002C1CB2922E00E5EA61 /* Potatso.m in Sources */,
+				9BC6002C1CB2922E00E5EA61 /* AppProfile.m in Sources */,
 				9BC600341CB299DE00E5EA61 /* NSError+Helper.m in Sources */,
 				B8F784681D3678B400F02FF5 /* Settings.m in Sources */,
 				3ABE26742200927B006EDDBA /* NSString+Localize.m in Sources */,

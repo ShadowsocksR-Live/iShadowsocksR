@@ -20,7 +20,7 @@ open class DBUtils {
 
     public static var sharedRealm: Realm! = {
         var config = Realm.Configuration()
-        let sharedURL = Potatso.sharedDatabaseUrl()
+        let sharedURL = AppProfile.sharedDatabaseUrl()
         if let originPath = config.fileURL?.path {
             if FileManager.default.fileExists(atPath: originPath) {
                 _ = try? FileManager.default.moveItem(atPath: originPath, toPath: sharedURL.path)

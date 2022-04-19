@@ -54,7 +54,7 @@
         return;
     }
     
-    NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedProxyConfUrl] encoding:NSUTF8StringEncoding error:nil];
+    NSString *confContent = [NSString stringWithContentsOfURL:[AppProfile sharedProxyConfUrl] encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *json = [confContent jsonDictionary];
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
     
@@ -75,13 +75,13 @@
 }
 
 - (void)updateUserDefaults {
-    [[Potatso sharedUserDefaults] removeObjectForKey:REQUEST_CACHED];
-    [[Potatso sharedUserDefaults] synchronize];
+    [[AppProfile sharedUserDefaults] removeObjectForKey:REQUEST_CACHED];
+    [[AppProfile sharedUserDefaults] synchronize];
     [[Settings shared] setStartTime:[NSDate date]];
 }
 
 - (void)setupWormhole {
-    _wormhole = [[MMWormhole alloc] initWithApplicationGroupIdentifier: [Potatso sharedGroupIdentifier] optionalDirectory:@"wormhole"];
+    _wormhole = [[MMWormhole alloc] initWithApplicationGroupIdentifier: [AppProfile sharedGroupIdentifier] optionalDirectory:@"wormhole"];
     __weak typeof(self) weakSelf = self;
     [_wormhole listenForMessageWithIdentifier:@"getTunnelStatus" listener:^(id  _Nullable messageObject) {
         __strong typeof(self) strongSelf = weakSelf;
@@ -132,8 +132,8 @@
     [_statusSocket acceptOnInterface:@"127.0.0.1" port:0 error:&error];
     [_statusSocket performBlock:^{
         int port = sock_port(self->_statusSocket.socket4FD);
-        [[Potatso sharedUserDefaults] setObject:@(port) forKey:@"tunnelStatusPort"];
-        [[Potatso sharedUserDefaults] synchronize];
+        [[AppProfile sharedUserDefaults] setObject:@(port) forKey:@"tunnelStatusPort"];
+        [[AppProfile sharedUserDefaults] synchronize];
     }];
 }
 
@@ -161,7 +161,7 @@
 
 - (void)startShadowsocks {
     [self syncStartProxy: @"shadowsocks" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startShadowsocks:[Potatso sharedProxyConfUrl] completion:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startShadowsocks:[AppProfile sharedProxyConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -170,7 +170,7 @@
 
 - (void)startHttpProxy {
     [self syncStartProxy: @"http" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startHttpProxy:[Potatso sharedHttpProxyConfUrl] completion:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startHttpProxy:[AppProfile sharedHttpProxyConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -179,7 +179,7 @@
 
 - (void)startSocksProxy {
     [self syncStartProxy: @"socks" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startSocksProxy:[Potatso sharedSocksConfUrl] completion:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startSocksProxy:[AppProfile sharedSocksConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -206,7 +206,7 @@
 }
 
 - (void) applyTunnelSettings:(void (^)(NSError *error))completionHandler {
-    NSString *generalConfContent = [NSString stringWithContentsOfURL:[Potatso sharedGeneralConfUrl] encoding:NSUTF8StringEncoding error:nil];
+    NSString *generalConfContent = [NSString stringWithContentsOfURL:[AppProfile sharedGeneralConfUrl] encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *generalConf = [generalConfContent jsonDictionary];
     NSString *dns = generalConf[@"dns"];
     NEIPv4Settings *ipv4Settings = [[NEIPv4Settings alloc] initWithAddresses:@[@"192.0.2.1"] subnetMasks:@[@"255.255.255.0"]];
@@ -243,7 +243,7 @@
 }
 
 - (void)openLog {
-    NSString *logFilePath = [Potatso sharedLogUrl].path;
+    NSString *logFilePath = [AppProfile sharedLogUrl].path;
     [[NSFileManager defaultManager] createFileAtPath:logFilePath contents:nil attributes:nil];
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "w+", stdout);
     freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding], "w+", stderr);
@@ -275,8 +275,8 @@
 
 - (void)stop {
     NSLog(@"stoping potatso tunnel...");
-    [[Potatso sharedUserDefaults] setObject:@(0) forKey:@"tunnelStatusPort"];
-    [[Potatso sharedUserDefaults] synchronize];
+    [[AppProfile sharedUserDefaults] setObject:@(0) forKey:@"tunnelStatusPort"];
+    [[AppProfile sharedUserDefaults] synchronize];
     [[ProxyManager sharedManager] stopHttpProxy];
     [[ProxyManager sharedManager] stopSocksProxy];
     [[TunnelInterface sharedInterface] stop];

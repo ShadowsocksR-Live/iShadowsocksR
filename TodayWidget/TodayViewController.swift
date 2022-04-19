@@ -44,7 +44,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let port = Potatso.sharedUserDefaults().integer(forKey: "tunnelStatusPort")
+        let port = AppProfile.sharedUserDefaults().integer(forKey: "tunnelStatusPort")
         status = port > 0
         tableView.register(CurrentGroupCell.self, forCellReuseIdentifier: kCurrentGroupCellIndentifier)
         view.addSubview(tableView)
@@ -63,7 +63,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
     }
 
     @objc func tryConnectStatusSocket() {
-        let port = Potatso.sharedUserDefaults().integer(forKey: "tunnelStatusPort")
+        let port = AppProfile.sharedUserDefaults().integer(forKey: "tunnelStatusPort")
         guard port > 0 else {
             updateStatus(false)
             return
@@ -140,7 +140,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
         var cell: UITableViewCell!
         if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: kCurrentGroupCellIndentifier, for: indexPath)
-            let name = Potatso.sharedUserDefaults().object(forKey: kDefaultGroupName) as? String
+            let name = AppProfile.sharedUserDefaults().object(forKey: kDefaultGroupName) as? String
             (cell as? CurrentGroupCell)?.config(name ?? "Default".localized(), status: status, switchVPN: switchVPN)
         }
         cell.preservesSuperviewLayoutMargins = false

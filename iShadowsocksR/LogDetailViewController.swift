@@ -41,7 +41,7 @@ class LogDetailViewController: UIViewController {
             emptyView.isHidden = false
             return
         }
-        fd = Darwin.open(Potatso.sharedLogUrl().path, O_RDONLY)
+        fd = Darwin.open(AppProfile.sharedLogUrl().path, O_RDONLY)
         guard fd > 0 else {
             return
         }
