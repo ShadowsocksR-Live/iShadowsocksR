@@ -8,25 +8,20 @@
 #import "ProxyManager.h"
 #import <ShadowPath/ShadowPath.h>
 #import <netinet/in.h>
-#import "PotatsoBase.h"
 #import "Profile.h"
-#if USING_SSR_NATIVE
 #include <ssrNative/ssrNative.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 static DDLogLevel ddLogLevel = DDLogLevelWarning;
-#else
-#include <ssrLocal/ssrLocal.h>
-#endif
 
 @interface ProxyManager () {
     int _shadowsocksProxyPort;
-    ShadowsocksProxyCompletion _shadowsocksCompletion;
+    ProxyCompletion _shadowsocksCompletion;
     
-    SocksProxyCompletion _socksCompletion;
+    ProxyCompletion _socksCompletion;
     BOOL _socksProxyRunning;
     
     BOOL _httpProxyRunning;
-    HttpProxyCompletion _httpCompletion;
+    ProxyCompletion _httpCompletion;
 }
 - (void)onSocksProxyCallback: (int)fd;
 - (void)onHttpProxyCallback: (int)fd;
@@ -81,7 +76,6 @@ struct server_config * build_config_object(Profile *profile, unsigned short list
     return config;
 }
 
-#if USING_SSR_NATIVE
 struct ssr_client_state *g_state = NULL;
 void feedback_state(struct ssr_client_state *state, void *p) {
     g_state = state;
@@ -92,14 +86,6 @@ void feedback_state(struct ssr_client_state *state, void *p) {
 void info_callback(int dump_level, const char *info, void *p) {
     DDLogWarn(@"%s", info);
 }
-
-#else
-struct ssr_local_state *g_state = NULL;
-void feedback_state(struct ssr_local_state *state, void *p) {
-    g_state = state;
-    shadowsocks_handler(ssr_Local_listen_socket_fd(state), p);
-}
-#endif
 
 void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appPath, void *context) {
     struct server_config *config = NULL;
@@ -113,16 +99,12 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
             break;
         }
         
-#if USING_SSR_NATIVE
         config_ssrot_revision(config);
         
         set_app_name(appPath);
         [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
         set_dump_info_callback(&info_callback, context);
         ssr_run_loop_begin(config, &feedback_state, context);
-#else
-        ssr_local_main_loop(config, &feedback_state, context);
-#endif
         g_state = NULL;
     } while(0);
     
@@ -130,10 +112,7 @@ void ssr_main_loop(Profile *profile, unsigned short listenPort, const char *appP
 }
 
 void ssr_stop(void) {
-#if USING_SSR_NATIVE
     ssr_run_loop_shutdown(g_state);
-#else
-#endif
 }
 
 @implementation ProxyManager
@@ -147,9 +126,9 @@ void ssr_stop(void) {
     return manager;
 }
 
-- (void)startSocksProxy:(SocksProxyCompletion)completion {
+- (void)startSocksProxy:(NSURL*)socksConfUrl completion: (ProxyCompletion)completion {
     _socksCompletion = [completion copy];
-    NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedSocksConfUrl] encoding:NSUTF8StringEncoding error:nil];
+    NSString *confContent = [NSString stringWithContentsOfURL:socksConfUrl encoding:NSUTF8StringEncoding error:nil];
     confContent = [confContent stringByReplacingOccurrencesOfString:@"${ssport}" withString:[NSString stringWithFormat:@"%d", _shadowsocksProxyPort]];
     int fd = [[AntinatServer sharedServer] startWithConfig:confContent];
     [self onSocksProxyCallback:fd];
@@ -175,14 +154,15 @@ void ssr_stop(void) {
 
 # pragma mark - Shadowsocks 
 
-- (void)startShadowsocks: (ShadowsocksProxyCompletion)completion {
+- (void) startShadowsocks:(NSURL*)proxyConfUrl completion:(ProxyCompletion)completion {
     _shadowsocksCompletion = [completion copy];
-    [NSThread detachNewThreadSelector:@selector(_startShadowsocks) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(_startShadowsocks:) toTarget:self withObject:proxyConfUrl];
 }
 
-- (void)_startShadowsocks {
-    NSString *confContent = [NSString stringWithContentsOfURL:[Potatso sharedProxyConfUrl] encoding:NSUTF8StringEncoding error:nil];
-    NSDictionary *json = [confContent jsonDictionary];
+- (void)_startShadowsocks:(NSURL*)proxyConfUrl {
+    NSString *confContent = [NSString stringWithContentsOfURL:proxyConfUrl encoding:NSUTF8StringEncoding error:nil];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[confContent dataUsingEncoding:NSUTF8StringEncoding]
+                                                         options:NSJSONReadingAllowFragments error:nil];
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
     profile.listenPort = 0;
     
@@ -215,9 +195,10 @@ void ssr_stop(void) {
 
 # pragma mark - Http Proxy
 
-- (void)startHttpProxy:(HttpProxyCompletion)completion {
+- (void) startHttpProxy:(NSURL*)httpProxyConfUrl completion:(ProxyCompletion)completion {
     _httpCompletion = [completion copy];
-    [NSThread detachNewThreadSelector:@selector(_startHttpProxy:) toTarget:self withObject:[Potatso sharedHttpProxyConfUrl]];
+    NSAssert(httpProxyConfUrl, @"httpProxyConfUrl must have a valid value!");
+    [NSThread detachNewThreadSelector:@selector(_startHttpProxy:) toTarget:self withObject:httpProxyConfUrl];
 }
 
 - (void)_startHttpProxy: (NSURL *)confURL {

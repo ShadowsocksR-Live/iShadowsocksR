@@ -161,7 +161,7 @@
 
 - (void)startShadowsocks {
     [self syncStartProxy: @"shadowsocks" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startShadowsocks:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startShadowsocks:[Potatso sharedProxyConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -170,7 +170,7 @@
 
 - (void)startHttpProxy {
     [self syncStartProxy: @"http" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startHttpProxy:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startHttpProxy:[Potatso sharedHttpProxyConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -179,7 +179,7 @@
 
 - (void)startSocksProxy {
     [self syncStartProxy: @"socks" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startSocksProxy:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startSocksProxy:[Potatso sharedSocksConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];

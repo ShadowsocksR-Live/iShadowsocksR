@@ -7,9 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^SocksProxyCompletion)(int port, NSError *error);
-typedef void(^HttpProxyCompletion)(int port, NSError *error);
-typedef void(^ShadowsocksProxyCompletion)(int port, NSError *error);
+typedef void(^ProxyCompletion)(int port, NSError *error);
 
 extern int sock_port (int fd);
 
@@ -18,10 +16,10 @@ extern int sock_port (int fd);
 + (ProxyManager *)sharedManager;
 @property (nonatomic, readonly) int socksProxyPort;
 @property (nonatomic, readonly) int httpProxyPort;
-- (void)startSocksProxy: (SocksProxyCompletion)completion;
+- (void)startSocksProxy:(NSURL*)socksConfUrl completion:(ProxyCompletion)completion;
 - (void)stopSocksProxy;
-- (void)startHttpProxy: (HttpProxyCompletion)completion;
+- (void)startHttpProxy:(NSURL*)httpProxyConfUrl completion:(ProxyCompletion)completion;
 - (void)stopHttpProxy;
-- (void)startShadowsocks: (ShadowsocksProxyCompletion)completion;
+- (void) startShadowsocks:(NSURL*)proxyConfUrl completion:(ProxyCompletion)completion;
 - (void)stopShadowsocks;
 @end
