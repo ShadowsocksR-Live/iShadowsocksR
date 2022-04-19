@@ -9,7 +9,7 @@ import Foundation
 import Cartography
 import PotatsoModel
 import PotatsoLibrary
-import PotatsoBase
+import CommUtils
 
 private let kRecentRequestCellIdentifier = "recentRequests"
 private let kRecentRequestCachedIdentifier = "requestsCached"

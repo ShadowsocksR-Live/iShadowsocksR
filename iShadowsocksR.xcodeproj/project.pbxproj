@@ -68,7 +68,7 @@
 		9B1F74761C3164AD0028C1A6 /* VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F74751C3164AC0028C1A6 /* VPN.swift */; };
 		9B2290FF1C8E5B9600EEC901 /* DataInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2290FE1C8E5B9600EEC901 /* DataInitializer.swift */; };
 		9B2D8C8B1C7C3F5B00CC65B3 /* ProxyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B2D8C8A1C7C3F5B00CC65B3 /* ProxyManager.m */; };
-		9B32477B1CC091CF00A3BAFF /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
+		9B32477B1CC091CF00A3BAFF /* CommUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */; };
 		9B32478A1CC0F1D200A3BAFF /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3247891CC0F1D200A3BAFF /* Importer.swift */; };
 		9B54CC441C1C266C00DDEEBB /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B54CC431C1C266C00DDEEBB /* UIViewControllerExtensions.swift */; };
 		9B5C00261CBFB35C008DDE7A /* ConfigGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5C00251CBFB35C008DDE7A /* ConfigGroupCell.swift */; };
@@ -78,7 +78,7 @@
 		9B8193B71CBCFEE700BE320D /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193B61CBCFEE700BE320D /* TodayViewController.swift */; };
 		9B8193BA1CBCFEE700BE320D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B8193B81CBCFEE700BE320D /* MainInterface.storyboard */; };
 		9B8193BE1CBCFEE700BE320D /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9B8193B21CBCFEE700BE320D /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9B8193DC1CBDE68100BE320D /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
+		9B8193DC1CBDE68100BE320D /* CommUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */; };
 		9B8193DD1CBDE68100BE320D /* PotatsoLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9B15BD1C21595B000B6541 /* PotatsoLibrary.framework */; };
 		9B8193E21CBDF27000BE320D /* CurrentGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193E11CBDF27000BE320D /* CurrentGroupCell.swift */; };
 		9B8193ED1CBE4DCA00BE320D /* UrlHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8193EC1CBE4DCA00BE320D /* UrlHandler.swift */; };
@@ -102,17 +102,17 @@
 		9BC215BF1CB4E06C002AADD1 /* RuleSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215BE1CB4E06C002AADD1 /* RuleSet.swift */; };
 		9BC215C11CB5083B002AADD1 /* ConfigurationGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215C01CB5083B002AADD1 /* ConfigurationGroup.swift */; };
 		9BC215CC1CB5E584002AADD1 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215CB1CB5E584002AADD1 /* Manager.swift */; };
-		9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9BC600241CB2921C00E5EA61 /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
-		9BC600251CB2921C00E5EA61 /* PotatsoBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9BC600201CB2921C00E5EA61 /* CommUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6001F1CB2921C00E5EA61 /* CommUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9BC600241CB2921C00E5EA61 /* CommUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */; };
+		9BC600251CB2921C00E5EA61 /* CommUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9BC6002B1CB2922E00E5EA61 /* AppProfile.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC600291CB2922E00E5EA61 /* AppProfile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC6002C1CB2922E00E5EA61 /* AppProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6002A1CB2922E00E5EA61 /* AppProfile.m */; };
 		9BC600311CB299DE00E5EA61 /* JSONUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6002D1CB299DE00E5EA61 /* JSONUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC600321CB299DE00E5EA61 /* JSONUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6002E1CB299DE00E5EA61 /* JSONUtils.m */; };
 		9BC600331CB299DE00E5EA61 /* NSError+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6002F1CB299DE00E5EA61 /* NSError+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC600341CB299DE00E5EA61 /* NSError+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BC600301CB299DE00E5EA61 /* NSError+Helper.m */; };
-		9BC600351CB29AEE00E5EA61 /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
-		9BC600361CB29AFF00E5EA61 /* PotatsoBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */; };
+		9BC600351CB29AEE00E5EA61 /* CommUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */; };
+		9BC600361CB29AFF00E5EA61 /* CommUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */; };
 		9BC6FFED1CB28B4B00E5EA61 /* PotatsoModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BC6FFEC1CB28B4B00E5EA61 /* PotatsoModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9BC6FFF11CB28B4B00E5EA61 /* PotatsoModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6FFEA1CB28B4B00E5EA61 /* PotatsoModel.framework */; };
 		9BC6FFF21CB28B4B00E5EA61 /* PotatsoModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC6FFEA1CB28B4B00E5EA61 /* PotatsoModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -557,7 +557,7 @@
 			containerPortal = 9B0CFA031C1C0B1A007BD7C6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 9BC6001C1CB2921C00E5EA61;
-			remoteInfo = PotatsoBase;
+			remoteInfo = CommUtils;
 		};
 		9BC6FFEF1CB28B4B00E5EA61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -668,7 +668,7 @@
 				3A9502DA229AFC4000A6EAD7 /* CocoaLumberjack.framework in Embed Frameworks */,
 				9BC6FFF21CB28B4B00E5EA61 /* PotatsoModel.framework in Embed Frameworks */,
 				9B9B15C51C21595B000B6541 /* PotatsoLibrary.framework in Embed Frameworks */,
-				9BC600251CB2921C00E5EA61 /* PotatsoBase.framework in Embed Frameworks */,
+				9BC600251CB2921C00E5EA61 /* CommUtils.framework in Embed Frameworks */,
 				9BDA62631CAE2576007F2581 /* PacketProcessor.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -767,8 +767,8 @@
 		9BC215BE1CB4E06C002AADD1 /* RuleSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleSet.swift; sourceTree = "<group>"; };
 		9BC215C01CB5083B002AADD1 /* ConfigurationGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationGroup.swift; sourceTree = "<group>"; };
 		9BC215CB1CB5E584002AADD1 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PotatsoBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PotatsoBase.h; sourceTree = "<group>"; };
+		9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BC6001F1CB2921C00E5EA61 /* CommUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommUtils.h; sourceTree = "<group>"; };
 		9BC600211CB2921C00E5EA61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BC600291CB2922E00E5EA61 /* AppProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppProfile.h; sourceTree = "<group>"; };
 		9BC6002A1CB2922E00E5EA61 /* AppProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppProfile.m; sourceTree = "<group>"; };
@@ -1260,7 +1260,7 @@
 				B86B08ED1D17FB9B00613014 /* ShadowPath.framework in Frameworks */,
 				3A57D262207290AC000520F8 /* Eureka.framework in Frameworks */,
 				1EEBB8771FFFD4B500EB33C3 /* NetworkExtension.framework in Frameworks */,
-				9BC600241CB2921C00E5EA61 /* PotatsoBase.framework in Frameworks */,
+				9BC600241CB2921C00E5EA61 /* CommUtils.framework in Frameworks */,
 				9BDA62621CAE2576007F2581 /* PacketProcessor.framework in Frameworks */,
 				3A9502D4229AF87900A6EAD7 /* CocoaLumberjackSwift.framework in Frameworks */,
 				1ED659061E05E88C00D4BEE3 /* GameKit.framework in Frameworks */,
@@ -1283,7 +1283,7 @@
 				3A14EE9621B44FC1006291BC /* MMWormhole.framework in Frameworks */,
 				B88559F01D21371A00B1243E /* PotatsoModel.framework in Frameworks */,
 				1EEBB8781FFFD52700EB33C3 /* NetworkExtension.framework in Frameworks */,
-				9B8193DC1CBDE68100BE320D /* PotatsoBase.framework in Frameworks */,
+				9B8193DC1CBDE68100BE320D /* CommUtils.framework in Frameworks */,
 				9B8193DD1CBDE68100BE320D /* PotatsoLibrary.framework in Frameworks */,
 				9B8193B41CBCFEE700BE320D /* NotificationCenter.framework in Frameworks */,
 				479C711B68EF0702C9F65B5B /* Pods_TodayWidget.framework in Frameworks */,
@@ -1302,7 +1302,7 @@
 				3A104BD02073C55D00C848D5 /* mbedtls.framework in Frameworks */,
 				3ADE7D002073733D000F70AA /* yaml.framework in Frameworks */,
 				B86B08EC1D17F85800613014 /* ShadowPath.framework in Frameworks */,
-				9BC600361CB29AFF00E5EA61 /* PotatsoBase.framework in Frameworks */,
+				9BC600361CB29AFF00E5EA61 /* CommUtils.framework in Frameworks */,
 				9BCE27AF1CAE535800B1E561 /* PacketProcessor.framework in Frameworks */,
 				9B87060D1C1DBDD400651424 /* libresolv.tbd in Frameworks */,
 				1EEBB8791FFFD8A700EB33C3 /* NetworkExtension.framework in Frameworks */,
@@ -1317,7 +1317,7 @@
 				3A8780CB20754B2000B96BF3 /* libxml2.tbd in Frameworks */,
 				3A8780C920754AA600B96BF3 /* KissXML.framework in Frameworks */,
 				3ADE7D0320737366000F70AA /* yaml.framework in Frameworks */,
-				9BC600351CB29AEE00E5EA61 /* PotatsoBase.framework in Frameworks */,
+				9BC600351CB29AEE00E5EA61 /* CommUtils.framework in Frameworks */,
 				9BC6FFF61CB28C4500E5EA61 /* PotatsoModel.framework in Frameworks */,
 				12AD9C79E2C246F3D21B814E /* Pods_PotatsoLibrary.framework in Frameworks */,
 			);
@@ -1334,7 +1334,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B32477B1CC091CF00A3BAFF /* PotatsoBase.framework in Frameworks */,
+				9B32477B1CC091CF00A3BAFF /* CommUtils.framework in Frameworks */,
 				939649B7FCC9A0C8AFB317B8 /* Pods_PotatsoModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1485,7 +1485,7 @@
 				9B9B15BE1C21595B000B6541 /* PotatsoLibrary */,
 				9BDA625C1CAE2576007F2581 /* PacketProcessor */,
 				9BC6FFEB1CB28B4B00E5EA61 /* PotatsoModel */,
-				9BC6001E1CB2921C00E5EA61 /* PotatsoBase */,
+				9BC6001E1CB2921C00E5EA61 /* CommUtils */,
 				9B0CFA0C1C1C0B1B007BD7C6 /* Products */,
 				C8B2149E8757C44C469576D2 /* Frameworks */,
 				360FC4CAA2A2878A46E847E5 /* Pods */,
@@ -1500,7 +1500,7 @@
 				9B9B15BD1C21595B000B6541 /* PotatsoLibrary.framework */,
 				9BDA625B1CAE2576007F2581 /* PacketProcessor.framework */,
 				9BC6FFEA1CB28B4B00E5EA61 /* PotatsoModel.framework */,
-				9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */,
+				9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */,
 				9B8193B21CBCFEE700BE320D /* TodayWidget.appex */,
 			);
 			name = Products;
@@ -1674,10 +1674,10 @@
 			name = Dashboard;
 			sourceTree = "<group>";
 		};
-		9BC6001E1CB2921C00E5EA61 /* PotatsoBase */ = {
+		9BC6001E1CB2921C00E5EA61 /* CommUtils */ = {
 			isa = PBXGroup;
 			children = (
-				9BC6001F1CB2921C00E5EA61 /* PotatsoBase.h */,
+				9BC6001F1CB2921C00E5EA61 /* CommUtils.h */,
 				9BC600291CB2922E00E5EA61 /* AppProfile.h */,
 				9BC6002A1CB2922E00E5EA61 /* AppProfile.m */,
 				B8F784651D3678B400F02FF5 /* Settings.h */,
@@ -1690,7 +1690,7 @@
 				3ABE26712200927B006EDDBA /* NSString+Localize.h */,
 				3ABE26722200927B006EDDBA /* NSString+Localize.m */,
 			);
-			path = PotatsoBase;
+			path = CommUtils;
 			sourceTree = "<group>";
 		};
 		9BC6FFEB1CB28B4B00E5EA61 /* PotatsoModel */ = {
@@ -2483,7 +2483,7 @@
 				9BC600331CB299DE00E5EA61 /* NSError+Helper.h in Headers */,
 				9BC600311CB299DE00E5EA61 /* JSONUtils.h in Headers */,
 				B8F784671D3678B400F02FF5 /* Settings.h in Headers */,
-				9BC600201CB2921C00E5EA61 /* PotatsoBase.h in Headers */,
+				9BC600201CB2921C00E5EA61 /* CommUtils.h in Headers */,
 				9BC6002B1CB2922E00E5EA61 /* AppProfile.h in Headers */,
 				3ABE26732200927B006EDDBA /* NSString+Localize.h in Headers */,
 			);
@@ -2611,9 +2611,9 @@
 			productReference = 9B9B15BD1C21595B000B6541 /* PotatsoLibrary.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9BC6001C1CB2921C00E5EA61 /* PotatsoBase */ = {
+		9BC6001C1CB2921C00E5EA61 /* CommUtils */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9BC600281CB2921D00E5EA61 /* Build configuration list for PBXNativeTarget "PotatsoBase" */;
+			buildConfigurationList = 9BC600281CB2921D00E5EA61 /* Build configuration list for PBXNativeTarget "CommUtils" */;
 			buildPhases = (
 				9BC600181CB2921C00E5EA61 /* Sources */,
 				9BC6001A1CB2921C00E5EA61 /* Headers */,
@@ -2624,9 +2624,9 @@
 			);
 			dependencies = (
 			);
-			name = PotatsoBase;
-			productName = PotatsoBase;
-			productReference = 9BC6001D1CB2921C00E5EA61 /* PotatsoBase.framework */;
+			name = CommUtils;
+			productName = CommUtils;
+			productReference = 9BC6001D1CB2921C00E5EA61 /* CommUtils.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9BC6FFE91CB28B4B00E5EA61 /* PotatsoModel */ = {
@@ -2844,7 +2844,7 @@
 				9B9B15BC1C21595B000B6541 /* PotatsoLibrary */,
 				9BDA625A1CAE2576007F2581 /* PacketProcessor */,
 				9BC6FFE91CB28B4B00E5EA61 /* PotatsoModel */,
-				9BC6001C1CB2921C00E5EA61 /* PotatsoBase */,
+				9BC6001C1CB2921C00E5EA61 /* CommUtils */,
 			);
 		};
 /* End PBXProject section */
@@ -3586,7 +3586,7 @@
 		};
 		9BC600231CB2921C00E5EA61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9BC6001C1CB2921C00E5EA61 /* PotatsoBase */;
+			target = 9BC6001C1CB2921C00E5EA61 /* CommUtils */;
 			targetProxy = 9BC600221CB2921C00E5EA61 /* PBXContainerItemProxy */;
 		};
 		9BC6FFF01CB28B4B00E5EA61 /* PBXTargetDependency */ = {
@@ -4121,7 +4121,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 121;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PotatsoBase/Info.plist;
+				INFOPLIST_FILE = CommUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4157,7 +4157,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 121;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = PotatsoBase/Info.plist;
+				INFOPLIST_FILE = CommUtils/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4402,7 +4402,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9BC600281CB2921D00E5EA61 /* Build configuration list for PBXNativeTarget "PotatsoBase" */ = {
+		9BC600281CB2921D00E5EA61 /* Build configuration list for PBXNativeTarget "CommUtils" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9BC600261CB2921D00E5EA61 /* Debug */,

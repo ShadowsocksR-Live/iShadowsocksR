@@ -8,7 +8,7 @@
 
 import UIKit
 import NotificationCenter
-import PotatsoBase
+import CommUtils
 import Cartography
 import SwiftColor
 import PotatsoLibrary

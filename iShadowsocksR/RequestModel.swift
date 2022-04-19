@@ -8,7 +8,7 @@
 import Foundation
 import PotatsoModel
 import PotatsoLibrary
-import PotatsoBase
+import CommUtils
 
 enum HTTPMethod: String {
     case GET = "GET"

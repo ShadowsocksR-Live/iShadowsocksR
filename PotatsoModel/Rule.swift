@@ -5,7 +5,7 @@
 //  Copyright © 2016 TouchingApp. All rights reserved.
 //
 
-import PotatsoBase
+import CommUtils
 
 private let ruleValueKey = "value";
 private let ruleActionKey = "action";

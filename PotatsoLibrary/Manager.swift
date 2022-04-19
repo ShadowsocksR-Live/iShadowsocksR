@@ -6,7 +6,7 @@
 //
 
 
-import PotatsoBase
+import CommUtils
 import PotatsoModel
 import KissXML
 import NetworkExtension

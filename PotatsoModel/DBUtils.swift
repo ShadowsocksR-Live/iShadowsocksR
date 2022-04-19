@@ -8,7 +8,7 @@
 import Foundation
 import Realm
 import RealmSwift
-import PotatsoBase
+import CommUtils
 
 private let version: UInt64 = 18
 

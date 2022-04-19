@@ -14,6 +14,6 @@
 @import CocoaLumberjack;
 @import PotatsoLibrary;
 @import PotatsoModel;
-@import PotatsoBase;
+@import CommUtils;
 
 #endif /* Potatso_Bridge_Header_h */

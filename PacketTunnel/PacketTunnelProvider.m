@@ -11,7 +11,7 @@
 #import "TunnelInterface.h"
 #import "TunnelError.h"
 #import "dns.h"
-#import "PotatsoBase.h"
+#import "CommUtils.h"
 #import <sys/syslog.h>
 #import <ShadowPath/ShadowPath.h>
 #import <sys/socket.h>
