@@ -99,7 +99,7 @@ open class Manager {
                 return
             }
             if current == .off {
-                self.startVPN { (manager, error) -> Void in
+                self.startVPN(nil) { (manager, error) -> Void in
                     completion?(manager, error)
                 }
             }else {
@@ -395,12 +395,8 @@ extension Manager {
             }
         }
     }
-    
-    public func startVPN(_ complete: ((NETunnelProviderManager?, Error?) -> Void)? = nil) {
-        startVPNWithOptions(nil, complete: complete)
-    }
-    
-    fileprivate func startVPNWithOptions(_ options: [String : NSObject]?, complete: ((NETunnelProviderManager?, Error?) -> Void)? = nil) {
+
+    public func startVPN(_ options: [String : NSObject]?, complete: ((NETunnelProviderManager?, Error?) -> Void)? = nil) {
         // regenerate config files
         do {
             try Manager.sharedManager.regenerateConfigFiles()

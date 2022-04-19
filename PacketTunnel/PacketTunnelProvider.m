@@ -189,7 +189,7 @@
 - (void)startPacketForwarders {
     __weak typeof(self) weakSelf = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTun2SocksFinished) name:kTun2SocksStoppedNotification object:nil];
-    [self startVPNWithOptions:nil completionHandler:^(NSError *error) {
+    [self applyTunnelSettings:^(NSError *error) {
         __strong typeof(self) strongSelf = weakSelf;
         if (error == nil) {
             [weakSelf addObserver:weakSelf forKeyPath:@"defaultPath" options:NSKeyValueObservingOptionInitial context:nil];
@@ -205,7 +205,7 @@
     }];
 }
 
-- (void)startVPNWithOptions:(NSDictionary *)options completionHandler:(void (^)(NSError *error))completionHandler {
+- (void) applyTunnelSettings:(void (^)(NSError *error))completionHandler {
     NSString *generalConfContent = [NSString stringWithContentsOfURL:[Potatso sharedGeneralConfUrl] encoding:NSUTF8StringEncoding error:nil];
     NSDictionary *generalConf = [generalConfContent jsonDictionary];
     NSString *dns = generalConf[@"dns"];
@@ -236,14 +236,8 @@
     dnsSettings.matchDomains = @[@""];
     settings.DNSSettings = dnsSettings;
     [self setTunnelNetworkSettings:settings completionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            if (completionHandler) {
-                completionHandler(error);
-            }
-        }else{
-            if (completionHandler) {
-                completionHandler(nil);
-            }
+        if (completionHandler) {
+            completionHandler(error);
         }
     }];
 }
@@ -263,7 +257,7 @@
             }else {
                 NSLog(@"received network change notifcation");
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self startVPNWithOptions:nil completionHandler:nil];
+                    [self applyTunnelSettings:nil];
                 });
             }
         }else {

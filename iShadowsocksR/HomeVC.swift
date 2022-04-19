@@ -24,8 +24,8 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
     var ruleSetSection: Section!
 
     var status: VPNStatus {
-        didSet(o) {
-            updateConnectButton()
+        didSet {
+            updateConnectButton(by: status)
         }
     }
 
@@ -82,17 +82,17 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         tableView?.reloadData()
     }
 
-    func updateConnectButton() {
-        connectButton.isEnabled = [VPNStatus.on, VPNStatus.off].contains(status)
+    func updateConnectButton(by value: VPNStatus) {
+        connectButton.isEnabled = [VPNStatus.on, VPNStatus.off].contains(value)
         connectButton.setTitleColor(UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: UIControlState())
-        switch status {
+        switch value {
         case .connecting, .disconnecting:
             connectButton.animating = true
         default:
-            connectButton.setTitle(status.hintDescription, for: .normal)
+            connectButton.setTitle(value.hintDescription, for: .normal)
             connectButton.animating = false
         }
-        connectButton.backgroundColor = status.color
+        connectButton.backgroundColor = value.color
     }
 
     // MARK: - Form
