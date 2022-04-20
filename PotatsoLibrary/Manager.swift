@@ -173,7 +173,7 @@ open class Manager {
                 group = g
             }else {
                 group = ConfigurationGroup()
-                group.name = "Default".localized()
+                group.name = "Home".localized()
                 do {
                     try DBUtils.add(group)
                 }catch {
