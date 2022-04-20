@@ -21,6 +21,8 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
 
     let presenter = HomePresenter()
 
+    var ruleSetSection: Section!
+
     var status: VPNStatus {
         didSet {
             updateConnectButton(by: status)
@@ -75,6 +77,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         form.delegate = nil
         form.removeAll()
         form +++ generateProxySection()
+        form +++ generateProxyRuleSetSection()
         form.delegate = self
         tableView?.reloadData()
     }
@@ -145,6 +148,53 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         return proxySection
     }
 
+    func generateProxyRuleSetSection() -> Section {
+        ruleSetSection = Section("Rule Set".localized())
+        for ruleSet in presenter.group.ruleSets {
+            ruleSetSection
+                <<< LabelRow () {
+                    $0.title = "\(ruleSet.name)"
+                    var count = 0
+                    if ruleSet.ruleCount > 0 {
+                        count = ruleSet.ruleCount
+                    }else {
+                        count = ruleSet.rules.count
+                    }
+                    if count > 1 {
+                        $0.value = String(format: "%d rules".localized(),  count)
+                    }else {
+                        $0.value = String(format: "%d rule".localized(), count)
+                    }
+                    ///custom modify: for iOS 11
+                    let delete = SwipeAction(style: .destructive, title: "Delete".localized(), handler: { [unowned self] (action, row, success) in
+                        DBUtils.writeSharedRealm(completionQueue: .main) { error in
+                            if error == nil {
+                                let indexPath = row.indexPath!
+                                self.presenter.group.ruleSets.remove(at: indexPath.row)
+                                self.form[indexPath].hidden = true
+                                self.form[indexPath].evaluateHidden()
+                                self.tableView.reloadData()
+                                success?(true)
+                            } else {
+                                self.showTextHUD("\("Fail to delete item".localized()): \((error! as NSError).localizedDescription)", dismissAfterDelay: 1.5)
+                                success?(false)
+                            }
+                        }
+                    })
+                    $0.trailingSwipe.actions = [delete]
+                }.cellSetup({ (cell, row) -> () in
+                    cell.selectionStyle = .none
+                })
+        }
+        ruleSetSection <<< BaseButtonRow () {
+            $0.title = "Add Rule Set".localized()
+        }.onCellSelection({ [unowned self] (cell, row) -> () in
+            self.presenter.addProxyRuleSet()
+        })
+        return ruleSetSection
+    }
+
+
     // MARK: - Private Actions
 
     @objc func handleConnectButtonPressed() {
@@ -163,6 +213,9 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
     // MARK: - TableView
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == ruleSetSection.index && indexPath.row < presenter.group.ruleSets.count {
+            return true
+        }
         return false
     }
 

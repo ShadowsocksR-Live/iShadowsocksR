@@ -122,6 +122,7 @@
 "Request" = "请求";
 "Request Finished" = "请求结束";
 "Rule" = "规则";
+"Rule Set" = "规则组";
 "Rule Set Name" = "规则组名称";
 "Rules" = "规则";
 "SSR Obfs Param" = "SSR 混淆插件参数";

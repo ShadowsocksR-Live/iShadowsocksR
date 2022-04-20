@@ -13,6 +13,7 @@ private let rowHeight: CGFloat = 135
 class CollectionViewController: SegmentPageVC {
 
     let pageVCs = [
+        ProxyRuleSetListViewController(),
         ProxyListViewController(),
     ]
 
@@ -22,15 +23,15 @@ class CollectionViewController: SegmentPageVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showPage(0)
+        showPage(1)
     }
 
     override func segmentsForSegmentPageVC() -> [String] {
-        return ["Proxy".localized()]
+        return ["Rule Set".localized(), "Proxy".localized()]
     }
 
     override func showPage(_ index: Int) {
-        if index < pageVCs.count {
+        if index < 2 {
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add(sender:)))
         }else {
             navigationItem.rightBarButtonItem = nil
@@ -41,7 +42,10 @@ class CollectionViewController: SegmentPageVC {
     @objc func add(sender: UIBarButtonItem) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            let ac = (self.pageVCs[0] as! ProxyListViewController).imprortProxyNodeController(sender: sender)
+            let vc = ProxyRuleSetConfigurationViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let ac = (self.pageVCs[1] as! ProxyListViewController).imprortProxyNodeController(sender: sender)
             self.present(ac, animated: true)
         default:
             break

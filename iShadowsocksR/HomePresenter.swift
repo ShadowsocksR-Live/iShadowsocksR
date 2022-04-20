@@ -99,6 +99,20 @@ class HomePresenter: NSObject {
         CurrentGroupManager.shared.setConfigGroupId(group.uuid)
     }
 
+    func addProxyRuleSet() {
+        let destVC: UIViewController
+        if DBUtils.countOf(type: ProxyRuleSet.self) == 0 {
+            destVC = ProxyRuleSetConfigurationViewController() { [unowned self] ruleSet in
+                self.appendProxyRuleSet(ruleSet)
+            }
+        }else {
+            destVC = ProxyRuleSetListViewController { [unowned self] ruleSet in
+                self.appendProxyRuleSet(ruleSet)
+            }
+        }
+        vc.navigationController?.pushViewController(destVC, animated: true)
+    }
+
     func appendProxyRuleSet(_ ruleSet: ProxyRuleSet?) {
         guard let ruleSet = ruleSet, !group.ruleSets.contains(ruleSet) else {
             return
