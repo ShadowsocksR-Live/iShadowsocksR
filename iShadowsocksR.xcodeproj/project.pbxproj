@@ -95,7 +95,6 @@
 		9BB3F7441CC60B6F00C2DD05 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB3F7431CC60B6F00C2DD05 /* Error.swift */; };
 		9BB3F7471CC60CBE00C2DD05 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9BB3F7491CC60CBE00C2DD05 /* Localizable.strings */; };
 		9BB3F74F1CC6308000C2DD05 /* RecentRequestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB3F74E1CC6308000C2DD05 /* RecentRequestsVC.swift */; };
-		9BB62FA31C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB62FA21C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift */; };
 		9BC215B91CB4DA9E002AADD1 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215B81CB4DA9E002AADD1 /* Proxy.swift */; };
 		9BC215BB1CB4DAE6002AADD1 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215BA1CB4DAE6002AADD1 /* BaseModel.swift */; };
 		9BC215BD1CB4DE6B002AADD1 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC215BC1CB4DE6B002AADD1 /* Rule.swift */; };
@@ -218,7 +217,6 @@
 		B8C256AE1D1A93DA0074D3B1 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C256AD1D1A93DA0074D3B1 /* FlatButton.swift */; };
 		B8C256B01D1A957A0074D3B1 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C256AF1D1A957A0074D3B1 /* HomePresenter.swift */; };
 		B8CCC6DD1CFD5D5D000E7E2E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6DC1CFD5D5D000E7E2E /* CollectionViewController.swift */; };
-		B8CCC6E11CFDCADC000E7E2E /* RuleSetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6E01CFDCADC000E7E2E /* RuleSetListViewController.swift */; };
 		B8CCC6E51CFDCFD8000E7E2E /* RuleSetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6E41CFDCFD8000E7E2E /* RuleSetCell.swift */; };
 		B8CCC6E71CFDD99E000E7E2E /* ProxyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6E61CFDD99E000E7E2E /* ProxyListViewController.swift */; };
 		B8CCC6EB1CFF1501000E7E2E /* ProxyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCC6EA1CFF1501000E7E2E /* ProxyRow.swift */; };
@@ -760,7 +758,6 @@
 		9BB3F7481CC60CBE00C2DD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9BB3F74A1CC60CBF00C2DD05 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9BB3F74E1CC6308000C2DD05 /* RecentRequestsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentRequestsVC.swift; sourceTree = "<group>"; };
-		9BB62FA21C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RuleSetConfigurationViewController.swift; path = Advance/RuleSetConfigurationViewController.swift; sourceTree = "<group>"; };
 		9BC215B81CB4DA9E002AADD1 /* Proxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		9BC215BA1CB4DAE6002AADD1 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		9BC215BC1CB4DE6B002AADD1 /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
@@ -1235,7 +1232,6 @@
 		B8C256AD1D1A93DA0074D3B1 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
 		B8C256AF1D1A957A0074D3B1 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		B8CCC6DC1CFD5D5D000E7E2E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		B8CCC6E01CFDCADC000E7E2E /* RuleSetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleSetListViewController.swift; sourceTree = "<group>"; };
 		B8CCC6E41CFDCFD8000E7E2E /* RuleSetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuleSetCell.swift; sourceTree = "<group>"; };
 		B8CCC6E61CFDD99E000E7E2E /* ProxyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProxyListViewController.swift; sourceTree = "<group>"; };
 		B8CCC6EA1CFF1501000E7E2E /* ProxyRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProxyRow.swift; path = ../ProxyRow.swift; sourceTree = "<group>"; };
@@ -1570,7 +1566,6 @@
 			isa = PBXGroup;
 			children = (
 				9B5E13B91C897870007DFE0A /* ProxyConfigurationViewController.swift */,
-				9BB62FA21C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift */,
 				9B76EEAC1C9005D2002BF5D1 /* RuleConfigurationViewController.swift */,
 			);
 			name = Edit;
@@ -1638,7 +1633,6 @@
 			isa = PBXGroup;
 			children = (
 				B8CCC6DC1CFD5D5D000E7E2E /* CollectionViewController.swift */,
-				B8CCC6E01CFDCADC000E7E2E /* RuleSetListViewController.swift */,
 				B8CCC6E41CFDCFD8000E7E2E /* RuleSetCell.swift */,
 				B8CCC6E61CFDD99E000E7E2E /* ProxyListViewController.swift */,
 				B88096B11D0652F0008BEB87 /* RuleCell.swift */,
@@ -3346,10 +3340,8 @@
 				9BF303461CC8A1F60096588E /* LogDetailViewController.swift in Sources */,
 				9B1D9B7B1CA4C45F0078D814 /* HUDUtils.swift in Sources */,
 				B8822CCD1D2AA70A00AD252C /* Receipt.m in Sources */,
-				B8CCC6E11CFDCADC000E7E2E /* RuleSetListViewController.swift in Sources */,
 				B821B0F01D51DD8F0061E7B9 /* KeychainUtils.swift in Sources */,
 				9B2290FF1C8E5B9600EEC901 /* DataInitializer.swift in Sources */,
-				9BB62FA31C8FFC1D002ADC54 /* RuleSetConfigurationViewController.swift in Sources */,
 				9BF3034B1CCA1B060096588E /* BaseEmptyView.swift in Sources */,
 				9B5E13BA1C897870007DFE0A /* ProxyConfigurationViewController.swift in Sources */,
 				B8367A811D1B6D5400D50C25 /* BaseButtonRow.swift in Sources */,
