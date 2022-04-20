@@ -33,7 +33,7 @@ struct Importer {
                 self.onImportInput(input)
             }
         }))
-        alert.addAction(UIAlertAction(title: "CANCEL".localized(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
         viewController?.present(alert, animated: true, completion: nil)
     }
     
@@ -84,7 +84,7 @@ struct Importer {
                     self.onConfigSaveCallback(false, error: error)
                 }
                 })
-            alert.addAction(UIAlertAction(title: "CANCEL".localized(), style: .cancel) { action in
+            alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel) { action in
                 })
             viewController?.present(alert, animated: true, completion: nil)
         }catch {

@@ -14,7 +14,6 @@
 "Add Rule Set" = "添加规则组";
 "Add a new proxy" = "添加新代理";
 "BUY" = "购买";
-"CANCEL" = "取消";
 "Cancel" = "取消";
 "Change Name" = "修改名称";
 "Check DNS Pollution" = "检查 DNS 污染";
@@ -31,6 +30,7 @@
 "Connect" = "连接";
 "Connected" = "已连接";
 "Connection" = "连接";
+"Copied to Pasteboard" = "已经复制到粘贴板";
 "Create manually" = "手工创建";
 "Create new node from..." = "创建新节点 从这些途径...";
 "DNS Pollution" = "DNS 污染";
@@ -40,9 +40,11 @@
 "Default" = "默认";
 "Default Route Match" = "默认路由匹配";
 "Default To Proxy" = "默认走代理";
+"Delete" = "删除";
 "Delete item" = "删除条目";
-"Detail" = "详情";
+"Details" = "详情";
 "Disconnect" = "断开";
+"Do you want to delete the item really?" = "您真的要删除这个条目吗?";
 "Edit Proxy" = "编辑代理";
 "Edit Rule" = "编辑规则";
 "Edit Rule Set" = "编辑规则组";
@@ -80,6 +82,7 @@
 "Invalid port" = "无效的端口";
 "Logging is disabled" = "日志已禁用";
 "Logs" = "日志";
+"Long Press to share" = "长按文字或图像可以分享";
 "Manage" = "管理";
 "More" = "更多";
 "Name" = "名称";
@@ -89,7 +92,7 @@
 "No Match" = "无匹配";
 "No more data" = "没有更多数据了";
 "None" = "无";
-"OK" = "OK";
+"OK" = "好的";
 "Obfs" = "混淆插件(obfs)";
 "Obfs Param" = "混淆插件参数";
 "One Time Auth" = "一次认证";
@@ -110,6 +113,7 @@
 "Proxy Server Host" = "代理服务器";
 "Proxy Server Port" = "代理服务器端口";
 "Proxy Type" = "代理类型";
+"QR Code URI" = "二维码信息";
 "Rate on App Store" = "在 App Store 评价";
 "Receipt Validation Error" = "购买收据验证失败";
 "Recent Requests" = "最近请求";
@@ -124,6 +128,7 @@
 "SSR Obfs Param" = "SSR 混淆插件参数";
 "SSR Protocol Param" = "SSR 协议插件参数";
 "Share with friends" = "分享给朋友";
+"Share" = "分享";
 "Start" = "开始";
 "Start DNS Query" = "开始 DNS 查询";
 "Start IP Rules Match" = "开始 IP 规则匹配";

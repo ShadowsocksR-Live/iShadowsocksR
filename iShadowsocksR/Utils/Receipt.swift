@@ -80,7 +80,7 @@ class Receipt: NSObject, SKRequestDelegate {
 //            guard let vc = UIApplication.sharedApplication().keyWindow?.rootViewController else {
 //                return
 //            }
-//            Alert.show(vc, title: "Receipt Validation Error".localized(), message: "The app is only made for App Store users. Please try again.".localized(), confirmMessage: "CANCEL".localized(), confirmCallback: {
+//            Alert.show(vc, title: "Receipt Validation Error".localized(), message: "The app is only made for App Store users. Please try again.".localized(), confirmMessage: "Cancel".localized(), confirmCallback: {
 //                logEvent(.ReceiptValidationCancel, attributes: nil)
 //                self.terminate()
 //            }, cancelMessage: "BUY".localized()) {

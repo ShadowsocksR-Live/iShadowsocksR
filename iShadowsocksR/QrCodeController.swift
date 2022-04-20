@@ -62,8 +62,8 @@ class QrCodeController: UIViewController {
     
     @objc func longPressHandler(_ sender: UITapGestureRecognizer? = nil) {
         UIPasteboard.general.string = qrCodeInfo
-        let a = UIAlertController(title: "QR Code URI", message: "Copied to Pasteboard", preferredStyle: .alert)
-        let b = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let a = UIAlertController(title: "QR Code URI".localized(), message: "Copied to Pasteboard".localized(), preferredStyle: .alert)
+        let b = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
         a.addAction(b)
         self.navigationController?.present(a, animated: true, completion: nil)
     }

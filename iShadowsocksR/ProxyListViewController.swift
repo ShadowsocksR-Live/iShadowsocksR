@@ -93,7 +93,7 @@ class ProxyListViewController: FormViewController {
     }
     
     func doDeleteAction(_ indexPath: IndexPath) {
-        let ac = UIAlertController(title: "Delete item".localized(), message: "Do you really want to delete the item?".localized(), preferredStyle: .alert)
+        let ac = UIAlertController(title: "Delete item".localized(), message: "Do you want to delete the item really?".localized(), preferredStyle: .alert)
         ac.addAction( UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil) )
         let aaOK = UIAlertAction(title: "OK".localized(), style: .default) { (action) in
             guard indexPath.row < self.proxyNodes.count, let item = (self.form[indexPath] as? ProxyNodeRow)?.value else {

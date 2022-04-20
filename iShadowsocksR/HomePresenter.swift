@@ -84,7 +84,7 @@ class HomePresenter: NSObject {
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "CANCEL".localized(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
 
@@ -171,7 +171,7 @@ class HomePresenter: NSObject {
                 self.delegate?.handleRefreshUI()
             }
         }))
-        alert.addAction(UIAlertAction(title: "CANCEL".localized(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
         vc.present(alert, animated: true, completion: nil)
     }
 
