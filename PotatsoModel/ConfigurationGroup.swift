@@ -35,7 +35,7 @@ open class ConfigurationGroup: BaseModel {
     @objc open dynamic var defaultToProxy = true
     @objc open dynamic var dns = ""
     open var proxyNodes = List<ProxyNode>()
-    open var ruleSets = List<ProxyRuleSet>()
+    open var ruleSets = List<RuleSet>()
     
     public override static func indexedProperties() -> [String] {
         return ["name"]
@@ -60,7 +60,7 @@ extension ConfigurationGroup {
             throw ConfigurationGroupError.invalidConfigurationGroup
         }
         self.name = name
-        if DBUtils.objectExistOf(type: ProxyRuleSet.self, by: name) {
+        if DBUtils.objectExistOf(type: RuleSet.self, by: name) {
             self.name = "\(name) \(ConfigurationGroup.dateFormatter.string(from: Date()))"
         }
         if let proxyNodeName = dictionary["proxy"] as? String, let proxyNode = DBUtils.objectOf(type: ProxyNode.self, by: proxyNodeName) {
@@ -69,7 +69,7 @@ extension ConfigurationGroup {
         }
         if let ruleSetsName = dictionary["ruleSets"] as? [String] {
             for ruleSetName in ruleSetsName {
-                if let ruleSet = DBUtils.objectOf(type: ProxyRuleSet.self, by: ruleSetName) {
+                if let ruleSet = DBUtils.objectOf(type: RuleSet.self, by: ruleSetName) {
                     self.ruleSets.append(ruleSet)
                 }
             }

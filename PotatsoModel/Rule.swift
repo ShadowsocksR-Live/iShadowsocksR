@@ -104,7 +104,7 @@ public enum RuleError: Error {
 //    public dynamic var typeRaw = ""
 //    public dynamic var content = ""
 //    public dynamic var order = 0
-//    public let rulesets = LinkingObjects(fromType: ProxyRuleSet.self, property: "rules")
+//    public let rulesets = LinkingObjects(fromType: RuleSet.self, property: "rules")
 //
 //}
 //

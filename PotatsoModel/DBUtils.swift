@@ -58,7 +58,7 @@ open class DBUtils {
     
     // MARK: - Migration
     private static func migrateRulesList(_ migration: Migration, oldSchemaVersion: UInt64) {
-        migration.enumerateObjects(ofType: ProxyRuleSet.className(), { (oldObject, newObject) in
+        migration.enumerateObjects(ofType: RuleSet.className(), { (oldObject, newObject) in
             if oldSchemaVersion > 11 {
                 guard let deleted = oldObject!["deleted"] as? Bool, !deleted else {
                     return
@@ -201,7 +201,7 @@ open class DBUtils {
         for proxyNode in mRealm.objects(ProxyNode.self) {
             proxyNode.synced = false
         }
-        for ruleset in mRealm.objects(ProxyRuleSet.self) {
+        for ruleset in mRealm.objects(RuleSet.self) {
             ruleset.synced = false
         }
         for group in mRealm.objects(ConfigurationGroup.self) {
@@ -294,9 +294,9 @@ extension ConfigurationGroup {
         }
     }
 
-    public static func appendProxyRuleSet(forGroupId groupId: String, rulesetId: String) throws {
+    public static func appendRuleSet(forGroupId groupId: String, rulesetId: String) throws {
         try DBUtils.modify(ConfigurationGroup.self, id: groupId) { (realm, group) -> Error? in
-            if let ruleset = DBUtils.get(rulesetId, type: ProxyRuleSet.self) {
+            if let ruleset = DBUtils.get(rulesetId, type: RuleSet.self) {
                 group.ruleSets.append(ruleset)
             }
             return nil

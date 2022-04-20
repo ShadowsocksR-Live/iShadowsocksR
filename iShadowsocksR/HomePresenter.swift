@@ -99,26 +99,26 @@ class HomePresenter: NSObject {
         CurrentGroupManager.shared.setConfigGroupId(group.uuid)
     }
 
-    func addProxyRuleSet() {
+    func addRuleSet() {
         let destVC: UIViewController
-        if DBUtils.countOf(type: ProxyRuleSet.self) == 0 {
-            destVC = ProxyRuleSetConfigurationViewController() { [unowned self] ruleSet in
-                self.appendProxyRuleSet(ruleSet)
+        if DBUtils.countOf(type: RuleSet.self) == 0 {
+            destVC = RuleSetConfigurationViewController() { [unowned self] ruleSet in
+                self.appendRuleSet(ruleSet)
             }
         }else {
-            destVC = ProxyRuleSetListViewController { [unowned self] ruleSet in
-                self.appendProxyRuleSet(ruleSet)
+            destVC = RuleSetListViewController { [unowned self] ruleSet in
+                self.appendRuleSet(ruleSet)
             }
         }
         vc.navigationController?.pushViewController(destVC, animated: true)
     }
 
-    func appendProxyRuleSet(_ ruleSet: ProxyRuleSet?) {
+    func appendRuleSet(_ ruleSet: RuleSet?) {
         guard let ruleSet = ruleSet, !group.ruleSets.contains(ruleSet) else {
             return
         }
         do {
-            try ConfigurationGroup.appendProxyRuleSet(forGroupId: group.uuid, rulesetId: ruleSet.uuid)
+            try ConfigurationGroup.appendRuleSet(forGroupId: group.uuid, rulesetId: ruleSet.uuid)
             self.delegate?.handleRefreshUI()
         }catch {
             self.vc.showTextHUD("\("Fail to add ruleset".localized()): \((error as NSError).localizedDescription)", dismissAfterDelay: 1.5)

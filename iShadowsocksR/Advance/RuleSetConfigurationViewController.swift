@@ -1,5 +1,5 @@
 //
-//  ProxyRuleSetConfigurationViewController.swift
+//  RuleSetConfigurationViewController.swift
 //
 //  Created by LEI on 3/9/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.
@@ -10,26 +10,26 @@ import Eureka
 import PotatsoLibrary
 import PotatsoModel
 
-private let kProxyRuleSetFormName = "name"
+private let kRuleSetFormName = "name"
 
-class ProxyRuleSetConfigurationViewController: FormViewController {
+class RuleSetConfigurationViewController: FormViewController {
 
-    var ruleSet: PotatsoModel.ProxyRuleSet
+    var ruleSet: PotatsoModel.RuleSet
     var rules: [Rule]
     let isEdit: Bool
     var editable: Bool {
         return ruleSet.editable && !ruleSet.isSubscribe
     }
-    var callback: ((ProxyRuleSet?) -> Void)?
+    var callback: ((PotatsoModel.RuleSet?) -> Void)?
     var editSection: Section = Section()
 
-    init(ruleSet: ProxyRuleSet? = nil, callback: ((ProxyRuleSet?) -> Void)? = nil) {
+    init(ruleSet: PotatsoModel.RuleSet? = nil, callback: ((PotatsoModel.RuleSet?) -> Void)? = nil) {
         self.callback = callback
         if let ruleSet = ruleSet {
-            self.ruleSet = ProxyRuleSet(value: ruleSet)
+            self.ruleSet = RuleSet(value: ruleSet)
             self.isEdit = true
         }else {
-            self.ruleSet = ProxyRuleSet()
+            self.ruleSet = RuleSet()
             self.isEdit = false
         }
         self.rules = self.ruleSet.rules
@@ -61,7 +61,7 @@ class ProxyRuleSetConfigurationViewController: FormViewController {
     func generateForm() {
         form.removeAll()
         form +++ Section()
-            <<< TextRow(kProxyRuleSetFormName) {
+            <<< TextRow(kRuleSetFormName) {
                 $0.title = "Name".localized()
                 $0.value = self.ruleSet.name
                 $0.disabled = Condition(booleanLiteral: !self.editable)
@@ -116,7 +116,7 @@ class ProxyRuleSetConfigurationViewController: FormViewController {
     @objc func save() {
         do {
             let values = form.values()
-            guard let name = (values[kProxyRuleSetFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.count > 0 else {
+            guard let name = (values[kRuleSetFormName] as? String)?.trimmingCharacters(in: CharacterSet.whitespaces), name.count > 0 else {
                 throw "Name can't be empty".localized()
             }
             ruleSet.name = name

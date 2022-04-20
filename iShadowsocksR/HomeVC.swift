@@ -77,7 +77,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         form.delegate = nil
         form.removeAll()
         form +++ generateProxySection()
-        form +++ generateProxyRuleSetSection()
+        form +++ generateRuleSetSection()
         form.delegate = self
         tableView?.reloadData()
     }
@@ -148,7 +148,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         return proxySection
     }
 
-    func generateProxyRuleSetSection() -> Section {
+    func generateRuleSetSection() -> Section {
         ruleSetSection = Section("Rule Set".localized())
         for ruleSet in presenter.group.ruleSets {
             ruleSetSection
@@ -189,7 +189,7 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         ruleSetSection <<< BaseButtonRow () {
             $0.title = "Add Rule Set".localized()
         }.onCellSelection({ [unowned self] (cell, row) -> () in
-            self.presenter.addProxyRuleSet()
+            self.presenter.addRuleSet()
         })
         return ruleSetSection
     }

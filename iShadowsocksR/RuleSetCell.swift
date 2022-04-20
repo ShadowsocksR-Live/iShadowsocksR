@@ -1,5 +1,5 @@
 //
-//  ProxyRuleSetCell.swift
+//  RuleSetCell.swift
 //
 //  Created by LEI on 5/31/16.
 //  Copyright © 2016 TouchingApp. All rights reserved.
@@ -9,7 +9,7 @@ import Foundation
 import Cartography
 import PotatsoModel
 
-class ProxyRuleSetCell: UITableViewCell {
+class RuleSetCell: UITableViewCell {
 
     let group = ConstraintGroup()
 
@@ -60,7 +60,7 @@ class ProxyRuleSetCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setProxyRuleSet(_ ruleSet: ProxyRuleSet, showFullDescription: Bool = false, showSubscribe: Bool = false) {
+    func setRuleSet(_ ruleSet: RuleSet, showFullDescription: Bool = false, showSubscribe: Bool = false) {
         titleLabel.text = ruleSet.name
         var count = 0
         if ruleSet.ruleCount > 0 {

@@ -13,7 +13,7 @@ private let rowHeight: CGFloat = 135
 class CollectionViewController: SegmentPageVC {
 
     let pageVCs = [
-        ProxyRuleSetListViewController(),
+        RuleSetListViewController(),
         ProxyListViewController(),
     ]
 
@@ -42,7 +42,7 @@ class CollectionViewController: SegmentPageVC {
     @objc func add(sender: UIBarButtonItem) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            let vc = ProxyRuleSetConfigurationViewController()
+            let vc = RuleSetConfigurationViewController()
             navigationController?.pushViewController(vc, animated: true)
         case 1:
             let ac = (self.pageVCs[1] as! ProxyListViewController).imprortProxyNodeController(sender: sender)
