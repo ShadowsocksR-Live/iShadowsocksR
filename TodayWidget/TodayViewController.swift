@@ -29,7 +29,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
         return 1
     }
     
-    var status: Bool = false
+    var running: Bool = false
 
     var socket: GCDAsyncSocket!
 
@@ -45,7 +45,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         let port = AppProfile.sharedUserDefaults().integer(forKey: "tunnelStatusPort")
-        status = port > 0
+        running = port > 0
         tableView.register(CurrentGroupCell.self, forCellReuseIdentifier: kCurrentGroupCellIndentifier)
         view.addSubview(tableView)
         updateLayout()
@@ -100,8 +100,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
     }
 
     func updateStatus(_ current: Bool) {
-        if status != current {
-            status = current
+        if running != current {
+            running = current
             DispatchQueue.main.async(execute: { 
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
             })
@@ -109,7 +109,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
     }
     
     func switchVPN() {
-        if status {
+        if running {
             wormhole.passMessageObject("" as NSCoding?, identifier: "stopTunnel")
         }else {
             URLSession.shared.dataTask(with: URL(string: "https://on-demand.connect.potatso.com/start/")!).resume()
@@ -141,7 +141,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UITableViewDataS
         if indexPath.row == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: kCurrentGroupCellIndentifier, for: indexPath)
             let name = AppProfile.sharedUserDefaults().object(forKey: kDefaultGroupName) as? String
-            (cell as? CurrentGroupCell)?.config(name ?? "Default".localized(), status: status, switchVPN: switchVPN)
+            (cell as? CurrentGroupCell)?.config(name ?? "Default".localized(), status: running, switchVPN: switchVPN)
         }
         cell.preservesSuperviewLayoutMargins = false
         cell.layoutMargins = UIEdgeInsets.zero
