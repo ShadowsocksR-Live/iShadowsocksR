@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 
-int serverConnectivity(const char *host, int port);
+int serverConnectivity(const char *host, int port, int timeout_ms);
 int convertHostNameToIpString (const char *host, char *ipString, size_t len);
 
 #endif /* serverConnectivity_h */

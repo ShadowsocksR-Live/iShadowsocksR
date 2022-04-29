@@ -59,11 +59,11 @@
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
     
     if (profile.server.length==0 || profile.serverPort==0) {
-        completionHandler([NSError errorWithDomain:@"iShadowsocksR" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"serverConnectivity"}]);
+        completionHandler([NSError errorWithDomain:@"iShadowsocksR" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"server address or port error"}]);
         return;
     }
     
-    if (serverConnectivity(profile.server.UTF8String, (int)profile.serverPort) != 0){
+    if (serverConnectivity(profile.server.UTF8String, (int)profile.serverPort, 500) != 0){
         completionHandler([NSError errorWithDomain:@"iShadowsocksR" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"serverConnectivity"}]);
         return;
     }
