@@ -43,7 +43,14 @@ open class DBUtils {
                 print(realm!)
             } catch {
                 print(error)
-                assert(false)
+                do {
+                    try FileManager.default.removeItem(at: sharedURL)
+                    realm = try Realm(configuration: config, queue: sharedQueueForRealm)
+                    print(realm!)
+                } catch {
+                    print(error)
+                    assert(false)
+                }
             }
         }
         if sharedQueueForRealm != DispatchQueue.main {
