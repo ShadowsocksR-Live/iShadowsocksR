@@ -51,8 +51,16 @@ int serverConnectivity(const char *host, int port, int timeout_ms) {
         }
         
         if (addr) {
-            result = _internal_connectivity(addr, timeout_ms);
-            break;
+            if (addr->ai_family == AF_INET) {
+                ((struct sockaddr_in *)addr->ai_addr)->sin_port = htons(port);
+            } else if (addr->ai_family == AF_INET6) {
+                ((struct sockaddr_in6 *)addr->ai_addr)->sin6_port = htons(port);
+            } else {
+                break;
+            }
+            if (_internal_connectivity(addr, timeout_ms) != 0 ) {
+                break;
+            }
         } else {
             if ((cliSock = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
                 break;
