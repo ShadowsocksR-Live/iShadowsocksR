@@ -63,7 +63,7 @@
         return;
     }
     
-    if (serverConnectivity(profile.server.UTF8String, (int)profile.serverPort, 500) != 0){
+    if (serverConnectivity(profile.server.UTF8String, (int)profile.serverPort, 3000) != 0){
         completionHandler([NSError errorWithDomain:@"iShadowsocksR" code:-1 userInfo:@{NSLocalizedDescriptionKey:@"serverConnectivity"}]);
         return;
     }
