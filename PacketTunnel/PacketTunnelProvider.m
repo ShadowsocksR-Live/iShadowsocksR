@@ -213,13 +213,13 @@
     settings.IPv4Settings = ipv4Settings;
     settings.MTU = @(TunnelMTU);
     NEProxySettings* proxySettings = [[NEProxySettings alloc] init];
-    NSInteger proxyServerPort = [ProxyManager sharedManager].httpProxyPort;
+    NSInteger httpProxyPort = [ProxyManager sharedManager].httpProxyPort;
     NSString *proxyServerName = @"localhost";
 
     proxySettings.HTTPEnabled = YES;
-    proxySettings.HTTPServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:proxyServerPort];
+    proxySettings.HTTPServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:httpProxyPort];
     proxySettings.HTTPSEnabled = YES;
-    proxySettings.HTTPSServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:proxyServerPort];
+    proxySettings.HTTPSServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:httpProxyPort];
     proxySettings.excludeSimpleHostnames = YES;
     settings.proxySettings = proxySettings;
     NEDNSSettings *dnsSettings = [[NEDNSSettings alloc] initWithServers:dnsServers];
