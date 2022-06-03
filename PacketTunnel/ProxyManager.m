@@ -23,16 +23,6 @@ static DDLogLevel ddLogLevel = DDLogLevelWarning;
 - (void)onShadowsocksCallback:(int)fd;
 @end
 
-void http_proxy_handler(int fd, void *udata) {
-    ProxyManager *provider = (__bridge ProxyManager *)udata;
-    [provider onHttpProxyCallback:fd];
-}
-
-void shadowsocks_handler(int fd, void *udata) {
-    ProxyManager *provider = (__bridge ProxyManager *)udata;
-    [provider onShadowsocksCallback:fd];
-}
-
 int sock_port (int fd) {
     struct sockaddr_in sin;
     socklen_t len = sizeof(sin);
@@ -69,6 +59,11 @@ struct server_config * build_config_object(Profile *profile, unsigned short list
     string_safe_assign(&config->over_tls_path, profile.ot_path.UTF8String);
     
     return config;
+}
+
+void shadowsocks_handler(int fd, void *udata) {
+    ProxyManager *provider = (__bridge ProxyManager *)udata;
+    [provider onShadowsocksCallback:fd];
 }
 
 struct ssr_client_state *g_state = NULL;
@@ -110,7 +105,9 @@ void ssr_stop(void) {
     ssr_run_loop_shutdown(g_state);
 }
 
-@implementation ProxyManager
+@implementation ProxyManager {
+    int _socksProxyPort;
+}
 
 + (ProxyManager *)sharedManager {
     static dispatch_once_t onceToken;
@@ -164,13 +161,18 @@ void ssr_stop(void) {
 
 # pragma mark - Http Proxy
 
-- (void) startHttpProxy:(NSURL*)httpProxyConfUrl completion:(ProxyCompletion)completion {
+- (void) startHttpProxyServer:(NSURL*)httpProxyConfUrl completion:(ProxyCompletion)completion {
     _httpCompletion = [completion copy];
     NSAssert(httpProxyConfUrl, @"httpProxyConfUrl must have a valid value!");
-    [NSThread detachNewThreadSelector:@selector(_startHttpProxy:) toTarget:self withObject:httpProxyConfUrl];
+    [NSThread detachNewThreadSelector:@selector(_startHttpProxyServer:) toTarget:self withObject:httpProxyConfUrl];
 }
 
-- (void)_startHttpProxy: (NSURL *)confURL {
+void http_proxy_handler(int fd, void *udata) {
+    ProxyManager *provider = (__bridge ProxyManager *)udata;
+    [provider onHttpProxyCallback:fd];
+}
+
+- (void)_startHttpProxyServer: (NSURL *)confURL {
     struct forward_spec *proxy = NULL;
     if (_socksProxyPort > 0) {
         proxy = calloc(1, sizeof(*proxy));
@@ -181,22 +183,23 @@ void ssr_stop(void) {
     shadowpath_main(strdup([[confURL path] UTF8String]), proxy, http_proxy_handler, (__bridge void *)self);
 }
 
-- (void)stopHttpProxy {
-//    polipoExit();
-//    _httpProxyRunning = NO;
-}
-
 - (void)onHttpProxyCallback:(int)fd {
     NSError *error;
+    int httpProxyPort = 0;
     if (fd > 0) {
-        _httpProxyPort = sock_port(fd);
+        httpProxyPort = sock_port(fd);
         _httpProxyRunning = YES;
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }
     if (_httpCompletion) {
-        _httpCompletion(_httpProxyPort, error);
+        _httpCompletion(httpProxyPort, error);
     }
+}
+
+- (void)stopHttpProxy {
+//    polipoExit();
+//    _httpProxyRunning = NO;
 }
 
 @end

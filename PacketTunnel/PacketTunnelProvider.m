@@ -41,7 +41,10 @@
 @end
 
 
-@implementation PacketTunnelProvider
+@implementation PacketTunnelProvider {
+    NSInteger _httpProxyPort;
+    NSInteger _socksProxyPort;
+}
 
 - (void)startTunnelWithOptions:(NSDictionary *)options completionHandler:(void (^)(NSError *))completionHandler {
     [self openLog];
@@ -69,7 +72,7 @@
     }
 
     _pendingStartCompletion = completionHandler;
-    [self startProxies];
+    [self startAllProxyServers];
     [self startPacketForwarders];
     [self setupWormhole];
 }
@@ -137,9 +140,9 @@
     }];
 }
 
-- (void)startProxies {
+- (void)startAllProxyServers {
     [self startShadowsocks];
-    [self startHttpProxy];
+    [self startHttpProxyServer];
 }
 
 - (void)syncStartProxy: (NSString *)name completion: (void(^)(dispatch_group_t g, NSError **proxyError))handler {
@@ -161,15 +164,17 @@
 - (void)startShadowsocks {
     [self syncStartProxy: @"shadowsocks" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
         [[ProxyManager sharedManager] startShadowsocks:[AppProfile sharedProxyConfUrl] completion:^(int port, NSError *error) {
+            self->_socksProxyPort = (NSInteger) port;
             *proxyError = error;
             dispatch_group_leave(g);
         }];
     }];
 }
 
-- (void)startHttpProxy {
+- (void)startHttpProxyServer {
     [self syncStartProxy: @"http" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startHttpProxy:[AppProfile sharedHttpProxyConfUrl] completion:^(int port, NSError *error) {
+        [[ProxyManager sharedManager] startHttpProxyServer:[AppProfile sharedHttpProxyConfUrl] completion:^(int port, NSError *error) {
+            self->_httpProxyPort = (NSInteger) port;
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -182,8 +187,9 @@
     [self applyTunnelSettings:^(NSError *error) {
         __strong typeof(self) strongSelf = weakSelf;
         if (error == nil) {
+            NSAssert(self->_socksProxyPort > 0, @"_socksProxyPort > 0");
             [weakSelf addObserver:weakSelf forKeyPath:@"defaultPath" options:NSKeyValueObservingOptionInitial context:nil];
-            [[TunnelInterface sharedInterface] startTun2Socks:[ProxyManager sharedManager].socksProxyPort];
+            [[TunnelInterface sharedInterface] startTun2Socks:(int)self->_socksProxyPort];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [[TunnelInterface sharedInterface] processPackets];
             });
@@ -213,13 +219,13 @@
     settings.IPv4Settings = ipv4Settings;
     settings.MTU = @(TunnelMTU);
     NEProxySettings* proxySettings = [[NEProxySettings alloc] init];
-    NSInteger httpProxyPort = [ProxyManager sharedManager].httpProxyPort;
     NSString *proxyServerName = @"localhost";
+    NSAssert(_httpProxyPort > 0, @"_httpProxyPort > 0");
 
     proxySettings.HTTPEnabled = YES;
-    proxySettings.HTTPServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:httpProxyPort];
+    proxySettings.HTTPServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:_httpProxyPort];
     proxySettings.HTTPSEnabled = YES;
-    proxySettings.HTTPSServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:httpProxyPort];
+    proxySettings.HTTPSServer = [[NEProxyServer alloc] initWithAddress:proxyServerName port:_httpProxyPort];
     proxySettings.excludeSimpleHostnames = YES;
     settings.proxySettings = proxySettings;
     NEDNSSettings *dnsSettings = [[NEDNSSettings alloc] initWithServers:dnsServers];

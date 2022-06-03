@@ -14,9 +14,7 @@ extern int sock_port (int fd);
 @interface ProxyManager : NSObject
 
 + (ProxyManager *)sharedManager;
-@property (nonatomic, readonly) int socksProxyPort;
-@property (nonatomic, readonly) int httpProxyPort;
-- (void)startHttpProxy:(NSURL*)httpProxyConfUrl completion:(ProxyCompletion)completion;
+- (void)startHttpProxyServer:(NSURL*)httpProxyConfUrl completion:(ProxyCompletion)completion;
 - (void)stopHttpProxy;
 - (void) startShadowsocks:(NSURL*)proxyConfUrl completion:(ProxyCompletion)completion;
 - (void)stopShadowsocks;
