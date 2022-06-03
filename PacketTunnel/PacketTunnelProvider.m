@@ -140,7 +140,6 @@
 - (void)startProxies {
     [self startShadowsocks];
     [self startHttpProxy];
-    [self startSocksProxy];
 }
 
 - (void)syncStartProxy: (NSString *)name completion: (void(^)(dispatch_group_t g, NSError **proxyError))handler {
@@ -171,15 +170,6 @@
 - (void)startHttpProxy {
     [self syncStartProxy: @"http" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
         [[ProxyManager sharedManager] startHttpProxy:[AppProfile sharedHttpProxyConfUrl] completion:^(int port, NSError *error) {
-            *proxyError = error;
-            dispatch_group_leave(g);
-        }];
-    }];
-}
-
-- (void)startSocksProxy {
-    [self syncStartProxy: @"socks" completion:^(dispatch_group_t g, NSError *__autoreleasing *proxyError) {
-        [[ProxyManager sharedManager] startSocksProxy:[AppProfile sharedSocksConfUrl] completion:^(int port, NSError *error) {
             *proxyError = error;
             dispatch_group_leave(g);
         }];
@@ -278,7 +268,6 @@
     [[AppProfile sharedUserDefaults] setObject:@(0) forKey:@"tunnelStatusPort"];
     [[AppProfile sharedUserDefaults] synchronize];
     [[ProxyManager sharedManager] stopHttpProxy];
-    [[ProxyManager sharedManager] stopSocksProxy];
     [[TunnelInterface sharedInterface] stop];
 }
 

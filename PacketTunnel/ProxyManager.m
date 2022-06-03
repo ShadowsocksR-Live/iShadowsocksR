@@ -14,16 +14,11 @@
 static DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 @interface ProxyManager () {
-    int _shadowsocksProxyPort;
     ProxyCompletion _shadowsocksCompletion;
-    
-    ProxyCompletion _socksCompletion;
-    BOOL _socksProxyRunning;
     
     BOOL _httpProxyRunning;
     ProxyCompletion _httpCompletion;
 }
-- (void)onSocksProxyCallback: (int)fd;
 - (void)onHttpProxyCallback: (int)fd;
 - (void)onShadowsocksCallback:(int)fd;
 @end
@@ -126,32 +121,6 @@ void ssr_stop(void) {
     return manager;
 }
 
-- (void)startSocksProxy:(NSURL*)socksConfUrl completion: (ProxyCompletion)completion {
-    _socksCompletion = [completion copy];
-    NSString *confContent = [NSString stringWithContentsOfURL:socksConfUrl encoding:NSUTF8StringEncoding error:nil];
-    confContent = [confContent stringByReplacingOccurrencesOfString:@"${ssport}" withString:[NSString stringWithFormat:@"%d", _shadowsocksProxyPort]];
-    int fd = [[AntinatServer sharedServer] startWithConfig:confContent];
-    [self onSocksProxyCallback:fd];
-}
-
-- (void)stopSocksProxy {
-    [[AntinatServer sharedServer] stop];
-    _socksProxyRunning = NO;
-}
-
-- (void)onSocksProxyCallback:(int)fd {
-    NSError *error;
-    if (fd > 0) {
-        _socksProxyPort = sock_port(fd);
-        _socksProxyRunning = YES;
-    }else {
-        error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start socks proxy"}];
-    }
-    if (_socksCompletion) {
-        _socksCompletion(_socksProxyPort, error);
-    }
-}
-
 # pragma mark - Shadowsocks 
 
 - (void) startShadowsocks:(NSURL*)proxyConfUrl completion:(ProxyCompletion)completion {
@@ -184,12 +153,12 @@ void ssr_stop(void) {
 - (void)onShadowsocksCallback:(int)fd {
     NSError *error;
     if (fd > 0) {
-        _shadowsocksProxyPort = sock_port(fd);
+        _socksProxyPort = sock_port(fd);
     } else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }
     if (_shadowsocksCompletion) {
-        _shadowsocksCompletion(_shadowsocksProxyPort, error);
+        _shadowsocksCompletion(_socksProxyPort, error);
     }
 }
 
@@ -203,11 +172,11 @@ void ssr_stop(void) {
 
 - (void)_startHttpProxy: (NSURL *)confURL {
     struct forward_spec *proxy = NULL;
-    if (_shadowsocksProxyPort > 0) {
+    if (_socksProxyPort > 0) {
         proxy = calloc(1, sizeof(*proxy));
         proxy->type = SOCKS_5;
         proxy->gateway_host = "127.0.0.1";
-        proxy->gateway_port = _shadowsocksProxyPort;
+        proxy->gateway_port = _socksProxyPort;
     }
     shadowpath_main(strdup([[confURL path] UTF8String]), proxy, http_proxy_handler, (__bridge void *)self);
 }
