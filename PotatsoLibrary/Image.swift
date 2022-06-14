@@ -9,15 +9,15 @@ import Foundation
 
 public extension String {
     
-    public var image: UIImage? {
+    var image: UIImage? {
         return UIImage(named: self)
     }
     
-    public var templateImage: UIImage? {
+    var templateImage: UIImage? {
         return UIImage(named: self)?.withRenderingMode(.alwaysTemplate)
     }
     
-    public var originalImage: UIImage? {
+    var originalImage: UIImage? {
         return UIImage(named: self)?.withRenderingMode(.alwaysOriginal)
     }
 
