@@ -62,7 +62,7 @@ class RuleConfigurationViewController: FormViewController {
     
     func generateForm() {
         form +++ Section()
-            <<< PushRow<ProxyRuleType>(kRuleFormType) {
+            <<< ActionSheetRow<ProxyRuleType>(kRuleFormType) {
                 $0.title = "Type".localized()
                 $0.selectorTitle = "Choose type of rule".localized()
                 $0.options = [ProxyRuleType.DomainSuffix, ProxyRuleType.DomainMatch, ProxyRuleType.Domain, ProxyRuleType.IPCIDR, ProxyRuleType.GeoIP, ProxyRuleType.URL]
@@ -80,7 +80,7 @@ class RuleConfigurationViewController: FormViewController {
                     cell.textField.autocorrectionType = .no
                     cell.textField.autocapitalizationType = .none
                 })
-            <<< PushRow<RuleAction>(kRuleFormAction) {
+            <<< ActionSheetRow<RuleAction>(kRuleFormAction) {
                 $0.title = "Action".localized()
                 $0.selectorTitle = "Choose action for rule".localized()
                 $0.options = [RuleAction.Proxy, RuleAction.Direct, RuleAction.Reject]

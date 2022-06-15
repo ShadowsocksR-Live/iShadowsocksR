@@ -68,7 +68,7 @@ class ProxyConfigurationViewController: FormViewController {
     
     func generateForm() {
         form +++ Section()
-            <<< PushRow<ProxyNodeType>(kProxyFormType) {
+            <<< ActionSheetRow<ProxyNodeType>(kProxyFormType) {
                 $0.title = "Proxy Type".localized()
                 $0.options = [ProxyNodeType.Shadowsocks, ProxyNodeType.ShadowsocksR]
                 $0.value = self.upstreamProxyNode.type
@@ -102,13 +102,13 @@ class ProxyConfigurationViewController: FormViewController {
                 }.cellSetup { cell, row in
                     cell.textField.placeholder = "Proxy Server Port".localized()
             }
-            <<< PushRow<String>(kProxyFormEncryption) {
+            <<< ActionSheetRow<String>(kProxyFormEncryption) {
                 $0.title = "Encryption".localized()
                 $0.options = ProxyNode.ssSupportedEncryption
                 $0.value = self.upstreamProxyNode.authscheme ?? $0.options?[8]
                 $0.selectorTitle = "Choose encryption method".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType), let isSS = r1.value?.isShadowsocks {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType), let isSS = r1.value?.isShadowsocks {
                         return !isSS
                     }
                     return false
@@ -125,19 +125,19 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.value = self.upstreamProxyNode.ota
                 $0.disabled = true
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.Shadowsocks
                     }
                     return false
                 }
             }
-            <<< PushRow<String>(kProxyFormProtocol) {
+            <<< ActionSheetRow<String>(kProxyFormProtocol) {
                 $0.title = "Protocol".localized()
                 $0.options = ProxyNode.ssrSupportedProtocol
                 $0.value = self.upstreamProxyNode.ssrProtocol ?? $0.options?[6]
                 $0.selectorTitle = "Choose SSR protocol".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
@@ -147,7 +147,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.title = "Protocol Param".localized()
                 $0.value = self.upstreamProxyNode.ssrProtocolParam
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
@@ -157,13 +157,13 @@ class ProxyConfigurationViewController: FormViewController {
                 cell.textField.autocorrectionType = .no
                 cell.textField.autocapitalizationType = .none
             }
-            <<< PushRow<String>(kProxyFormObfs) {
+            <<< ActionSheetRow<String>(kProxyFormObfs) {
                 $0.title = "Obfs".localized()
                 $0.options = ProxyNode.ssrSupportedObfs
                 $0.value = self.upstreamProxyNode.ssrObfs ?? $0.options?[3]
                 $0.selectorTitle = "Choose SSR obfs".localized()
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
@@ -173,7 +173,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.title = "Obfs Param".localized()
                 $0.value = self.upstreamProxyNode.ssrObfsParam
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
@@ -187,7 +187,7 @@ class ProxyConfigurationViewController: FormViewController {
                 row.title = "SSRoT Enable".localized()
                 row.value = self.upstreamProxyNode.ssrotEnable
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
@@ -209,7 +209,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.title = "SSRoT Domain".localized()
                 $0.value = self.upstreamProxyNode.ssrotDomain
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
@@ -229,7 +229,7 @@ class ProxyConfigurationViewController: FormViewController {
                 $0.title = "SSRoT Path".localized()
                 $0.value = self.upstreamProxyNode.ssrotPath
                 $0.hidden = Condition.function([kProxyFormType]) { form in
-                    if let r1 : PushRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
+                    if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
                         return r1.value != ProxyNodeType.ShadowsocksR
                     }
                     return false
