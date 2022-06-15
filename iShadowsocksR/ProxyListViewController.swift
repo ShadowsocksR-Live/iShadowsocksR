@@ -203,6 +203,16 @@ class ProxyListViewController: FormViewController {
         }
         ac.addAction(action3)
 
+        let action4 = UIAlertAction(title: "Import From subscription URL".localized(), style: .default) { action in
+            let importer = Importer(vc: self) { success in
+                if success {
+                    self.reloadData()
+                }
+            }
+            importer.importProxyNodesFromSubscriptionUrl()
+        }
+        ac.addAction(action4)
+
         let action99 = UIAlertAction(title: "Cancel".localized(), style: .cancel) { action in
             NSLog("canceled")
         }

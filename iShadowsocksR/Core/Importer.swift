@@ -37,6 +37,22 @@ struct Importer {
         viewController?.present(alert, animated: true, completion: nil)
     }
     
+    func importProxyNodesFromSubscriptionUrl() {
+        var urlTextField: UITextField?
+        let alert = UIAlertController(title: "Import nodes from subscription URL".localized(), message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Input subscription URL".localized()
+            urlTextField = textField
+        }
+        alert.addAction(UIAlertAction(title: "OK".localized(), style: .default, handler: { (action) in
+            if let input = urlTextField?.text {
+                self.importSubscription(input)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil))
+        viewController?.present(alert, animated: true, completion: nil)
+    }
+    
     func importConfigFromQRCode() {
         let parent = self.viewController?.navigationController
         let scanner = QRScannerController()
@@ -83,9 +99,9 @@ struct Importer {
                 }catch {
                     self.onConfigSaveCallback(false, error: error)
                 }
-                })
+            })
             alert.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel) { action in
-                })
+            })
             viewController?.present(alert, animated: true, completion: nil)
         }catch {
             self.onConfigSaveCallback(false, error: error)
@@ -113,4 +129,77 @@ struct Importer {
         }
     }
 
+    func importSubscription(_ result: String) {
+        let mgr = SubscriptionUrlManager()
+        mgr.add(result)
+        self.onConfigSaveCallback(true, error: nil)
+    }
+}
+
+public class SubscriptionUrlManager {
+
+    private var completion: ((_ add:[String]?, _ remove:[String]?) -> Void)?
+
+    init(completion: ((_ add:[String]?, _ remove:[String]?) -> Void)? = nil) {
+        self.completion = completion
+    }
+
+    func clean() {
+        let data = read()
+        write(jsonData: [])
+        self.completion?(nil, data)
+    }
+
+    func add(_ item: String) {
+        var jsonData = read()
+        jsonData = jsonData.filter { $0 != item } // remove duplication
+        jsonData.append(item)
+        write(jsonData: jsonData)
+        self.completion?([item], nil)
+    }
+
+    func remove(_ item: String) {
+        var jsonData = read()
+        jsonData = jsonData.filter { $0 != item }
+        write(jsonData: jsonData)
+        self.completion?(nil, [item])
+    }
+
+    func read() -> [String] {
+        var jsonData:[String]
+        do {
+            let dir: URL = getDocumentsDirectory()
+            let url = dir.appendingPathComponent("subscription.json")
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            jsonData = try decoder.decode([String].self, from: data)
+        } catch {
+            jsonData = []
+        }
+        return jsonData
+    }
+
+    func write(jsonData:[String]) {
+        do {
+            let dir: URL = getDocumentsDirectory()
+            let url = dir.appendingPathComponent("subscription.json")
+            let r = json(from:jsonData as Any)
+            try r!.write(to: url, atomically: true, encoding: .utf8)
+        } catch {
+            print("json write to file")
+        }
+    }
+
+    private func json(from object:Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
+            return nil
+        }
+        return String(data: data, encoding: String.Encoding.utf8)
+    }
+
+    private func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
 }
