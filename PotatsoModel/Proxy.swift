@@ -5,7 +5,7 @@
 //  Copyright © 2016 TouchingApp. All rights reserved.
 //
 
-public enum ProxyType: String {
+public enum ProxyNodeType: String {
     case Shadowsocks = "SS"
     case ShadowsocksR = "SSR"
     case Https = "HTTPS"
@@ -13,7 +13,7 @@ public enum ProxyType: String {
     case None = "NONE"
 }
 
-extension ProxyType: CustomStringConvertible {
+extension ProxyNodeType: CustomStringConvertible {
     
     public var description: String {
         return rawValue
@@ -62,7 +62,7 @@ extension ProxyNodeError: CustomStringConvertible {
 }
 
 open class ProxyNode: BaseModel {
-    @objc open dynamic var typeRaw = ProxyType.ShadowsocksR.rawValue
+    @objc open dynamic var typeRaw = ProxyNodeType.ShadowsocksR.rawValue
     @objc open dynamic var name = ""
     @objc open dynamic var host = ""
     @objc open dynamic var port = 0
@@ -140,7 +140,7 @@ open class ProxyNode: BaseModel {
     }
     
     open override func validate() throws {
-        guard let _ = ProxyType(rawValue: typeRaw)else {
+        guard let _ = ProxyNodeType(rawValue: typeRaw)else {
             throw ProxyNodeError.invalidType
         }
         guard name.count > 0 else{
@@ -167,9 +167,9 @@ open class ProxyNode: BaseModel {
 // Public Accessor
 extension ProxyNode {
     
-    public var type: ProxyType {
+    public var type: ProxyNodeType {
         get {
-            return ProxyType(rawValue: typeRaw) ?? .Shadowsocks
+            return ProxyNodeType(rawValue: typeRaw) ?? .Shadowsocks
         }
         set(v) {
             typeRaw = v.rawValue
@@ -379,7 +379,7 @@ extension ProxyNode {
             guard let host = dictionary["host"] as? String else{
                 throw ProxyNodeError.invalidHost
             }
-            guard let typeRaw = (dictionary["type"] as? String)?.uppercased(), let type = ProxyType(rawValue: typeRaw) else{
+            guard let typeRaw = (dictionary["type"] as? String)?.uppercased(), let type = ProxyNodeType(rawValue: typeRaw) else{
                 throw ProxyNodeError.invalidType
             }
             guard let portStr = (dictionary["port"] as? String), let port = Int(portStr) else{
