@@ -6,11 +6,11 @@
 //
 
 public enum ProxyNodeType: String {
+    case None = "NONE"
     case Shadowsocks = "SS"
     case ShadowsocksR = "SSR"
     case Https = "HTTPS"
     case Socks5 = "SOCKS5"
-    case None = "NONE"
 }
 
 extension ProxyNodeType: CustomStringConvertible {
