@@ -66,9 +66,14 @@ class ProxyConfigurationViewController: FormViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(save))
     }
     
-    func showWidget(_ form: Form, tag: String) -> Bool {
+    func nodeTypeOf(_ form:Form) -> ProxyNodeType {
         if let r1 : ActionSheetRow<ProxyNodeType> = form.rowBy(tag:kProxyFormType) {
-            let nodeType:ProxyNodeType = r1.value!
+            return r1.value!
+        }
+        return .None
+    }
+    
+    func showWidget(_ nodeType:ProxyNodeType, tag: String) -> Bool {
             switch tag {
             case kProxyFormType, kProxyFormName, kProxyFormHost:
                 return true
@@ -110,15 +115,13 @@ class ProxyConfigurationViewController: FormViewController {
             default:
                 return false
             }
-        }
-        return false
     }
     
     func generateForm() {
         form +++ Section()
             <<< ActionSheetRow<ProxyNodeType>(kProxyFormType) {
                 $0.title = "Proxy Type".localized()
-                $0.options = [ProxyNodeType.Shadowsocks, ProxyNodeType.ShadowsocksR]
+                $0.options = [ProxyNodeType.Shadowsocks, ProxyNodeType.ShadowsocksR, ProxyNodeType.Subscription]
                 $0.value = self.upstreamProxyNode.type
                 $0.selectorTitle = "Choose Proxy Type".localized()
             }
@@ -148,7 +151,7 @@ class ProxyConfigurationViewController: FormViewController {
                 numberFormatter.minimumFractionDigits = 0
                 row.formatter = numberFormatter
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "Proxy Server Port".localized()
@@ -159,14 +162,14 @@ class ProxyConfigurationViewController: FormViewController {
                 row.value = self.upstreamProxyNode.authscheme ?? row.options?[8]
                 row.selectorTitle = "Choose encryption method".localized()
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }
             <<< TextRow(kProxyFormPassword) { row in
                 row.title = "Password".localized()
                 row.value = self.upstreamProxyNode.password ?? nil
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "Proxy Password".localized()
@@ -176,7 +179,7 @@ class ProxyConfigurationViewController: FormViewController {
                 row.value = self.upstreamProxyNode.ota
                 row.disabled = true
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }
             <<< ActionSheetRow<String>(kProxyFormProtocol) { row in
@@ -185,14 +188,14 @@ class ProxyConfigurationViewController: FormViewController {
                 row.value = self.upstreamProxyNode.ssrProtocol ?? row.options?[6]
                 row.selectorTitle = "Choose SSR protocol".localized()
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }
             <<< TextRow(kProxyFormProtocolParam) { row in
                 row.title = "Protocol Param".localized()
                 row.value = self.upstreamProxyNode.ssrProtocolParam
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "SSR Protocol Param".localized()
@@ -205,14 +208,14 @@ class ProxyConfigurationViewController: FormViewController {
                 row.value = self.upstreamProxyNode.ssrObfs ?? row.options?[3]
                 row.selectorTitle = "Choose SSR obfs".localized()
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }
             <<< TextRow(kProxyFormObfsParam) { row in
                 row.title = "Obfs Param".localized()
                 row.value = self.upstreamProxyNode.ssrObfsParam
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
             }.cellSetup { cell, row in
                 cell.textField.placeholder = "SSR Obfs Param".localized()
@@ -223,7 +226,7 @@ class ProxyConfigurationViewController: FormViewController {
                 row.title = "SSRoT Enable".localized()
                 row.value = self.upstreamProxyNode.ssrotEnable
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
                 row.onChange { row in
                     if let ssrotDomain : TextRow = self.form.rowBy(tag: kSsrotDomain) {
@@ -242,7 +245,7 @@ class ProxyConfigurationViewController: FormViewController {
                 row.title = "SSRoT Domain".localized()
                 row.value = self.upstreamProxyNode.ssrotDomain
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
                 row.disabled = Condition.function([kSsrotEnable]) { form in
                     if let r1 : SwitchRow = form.rowBy(tag:kSsrotEnable) {
@@ -259,7 +262,7 @@ class ProxyConfigurationViewController: FormViewController {
                 row.title = "SSRoT Path".localized()
                 row.value = self.upstreamProxyNode.ssrotPath
                 row.hidden = Condition.function([kProxyFormType]) { form in
-                    return !self.showWidget(form, tag: row.tag!)
+                    return !self.showWidget(self.nodeTypeOf(form), tag: row.tag!)
                 }
                 row.disabled = Condition.function([kSsrotEnable]) { form in
                     if let r1 : SwitchRow = form.rowBy(tag:kSsrotEnable) {

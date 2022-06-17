@@ -11,6 +11,7 @@ public enum ProxyNodeType: String {
     case ShadowsocksR = "SSR"
     case Https = "HTTPS"
     case Socks5 = "SOCKS5"
+    case Subscription = "Subscription URL"
 }
 
 extension ProxyNodeType: CustomStringConvertible {
