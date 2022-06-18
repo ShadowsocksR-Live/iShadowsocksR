@@ -261,7 +261,8 @@ extension ProxyNode {
                     uriString = array[0]
                     self.name = array[1].removingPercentEncoding!
                 }
-                let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssUriPrefix.count))
+                let index = uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssUriPrefix.count)
+                let undecodedString = String(uriString[index...])
                 let tmp = undecodedString.components(separatedBy: "@")
                 if tmp.count > 1 {
                     //
@@ -305,33 +306,35 @@ extension ProxyNode {
                 if !(pc1 < pcm && pcm < pc2) {
                     throw ProxyNodeError.invalidUri
                 }
-                let fullAuthscheme = proxyString.lowercased().substring(with: proxyString.startIndex..<pc1)
+                let fullAuthscheme = String(proxyString.lowercased()[proxyString.startIndex..<pc1])
                 if let pOTA = fullAuthscheme.range(of: "-auth", options: .backwards)?.lowerBound {
-                    self.authscheme = fullAuthscheme.substring(to: pOTA)
+                    self.authscheme = String(fullAuthscheme[..<pOTA])
                     self.ota = true
                 }else {
                     self.authscheme = fullAuthscheme
                 }
-                self.password = proxyString.substring(with: proxyString.index(after: pc1)..<pcm)
-                self.host = proxyString.substring(with: proxyString.index(after: pcm)..<pc2)
-                guard let p = Int(proxyString.substring(with: proxyString.index(after: pc2)..<proxyString.endIndex)) else {
+                self.password = String(proxyString[proxyString.index(after: pc1)..<pcm])
+                self.host = String(proxyString[proxyString.index(after: pcm)..<pc2])
+                guard let p = Int(String(proxyString[proxyString.index(after: pc2)..<proxyString.endIndex])) else {
                     throw ProxyNodeError.invalidPort
                 }
                 self.port = p
                 self.type = .Shadowsocks
             }else if uriString.lowercased().hasPrefix(ProxyNode.ssrUriPrefix) {
-                let undecodedString = uriString.substring(from: uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssrUriPrefix.count))
+                let index = uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssrUriPrefix.count)
+                let undecodedString = String(uriString[index...])
                 guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyNodeError.invalidUri
                 }
                 var hostString: String = proxyString
                 var queryString: String = ""
                 if let queryMarkIndex = proxyString.range(of: "?", options: .backwards)?.lowerBound {
-                    hostString = proxyString.substring(to: queryMarkIndex)
-                    queryString = proxyString.substring(from: proxyString.index(after: queryMarkIndex))
+                    hostString = String(proxyString[..<queryMarkIndex])
+                    let index = proxyString.index(after: queryMarkIndex)
+                    queryString = String(proxyString[index...])
                 }
                 if let hostSlashIndex = hostString.range(of: "/", options: .backwards)?.lowerBound {
-                    hostString = hostString.substring(to: hostSlashIndex)
+                    hostString = String(hostString[..<hostSlashIndex])
                 }
                 let hostComps = hostString.components(separatedBy: ":")
                 guard hostComps.count == 6 else {
