@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Shadowsocks@1x.png",
+      "filename" : "subscribe@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Shadowsocks@2x.png",
+      "filename" : "subscribe@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Shadowsocks@3x.png",
+      "filename" : "subscribe@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

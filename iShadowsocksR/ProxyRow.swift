@@ -59,7 +59,15 @@ class ProxyNodeRowCell: Cell<ProxyNode>, CellType {
         if let proxy = row.value {
             titleLabel.text = proxy.name
             iconImageView.isHidden = false
-            iconImageView.image = UIImage(named: "Shadowsocks")
+            switch proxy.type {
+            case .Shadowsocks:
+                iconImageView.image = UIImage(named: "Shadowsocks")
+            case .ShadowsocksR:
+                iconImageView.image = UIImage(named: "ssr")
+            case .Subscription:
+                iconImageView.image = UIImage(named: "subscribe")
+            default: break
+            }
         }else {
             titleLabel.text = "None".localized()
             iconImageView.isHidden = true
