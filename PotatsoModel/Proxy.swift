@@ -62,8 +62,15 @@ extension ProxyNodeError: CustomStringConvertible {
     
 }
 
+public enum SourceType : Int {
+    case fromCustom = 0
+    case fromSubscribe = 1
+    case fromOrganization = 2
+}
+
 open class ProxyNode: BaseModel {
     @objc open dynamic var typeRaw = ProxyNodeType.ShadowsocksR.rawValue
+    @objc open dynamic var sourceTypeRow = SourceType.fromCustom.rawValue
     @objc open dynamic var name = ""
     @objc open dynamic var host = ""
     @objc open dynamic var port = 0
@@ -174,6 +181,15 @@ extension ProxyNode {
         }
         set(v) {
             typeRaw = v.rawValue
+        }
+    }
+    
+    public var sourceType: SourceType {
+        get {
+            return SourceType(rawValue: sourceTypeRow) ?? .fromCustom
+        }
+        set(v) {
+            sourceTypeRow = v.rawValue
         }
     }
     
