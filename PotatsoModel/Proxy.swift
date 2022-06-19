@@ -180,16 +180,7 @@ extension ProxyNode {
     public var uri: String {
         switch type {
         case .Shadowsocks:
-            if let authscheme = authscheme, let password = password {
-                let mainInfo = "\(authscheme):\(password)@\(host):\(port)"
-                let b64 = ProxyNode.base64EncodeUrlSafe(mainInfo)
-                if name.count > 0 {
-                    let remarks = name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-                    return "ss://\(b64)#\(remarks)"
-                } else {
-                    return "ss://\(b64)"
-                }
-            }
+            return buildSsUri()
         case .ShadowsocksR:
             return buildSsrUri()
         default:
@@ -199,6 +190,20 @@ extension ProxyNode {
     }
     open override var description: String {
         return name
+    }
+    
+    public func buildSsUri() -> String {
+        if let authscheme = authscheme, let password = password {
+            let mainInfo = "\(authscheme):\(password)@\(host):\(port)"
+            let b64 = ProxyNode.base64EncodeUrlSafe(mainInfo)
+            if name.count > 0 {
+                let remarks = name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                return "ss://\(b64)#\(remarks)"
+            } else {
+                return "ss://\(b64)"
+            }
+        }
+        return ""
     }
     
     public func buildSsrUri() -> String {
@@ -215,14 +220,16 @@ extension ProxyNode {
         param = (name.count > 0) ? "remarks=\(ProxyNode.base64EncodeUrlSafe(name))" : nil
         if (param != nil) { tmp.append(param!) }
         
-        param = (ssrotEnable) ? "ot_enable=1" : nil
-        if (param != nil) { tmp.append(param!) }
-        
-        param = ((ssrotDomain?.count ?? 0) > 0) ? "ot_domain=\(ProxyNode.base64EncodeUrlSafe(ssrotDomain))" : nil
-        if (param != nil) { tmp.append(param!) }
-        
-        param = ((ssrotPath?.count ?? 0) > 0) ? "ot_path=\(ProxyNode.base64EncodeUrlSafe(ssrotPath))" : nil
-        if (param != nil) { tmp.append(param!) }
+        if ssrotEnable {
+            param = (ssrotEnable) ? "ot_enable=1" : nil
+            if (param != nil) { tmp.append(param!) }
+            
+            param = ((ssrotDomain?.count ?? 0) > 0) ? "ot_domain=\(ProxyNode.base64EncodeUrlSafe(ssrotDomain))" : nil
+            if (param != nil) { tmp.append(param!) }
+            
+            param = ((ssrotPath?.count ?? 0) > 0) ? "ot_path=\(ProxyNode.base64EncodeUrlSafe(ssrotPath))" : nil
+            if (param != nil) { tmp.append(param!) }
+        }
         
         param = tmp.joined(separator: "&")
 
