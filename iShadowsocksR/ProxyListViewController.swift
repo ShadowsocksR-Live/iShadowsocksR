@@ -54,13 +54,18 @@ class ProxyListViewController: FormViewController {
                     cell.selectionStyle = .none
                 }).onCellSelection({ [unowned self] (cell, row) in
                     cell.setSelected(false, animated: true)
-                    let proxy = row.value
-                    if let cb = self.chooseCallback {
-                        cb(proxy)
-                        self.close()
-                    }else {
-                        if proxy?.type != .none {
-                            self.showProxyConfiguration(proxy)
+                    if let proxy = row.value {
+                        if let cb = self.chooseCallback {
+                            switch proxy.type {
+                            case .Shadowsocks, .ShadowsocksR:
+                                cb(proxy)
+                                self.close()
+                            default: break
+                            }
+                        } else {
+                            if proxy.type != .None {
+                                self.showProxyConfiguration(proxy)
+                            }
                         }
                     }
                 })
