@@ -81,9 +81,7 @@ struct Importer {
             let alert = UIAlertController(title: "Add a new proxy".localized(), message: "Please set name for the new proxy".localized(), preferredStyle: .alert)
             alert.addTextField { (textField) in
                 textField.placeholder = "Input name".localized()
-                if proxyNode.name != defaultName {
-                    textField.text = proxyNode.name
-                }
+                textField.text = proxyNode.name
                 urlTextField = textField
             }
             alert.addAction(UIAlertAction(title: "OK".localized(), style: .default){ (action) in
@@ -129,6 +127,32 @@ struct Importer {
         }
     }
 
+    func verifyUrl (_ urlString: String?) -> Bool {
+        if let urlString = urlString {
+            if let url = NSURL(string: urlString) {
+                return UIApplication.shared.canOpenURL(url as URL)
+            }
+        }
+        return false
+    }
+
     func importSubscription(_ result: String) {
+        if verifyUrl(result) {
+            let randomInt = Int.random(in: 0..<1000)
+            
+            let proxyNode = ProxyNode()
+            proxyNode.type = .Subscription
+            proxyNode.host = result
+            proxyNode.name = "Subscribe-" + String(randomInt)
+            proxyNode.port = 8341
+            
+            do {
+                try proxyNode.validate()
+                try DBUtils.add(proxyNode)
+                self.onConfigSaveCallback(true, error: nil)
+            } catch {
+                self.onConfigSaveCallback(false, error: error)
+            }
+        }
     }
 }
