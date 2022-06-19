@@ -70,7 +70,8 @@ public enum SourceType : Int {
 
 open class ProxyNode: BaseModel {
     @objc open dynamic var typeRaw = ProxyNodeType.ShadowsocksR.rawValue
-    @objc open dynamic var sourceTypeRow = SourceType.fromCustom.rawValue
+    @objc open dynamic var sourceTypeRaw = SourceType.fromCustom.rawValue
+    @objc open dynamic var sourceUuid: String?
     @objc open dynamic var name = ""
     @objc open dynamic var host = ""
     @objc open dynamic var port = 0
@@ -186,10 +187,10 @@ extension ProxyNode {
     
     public var sourceType: SourceType {
         get {
-            return SourceType(rawValue: sourceTypeRow) ?? .fromCustom
+            return SourceType(rawValue: sourceTypeRaw) ?? .fromCustom
         }
         set(v) {
-            sourceTypeRow = v.rawValue
+            sourceTypeRaw = v.rawValue
         }
     }
     
