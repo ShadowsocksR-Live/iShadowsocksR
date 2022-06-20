@@ -299,7 +299,7 @@ extension ProxyNode {
                     }
                     let array2 = tmp2[0].components(separatedBy: "@")
                     
-                    let userinfo = base64DecodeUrlSafe(array2[0])
+                    let userinfo = ProxyNode.base64DecodeUrlSafe(array2[0])
                     let m_p = userinfo?.components(separatedBy: ":")
                     if m_p?.count != 2 {
                         throw ProxyNodeError.invalidUri
@@ -321,7 +321,7 @@ extension ProxyNode {
                     return
                 }
 
-                guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
+                guard let proxyString = ProxyNode.base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyNodeError.invalidUri
                 }
                 guard let pc1 = proxyString.range(of: ":")?.lowerBound, let pc2 = proxyString.range(of: ":", options: .backwards)?.lowerBound, let pcm = proxyString.range(of: "@", options: .backwards)?.lowerBound else {
@@ -347,7 +347,7 @@ extension ProxyNode {
             }else if uriString.lowercased().hasPrefix(ProxyNode.ssrUriPrefix) {
                 let index = uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssrUriPrefix.count)
                 let undecodedString = String(uriString[index...])
-                guard let proxyString = base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
+                guard let proxyString = ProxyNode.base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyNodeError.invalidUri
                 }
                 var hostString: String = proxyString
@@ -372,7 +372,7 @@ extension ProxyNode {
                 self.ssrProtocol = hostComps[2]
                 self.authscheme = hostComps[3]
                 self.ssrObfs = hostComps[4]
-                self.password = base64DecodeUrlSafe(hostComps[5])
+                self.password = ProxyNode.base64DecodeUrlSafe(hostComps[5])
                 for queryComp in queryString.components(separatedBy: "&") {
                     let comps = queryComp.components(separatedBy: "=")
                     guard comps.count == 2 else {
@@ -380,17 +380,17 @@ extension ProxyNode {
                     }
                     switch comps[0] {
                     case "protoparam":
-                        self.ssrProtocolParam = base64DecodeUrlSafe(comps[1])
+                        self.ssrProtocolParam = ProxyNode.base64DecodeUrlSafe(comps[1])
                     case "obfsparam":
-                        self.ssrObfsParam = base64DecodeUrlSafe(comps[1])
+                        self.ssrObfsParam = ProxyNode.base64DecodeUrlSafe(comps[1])
                     case "remarks":
-                        self.name = base64DecodeUrlSafe(comps[1]) ?? ""
+                        self.name = ProxyNode.base64DecodeUrlSafe(comps[1]) ?? name
                     case "ot_enable":
                         self.ssrotEnable = (Int(comps[1]) != 0)
                     case "ot_domain":
-                        self.ssrotDomain = base64DecodeUrlSafe(comps[1]) ?? ""
+                        self.ssrotDomain = ProxyNode.base64DecodeUrlSafe(comps[1]) ?? ""
                     case "ot_path":
-                        self.ssrotPath = base64DecodeUrlSafe(comps[1]) ?? ""
+                        self.ssrotPath = ProxyNode.base64DecodeUrlSafe(comps[1]) ?? ""
                     default:
                         continue
                     }
@@ -432,13 +432,15 @@ extension ProxyNode {
         try validate()
     }
     
-    fileprivate func base64DecodeUrlSafe(_ proxyString: String) -> String? {
+    public class func base64DecodeUrlSafe(_ proxyString: String) -> String? {
         if let _ = proxyString.range(of: ":")?.lowerBound {
             return proxyString
         }
         let base64String = proxyString.replacingOccurrences(of: "-", with: "+").replacingOccurrences(of: "_", with: "/")
         let padding = base64String.count + (base64String.count % 4 != 0 ? (4 - base64String.count % 4) : 0)
-        if let decodedData = Data(base64Encoded: base64String.padding(toLength: padding, withPad: "=", startingAt: 0), options: NSData.Base64DecodingOptions(rawValue: 0)), let decodedString = NSString(data: decodedData, encoding: String.Encoding.utf8.rawValue) {
+        let base64String2 = base64String.padding(toLength: padding, withPad: "=", startingAt: 0)
+        if let decodedData = Data(base64Encoded: base64String2, options: NSData.Base64DecodingOptions(rawValue: 0)),
+           let decodedString = NSString(data: decodedData, encoding: String.Encoding.utf8.rawValue) {
             return decodedString as String
         }
         return nil
