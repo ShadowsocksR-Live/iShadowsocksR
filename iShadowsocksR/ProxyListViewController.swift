@@ -101,11 +101,11 @@ class ProxyListViewController: FormViewController {
         let ac = UIAlertController(title: "Delete item".localized(), message: "Do you want to delete the item really?".localized(), preferredStyle: .alert)
         ac.addAction( UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil) )
         let aaOK = UIAlertAction(title: "OK".localized(), style: .default) { (action) in
-            guard indexPath.row < self.proxyNodes.count, let item = (self.form[indexPath] as? ProxyNodeRow)?.value else {
+            guard indexPath.row < self.proxyNodes.count, let node = (self.form[indexPath] as? ProxyNodeRow)?.value else {
                 return
             }
             do {
-                try DBUtils.softDelete(item.uuid, type: ProxyNode.self)
+                try DBUtils.softDelete(node.uuid, type: ProxyNode.self)
                 self.proxyNodes.remove(at: indexPath.row)
                 self.form[indexPath].hidden = true
                 self.form[indexPath].evaluateHidden()
@@ -163,9 +163,8 @@ class ProxyListViewController: FormViewController {
         share.backgroundColor = UIColor.blue
 
         let show = UITableViewRowAction(style: .normal, title: "Details".localized()) { (action, indexPath) in
-            let proxy = self.proxyNodes[indexPath.row]
-            if proxy?.type != .none {
-                self.showProxyConfiguration(proxy)
+            if let node = self.proxyNodes[indexPath.row], node.type != .None {
+                self.showProxyConfiguration(node)
             }
         }
         show.backgroundColor = UIColor(byteRed: 100, green: 100, blue: 255)
@@ -211,12 +210,18 @@ class ProxyListViewController: FormViewController {
         let action4 = UIAlertAction(title: "Import From subscription URL".localized(), style: .default) { action in
             let importer = Importer(vc: self) { success in
                 if success {
+                    self.parseSubscriptions()
                     self.reloadData()
                 }
             }
             importer.importProxyNodesFromSubscriptionUrl()
         }
         ac.addAction(action4)
+
+        let action5 = UIAlertAction(title: "Refresh subscriptions".localized(), style: .default) { action in
+            self.parseSubscriptions()
+        }
+        ac.addAction(action5)
 
         let action99 = UIAlertAction(title: "Cancel".localized(), style: .cancel) { action in
             NSLog("canceled")
@@ -235,5 +240,8 @@ class ProxyListViewController: FormViewController {
         }
 
         return ac
+    }
+    
+    func parseSubscriptions() {
     }
 }
