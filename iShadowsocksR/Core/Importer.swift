@@ -143,7 +143,7 @@ struct Importer {
             let proxyNode = ProxyNode()
             proxyNode.type = .Subscription
             proxyNode.host = result
-            proxyNode.name = "Subscribe-" + String(randomInt)
+            proxyNode.name = "Subscribe-" + String(format: "%04d", randomInt)
             proxyNode.port = 8341
             
             do {

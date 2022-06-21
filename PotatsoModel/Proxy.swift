@@ -432,7 +432,8 @@ extension ProxyNode {
             self.type = type
         }
         if DBUtils.objectExistOf(type: ProxyNode.self, by: name) {
-            self.name = "\(name) \(ProxyNode.dateFormatter.string(from: Date()))"
+            let randomInt = Int.random(in: 0..<1000)
+            self.name = "\(name)-\(String(format: "%04d", randomInt))"
         }
         try validate()
     }

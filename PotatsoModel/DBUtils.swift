@@ -221,6 +221,77 @@ open class DBUtils {
 
 // Query
 extension DBUtils {
+    
+    public static func refreshSubscriptions(_ completion:(Bool)->Void) {
+        var success = false
+        var newNodes: [ProxyNode] = []
+        let proxyNodes: [ProxyNode?] = allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
+        proxyNodes.forEach { node in
+            if let node = node, node.type == .Subscription, let url = URL(string: node.host) {
+                do {
+                    let contents = try String(contentsOf: url)
+                    let nodes = parseNodes(contents, sourceUuid: node.uuid)
+                    newNodes.append(contentsOf: nodes)
+                } catch {
+                }
+            }
+        }
+        
+        // if we get new subscription nodes successfully
+        if newNodes.count > 0 {
+            // delete all old subscribed nodes from database
+            proxyNodes.filter { node in
+                node?.sourceType != .fromCustom
+            }.forEach { node in
+                do {
+                    try DBUtils.softDelete(node?.uuid ?? "", type: ProxyNode.self)
+                } catch {
+                    print("delete failed")
+                }
+            }
+            
+            // write new nodes to database
+            for node in newNodes {
+                do {
+                    try DBUtils.add(node)
+                } catch {
+                    print("write node failed")
+                }
+            }
+            success = true
+        }
+        completion(success)
+    }
+    
+    private static func parseNodes(_ contents:String, sourceUuid:String) -> [ProxyNode] {
+        var nodes:[ProxyNode] = []
+        var c0:String
+        if !contents.contains(ProxyNode.ssUriPrefix) && !contents.contains(ProxyNode.ssrUriPrefix) {
+            c0 = ProxyNode.base64DecodeUrlSafe(contents) ?? ""
+        } else {
+            c0 = contents
+        }
+        
+        let lines = c0.split { $0 == "\n" || $0 == "\r\n" || $0 == " " }.map(String.init)
+        for line in lines {
+            do {
+                let randomInt = Int.random(in: 0..<1000)
+                var name = "Outer-" + String(format: "%04d", randomInt)
+                let proxyNode = try ProxyNode(dictionary: ["name": name as AnyObject, "uri": line as AnyObject])
+                proxyNode.sourceType = .fromSubscribe
+                proxyNode.sourceUuid = sourceUuid
+                name = proxyNode.name
+                if name.count > 13 {
+                    let index = name.index(name.startIndex, offsetBy: 13)
+                    proxyNode.name = String(name[...index])
+                }
+                nodes.append(proxyNode)
+            } catch {
+                print("%@", error)
+            }
+        }
+        return nodes
+    }
 
     public static func allNotDeleted<T: BaseModel>(_ type: T.Type, filter: String? = nil, sorted: String? = nil) -> Results<T> {
         let deleteFilter = "deleted = false"
