@@ -321,10 +321,13 @@ extension ProxyNode {
                     return
                 }
 
-                guard let proxyString = ProxyNode.base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
+                guard let proxyString = ProxyNode.base64DecodeUrlSafe(undecodedString),
+                      let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyNodeError.invalidUri
                 }
-                guard let pc1 = proxyString.range(of: ":")?.lowerBound, let pc2 = proxyString.range(of: ":", options: .backwards)?.lowerBound, let pcm = proxyString.range(of: "@", options: .backwards)?.lowerBound else {
+                guard let pc1 = proxyString.range(of: ":")?.lowerBound,
+                      let pc2 = proxyString.range(of: ":", options: .backwards)?.lowerBound,
+                      let pcm = proxyString.range(of: "@", options: .backwards)?.lowerBound else {
                     throw ProxyNodeError.invalidUri
                 }
                 if !(pc1 < pcm && pcm < pc2) {
@@ -344,10 +347,11 @@ extension ProxyNode {
                 }
                 self.port = p
                 self.type = .Shadowsocks
-            }else if uriString.lowercased().hasPrefix(ProxyNode.ssrUriPrefix) {
+            } else if uriString.lowercased().hasPrefix(ProxyNode.ssrUriPrefix) {
                 let index = uriString.index(uriString.startIndex, offsetBy: ProxyNode.ssrUriPrefix.count)
                 let undecodedString = String(uriString[index...])
-                guard let proxyString = ProxyNode.base64DecodeUrlSafe(undecodedString), let _ = proxyString.range(of: ":")?.lowerBound else {
+                guard let proxyString = ProxyNode.base64DecodeUrlSafe(undecodedString),
+                      let _ = proxyString.range(of: ":")?.lowerBound else {
                     throw ProxyNodeError.invalidUri
                 }
                 var hostString: String = proxyString
@@ -407,7 +411,8 @@ extension ProxyNode {
             guard let host = dictionary["host"] as? String else{
                 throw ProxyNodeError.invalidHost
             }
-            guard let typeRaw = (dictionary["type"] as? String)?.uppercased(), let type = ProxyNodeType(rawValue: typeRaw) else{
+            guard let typeRaw = (dictionary["type"] as? String)?.uppercased(),
+                  let type = ProxyNodeType(rawValue: typeRaw) else {
                 throw ProxyNodeError.invalidType
             }
             guard let portStr = (dictionary["port"] as? String), let port = Int(portStr) else{
