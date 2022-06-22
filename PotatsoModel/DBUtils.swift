@@ -222,6 +222,30 @@ open class DBUtils {
 // Query
 extension DBUtils {
     
+    public static func deleteSubscriptionNode(_ node: ProxyNode, completion:((Bool, Error?)->Void)? = nil) {
+        sharedQueueForRealm.async {
+            var success = false
+            var err:Error?
+            do {
+                try DBUtils.softDelete(node.uuid, type: ProxyNode.self)
+                let allNodes: [ProxyNode?] = allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
+                let subNodes = allNodes.filter { item in
+                    item?.sourceUuid == node.uuid
+                }
+                for node2 in subNodes {
+                    guard let node2 = node2 else {
+                        continue
+                    }
+                    try DBUtils.softDelete(node2.uuid, type: ProxyNode.self)
+                }
+                success = true
+            } catch {
+                err = error
+            }
+            completion?(success, err)
+        }
+    }
+    
     public static func refreshSubscriptions(_ completion:((Bool)->Void)? = nil) {
         sharedQueueForRealm.async {
             var success = false

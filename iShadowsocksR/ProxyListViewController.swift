@@ -105,6 +105,12 @@ class ProxyListViewController: FormViewController {
             guard indexPath.row < self.proxyNodes.count, let node = (self.form[indexPath] as? ProxyNodeRow)?.value else {
                 return
             }
+
+            if node.type == .Subscription {
+                self.deleteSubscriptionNode(node)
+                return
+            }
+
             do {
                 try DBUtils.softDelete(node.uuid, type: ProxyNode.self)
                 self.proxyNodes.remove(at: indexPath.row)
@@ -240,6 +246,21 @@ class ProxyListViewController: FormViewController {
         }
 
         return ac
+    }
+    
+    func deleteSubscriptionNode(_ node:ProxyNode) {
+        self.showProgreeHUD("Delete subscription node...".localized())
+        DBUtils.deleteSubscriptionNode(node) { success, error in
+            Async.main(after: 0.1) {
+                self.hideHUD()
+                if !success {
+                    Alert.show(self, message: "Fail to delete node".localized())
+                } else {
+                    self.showTextHUD("Delete node successfully".localized(), dismissAfterDelay: 1.5)
+                }
+                self.reloadData()
+            }
+        }
     }
     
     func parseSubscriptions() {
