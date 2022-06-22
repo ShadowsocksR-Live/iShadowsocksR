@@ -9,6 +9,7 @@ import Foundation
 import PotatsoModel
 import Cartography
 import Eureka
+import Async
 
 class ProxyListViewController: FormViewController {
 
@@ -211,7 +212,6 @@ class ProxyListViewController: FormViewController {
             let importer = Importer(vc: self) { success in
                 if success {
                     self.parseSubscriptions()
-                    self.reloadData()
                 }
             }
             importer.importProxyNodesFromSubscriptionUrl()
@@ -243,5 +243,17 @@ class ProxyListViewController: FormViewController {
     }
     
     func parseSubscriptions() {
+        self.showProgreeHUD("Refresh subscription nodes...".localized())
+        DBUtils.refreshSubscriptions { success in
+            Async.main(after: 0.1) {
+                self.hideHUD()
+                if !success {
+                    Alert.show(self, message: "Fail to refresh nodes".localized())
+                } else {
+                    self.showTextHUD("Refresh nodes successfully".localized(), dismissAfterDelay: 1.5)
+                    self.reloadData()
+                }
+            }
+        }
     }
 }

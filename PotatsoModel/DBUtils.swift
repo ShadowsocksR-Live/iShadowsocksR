@@ -222,45 +222,48 @@ open class DBUtils {
 // Query
 extension DBUtils {
     
-    public static func refreshSubscriptions(_ completion:(Bool)->Void) {
-        var success = false
-        var newNodes: [ProxyNode] = []
-        let proxyNodes: [ProxyNode?] = allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
-        proxyNodes.forEach { node in
-            if let node = node, node.type == .Subscription, let url = URL(string: node.host) {
-                do {
-                    let contents = try String(contentsOf: url)
-                    let nodes = parseNodes(contents, sourceUuid: node.uuid)
-                    newNodes.append(contentsOf: nodes)
-                } catch {
-                }
-            }
-        }
-        
-        // if we get new subscription nodes successfully
-        if newNodes.count > 0 {
-            // delete all old subscribed nodes from database
-            proxyNodes.filter { node in
-                node?.sourceType != .fromCustom
-            }.forEach { node in
-                do {
-                    try DBUtils.softDelete(node?.uuid ?? "", type: ProxyNode.self)
-                } catch {
-                    print("delete failed")
+    public static func refreshSubscriptions(_ completion:((Bool)->Void)? = nil) {
+        sharedQueueForRealm.async {
+            var success = false
+            var newNodes: [ProxyNode] = []
+            let proxyNodes: [ProxyNode?] = allNotDeleted(ProxyNode.self, sorted: "createAt").map({ $0 })
+            
+            proxyNodes.forEach { node in
+                if let node = node, node.type == .Subscription, let url = URL(string: node.host) {
+                    do {
+                        let contents = try String(contentsOf: url)
+                        let nodes = parseNodes(contents, sourceUuid: node.uuid)
+                        newNodes.append(contentsOf: nodes)
+                    } catch {
+                    }
                 }
             }
             
-            // write new nodes to database
-            for node in newNodes {
-                do {
-                    try DBUtils.add(node)
-                } catch {
-                    print("write node failed")
+            // if we get new subscription nodes successfully
+            if newNodes.count > 0 {
+                // delete all old subscribed nodes from database
+                proxyNodes.filter { node in
+                    node?.sourceType != .fromCustom
+                }.forEach { node in
+                    do {
+                        try DBUtils.softDelete(node?.uuid ?? "", type: ProxyNode.self)
+                    } catch {
+                        print("delete failed")
+                    }
                 }
+                
+                // write new nodes to database
+                for node in newNodes {
+                    do {
+                        try DBUtils.add(node)
+                    } catch {
+                        print("write node failed")
+                    }
+                }
+                success = true
             }
-            success = true
+            completion?(success)
         }
-        completion(success)
     }
     
     private static func parseNodes(_ contents:String, sourceUuid:String) -> [ProxyNode] {
