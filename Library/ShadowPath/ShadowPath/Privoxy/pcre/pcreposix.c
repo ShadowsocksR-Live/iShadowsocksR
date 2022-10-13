@@ -136,7 +136,7 @@ return REG_ASSERT;
 *************************************************/
 
 size_t
-pcre_regerror(int errcode, const pcre_regex_t *preg, char *errbuf, size_t errbuf_size)
+pcre_regerror(int errcode, const _pcre_regex_t *preg, char *errbuf, size_t errbuf_size)
 {
 const char *message, *addmessage;
 size_t length, addlength;
@@ -171,7 +171,7 @@ return length + addlength;
 *************************************************/
 
 void
-pcre_regfree(pcre_regex_t *preg)
+pcre_regfree(_pcre_regex_t *preg)
 {
 (pcre_free)(preg->re_pcre);
 }
@@ -194,7 +194,7 @@ Returns:      0 on success
 */
 
 int
-pcre_regcomp(pcre_regex_t *preg, const char *pattern, int cflags)
+pcre_regcomp(_pcre_regex_t *preg, const char *pattern, int cflags)
 {
 const char *errorptr;
 int erroffset;
@@ -225,8 +225,8 @@ the POSIX structures as was done in earlier releases when PCRE needed only 2
 ints. */
 
 int
-pcre_regexec(pcre_regex_t *preg, const char *string, size_t nmatch,
-  regmatch_t pmatch[], int eflags)
+pcre_regexec(_pcre_regex_t *preg, const char *string, size_t nmatch,
+  _regmatch_t pmatch[], int eflags)
 {
 int rc;
 int options = 0;
