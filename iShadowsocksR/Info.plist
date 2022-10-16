@@ -44,10 +44,6 @@
 	<string>The App want to access your Calendars</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Scan QRCode to import configuration</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>The App want to access your Health Share</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>The App want to access your Health Update</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>The App want to access your Location Always</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
