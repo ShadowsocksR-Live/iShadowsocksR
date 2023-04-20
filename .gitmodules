@@ -3,7 +3,7 @@
 	url = https://github.com/ShadowsocksR-Live/CallbackURLKit.git
 [submodule "Library/Eureka"]
 	path = Library/Eureka
-	url = https://github.com/xmartlabs/Eureka.git
+	url = https://github.com/ShadowsocksR-Live/Eureka.git
 	branch = master
 [submodule "Library/yaml"]
 	path = Library/yaml
