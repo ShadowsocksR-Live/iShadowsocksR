@@ -40,4 +40,6 @@ static const NSString *ot_pathString = @"ot_path";
 @property(nonatomic, copy) NSString *ot_domain;
 @property(nonatomic, copy) NSString *ot_path;
 
+@property(nonatomic, assign, readonly) BOOL isOverTLS;
+
 @end

@@ -10,6 +10,8 @@
 #import <netinet/in.h>
 #import "Profile.h"
 #include <ssrNative/ssrNative.h>
+#import "CommUtils.h"
+#import <overtls/overtls.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 static DDLogLevel ddLogLevel = DDLogLevelWarning;
 
@@ -20,7 +22,7 @@ static DDLogLevel ddLogLevel = DDLogLevelWarning;
     ProxyCompletion _httpCompletion;
 }
 - (void)onHttpProxyCallback: (int)fd;
-- (void)onShadowsocksCallback:(int)fd;
+- (void)onShadowsocksCallback:(int)port;
 @end
 
 int sock_port (int fd) {
@@ -61,15 +63,17 @@ struct server_config * build_config_object(Profile *profile, unsigned short list
     return config;
 }
 
-void shadowsocks_handler(int fd, void *udata) {
+void shadowsocks_handler(int port, void *udata) {
     ProxyManager *provider = (__bridge ProxyManager *)udata;
-    [provider onShadowsocksCallback:fd];
+    [provider onShadowsocksCallback:port];
 }
 
 struct ssr_client_state *g_state = NULL;
 void feedback_state(struct ssr_client_state *state, void *p) {
     g_state = state;
-    shadowsocks_handler(ssr_get_listen_socket_fd(state), p);
+    int fd = ssr_get_listen_socket_fd(state);
+    int port = sock_port(fd);
+    shadowsocks_handler(port, p);
     state_set_force_quit(state, true, 1000);
 }
 
@@ -107,6 +111,7 @@ void ssr_stop(void) {
 
 @implementation ProxyManager {
     int _socksProxyPort;
+    BOOL _isOverTLS;
 }
 
 + (ProxyManager *)sharedManager {
@@ -131,6 +136,23 @@ void ssr_stop(void) {
                                                          options:NSJSONReadingAllowFragments error:nil];
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
     profile.listenPort = 0;
+
+    _isOverTLS = NO; // _isOverTLS = profile.isOverTLS; //
+
+    if (_isOverTLS) {
+        NSURL *file = [[AppProfile sharedUrl] URLByAppendingPathComponent:@"overtls.json"];
+        NSError *error;
+        [profile.JSONData writeToURL:file options:NSDataWritingAtomic error:&error];
+        if (error) {
+            if (_shadowsocksCompletion) {
+                _shadowsocksCompletion(0, error);
+            }
+        }
+        NSString *path = [file path];
+
+        [OverTlsWrapper startWithConfig:path handler:shadowsocks_handler context:(__bridge void*)self];
+        return;
+    }
     
     if (profile.server.length && profile.serverPort && profile.password.length) {
         NSString *path = [NSBundle mainBundle].executablePath;
@@ -144,13 +166,17 @@ void ssr_stop(void) {
 }
 
 - (void)stopShadowsocks {
-    ssr_stop();
+    if (_isOverTLS) {
+        [OverTlsWrapper shutdown];
+    } else {
+        ssr_stop();
+    }
 }
 
-- (void)onShadowsocksCallback:(int)fd {
+- (void) onShadowsocksCallback:(int)port {
     NSError *error;
-    if (fd > 0) {
-        _socksProxyPort = sock_port(fd);
+    if (port > 0) {
+        _socksProxyPort = port;
     } else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }

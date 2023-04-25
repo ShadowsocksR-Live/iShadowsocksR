@@ -190,6 +190,8 @@
 		B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D3436228001EBD00527D6D /* libmaxminddb.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B68182E6280DA0A000A119BD /* QRScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B68182DE280DA02500A119BD /* QRScanner.framework */; };
 		B68182E7280DA0B900A119BD /* QRScanner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B68182DE280DA02500A119BD /* QRScanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6D82A3629F4F7D80036E3DB /* overtls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6D82A2F29F4F3820036E3DB /* overtls.framework */; };
+		B6D82A3929F4F8AD0036E3DB /* overtls.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6D82A2F29F4F3820036E3DB /* overtls.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B821B0F01D51DD8F0061E7B9 /* KeychainUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */; };
 		B821B0F31D5334D50061E7B9 /* ActionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0F21D5334D50061E7B9 /* ActionRow.swift */; };
 		B821B0F51D5335DA0061E7B9 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821B0F41D5335DA0061E7B9 /* FeedbackManager.swift */; };
@@ -615,6 +617,20 @@
 			remoteGlobalIDString = 3A0939EC2075DC5200AB150D;
 			remoteInfo = "libmaxminddb macOS";
 		};
+		B6D82A2E29F4F3820036E3DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D82A1A29F4F3820036E3DB /* overtls.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B6DE654029F4255A00468184;
+			remoteInfo = overtls;
+		};
+		B6D82A3729F4F8260036E3DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D82A1A29F4F3820036E3DB /* overtls.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B6DE653F29F4255A00468184;
+			remoteInfo = overtls;
+		};
 		B86B08E81D17F84900613014 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B86B08E31D17F84900613014 /* ShadowPath.xcodeproj */;
@@ -650,6 +666,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B6D82A3929F4F8AD0036E3DB /* overtls.framework in Embed Frameworks */,
 				B68182E7280DA0B900A119BD /* QRScanner.framework in Embed Frameworks */,
 				B670FD5F2800244000054553 /* libmaxminddb.framework in Embed Frameworks */,
 				3A262D52207A855800073C87 /* CallbackURLKit.framework in Embed Frameworks */,
@@ -1208,6 +1225,7 @@
 		B3AEA49B98CE7A4AD5F03EE1 /* Pods-iShadowsocksR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iShadowsocksR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iShadowsocksR/Pods-iShadowsocksR.debug.xcconfig"; sourceTree = "<group>"; };
 		B68182C8280DA02500A119BD /* QRScanner.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QRScanner.xcodeproj; path = Library/QRScanner/QRScanner.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libmaxminddb.xcodeproj; path = Library/libmaxminddb/xcode/libmaxminddb.xcodeproj; sourceTree = "<group>"; };
+		B6D82A1A29F4F3820036E3DB /* overtls.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = overtls.xcodeproj; path = overtls/overtls.xcodeproj; sourceTree = "<group>"; };
 		B821B0EF1D51DD8F0061E7B9 /* KeychainUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = KeychainUtils.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B821B0F21D5334D50061E7B9 /* ActionRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionRow.swift; sourceTree = "<group>"; };
 		B821B0F41D5335DA0061E7B9 /* FeedbackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
@@ -1294,6 +1312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D82A3629F4F7D80036E3DB /* overtls.framework in Frameworks */,
 				B670FD5E2800240C00054553 /* libmaxminddb.framework in Frameworks */,
 				3A09F917231049AF0073E0EE /* ssrNative.framework in Frameworks */,
 				3A9502D8229AF8D100A6EAD7 /* CocoaLumberjackSwift.framework in Frameworks */,
@@ -1473,6 +1492,7 @@
 		9B0CFA021C1C0B1A007BD7C6 = {
 			isa = PBXGroup;
 			children = (
+				B6D82A1A29F4F3820036E3DB /* overtls.xcodeproj */,
 				B6D3435C28001EBD00527D6D /* libmaxminddb.xcodeproj */,
 				3A262D46207A850200073C87 /* CallbackURLKit.xcodeproj */,
 				3A8780A6207549F800B96BF3 /* KissXML.xcodeproj */,
@@ -2413,6 +2433,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B6D82A1B29F4F3820036E3DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6D82A2F29F4F3820036E3DB /* overtls.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		B8367A841D1B6D6800D50C25 /* Row */ = {
 			isa = PBXGroup;
 			children = (
@@ -2526,6 +2554,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B6D82A3829F4F8260036E3DB /* PBXTargetDependency */,
 				B68182E5280DA06800A119BD /* PBXTargetDependency */,
 				B670FD49280022A200054553 /* PBXTargetDependency */,
 				3A262D56207A859500073C87 /* PBXTargetDependency */,
@@ -2820,6 +2849,10 @@
 					ProjectRef = 3A8AC90720754396002843E0 /* MMWormhole.xcodeproj */;
 				},
 				{
+					ProductGroup = B6D82A1B29F4F3820036E3DB /* Products */;
+					ProjectRef = B6D82A1A29F4F3820036E3DB /* overtls.xcodeproj */;
+				},
+				{
 					ProductGroup = B68182C9280DA02500A119BD /* Products */;
 					ProjectRef = B68182C8280DA02500A119BD /* QRScanner.xcodeproj */;
 				},
@@ -3065,6 +3098,13 @@
 			fileType = wrapper.framework;
 			path = libmaxminddb.framework;
 			remoteRef = B6D3436328001EBD00527D6D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B6D82A2F29F4F3820036E3DB /* overtls.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = overtls.framework;
+			remoteRef = B6D82A2E29F4F3820036E3DB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		B86B08E91D17F84900613014 /* ShadowPath.framework */ = {
@@ -3608,6 +3648,11 @@
 			isa = PBXTargetDependency;
 			name = QRScanner;
 			targetProxy = B68182E4280DA06800A119BD /* PBXContainerItemProxy */;
+		};
+		B6D82A3829F4F8260036E3DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = overtls;
+			targetProxy = B6D82A3729F4F8260036E3DB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

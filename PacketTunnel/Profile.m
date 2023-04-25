@@ -178,4 +178,19 @@
     return _ot_path;
 }
 
+- (BOOL) isOverTLS {
+    BOOL isOverTLS = NO;
+    NSString *method = [NSString stringWithUTF8String:ss_cipher_name_of_type(ss_cipher_none)];
+    NSString *protocol = [NSString stringWithUTF8String:ssr_protocol_name_of_type(ssr_protocol_origin)];
+    NSString *obfs = [NSString stringWithUTF8String:ssr_obfs_name_of_type(ssr_obfs_plain)];
+    if ([self.method isEqualToString:method] &&
+        [self.protocol isEqualToString:protocol] &&
+        [self.obfs isEqualToString:obfs] &&
+        self.ot_enable)
+    {
+        isOverTLS = YES;
+    }
+    return isOverTLS;
+}
+
 @end
