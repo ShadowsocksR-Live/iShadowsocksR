@@ -137,7 +137,7 @@ void ssr_stop(void) {
     Profile *profile = [[Profile alloc] initWithJSONDictionary:json];
     profile.listenPort = 0;
 
-    _isOverTLS = NO; // _isOverTLS = profile.isOverTLS; //
+    _isOverTLS = profile.isOverTLS;
 
     if (_isOverTLS) {
         NSURL *file = [[AppProfile sharedUrl] URLByAppendingPathComponent:@"overtls.json"];

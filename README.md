@@ -8,6 +8,8 @@
 
 ## 公告
 
+iShadowsocksR 已经支持新协议 [overTLS](https://github.com/shadowsocksr-live/overtls).
+
 目前支持 [SSRoT 特性](https://github.com/ShadowsocksR-Live/shadowsocksr-native/wiki) 的 iOS 客户端 已经开发完毕, 出于种种原因不能释出。
 
 ![Screen Shot 2020-05-22 at 18 14 21](https://user-images.githubusercontent.com/30760636/82657737-70b22680-9c58-11ea-804b-65bff0a60ff5.png)
@@ -47,6 +49,13 @@ iShadowsocksR has in total 25 (2 as submodules dependencies as used as local fil
 The project is tested with Xcode `10.1 (10B61)` on iOS `12.1.4 (16D57)` device with cocoapod version `1.7.0`+.
 If you experienced an expected issue, try to use those versions, if still experience the problem please file the issue.
 
+## Install **Rust** build tools to support compiling [overTLS](https://github.com/shadowsocksr-live/overtls)
+- macOS / Xcode
+- Install Xcode Command Line Tools: `xcode-select --install`
+- Install Rust programming language: `curl https://sh.rustup.rs -sSf | sh`
+- Install iOS target support: `rustup target add aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios`
+- Install `cbindgen` tool: `cargo install cbindgen`
+
 ## How to Build
 
 Perform the following steps to be able to build the project.
@@ -63,18 +72,27 @@ Then open `iShadowsocksR.xcworkspace` with `Xcode` to Build and Run the project.
 ## Tips
 
 - If you are a China mainland developer, maybe you should set your git with proxy, such as SOCKS5 etc., or you can not pull some submodules because of `GFW`. Like this:
-```
-# Enable Proxy settings
-git config --global http.proxy socks5://127.0.0.1:1080
-git config --global https.proxy socks5://127.0.0.1:1080
+    ```
+    # Enable Proxy settings
+    git config --global http.proxy socks5://127.0.0.1:1080
+    git config --global https.proxy socks5://127.0.0.1:1080
 
-# Disable Proxy settings
-git config --global --unset-all http.proxy
-git config --global --unset-all https.proxy
-```
+    # Disable Proxy settings
+    git config --global --unset-all http.proxy
+    git config --global --unset-all https.proxy
+    ```
 - You must have an Apple Developer account with an annual fee of $99.
 - To compile the app running on your iOS device smoothly, you must search the project for the `com.ssrlive.issr` identifier string and replace it with your own identifier string.
 
+- Due to an unknown reason at present, compiling Rust code from Xcode fails, so you have to manually compile it. Please run the following command in zsh (or bash):
+    ```
+    cd overtls/overtls-rs
+
+    cargo build --release --target aarch64-apple-ios
+    cargo build --release --target x86_64-apple-ios
+    lipo -create target/aarch64-apple-ios/release/libovertls.a target/x86_64-apple-ios/release/libovertls.a -output target/libovertls.a
+    cbindgen --config cbindgen.toml -l C -o target/overtls-ios.h
+    ```
 
 ## How To Contribute
 

@@ -10,7 +10,7 @@
 
 @interface OverTlsWrapper : NSObject
 
-+ (void) startWithConfig:(NSString*)config handler:(void (*)(int, void *))handler context:(void*)context;
++ (void) startWithConfig:(NSString*)filePath handler:(void (*)(int port, void *ctx))handler context:(void*)ctx;
 + (void) shutdown;
 
 @end
