@@ -19,7 +19,7 @@
 	branch = master
 [submodule "Library/KissXML"]
 	path = Library/KissXML
-	url = https://github.com/robbiehanson/KissXML.git
+	url = https://github.com/ssrlive/KissXML.git
 	branch = master
 [submodule "Library/libmaxminddb"]
 	path = Library/libmaxminddb
