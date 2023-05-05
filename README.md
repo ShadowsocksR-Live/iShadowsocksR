@@ -38,7 +38,8 @@ Currently, iShadowsocksR is compatible with following proxies:
 [Join Telegram Group](https://telegram.me/joinchat/BT0c4z49OGNZXwl9VsO0uQ) to chat with users.
 
 Original Author: [@icodesign](https://twitter.com/icodesign_me)  
-Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor) with [this site](https://github.com/haxpor/Potatso)
+Swift 3 Maintainer: [@haxpor](https://twitter.com/haxpor) with [this site](https://github.com/haxpor/Potatso)  
+Current Maintainer: [@ssrlive](https://github.com/ssrlive)  
 
 ## Project Info
 
@@ -47,19 +48,18 @@ iShadowsocksR has in total 25 (2 as submodules dependencies as used as local fil
 * 15 Cocoapod dependencies
 * 10 submodules dependencies
 
-The project is tested with Xcode `10.1 (10B61)` on iOS `12.1.4 (16D57)` device with cocoapod version `1.7.0`+.
+The project is tested with Xcode `14.3 (14E222b)` on iOS `16.4.1 (20E252)` device with cocoapod version `1.12.1`+.
 If you experienced an expected issue, try to use those versions, if still experience the problem please file the issue.
 
+## Compilation environment
+- macOS Ventura 13.3.1 (22E261)
+- Xcode Version 14.3 (14E222b)
+
 ## Install **Rust** build tools to support compiling [overTLS](https://github.com/shadowsocksr-live/overtls)
-- macOS / Xcode
 - Install Xcode Command Line Tools: `xcode-select --install`
 - Install Rust programming language: `curl https://sh.rustup.rs -sSf | sh`
 - Install iOS target support: `rustup target add aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios`
 - Install `cbindgen` tool: `cargo install cbindgen`
-
-## Compilation environment
-- macOS Ventura 13.3.1
-- Xcode Version 14.3
 
 ## How to Build
 
@@ -115,6 +115,8 @@ We use the following services or open-source libraries. So we'd like show them h
 
 ### Open-source Libraries
 
+- [overtls](https://github.com/shadowsocksr-live/overtls)
+- [Shadowsocksr-native](https://github.com/shadowsocksr-live/shadowsocksr-native)
 - [KissXML](https://github.com/robbiehanson/KissXML)
 - [MMWormhole](https://github.com/mutualmobile/MMWormhole)
 - [CocoaAsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket)
