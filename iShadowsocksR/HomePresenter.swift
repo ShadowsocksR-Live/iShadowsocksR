@@ -44,10 +44,13 @@ class HomePresenter: NSObject {
 
     // MARK: - Actions
 
-    func switchVPN() {
+    func switchVPN(completion: @escaping (Error?) -> Void) {
         VPN.switchVPN(group) { [unowned self] (error) in
             if let error = error {
                 Alert.show(self.vc, message: "\("Fail to switch VPN.".localized()) (\(error))")
+                completion(error)
+            } else {
+                completion(nil)
             }
         }
     }

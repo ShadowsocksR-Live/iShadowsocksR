@@ -203,7 +203,11 @@ class HomeVC: FormViewController, UINavigationControllerDelegate, HomePresenterP
         }else {
             status = .connecting
         }
-        presenter.switchVPN()
+        presenter.switchVPN{ (error) in
+            if error != nil {
+                self.status = .off
+            }
+        }
     }
 
     @objc func handleTitleButtonPressed() {
