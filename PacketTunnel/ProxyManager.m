@@ -142,7 +142,8 @@ void ssr_stop(void) {
     if (_isOverTLS) {
         NSURL *file = [[AppProfile sharedUrl] URLByAppendingPathComponent:@"overtls.json"];
         NSError *error;
-        [profile.JSONData writeToURL:file options:NSDataWritingAtomic error:&error];
+        NSData *data = [Profile JsonDataFromDictionary:[profile OverTlsJsonDictionary]];
+        [data writeToURL:file options:NSDataWritingAtomic error:&error];
         if (error) {
             if (_shadowsocksCompletion) {
                 _shadowsocksCompletion(0, error);

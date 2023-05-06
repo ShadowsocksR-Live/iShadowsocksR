@@ -22,6 +22,8 @@ static const NSString *ot_pathString = @"ot_path";
 - (id)initWithJSONDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)JSONDictionary;
 - (NSData *)JSONData;
+- (NSMutableDictionary*) OverTlsJsonDictionary;
++ (NSData*) JsonDataFromDictionary:(NSDictionary*)dictionary;
 
 @property (nonatomic, copy) NSString *server;
 @property (nonatomic, assign) NSInteger serverPort;

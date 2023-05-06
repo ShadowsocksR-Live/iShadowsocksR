@@ -91,12 +91,7 @@
 }
 
 - (NSData *)JSONData {
-    NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:[self JSONDictionary] options:0 error:&error];
-    if (error) {
-        @throw error;
-    }
-    return data;
+    return [self.class JsonDataFromDictionary:[self JSONDictionary]];
 }
 
 - (NSString *) server {
@@ -191,6 +186,36 @@
         isOverTLS = YES;
     }
     return isOverTLS;
+}
+
+- (NSMutableDictionary*) OverTlsJsonDictionary {
+    if ([self isOverTLS] == NO) {
+        return nil;
+    }
+    NSMutableDictionary *client = [[NSMutableDictionary alloc] init];
+    client[@"server_host"] = self.server;
+    client[@"server_port"] = @(self.serverPort);
+    client[@"server_domain"] = self.ot_domain;
+    client[@"listen_host"] = @"127.0.0.1";
+    client[listenPortString] = @(self.listenPort);
+
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    dictionary[@"client_settings"] = client;
+    dictionary[remarksString] = self.remarks;
+    dictionary[@"tunnel_path"] = self.ot_path;
+    dictionary[@"method"] = self.method;
+    dictionary[@"password"] = self.password;
+
+    return dictionary;
+}
+
++ (NSData*) JsonDataFromDictionary:(NSDictionary*)dictionary {
+    NSError *error = nil;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+    if (error) {
+        @throw error;
+    }
+    return data;
 }
 
 @end
