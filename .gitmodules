@@ -37,7 +37,6 @@
 	path = Library/QRScanner
 	url = https://github.com/ShadowsocksR-Live/QRScanner.git
 	branch = master
-[submodule "overtls/overtls-rs"]
-	path = overtls/overtls-rs
+[submodule "overtls"]
+	path = overtls
 	url = https://github.com/ShadowsocksR-Live/overtls.git
-	branch = master

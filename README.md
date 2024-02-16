@@ -89,14 +89,12 @@ Then open `iShadowsocksR.xcworkspace` with `Xcode` to Build and Run the project.
 - You must have an Apple Developer account with an annual fee of $99.
 - To compile the app running on your iOS device smoothly, you must search the project for the `com.ssrlive.issr` identifier string and replace it with your own identifier string.
 
-- Due to an unknown reason at present, compiling Rust code from Xcode fails, so you have to manually compile it. Please run the following command in zsh (or bash):
+- Build apple iOS/macOS xcframework:
+  see [overtls](https://github.com/ShadowsocksR-Live/overtls/blob/master/apple/readme.md) for more details.
     ```
-    cd overtls/overtls-rs
+    cd overtls
 
-    cargo build --release --target aarch64-apple-ios
-    cargo build --release --target x86_64-apple-ios
-    lipo -create target/aarch64-apple-ios/release/libovertls.a target/x86_64-apple-ios/release/libovertls.a -output target/libovertls.a
-    cbindgen --config cbindgen.toml -l C -o target/overtls-ios.h
+    ./build-apple.sh
     ```
 - If you meet lots of compiling errors such as `ld: file not found: /.../libarclite_iphoneos.a`, please change all of iOS deployment target from `iOS 8.0` to `iOS 11.0` or above. like this:
 ![image](https://user-images.githubusercontent.com/30760636/236302192-d4550fca-7b70-45c6-9021-15c190ff7c48.png)
